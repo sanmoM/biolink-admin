@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madwess</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Roboto', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: {
+                            900: '#0f1014', // Main bg
+                            800: '#18191d', // Card/Sidebar bg
+                            700: '#222328', // Hover/Border
+                        },
+                        accent: {
+                            yellow: '#fbbf24',
+                            blue: '#3b82f6',
+                            purple: '#a855f7',
+                            grey: '#374151',
+                            green: '#22c55e',
+                            green_dim: 'rgba(34, 197, 94, 0.1)',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+</head>
+
+<body class="flex h-screen overflow-hidden text-sm">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-black border-r border-[#EAB308]/20 flex flex-col h-full flex-shrink-0">
+
+        <!-- Navigation -->
+        <nav class="flex-1 mt-5 px-4 space-y-1">
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-[#FACC15]/20 to-[#3B82F6]/20 text-[#FACC15] rounded-lg border-2 border-yellow-400/20 shadow-[0_0_15px_rgba(251,191,36,0.1)]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                        d="M13.5 9V4H20v5zM4 12V4h6.5v8zm9.5 8v-8H20v8zM4 20v-5h6.5v5zm1-9h4.5V5H5zm9.5 8H19v-6h-4.5zm0-11H19V5h-4.5zM5 19h4.5v-3H5zm4.5-3" />
+                </svg>
+                <span class="font-medium">Dashboard</span>
+            </a>
+
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M14.5 5.5h-7V7h7zM7.5 9h7v1.5h-7zm7 3.5h-7V14h7z" />
+                    <path fill="currentColor"
+                        d="M16 2H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2M6 3.5h10a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5H6a.5.5 0 0 1-.5-.5V4a.5.5 0 0 1 .5-.5" />
+                    <path fill="currentColor"
+                        d="M20 8v11c0 .69-.31 1-.999 1H6v1.5h13.001c1.52 0 2.499-.982 2.499-2.5V8z" />
+                </svg> <span>Biolink Pages</span>
+            </a>
+
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                        d="m13.06 8.111l1.415 1.414a7 7 0 0 1 0 9.9l-.354.353a7 7 0 1 1-9.9-9.9l1.415 1.415a5 5 0 1 0 7.071 7.071l.354-.354a5 5 0 0 0 0-7.07l-1.415-1.415zm6.718 6.01l-1.414-1.414a5 5 0 0 0-7.071-7.07l-.354.353a5 5 0 0 0 0 7.07l1.415 1.415l-1.415 1.414l-1.414-1.414a7 7 0 0 1 0-9.9l.354-.353a7 7 0 1 1 9.9 9.9" />
+                </svg> <span>Shortened Links</span>
+            </a>
+
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                        d="M9 2.003V2h10.998C20.55 2 21 2.455 21 2.992v18.016a.993.993 0 0 1-.993.992H3.993A1 1 0 0 1 3 20.993V8zM5.83 8H9V4.83zM11 4v5a1 1 0 0 1-1 1H5v10h14V4z" />
+                </svg> <span>File Links</span>
+            </a>
+
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16">
+                    <g fill="currentColor">
+                        <path
+                            d="M5 8a2 2 0 1 0 0-4a2 2 0 0 0 0 4m4-2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5M9 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 9 8m1 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5" />
+                        <path
+                            d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM1 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H8.96q.04-.245.04-.5C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 1 1 12z" />
+                    </g>
+                </svg> <span>Vcard Links</span>
+            </a>
+
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                        d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2m0 16H5V10h14zm0-12H5V6h14zm-7 5h5v5h-5z" />
+                </svg> <span>Event Links</span>
+            </a>
+
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                        d="M18 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m-5 14H6v-7h7zm5 0h-3v-7h3zm0-9H6V6h12z" />
+                </svg> <span>Static Sites</span>
+            </a>
+
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                        d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zm16 0H5v14h14zm-7 2a1 1 0 0 1 1 1v8a1 1 0 1 1-2 0V8a1 1 0 0 1 1-1m4 2a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1m-8 2a1 1 0 0 1 1 1v4a1 1 0 1 1-2 0v-4a1 1 0 0 1 1-1" />
+                </svg> <span>Links Statistics</span>
+            </a>
+
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M1 1h10v10H1zm2 2v6h6V3z" />
+                    <path fill="currentColor" fill-rule="evenodd" d="M5 5h2v2H5z" />
+                    <path fill="currentColor" d="M13 1h10v10H13zm2 2v6h6V3z" />
+                    <path fill="currentColor" fill-rule="evenodd" d="M17 5h2v2h-2z" />
+                    <path fill="currentColor" d="M1 13h10v10H1zm2 2v6h6v-6z" />
+                    <path fill="currentColor" fill-rule="evenodd" d="M5 17h2v2H5z" />
+                    <path fill="currentColor"
+                        d="M23 19h-4v4h-6V13h1h-1v6h2v2h2v-6h-2v-2h-1h3v2h2v2h2v-4h2zm0 2v2h-2v-2z" />
+                </svg> <span>QR Codes</span>
+            </a>
+
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                        d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10s10-4.477 10-10S17.523 2 12 2m6.918 6h-3.215a49 49 0 0 0-.565-3.357A8.05 8.05 0 0 1 18.918 8m-5.904-3.928c.068.352.387 2.038.645 3.928h-3.318c.258-1.89.577-3.576.645-3.928C11.319 4.029 11.656 4 12 4s.681.029 1.014.072M14 12c0 .598-.043 1.286-.109 2h-3.782c-.066-.714-.109-1.402-.109-2s.043-1.286.109-2h3.782c.066.714.109 1.402.109 2M8.862 4.643A49 49 0 0 0 8.297 8H5.082a8.05 8.05 0 0 1 3.78-3.357M4.263 10h3.821C8.033 10.668 8 11.344 8 12s.033 1.332.085 2H4.263C4.097 13.359 4 12.692 4 12s.098-1.359.263-2m.819 6h3.215c.188 1.424.42 2.65.565 3.357A8.05 8.05 0 0 1 5.082 16m5.904 3.928A77 77 0 0 1 10.341 16h3.318a78 78 0 0 1-.645 3.928c-.333.043-.67.072-1.014.072s-.681-.029-1.014-.072m4.152-.571c.145-.707.377-1.933.565-3.357h3.215a8.05 8.05 0 0 1-3.78 3.357M19.737 14h-3.821c.051-.668.084-1.344.084-2s-.033-1.332-.085-2h3.821c.166.641.264 1.308.264 2s-.097 1.359-.263 2" />
+                </svg> <span>Custom Domains</span>
+            </a>
+
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                        d="M20 17h2v2H2v-2h2v-7a8 8 0 1 1 16 0zm-2 0v-7a6 6 0 0 0-12 0v7zm-9 4h6v2H9z" />
+                </svg> <span>Notification Handlers</span>
+            </a>
+
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <g fill="none">
+                        <path d="M0 0h24v24H0z" />
+                        <path fill="currentColor"
+                            d="M14.486 3.143a1 1 0 0 1 .692 1.233l-4.43 15.788a1 1 0 0 1-1.926-.54l4.43-15.788a1 1 0 0 1 1.234-.693M7.207 7.05a1 1 0 0 1 0 1.414L3.672 12l3.535 3.535a1 1 0 1 1-1.414 1.415L1.55 12.707a1 1 0 0 1 0-1.414L5.793 7.05a1 1 0 0 1 1.414 0m9.586 1.414a1 1 0 1 1 1.414-1.414l4.243 4.243a1 1 0 0 1 0 1.414l-4.243 4.243a1 1 0 0 1-1.414-1.415L20.328 12z" />
+                    </g>
+                </svg> <span>Pixels</span>
+            </a>
+
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16">
+                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="1.5">
+                        <rect width="12.5" height="10.5" x="1.75" y="2.75" />
+                        <path d="m8.25 6.75h5.5m-11.5 2.5h5.5m.25-6v9.5" />
+                    </g>
+                </svg> <span>Splash Pages</span>
+            </a>
+
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <g fill="none">
+                        <path
+                            d="M21 20h-.514c-1.236 1.165-4.568 2-8.486 2s-7.25-.835-8.486-2H3V5c0 1.657 4.03 3 9 3s9-1.343 9-3z" />
+                        <path d="M12 8c4.97 0 9-1.343 9-3s-4.03-3-9-3s-9 1.343-9 3s4.03 3 9 3" />
+                        <path stroke="currentColor" stroke-width="2"
+                            d="M21 12c0 1.657-4.03 3-9 3s-9-1.343-9-3m18 0v7c0 1.657-4.03 3-9 3s-9-1.343-9-3v-7m18 0V5M3 12V5m0 0c0 1.657 4.03 3 9 3s9-1.343 9-3M3 5c0-1.657 4.03-3 9-3s9 1.343 9 3" />
+                    </g>
+                </svg> <span>Data</span>
+            </a>
+
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 20 20">
+                    <g fill="currentColor" fill-rule="evenodd" clip-rule="evenodd">
+                        <path d="M5 9a2 2 0 1 0 0-4a2 2 0 0 0 0 4m0 1a3 3 0 1 0 0-6a3 3 0 0 0 0 6" />
+                        <path
+                            d="M3.854 8.896a.5.5 0 0 1 0 .708l-.338.337A3.47 3.47 0 0 0 2.5 12.394v1.856a.5.5 0 1 1-1 0v-1.856a4.47 4.47 0 0 1 1.309-3.16l.337-.338a.5.5 0 0 1 .708 0m11.792-.3a.5.5 0 0 0 0 .708l.338.337A3.47 3.47 0 0 1 17 12.094v2.156a.5.5 0 0 0 1 0v-2.156a4.47 4.47 0 0 0-1.309-3.16l-.337-.338a.5.5 0 0 0-.708 0" />
+                        <path
+                            d="M14 9a2 2 0 1 1 0-4a2 2 0 0 1 0 4m0 1a3 3 0 1 1 0-6a3 3 0 0 1 0 6m-4.5 3.25a2.5 2.5 0 0 0-2.5 2.5v1.3a.5.5 0 0 1-1 0v-1.3a3.5 3.5 0 0 1 7 0v1.3a.5.5 0 1 1-1 0v-1.3a2.5 2.5 0 0 0-2.5-2.5" />
+                        <path d="M9.5 11.75a2 2 0 1 0 0-4a2 2 0 0 0 0 4m0 1a3 3 0 1 0 0-6a3 3 0 0 0 0 6" />
+                    </g>
+                </svg> <span>Directory</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col overflow-y-auto bg-[#0f1014] relative">
+        <!-- Top Gradient Glow -->
+        <div
+            class="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-blue-900/5 to-transparent pointer-events-none">
+        </div>
+
+        <div class="p-8 max-w-7xl mx-auto w-full z-10 space-y-8">
+
+            <!-- Header -->git init
+            <header>
+                <h1 class="text-3xl font-bold text-white mb-2">Dashboard</h1>
+                <p class="text-gray-400">Welcome back! Here's your overview</p>
+            </header>
+
+            <!-- Action Buttons Row -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Create Link -->
+                <button
+                    class="flex items-center justify-center gap-2 bg-gradient-to-br from-[#FACC15] to-[#EAB308] hover:font-black text-base text-black font-semibold py-4 px-6 rounded-xl transition-all shadow-[0_0_20px_rgba(251,191,36,0.3)] group">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M18 12.998h-5v5a1 1 0 0 1-2 0v-5H6a1 1 0 0 1 0-2h5v-5a1 1 0 0 1 2 0v5h5a1 1 0 0 1 0 2" />
+                    </svg> <span>Create Link</span>
+                </button>
+
+                <!-- QR Code -->
+                <button
+                    class="flex items-center justify-center gap-2 bg-gradient-to-br from-[#3B82F6] to-[#2563EB] hover:font-black text-white font-semibold text-base py-4 px-6 rounded-xl transition-all shadow-[0_0_20px_rgba(59,130,246,0.3)] h-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M1 1h10v10H1zm2 2v6h6V3z" />
+                        <path fill="currentColor" fill-rule="evenodd" d="M5 5h2v2H5z" />
+                        <path fill="currentColor" d="M13 1h10v10H13zm2 2v6h6V3z" />
+                        <path fill="currentColor" fill-rule="evenodd" d="M17 5h2v2h-2z" />
+                        <path fill="currentColor" d="M1 13h10v10H1zm2 2v6h6v-6z" />
+                        <path fill="currentColor" fill-rule="evenodd" d="M5 17h2v2H5z" />
+                        <path fill="currentColor"
+                            d="M23 19h-4v4h-6V13h1h-1v6h2v2h2v-6h-2v-2h-1h3v2h2v2h2v-4h2zm0 2v2h-2v-2z" />
+                    </svg> <span>QR Code</span>
+                </button>
+
+                <!-- Analytics -->
+                <button
+                    class="flex items-center justify-center gap-2 bg-gradient-to-br from-[#A855F7] to-[#9333EA] hover:font-black text-white font-semibold text-base py-4 px-6 rounded-xl transition-all shadow-[0_0_20px_rgba(168,85,247,0.3)] h-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zm16 0H5v14h14zm-7 2a1 1 0 0 1 1 1v8a1 1 0 1 1-2 0V8a1 1 0 0 1 1-1m4 2a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1m-8 2a1 1 0 0 1 1 1v4a1 1 0 1 1-2 0v-4a1 1 0 0 1 1-1" />
+                    </svg> <span>Analytics</span>
+                </button>
+
+                <!-- Settings -->
+                <button
+                    class="flex items-center justify-center gap-2 bg-gradient-to-br from-[#374151] to-[#1F2937] hover:font-black text-white font-semibold text-base py-4 px-6 rounded-xl transition-all h-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M12.012 2.25c.734.008 1.465.093 2.182.253a.75.75 0 0 1 .582.649l.17 1.527a1.384 1.384 0 0 0 1.927 1.116l1.4-.615a.75.75 0 0 1 .85.174a9.8 9.8 0 0 1 2.205 3.792a.75.75 0 0 1-.272.825l-1.241.916a1.38 1.38 0 0 0 0 2.226l1.243.915a.75.75 0 0 1 .272.826a9.8 9.8 0 0 1-2.204 3.792a.75.75 0 0 1-.849.175l-1.406-.617a1.38 1.38 0 0 0-1.926 1.114l-.17 1.526a.75.75 0 0 1-.571.647a9.5 9.5 0 0 1-4.406 0a.75.75 0 0 1-.572-.647l-.169-1.524a1.382 1.382 0 0 0-1.925-1.11l-1.406.616a.75.75 0 0 1-.85-.175a9.8 9.8 0 0 1-2.203-3.796a.75.75 0 0 1 .272-.826l1.243-.916a1.38 1.38 0 0 0 0-2.226l-1.243-.914a.75.75 0 0 1-.272-.826a9.8 9.8 0 0 1 2.205-3.792a.75.75 0 0 1 .85-.174l1.4.615a1.387 1.387 0 0 0 1.93-1.118l.17-1.526a.75.75 0 0 1 .583-.65q1.074-.238 2.201-.252m0 1.5a9 9 0 0 0-1.354.117l-.11.977A2.886 2.886 0 0 1 6.526 7.17l-.899-.394A8.3 8.3 0 0 0 4.28 9.092l.797.587a2.88 2.88 0 0 1 .001 4.643l-.799.588c.32.842.776 1.626 1.348 2.322l.905-.397a2.882 2.882 0 0 1 4.017 2.318l.109.984c.89.15 1.799.15 2.688 0l.11-.984a2.88 2.88 0 0 1 4.018-2.322l.904.396a8.3 8.3 0 0 0 1.348-2.318l-.798-.588a2.88 2.88 0 0 1-.001-4.643l.797-.587a8.3 8.3 0 0 0-1.348-2.317l-.897.393a2.884 2.884 0 0 1-4.023-2.324l-.109-.976a9 9 0 0 0-1.334-.117M12 8.25a3.75 3.75 0 1 1 0 7.5a3.75 3.75 0 0 1 0-7.5m0 1.5a2.25 2.25 0 1 0 0 4.5a2.25 2.25 0 0 0 0-4.5" />
+                    </svg> <span>Settings</span>
+                </button>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Bio Links Card -->
+                <div
+                    class="bg-white/5 border border-[#EAB308]/10 p-6 bg-blur rounded-2xl relative overflow-hidden group hover:border-[#EAB308]/30 transition-colors">
+                    <div class="flex justify-between items-start mb-4">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#FACC15] to-[#F97316] text-white flex items-center justify-center border border-orange-500/20">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M14.5 5.5h-7V7h7zM7.5 9h7v1.5h-7zm7 3.5h-7V14h7z" />
+                                <path fill="currentColor"
+                                    d="M16 2H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2M6 3.5h10a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5H6a.5.5 0 0 1-.5-.5V4a.5.5 0 0 1 .5-.5" />
+                                <path fill="currentColor"
+                                    d="M20 8v11c0 .69-.31 1-.999 1H6v1.5h13.001c1.52 0 2.499-.982 2.499-2.5V8z" />
+                            </svg>
+                        </div>
+                        <span
+                            class="bg-[#22C55E]/20 text-green-400 text-xs font-bold px-2 py-1 rounded-full">+12%</span>
+                    </div>
+                    <h3 class="text-gray-400 text-sm font-medium mb-1">Bio Links</h3>
+                    <p class="text-3xl font-bold text-white tracking-wide">24</p>
+                </div>
+
+                <!-- Short Links Card -->
+                <div
+                    class="bg-white/5 border border-[#EAB308]/10 p-6 bg-blur rounded-2xl relative overflow-hidden group hover:border-[#EAB308]/30 transition-colors">
+                    <div class="flex justify-between items-start mb-4">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#60A5FA] to-[#2563EB] text-white flex items-center justify-center border border-blue-500/20">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="m13.06 8.111l1.415 1.414a7 7 0 0 1 0 9.9l-.354.353a7 7 0 1 1-9.9-9.9l1.415 1.415a5 5 0 1 0 7.071 7.071l.354-.354a5 5 0 0 0 0-7.07l-1.415-1.415zm6.718 6.01l-1.414-1.414a5 5 0 0 0-7.071-7.07l-.354.353a5 5 0 0 0 0 7.07l1.415 1.415l-1.415 1.414l-1.414-1.414a7 7 0 0 1 0-9.9l.354-.353a7 7 0 1 1 9.9 9.9" />
+                            </svg>
+                        </div>
+                        <span class="bg-[#22C55E]/20 text-green-400 text-xs font-bold px-2 py-1 rounded-full">+8%</span>
+                    </div>
+                    <h3 class="text-gray-400 text-sm font-medium mb-1">Short Links</h3>
+                    <p class="text-3xl font-bold text-white tracking-wide">156</p>
+                </div>
+
+                <!-- File Links Card -->
+                <div
+                    class="bg-white/5 border border-[#EAB308]/10 p-6 bg-blur rounded-2xl relative overflow-hidden group hover:border-[#EAB308]/30 transition-colors">
+                    <div class="flex justify-between items-start mb-4">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#C084FC] to-[#9333EA] text-white flex items-center justify-center border border-purple-500/20">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="M9 2.003V2h10.998C20.55 2 21 2.455 21 2.992v18.016a.993.993 0 0 1-.993.992H3.993A1 1 0 0 1 3 20.993V8zM5.83 8H9V4.83zM11 4v5a1 1 0 0 1-1 1H5v10h14V4z" />
+                            </svg>
+                        </div>
+                        <span
+                            class="bg-[#22C55E]/20 text-green-400 text-xs font-bold px-2 py-1 rounded-full">+15%</span>
+                    </div>
+                    <h3 class="text-gray-400 text-sm font-medium mb-1">File Links</h3>
+                    <p class="text-3xl font-bold text-white tracking-wide">42</p>
+                </div>
+
+                <!-- VCard Links Card -->
+                <div
+                    class="bg-white/5 border border-[#EAB308]/10 p-6 bg-blur rounded-2xl relative overflow-hidden group hover:border-[#EAB308]/30 transition-colors">
+                    <div class="flex justify-between items-start mb-4">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#4ADE80] to-[#16A34A] text-white flex items-center justify-center border border-purple-500/20">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16">
+                                <g fill="currentColor">
+                                    <path
+                                        d="M5 8a2 2 0 1 0 0-4a2 2 0 0 0 0 4m4-2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5M9 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 9 8m1 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5" />
+                                    <path
+                                        d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM1 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H8.96q.04-.245.04-.5C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 1 1 12z" />
+                                </g>
+                            </svg>
+                        </div>
+                        <span class="bg-[#22C55E]/20 text-green-400 text-xs font-bold px-2 py-1 rounded-full">+5%</span>
+                    </div>
+                    <h3 class="text-gray-400 text-sm font-medium mb-1">VCard Links</h3>
+                    <p class="text-3xl font-bold text-white tracking-wide">18</p>
+                </div>
+
+                <!-- Event Links Card -->
+                <div
+                    class="bg-white/5 border border-[#EAB308]/10 p-6 bg-blur rounded-2xl relative overflow-hidden group hover:border-[#EAB308]/30 transition-colors">
+                    <div class="flex justify-between items-start mb-4">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#F472B6] to-[#DB2777] text-white flex items-center justify-center border border-pink-500/20">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2m0 16H5V10h14zm0-12H5V6h14zm-7 5h5v5h-5z" />
+                            </svg>
+                        </div>
+                        <span
+                            class="bg-[#22C55E]/20 text-green-400 text-xs font-bold px-2 py-1 rounded-full">+20%</span>
+                    </div>
+                    <h3 class="text-gray-400 text-sm font-medium mb-1">Event Links</h3>
+                    <p class="text-3xl font-bold text-white tracking-wide">31</p>
+                </div>
+
+                <!-- Static Links Card -->
+                <div
+                    class="bg-white/5 border border-[#EAB308]/10 p-6 bg-blur rounded-2xl relative overflow-hidden group hover:border-[#EAB308]/30 transition-colors">
+                    <div class="flex justify-between items-start mb-4">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#22D3EE] to-[#0891B2] text-white flex items-center justify-center border border-cyan-500/20">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="M18 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m-5 14H6v-7h7zm5 0h-3v-7h3zm0-9H6V6h12z" />
+                            </svg>
+                        </div>
+                        <span
+                            class="bg-[#22C55E]/20 text-green-400 text-xs font-bold px-2 py-1 rounded-full">+10%</span>
+                    </div>
+                    <h3 class="text-gray-400 text-sm font-medium mb-1">Static Links</h3>
+                    <p class="text-3xl font-bold text-white tracking-wide">89</p>
+                </div>
+            </div>
+
+            <!-- Content Grid: Recent Links & Activity -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                <!-- Recent Links Section (2/3 width) -->
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-bold text-white">Recent Links</h2>
+                        <a href="#" class="text-yellow-400 text-sm hover:underline flex items-center gap-1">View All <i
+                                class="fa-solid fa-arrow-right text-xs"></i></a>
+                    </div>
+
+                    <!-- List Container -->
+                    <div class="flex flex-col gap-3">
+
+                        <!-- Header Row (Hidden on mobile maybe, or just styled) -->
+
+                        <!-- Link Item 1 -->
+                        <div
+                            class="bg-[#18191d] border border-[#222328] p-4 rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 hover:bg-[#1f2025] transition-colors group">
+                            <div class="flex-1">
+                                <h4 class="text-white font-medium text-base mb-1">Summer Campaign 2024</h4>
+                                <a href="#"
+                                    class="text-[#9CA3AF] hover:text-blue-400 text-sm transition-colors">madw.es/summer24</a>
+                            </div>
+
+                            <div class="flex items-center gap-6 w-full sm:w-auto justify-between sm:justify-end">
+                                <div class="text-right">
+                                    <div class="text-white font-bold">1,234</div>
+                                    <div class="text-gray-500 text-xs">clicks</div>
+                                </div>
+                                <span
+                                    class="bg-[#3B82F6]/20 text-blue-400 text-xs px-3 py-1 rounded-full border border-blue-500/20">Bio
+                                    Link</span>
+                                <span
+                                    class="text-green-400/90 bg-green-500/10 px-3 py-1 rounded-full text-xs font-medium border border-green-500/10">Active</span>
+                            </div>
+                        </div>
+
+                        <!-- Link Item 2 -->
+                        <div
+                            class="bg-[#18191d] border border-[#222328] p-4 rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 hover:bg-[#1f2025] transition-colors group">
+                            <div class="flex-1">
+                                <h4 class="text-white font-medium text-base mb-1">Product Launch</h4>
+                                <a href="#"
+                                    class="text-[#9CA3AF] hover:text-blue-400 text-sm transition-colors">madw.es/launch</a>
+                            </div>
+
+                            <div class="flex items-center gap-6 w-full sm:w-auto justify-between sm:justify-end">
+                                <div class="text-right">
+                                    <div class="text-white font-bold">892</div>
+                                    <div class="text-gray-500 text-xs">clicks</div>
+                                </div>
+                                <span
+                                    class="bg-[#3B82F6]/20 text-blue-400 text-xs px-3 py-1 rounded-full border border-blue-500/20">Short
+                                    Link</span>
+                                <span
+                                    class="text-green-400/90 bg-green-500/10 px-3 py-1 rounded-full text-xs font-medium border border-green-500/10">Active</span>
+                            </div>
+                        </div>
+
+                        <!-- Link Item 3 -->
+                        <div
+                            class="bg-[#18191d] border border-[#222328] p-4 rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 hover:bg-[#1f2025] transition-colors group">
+                            <div class="flex-1">
+                                <h4 class="text-white font-medium text-base mb-1">Event Registration</h4>
+                                <a href="#"
+                                    class="text-[#9CA3AF] hover:text-blue-400 text-sm transition-colors">madw.es/event</a>
+                            </div>
+
+                            <div class="flex items-center gap-6 w-full sm:w-auto justify-between sm:justify-end">
+                                <div class="text-right">
+                                    <div class="text-white font-bold">567</div>
+                                    <div class="text-gray-500 text-xs">clicks</div>
+                                </div>
+                                <span
+                                    class="bg-[#3B82F6]/20 text-blue-400 text-xs px-3 py-1 rounded-full border border-blue-500/20">Event
+                                    Link</span>
+                                <span
+                                    class="text-green-400/90 bg-green-500/10 px-3 py-1 rounded-full text-xs font-medium border border-green-500/10">Active</span>
+                            </div>
+                        </div>
+
+                        <!-- Link Item 4 -->
+                        <div
+                            class="bg-[#18191d] border border-[#222328] p-4 rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 hover:bg-[#1f2025] transition-colors group">
+                            <div class="flex-1">
+                                <h4 class="text-white font-medium text-base mb-1">Contact Card</h4>
+                                <a href="#"
+                                    class="text-[#9CA3AF] hover:text-blue-400 text-sm transition-colors">madw.es/contact</a>
+                            </div>
+
+                            <div class="flex items-center gap-6 w-full sm:w-auto justify-between sm:justify-end">
+                                <div class="text-right">
+                                    <div class="text-white font-bold">345</div>
+                                    <div class="text-gray-500 text-xs">clicks</div>
+                                </div>
+                                <span
+                                    class="bg-[#3B82F6]/20 text-blue-400 text-xs px-3 py-1 rounded-full border border-blue-500/20">VCard</span>
+                                <span
+                                    class="text-green-400/90 bg-green-500/10 px-3 py-1 rounded-full text-xs font-medium border border-green-500/10">Active</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Recent Activity Section (1/3 width) -->
+                <div class="bg-[#18191d] border border-[#222328] rounded-2xl p-6 h-fit">
+                    <h2 class="text-xl font-bold text-white mb-6">Recent Activity</h2>
+
+                    <div class="relative pl-2  space-y-8">
+
+                        <!-- Item 1 -->
+                        <div class="relative pl-6">
+                            <div
+                                class="absolute left-[-4px] top-1 w-6 h-6 rounded-full bg-[#18191d] flex items-center justify-center z-10">
+                                <div class="p-2 bg-white/5 rounded-full text-[#4ADE80]">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
+                                        <g fill="currentColor" fill-rule="evenodd" clip-rule="evenodd">
+                                            <path
+                                                d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12m10-8a8 8 0 1 0 0 16a8 8 0 0 0 0-16" />
+                                            <path
+                                                d="M13 7a1 1 0 1 0-2 0v4H7a1 1 0 1 0 0 2h4v4a1 1 0 1 0 2 0v-4h4a1 1 0 1 0 0-2h-4z" />
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="ml-3">
+                                <h4 class="text-white text-sm font-medium">Created new link</h4>
+                                <p class="text-gray-500 text-xs mt-1">2 hours ago</p>
+                            </div>
+                        </div>
+                        <!-- Item 2 -->
+                        <div class="relative pl-6">
+                            <div
+                                class="absolute left-[-4px] top-1 w-6 h-6 rounded-full bg-[#18191d] flex items-center justify-center z-10">
+                                <div class="p-2 bg-white/5 rounded-full text-[#60A5FA]">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
+                                        <path fill="currentColor" d="M1 1h10v10H1zm2 2v6h6V3z" />
+                                        <path fill="currentColor" fill-rule="evenodd" d="M5 5h2v2H5z" />
+                                        <path fill="currentColor" d="M13 1h10v10H13zm2 2v6h6V3z" />
+                                        <path fill="currentColor" fill-rule="evenodd" d="M17 5h2v2h-2z" />
+                                        <path fill="currentColor" d="M1 13h10v10H1zm2 2v6h6v-6z" />
+                                        <path fill="currentColor" fill-rule="evenodd" d="M5 17h2v2H5z" />
+                                        <path fill="currentColor"
+                                            d="M23 19h-4v4h-6V13h1h-1v6h2v2h2v-6h-2v-2h-1h3v2h2v2h2v-4h2zm0 2v2h-2v-2z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="ml-3">
+                                <h4 class="text-white text-sm font-medium">Generated QR code</h4>
+                                <p class="text-gray-500 text-xs mt-1">5 hours ago</p>
+                            </div>
+                        </div>
+                        <!-- Item 3 -->
+                        <div class="relative pl-6">
+                            <div
+                                class="absolute left-[-4px] top-1 w-6 h-6 rounded-full bg-[#18191d] flex items-center justify-center z-10">
+                                <div class="p-2 bg-white/5 rounded-full text-[#FACC15]">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 21 21">
+                                        <path fill="none" stroke="currentColor" stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M17 4a2.12 2.12 0 0 1 0 3l-9.5 9.5l-4 1l1-3.944l9.504-9.552a2.116 2.116 0 0 1 2.864-.125zM9.5 17.5h8m-2-11l1 1"
+                                            stroke-width="2" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="ml-3">
+                                <h4 class="text-white text-sm font-medium">Updated bio page</h4>
+                                <p class="text-gray-500 text-xs mt-1">1 day ago</p>
+                            </div>
+                        </div>
+                        <!-- Item 4 -->
+                        <div class="relative pl-6">
+                            <div
+                                class="absolute left-[-4px] top-1 w-6 h-6 rounded-full bg-[#18191d] flex items-center justify-center z-10">
+                                <div class="p-2 bg-white/5 rounded-full text-[#F87171]">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 48 48">
+                                        <defs>
+                                            <mask id="SVGN3vajc4e">
+                                                <g fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="4">
+                                                    <path fill="#555555" d="M9 10v34h30V10z" />
+                                                    <path stroke-linecap="round" d="M20 20v13m8-13v13M4 10h40" />
+                                                    <path fill="#555555" d="m16 10l3.289-6h9.488L32 10z" />
+                                                </g>
+                                            </mask>
+                                        </defs>
+                                        <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#SVGN3vajc4e)" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="ml-3">
+                                <h4 class="text-white text-sm font-medium">Deleted old link</h4>
+                                <p class="text-gray-500 text-xs mt-1">2 days ago</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 5 -->
+                        <div class="relative pl-6">
+                            <div
+                                class="absolute left-[-4px] top-1 w-6 h-6 rounded-full bg-[#18191d] flex items-center justify-center z-10">
+                                <div class="p-2 bg-white/5 rounded-full text-[#4ADE80]">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
+                                        <path fill="currentColor"
+                                            d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10s10-4.477 10-10S17.523 2 12 2m6.918 6h-3.215a49 49 0 0 0-.565-3.357A8.05 8.05 0 0 1 18.918 8m-5.904-3.928c.068.352.387 2.038.645 3.928h-3.318c.258-1.89.577-3.576.645-3.928C11.319 4.029 11.656 4 12 4s.681.029 1.014.072M14 12c0 .598-.043 1.286-.109 2h-3.782c-.066-.714-.109-1.402-.109-2s.043-1.286.109-2h3.782c.066.714.109 1.402.109 2M8.862 4.643A49 49 0 0 0 8.297 8H5.082a8.05 8.05 0 0 1 3.78-3.357M4.263 10h3.821C8.033 10.668 8 11.344 8 12s.033 1.332.085 2H4.263C4.097 13.359 4 12.692 4 12s.098-1.359.263-2m.819 6h3.215c.188 1.424.42 2.65.565 3.357A8.05 8.05 0 0 1 5.082 16m5.904 3.928A77 77 0 0 1 10.341 16h3.318a78 78 0 0 1-.645 3.928c-.333.043-.67.072-1.014.072s-.681-.029-1.014-.072m4.152-.571c.145-.707.377-1.933.565-3.357h3.215a8.05 8.05 0 0 1-3.78 3.357M19.737 14h-3.821c.051-.668.084-1.344.084-2s-.033-1.332-.085-2h3.821c.166.641.264 1.308.264 2s-.097 1.359-.263 2" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="ml-3">
+                                <h4 class="text-white text-sm font-medium">Added custom domain</h4>
+                                <p class="text-gray-500 text-xs mt-1">3 days ago</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>
