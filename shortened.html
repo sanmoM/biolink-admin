@@ -122,7 +122,7 @@
                 </a>
 
                 <a href="biolink.html"
-                    class="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-[#FACC15]/20 to-[#3B82F6]/20 text-[#FACC15] rounded-lg border-2 border-yellow-400/20 shadow-[0_0_15px_rgba(251,191,36,0.1)]">
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                         <path fill="currentColor" d="M14.5 5.5h-7V7h7zM7.5 9h7v1.5h-7zm7 3.5h-7V14h7z" />
                         <path fill="currentColor"
@@ -133,7 +133,7 @@
                 </a>
 
                 <a href="shortened.html"
-                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    class="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-[#FACC15]/20 to-[#3B82F6]/20 text-[#FACC15] rounded-lg border-2 border-yellow-400/20 shadow-[0_0_15px_rgba(251,191,36,0.1)]">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                         <path fill="currentColor"
                             d="m13.06 8.111l1.415 1.414a7 7 0 0 1 0 9.9l-.354.353a7 7 0 1 1-9.9-9.9l1.415 1.415a5 5 0 1 0 7.071 7.071l.354-.354a5 5 0 0 0 0-7.07l-1.415-1.415zm6.718 6.01l-1.414-1.414a5 5 0 0 0-7.071-7.07l-.354.353a5 5 0 0 0 0 7.07l1.415 1.415l-1.415 1.414l-1.414-1.414a7 7 0 0 1 0-9.9l.354-.353a7 7 0 1 1 9.9 9.9" />
@@ -273,8 +273,8 @@
                 <!-- Header -->
                 <header class="flex justify-between items-center">
                     <div>
-                        <h1 class="text-3xl font-bold text-white mb-2">Biolink Pages</h1>
-                        <p class="text-gray-400">Create and manage your bio.link pages</p>
+                        <h1 class="text-3xl font-bold text-white mb-2">Shortened Links</h1>
+                        <p class="text-gray-400">Manage your shortened URL links</p>
                     </div>
                     <button
                         class="flex items-center gap-2 bg-gradient-to-br from-[#FACC15] to-[#EAB308] hover:outline outline-offset-2 outline-[#FACC15]/50 text-black font-semibold py-3 px-6 rounded-lg transition-all shadow-[0_0_20px_rgba(251,191,36,0.3)]">
@@ -282,52 +282,45 @@
                             <path fill="currentColor"
                                 d="M18 12.998h-5v5a1 1 0 0 1-2 0v-5H6a1 1 0 0 1 0-2h5v-5a1 1 0 0 1 2 0v5h5a1 1 0 0 1 0 2" />
                         </svg>
-                        <span>Create Biolink Page</span>
+                        <span>Create Short Link</span>
                     </button>
                 </header>
 
                 <!-- Stats Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Total Biolinks Card -->
+                    <!-- Total links Card -->
                     <div
                         class="bg-white/5 border border-white/10 p-6 rounded-xl bg-blur hover:border-[#3B82F6]/40 transition-all shadow-lg">
                         <div class="flex items-center gap-4 mb-4">
                             <div
                                 class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#60A5FA] to-[#2563EB] flex items-center justify-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                    <path fill="white" d="M14.5 5.5h-7V7h7zM7.5 9h7v1.5h-7zm7 3.5h-7V14h7z" />
                                     <path fill="white"
-                                        d="M16 2H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2M6 3.5h10a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5H6a.5.5 0 0 1-.5-.5V4a.5.5 0 0 1 .5-.5" />
-                                    <path fill="white"
-                                        d="M20 8v11c0 .69-.31 1-.999 1H6v1.5h13.001c1.52 0 2.499-.982 2.499-2.5V8z" />
+                                        d="m13.06 8.111l1.415 1.414a7 7 0 0 1 0 9.9l-.354.353a7 7 0 1 1-9.9-9.9l1.415 1.415a5 5 0 1 0 7.071 7.071l.354-.354a5 5 0 0 0 0-7.07l-1.415-1.415zm6.718 6.01l-1.414-1.414a5 5 0 0 0-7.071-7.07l-.354.353a5 5 0 0 0 0 7.07l1.415 1.415l-1.415 1.414l-1.414-1.414a7 7 0 0 1 0-9.9l.354-.353a7 7 0 1 1 9.9 9.9" />
                                 </svg>
                             </div>
                         </div>
-                        <h3 class="text-[#9CA3AF] mb-1">Total Biolinks</h3>
-                        <p class="text-3xl font-bold text-white tracking-wide">124</p>
+                        <h3 class="text-[#9CA3AF] mb-1">Total Links</h3>
+                        <p class="text-3xl font-bold text-white tracking-wide">328</p>
                     </div>
 
-                    <!-- Total Views Card -->
+                    <!-- Total Clicks Card -->
                     <div
                         class="bg-white/5 border border-white/10 p-6 rounded-xl bg-blur hover:border-[#22C55E]/40 transition-all shadow-lg">
                         <div class="flex items-center gap-4 mb-4">
                             <div
                                 class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#4ADE80] to-[#16A34A] flex items-center justify-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                    <g fill="white" fill-rule="evenodd" clip-rule="evenodd">
-                                        <path
-                                            d="M12 8.25a3.75 3.75 0 1 0 0 7.5a3.75 3.75 0 0 0 0-7.5M9.75 12a2.25 2.25 0 1 1 4.5 0a2.25 2.25 0 0 1-4.5 0" />
-                                        <path
-                                            d="M12 3.25c-4.514 0-7.555 2.704-9.32 4.997l-.031.041c-.4.519-.767.996-1.016 1.56c-.267.605-.383 1.264-.383 2.152s.116 1.547.383 2.152c.25.564.617 1.042 1.016 1.56l.032.041C4.445 18.046 7.486 20.75 12 20.75s7.555-2.704 9.32-4.997l.031-.041c.4-.518.767-.996 1.016-1.56c.267-.605.383-1.264.383-2.152s-.116-1.547-.383-2.152c-.25-.564-.617-1.041-1.016-1.56l-.032-.041C19.555 5.954 16.514 3.25 12 3.25M3.87 9.162C5.498 7.045 8.15 4.75 12 4.75s6.501 2.295 8.13 4.412c.44.57.696.91.865 1.292c.158.358.255.795.255 1.546s-.097 1.188-.255 1.546c-.169.382-.426.722-.864 1.292C18.5 16.955 15.85 19.25 12 19.25s-6.501-2.295-8.13-4.412c-.44-.57-.696-.91-.865-1.292c-.158-.358-.255-.795-.255-1.546s.097-1.188.255-1.546c.169-.382.426-.722.864-1.292" />
-                                    </g>
+                                    <path fill="white"
+                                        d="m15.387 13.498l2.553 7.014l-4.698 1.71l-2.553-7.014l-3.899 2.445l1.619-16.02l11.537 11.232zm-.01 5.818l-2.715-7.46l2.96-.41l-5.64-5.49l-.791 7.83l2.531-1.587l2.715 7.46z" />
                                 </svg>
                             </div>
                         </div>
-                        <h3 class="text-[#9CA3AF] mb-1">Total Views</h3>
-                        <p class="text-3xl font-bold text-white tracking-wide">14.8K</p>
+                        <h3 class="text-[#9CA3AF] mb-1">Total Clicks</h3>
+                        <p class="text-3xl font-bold text-white tracking-wide">15.3K</p>
                     </div>
 
-                    <!-- Total Pages Card -->
+                    <!-- Active Links Card -->
                     <div
                         class="bg-white/5 border border-white/10 p-6 rounded-xl bg-blur hover:border-[#F97316]/40 transition-all shadow-lg">
                         <div class="flex items-center gap-4 mb-4">
@@ -339,24 +332,24 @@
                                 </svg>
                             </div>
                         </div>
-                        <h3 class="text-[#9CA3AF] mb-1">Total Pages</h3>
-                        <p class="text-3xl font-bold text-white tracking-wide">98</p>
+                        <h3 class="text-[#9CA3AF] mb-1">Active Links</h3>
+                        <p class="text-3xl font-bold text-white tracking-wide">312</p>
                     </div>
 
-                    <!-- Total Blocks Card -->
+                    <!-- Avg. CTR Card -->
                     <div
                         class="bg-white/5 border border-white/10 p-6 rounded-xl bg-blur hover:border-[#A855F7]/40 transition-all shadow-lg">
                         <div class="flex items-center gap-4 mb-4">
                             <div
                                 class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#C084FC] to-[#9333EA] flex items-center justify-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16">
                                     <path fill="white"
-                                        d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.587 1.413T19 21zm8-8v6h6v-6zm0-2h6V5h-6zm-2 0V5H5v6zm0 2H5v6h6z" />
+                                        d="M1.5 1.75V13.5h13.75a.75.75 0 0 1 0 1.5H.75a.75.75 0 0 1-.75-.75V1.75a.75.75 0 0 1 1.5 0m14.28 2.53l-5.25 5.25a.75.75 0 0 1-1.06 0L7 7.06L4.28 9.78a.75.75 0 0 1-1.042-.018a.75.75 0 0 1-.018-1.042l3.25-3.25a.75.75 0 0 1 1.06 0L10 7.94l4.72-4.72a.75.75 0 0 1 1.042.018a.75.75 0 0 1 .018 1.042" />
                                 </svg>
                             </div>
                         </div>
-                        <h3 class="text-[#9CA3AF] mb-1">Total Blocks</h3>
-                        <p class="text-3xl font-bold text-white tracking-wide">856</p>
+                        <h3 class="text-[#9CA3AF] mb-1">Avg. CTR</h3>
+                        <p class="text-3xl font-bold text-white tracking-wide">4.2%</p>
                     </div>
                 </div>
 
@@ -371,7 +364,7 @@
                         </button>
                         <button
                             class="px-4 py-1 text-[#9CA3AF] hover:text-white hover:bg-[#222328] rounded-lg transition-colors">
-                            Personal
+                            Active
                         </button>
                         <button
                             class="px-4 py-1 text-[#9CA3AF] hover:text-white hover:bg-[#222328] rounded-lg transition-colors">
@@ -379,11 +372,11 @@
                         </button>
                         <button
                             class="px-4 py-1 text-[#9CA3AF] hover:text-white hover:bg-[#222328] rounded-lg transition-colors">
-                            Social
+                            Paused
                         </button>
                         <button
                             class="px-4 py-1 text-[#9CA3AF] hover:text-white hover:bg-[#222328] rounded-lg transition-colors">
-                            Event
+                            Expired
                         </button>
                     </div>
 
@@ -391,7 +384,7 @@
                     <div class="flex gap-20">
                         <div class="relative">
                             <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"></i>
-                            <input type="text" placeholder="Search biolink pages..."
+                            <input type="text" placeholder="Search shortened links..."
                                 class="pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white placeholder-whit[#9CA3AF] focus:outline focus:border-gray-500 transition w-64" />
                         </div>
                         <button
@@ -410,7 +403,7 @@
                                 <tr>
                                     <th
                                         class="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider whitespace-nowrap">
-                                        Page Details
+                                        Link Details
                                     </th>
                                     <th
                                         class="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider whitespace-nowrap">
@@ -418,15 +411,7 @@
                                     </th>
                                     <th
                                         class="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider whitespace-nowrap">
-                                        Type
-                                    </th>
-                                    <th
-                                        class="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider whitespace-nowrap">
-                                        Blocks
-                                    </th>
-                                    <th
-                                        class="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider whitespace-nowrap">
-                                        Visits
+                                        Clicks
                                     </th>
                                     <th
                                         class="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider whitespace-nowrap">
@@ -447,37 +432,22 @@
                                 <tr class="hover:bg-[#1f2025] transition-colors whitespace-nowrap">
                                     <td class="px-6 py-5 whitespace-nowrap">
                                         <div>
-                                            <div class="text-white font-semibold">Personal Portfolio</div>
-                                            <div class="text-gray-500 text-sm">Modern</div>
+                                            <div class="text-white font-semibold">Product Launch Campaign</div>
+                                            <div class="text-gray-500 text-sm">
+                                                https://example.com/products/new-launch-2024</div>
                                         </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <a href="#"
                                             class="text-[#FACC15] hover:underline flex items-center gap-2 copy-url"
-                                            data-url="madw.es/john-portfolio">
-                                            madw.es/john-portfolio
+                                            data-url="madw.es/prod24">
+                                            madw.es/prod24
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                 viewBox="0 0 16 16">
                                                 <path fill="none" stroke="#9CA3AF" stroke-linejoin="round"
                                                     d="M12 10.5h1.5v-8h-8V4m-3 9.5h8v-8h-8z" stroke-width="1" />
                                             </svg>
                                         </a>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <span
-                                            class="px-3 py-1 bg-[#3B82F6]/20 text-blue-400 text-xs font-medium rounded-full border border-blue-500/30">
-                                            Personal
-                                        </span>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="flex items-center gap-2 text-white">
-                                            <svg class="text-[#9CA3AF]" xmlns="http://www.w3.org/2000/svg" width="17"
-                                                height="17" viewBox="0 0 24 24">
-                                                <path fill="currentColor"
-                                                    d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.587 1.413T19 21zm8-8v6h6v-6zm0-2h6V5h-6zm-2 0V5H5v6zm0 2H5v6h6z" />
-                                            </svg>
-                                            <span>8</span>
-                                        </div>
                                     </td>
                                     <td class="px-6 py-4 text-white font-medium whitespace-nowrap">2,847</td>
                                     <td class="px-6 py-4 whitespace-nowrap">
@@ -487,17 +457,13 @@
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 text-gray-400 whitespace-nowrap">2024-01-20</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="flex items-center gap-4">
+                                     <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center gap-5">
                                             <button class="text-gray-400 hover:text-blue-400 transition-colors">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                     viewBox="0 0 24 24">
-                                                    <g fill="none" stroke="currentColor" stroke-linecap="round"
-                                                        stroke-linejoin="round" stroke-width="2">
-                                                        <path
-                                                            d="M2.062 12.348a1 1 0 0 1 0-.696a10.75 10.75 0 0 1 19.876 0a1 1 0 0 1 0 .696a10.75 10.75 0 0 1-19.876 0" />
-                                                        <circle cx="12" cy="12" r="3" />
-                                                    </g>
+                                                    <path fill="currentColor"
+                                                        d="M3 12h2v9H3zm16-4h2v13h-2zm-8-6h2v19h-2z" />
                                                 </svg> </button>
                                             <button class="text-gray-400 hover:text-yellow-400 transition-colors">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -520,55 +486,37 @@
                                 <tr class="hover:bg-[#1f2025] transition-colors whitespace-nowrap">
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div>
-                                            <div class="text-white font-semibold">Business Profile</div>
-                                            <div class="text-gray-500 text-sm">Professional</div>
+                                            <div class="text-white font-semibold">Blog Post - Marketing Tips</div>
+                                            <div class="text-gray-500 text-sm">
+                                                https://example.com/blog/marketing-tips-for-beginners</div>
                                         </div>
                                     </td>
                                     <td class="px-6 py-5 whitespace-nowrap">
                                         <a href="#"
                                             class="text-[#FACC15] hover:underline flex items-center gap-2 copy-url"
-                                            data-url="madw.es/company-bio">
-                                            madw.es/company-bio
+                                            data-url="madw.es/blog-tips">
+                                            madw.es/blog-tips
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                 viewBox="0 0 16 16">
                                                 <path fill="none" stroke="#9CA3AF" stroke-linejoin="round"
                                                     d="M12 10.5h1.5v-8h-8V4m-3 9.5h8v-8h-8z" stroke-width="1" />
                                             </svg> </a>
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <span
-                                            class="px-3 py-1 bg-[#3B82F6]/20 text-blue-400 text-xs font-medium rounded-full border border-blue-500/30">
-                                            Business
-                                        </span>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="flex items-center gap-2 text-white">
-                                            <svg class="text-[#9CA3AF]" xmlns="http://www.w3.org/2000/svg" width="17"
-                                                height="17" viewBox="0 0 24 24">
-                                                <path fill="currentColor"
-                                                    d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.587 1.413T19 21zm8-8v6h6v-6zm0-2h6V5h-6zm-2 0V5H5v6zm0 2H5v6h6z" />
-                                            </svg> <span>12</span>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4 text-white font-medium whitespace-nowrap">1,923</td>
+                                    <td class="px-6 py-4 text-white font-medium whitespace-nowrap">1,523</td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
                                             class="px-3 py-1 bg-[#22C55E]/20 text-green-400 text-xs font-semibold rounded-full border border-green-500/30">
                                             Active
                                         </span>
                                     </td>
-                                    <td class="px-6 py-4 text-gray-400 whitespace-nowrap">2024-01-18</td>
+                                    <td class="px-6 py-4 text-gray-400 whitespace-nowrap">2024-01-19</td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="flex items-center gap-4">
+                                        <div class="flex items-center gap-5">
                                             <button class="text-gray-400 hover:text-blue-400 transition-colors">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                     viewBox="0 0 24 24">
-                                                    <g fill="none" stroke="currentColor" stroke-linecap="round"
-                                                        stroke-linejoin="round" stroke-width="2">
-                                                        <path
-                                                            d="M2.062 12.348a1 1 0 0 1 0-.696a10.75 10.75 0 0 1 19.876 0a1 1 0 0 1 0 .696a10.75 10.75 0 0 1-19.876 0" />
-                                                        <circle cx="12" cy="12" r="3" />
-                                                    </g>
+                                                    <path fill="currentColor"
+                                                        d="M3 12h2v9H3zm16-4h2v13h-2zm-8-6h2v19h-2z" />
                                                 </svg> </button>
                                             <button class="text-gray-400 hover:text-yellow-400 transition-colors">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -591,55 +539,37 @@
                                 <tr class="hover:bg-[#1f2025] transition-colors whitespace-nowrap">
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div>
-                                            <div class="text-white font-semibold">Social Media Hub</div>
-                                            <div class="text-gray-500 text-sm">Social</div>
+                                            <div class="text-white font-semibold">Social Media Campaign</div>
+                                            <div class="text-gray-500 text-sm">
+                                                https://example.com/campaigns/social-media-2024</div>
                                         </div>
                                     </td>
                                     <td class="px-6 py-5 whitespace-nowrap">
                                         <a href="#"
                                             class="text-[#FACC15] hover:underline flex items-center gap-2 copy-url"
-                                            data-url="madw.es/social-links">
-                                            madw.es/social-links
+                                            data-url="madw.es/social">
+                                            madw.es/social
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                 viewBox="0 0 16 16">
                                                 <path fill="none" stroke="#9CA3AF" stroke-linejoin="round"
                                                     d="M12 10.5h1.5v-8h-8V4m-3 9.5h8v-8h-8z" stroke-width="1" />
                                             </svg> </a>
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <span
-                                            class="px-3 py-1 bg-[#3B82F6]/20 text-blue-400 text-xs font-medium rounded-full border border-blue-500/30">
-                                            Social
-                                        </span>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="flex items-center gap-2 text-white">
-                                            <svg class="text-[#9CA3AF]" xmlns="http://www.w3.org/2000/svg" width="17"
-                                                height="17" viewBox="0 0 24 24">
-                                                <path fill="currentColor"
-                                                    d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.587 1.413T19 21zm8-8v6h6v-6zm0-2h6V5h-6zm-2 0V5H5v6zm0 2H5v6h6z" />
-                                            </svg> <span>15</span>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4 text-white font-medium whitespace-nowrap">3,456</td>
+                                    <td class="px-6 py-4 text-white font-medium whitespace-nowrap">3,421</td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
                                             class="px-3 py-1 bg-[#22C55E]/20 text-green-400 text-xs font-semibold rounded-full border border-green-500/30">
                                             Active
                                         </span>
                                     </td>
-                                    <td class="px-6 py-4 text-gray-400 whitespace-nowrap">2024-01-15</td>
+                                    <td class="px-6 py-4 text-gray-400 whitespace-nowrap">2024-01-18</td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                       <div class="flex items-center gap-4">
+                                        <div class="flex items-center gap-5">
                                             <button class="text-gray-400 hover:text-blue-400 transition-colors">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                     viewBox="0 0 24 24">
-                                                    <g fill="none" stroke="currentColor" stroke-linecap="round"
-                                                        stroke-linejoin="round" stroke-width="2">
-                                                        <path
-                                                            d="M2.062 12.348a1 1 0 0 1 0-.696a10.75 10.75 0 0 1 19.876 0a1 1 0 0 1 0 .696a10.75 10.75 0 0 1-19.876 0" />
-                                                        <circle cx="12" cy="12" r="3" />
-                                                    </g>
+                                                    <path fill="currentColor"
+                                                        d="M3 12h2v9H3zm16-4h2v13h-2zm-8-6h2v19h-2z" />
                                                 </svg> </button>
                                             <button class="text-gray-400 hover:text-yellow-400 transition-colors">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -662,55 +592,37 @@
                                 <tr class="hover:bg-[#1f2025] transition-colors whitespace-nowrap">
                                     <td class="px-6 py-5 whitespace-nowrap">
                                         <div>
-                                            <div class="text-white font-semibold">Product Showcase</div>
-                                            <div class="text-gray-500 text-sm">Business</div>
+                                            <div class="text-white font-semibold">Email Newsletter Link</div>
+                                            <div class="text-gray-500 text-sm">
+                                                https://example.com/newsletter/january-2024</div>
                                         </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <a href="#"
                                             class="text-[#FACC15] hover:underline flex items-center gap-2 copy-url"
-                                            data-url="madw.es/products">
-                                            madw.es/products
+                                            data-url="madw.es/news-jan">
+                                            madw.es/news-jan
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                 viewBox="0 0 16 16">
                                                 <path fill="none" stroke="#9CA3AF" stroke-linejoin="round"
                                                     d="M12 10.5h1.5v-8h-8V4m-3 9.5h8v-8h-8z" stroke-width="1" />
                                             </svg> </a>
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <span
-                                            class="px-3 py-1 bg-[#3B82F6]/20 text-blue-400 text-xs font-medium rounded-full border border-blue-500/30">
-                                            Business
-                                        </span>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="flex items-center gap-2 text-white">
-                                            <svg class="text-[#9CA3AF]" xmlns="http://www.w3.org/2000/svg" width="17"
-                                                height="17" viewBox="0 0 24 24">
-                                                <path fill="currentColor"
-                                                    d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.587 1.413T19 21zm8-8v6h6v-6zm0-2h6V5h-6zm-2 0V5H5v6zm0 2H5v6h6z" />
-                                            </svg> <span>10</span>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4 text-white font-medium whitespace-nowrap">1,567</td>
+                                    <td class="px-6 py-4 text-white font-medium whitespace-nowrap">892</td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
                                             class="px-3 py-1 bg-[#22C55E]/20 text-green-400 text-xs font-semibold rounded-full border border-green-500/30">
                                             Active
                                         </span>
                                     </td>
-                                    <td class="px-6 py-4 text-gray-400 whitespace-nowrap">2024-01-12</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                       <div class="flex items-center gap-4">
+                                    <td class="px-6 py-4 text-gray-400 whitespace-nowrap">2024-01-17</td>
+                                     <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center gap-5">
                                             <button class="text-gray-400 hover:text-blue-400 transition-colors">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                     viewBox="0 0 24 24">
-                                                    <g fill="none" stroke="currentColor" stroke-linecap="round"
-                                                        stroke-linejoin="round" stroke-width="2">
-                                                        <path
-                                                            d="M2.062 12.348a1 1 0 0 1 0-.696a10.75 10.75 0 0 1 19.876 0a1 1 0 0 1 0 .696a10.75 10.75 0 0 1-19.876 0" />
-                                                        <circle cx="12" cy="12" r="3" />
-                                                    </g>
+                                                    <path fill="currentColor"
+                                                        d="M3 12h2v9H3zm16-4h2v13h-2zm-8-6h2v19h-2z" />
                                                 </svg> </button>
                                             <button class="text-gray-400 hover:text-yellow-400 transition-colors">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -733,55 +645,37 @@
                                 <tr class="hover:bg-[#1f2025] transition-colors whitespace-nowrap">
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div>
-                                            <div class="text-white font-semibold">Event Landing</div>
-                                            <div class="text-gray-500 text-sm">Real</div>
+                                            <div class="text-white font-semibold">Affiliate Program</div>
+                                            <div class="text-gray-500 text-sm">
+                                                https://example.com/programs/affiliate-partnership</div>
                                         </div>
                                     </td>
                                     <td class="px-6 py-5 whitespace-nowrap">
                                         <a href="#"
                                             class="text-[#FACC15] hover:underline flex items-center gap-2 copy-url"
-                                            data-url="madw.es/event-2024">
-                                            madw.es/event-2024
+                                            data-url="madw.es/affiliate">
+                                            madw.es/affiliate
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                 viewBox="0 0 16 16">
                                                 <path fill="none" stroke="#9CA3AF" stroke-linejoin="round"
                                                     d="M12 10.5h1.5v-8h-8V4m-3 9.5h8v-8h-8z" stroke-width="1" />
                                             </svg> </a>
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <span
-                                            class="px-3 py-1 bg-[#3B82F6]/20 text-blue-400 text-xs font-medium rounded-full border border-blue-500/30">
-                                            Event
-                                        </span>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="flex items-center gap-2 text-white">
-                                            <svg class="text-[#9CA3AF]" xmlns="http://www.w3.org/2000/svg" width="17"
-                                                height="17" viewBox="0 0 24 24">
-                                                <path fill="currentColor"
-                                                    d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.587 1.413T19 21zm8-8v6h6v-6zm0-2h6V5h-6zm-2 0V5H5v6zm0 2H5v6h6z" />
-                                            </svg> <span>6</span>
-                                        </div>
-                                    </td>
                                     <td class="px-6 py-4 text-white font-medium whitespace-nowrap">892</td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
-                                            class="px-3 py-1 bg-[#6B7280]/20 text-gray-400 text-xs font-semibold rounded-full border border-gray-500/30">
-                                            Paused
+                                            class="px-3 py-1 bg-[#22C55E]/20 text-green-400 text-xs font-semibold rounded-full border border-green-500/30">
+                                            Active
                                         </span>
                                     </td>
-                                    <td class="px-6 py-4 text-gray-400 whitespace-nowrap">2024-01-10</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="flex items-center gap-4">
+                                    <td class="px-6 py-4 text-gray-400 whitespace-nowrap">2024-01-16</td>
+                                     <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center gap-5">
                                             <button class="text-gray-400 hover:text-blue-400 transition-colors">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                     viewBox="0 0 24 24">
-                                                    <g fill="none" stroke="currentColor" stroke-linecap="round"
-                                                        stroke-linejoin="round" stroke-width="2">
-                                                        <path
-                                                            d="M2.062 12.348a1 1 0 0 1 0-.696a10.75 10.75 0 0 1 19.876 0a1 1 0 0 1 0 .696a10.75 10.75 0 0 1-19.876 0" />
-                                                        <circle cx="12" cy="12" r="3" />
-                                                    </g>
+                                                    <path fill="currentColor"
+                                                        d="M3 12h2v9H3zm16-4h2v13h-2zm-8-6h2v19h-2z" />
                                                 </svg> </button>
                                             <button class="text-gray-400 hover:text-yellow-400 transition-colors">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -804,55 +698,37 @@
                                 <tr class="hover:bg-[#1f2025] transition-colors whitespace-nowrap">
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div>
-                                            <div class="text-white font-semibold">Creator Links</div>
-                                            <div class="text-gray-500 text-sm">Personal</div>
+                                            <div class="text-white font-semibold">Webinar Registration</div>
+                                            <div class="text-gray-500 text-sm">
+                                                https://example.com/events/webinar-registration-form</div>
                                         </div>
                                     </td>
                                     <td class="px-6 py-5 whitespace-nowrap">
                                         <a href="#"
                                             class="text-[#FACC15] hover:underline flex items-center gap-2 copy-url"
-                                            data-url="madw.es/creator">
-                                            madw.es/creator
+                                            data-url="madw.es/webinar">
+                                            madw.es/webinar
                                             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17"
                                                 viewBox="0 0 16 16">
                                                 <path fill="none" stroke="#9CA3AF" stroke-linejoin="round"
                                                     d="M12 10.5h1.5v-8h-8V4m-3 9.5h8v-8h-8z" stroke-width="1" />
                                             </svg> </a>
                                     </td>
+                                    <td class="px-6 py-4 text-white font-medium whitespace-nowrap">567</td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
-                                            class="px-3 py-1 bg-[#3B82F6]/20 text-blue-400 text-xs font-medium rounded-full border border-blue-500/30">
-                                            Personal
+                                            class="px-3 py-1 bg-[#6B7280]/20 text-gray-400 text-xs font-semibold rounded-full border border-gray-500/30">
+                                            Paused
                                         </span>
                                     </td>
+                                    <td class="px-6 py-4 text-gray-400 whitespace-nowrap">2024-01-15</td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="flex items-center gap-2 text-white">
-                                            <svg class="text-[#9CA3AF]" xmlns="http://www.w3.org/2000/svg" width="17"
-                                                height="17" viewBox="0 0 24 24">
-                                                <path fill="currentColor"
-                                                    d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.587 1.413T19 21zm8-8v6h6v-6zm0-2h6V5h-6zm-2 0V5H5v6zm0 2H5v6h6z" />
-                                            </svg> <span>14</span>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4 text-white font-medium whitespace-nowrap">4,123</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <span
-                                            class="px-3 py-1 bg-[#22C55E]/20 text-green-400 text-xs font-semibold rounded-full border border-green-500/30">
-                                            Active
-                                        </span>
-                                    </td>
-                                    <td class="px-6 py-4 text-gray-400 whitespace-nowrap">2024-01-04</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                       <div class="flex items-center gap-4">
+                                        <div class="flex items-center gap-5">
                                             <button class="text-gray-400 hover:text-blue-400 transition-colors">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                     viewBox="0 0 24 24">
-                                                    <g fill="none" stroke="currentColor" stroke-linecap="round"
-                                                        stroke-linejoin="round" stroke-width="2">
-                                                        <path
-                                                            d="M2.062 12.348a1 1 0 0 1 0-.696a10.75 10.75 0 0 1 19.876 0a1 1 0 0 1 0 .696a10.75 10.75 0 0 1-19.876 0" />
-                                                        <circle cx="12" cy="12" r="3" />
-                                                    </g>
+                                                    <path fill="currentColor"
+                                                        d="M3 12h2v9H3zm16-4h2v13h-2zm-8-6h2v19h-2z" />
                                                 </svg> </button>
                                             <button class="text-gray-400 hover:text-yellow-400 transition-colors">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -870,6 +746,113 @@
                                         </div>
                                     </td>
                                 </tr>
+
+                                <!-- Row 7 -->
+                                <tr class="hover:bg-[#1f2025] transition-colors whitespace-nowrap">
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div>
+                                            <div class="text-white font-semibold">Customer Survey</div>
+                                            <div class="text-gray-500 text-sm">
+                                                https://example.com/feedback/customer-satisfaction-survey</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-5 whitespace-nowrap">
+                                        <a href="#"
+                                            class="text-[#FACC15] hover:underline flex items-center gap-2 copy-url"
+                                            data-url="madw.es/survey">
+                                            madw.es/survey
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                viewBox="0 0 16 16">
+                                                <path fill="none" stroke="#9CA3AF" stroke-linejoin="round"
+                                                    d="M12 10.5h1.5v-8h-8V4m-3 9.5h8v-8h-8z" stroke-width="1" />
+                                            </svg> </a>
+                                    </td>
+                                    <td class="px-6 py-4 text-white font-medium whitespace-nowrap">234</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span
+                                            class="px-3 py-1 bg-[#22C55E]/20 text-green-400 text-xs font-semibold rounded-full border border-green-500/30">
+                                            Active
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 text-gray-400 whitespace-nowrap">2024-01-14</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center gap-5">
+                                            <button class="text-gray-400 hover:text-blue-400 transition-colors">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                    viewBox="0 0 24 24">
+                                                    <path fill="currentColor"
+                                                        d="M3 12h2v9H3zm16-4h2v13h-2zm-8-6h2v19h-2z" />
+                                                </svg> </button>
+                                            <button class="text-gray-400 hover:text-yellow-400 transition-colors">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                    viewBox="0 0 24 24">
+                                                    <path fill="currentColor"
+                                                        d="M6.414 15.89L16.556 5.748l-1.414-1.414L5 14.476v1.414zm.829 2H3v-4.243L14.435 2.212a1 1 0 0 1 1.414 0l2.829 2.829a1 1 0 0 1 0 1.414zM3 19.89h18v2H3z" />
+                                                </svg> </button>
+                                            <button class="text-gray-400 hover:text-red-400 transition-colors">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                    viewBox="0 0 1024 1024">
+                                                    <path fill="currentColor"
+                                                        d="M160 256H96a32 32 0 0 1 0-64h256V96a32 32 0 0 1 32-32h256a32 32 0 0 1 32 32v96h256a32 32 0 1 1 0 64h-64v672a32 32 0 0 1-32 32H192a32 32 0 0 1-32-32zm448-64v-64H416v64zM224 896h576V256H224zm192-128a32 32 0 0 1-32-32V416a32 32 0 0 1 64 0v320a32 32 0 0 1-32 32m192 0a32 32 0 0 1-32-32V416a32 32 0 0 1 64 0v320a32 32 0 0 1-32 32"
+                                                        stroke-width="25.5" stroke="currentColor" />
+                                                </svg> </button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 5 -->
+                                <tr class="hover:bg-[#1f2025] transition-colors whitespace-nowrap">
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div>
+                                            <div class="text-white font-semibold">Discount Code Page</div>
+                                            <div class="text-gray-500 text-sm">
+                                                https://example.com/promotions/winter-sale-discount</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-5 whitespace-nowrap">
+                                        <a href="#"
+                                            class="text-[#FACC15] hover:underline flex items-center gap-2 copy-url"
+                                            data-url="madw.es/save20">
+                                            madw.es/save20
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                viewBox="0 0 16 16">
+                                                <path fill="none" stroke="#9CA3AF" stroke-linejoin="round"
+                                                    d="M12 10.5h1.5v-8h-8V4m-3 9.5h8v-8h-8z" stroke-width="1" />
+                                            </svg> </a>
+                                    </td>
+                                    <td class="px-6 py-4 text-white font-medium whitespace-nowrap">4,123</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span
+                                            class="px-3 py-1 bg-[#22C55E]/20 text-green-400 text-xs font-semibold rounded-full border border-green-500/30">
+                                            Active
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 text-gray-400 whitespace-nowrap">2024-01-13</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center gap-5">
+                                            <button class="text-gray-400 hover:text-blue-400 transition-colors">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                    viewBox="0 0 24 24">
+                                                    <path fill="currentColor"
+                                                        d="M3 12h2v9H3zm16-4h2v13h-2zm-8-6h2v19h-2z" />
+                                                </svg> </button>
+                                            <button class="text-gray-400 hover:text-yellow-400 transition-colors">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                    viewBox="0 0 24 24">
+                                                    <path fill="currentColor"
+                                                        d="M6.414 15.89L16.556 5.748l-1.414-1.414L5 14.476v1.414zm.829 2H3v-4.243L14.435 2.212a1 1 0 0 1 1.414 0l2.829 2.829a1 1 0 0 1 0 1.414zM3 19.89h18v2H3z" />
+                                                </svg> </button>
+                                            <button class="text-gray-400 hover:text-red-400 transition-colors">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                    viewBox="0 0 1024 1024">
+                                                    <path fill="currentColor"
+                                                        d="M160 256H96a32 32 0 0 1 0-64h256V96a32 32 0 0 1 32-32h256a32 32 0 0 1 32 32v96h256a32 32 0 1 1 0 64h-64v672a32 32 0 0 1-32 32H192a32 32 0 0 1-32-32zm448-64v-64H416v64zM224 896h576V256H224zm192-128a32 32 0 0 1-32-32V416a32 32 0 0 1 64 0v320a32 32 0 0 1-32 32m192 0a32 32 0 0 1-32-32V416a32 32 0 0 1 64 0v320a32 32 0 0 1-32 32"
+                                                        stroke-width="25.5" stroke="currentColor" />
+                                                </svg> </button>
+                                        </div>
+                                    </td>
+                                </tr>
+
                             </tbody>
                         </table>
                     </div>
