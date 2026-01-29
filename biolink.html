@@ -45,7 +45,6 @@
     </script>
 
     <style>
-        /* Hide scrollbars for Webkit browsers (Chrome, Safari, Edge) */
         .overflow-y-auto::-webkit-scrollbar {
             display: none;
         }
@@ -54,7 +53,6 @@
             display: none;
         }
 
-        /* Hide scrollbars for Firefox */
         .overflow-y-auto {
             scrollbar-width: none;
         }
@@ -113,7 +111,7 @@
         <aside class="w-64 bg-black border-r border-[#EAB308]/20 flex flex-col h-full flex-shrink-0">
 
             <!-- Navigation -->
-            <nav class="flex-1 mt-5 px-4 space-y-1">
+            <nav class="flex-1 mt-5 px-4 overflow-y-auto space-y-1">
                 <a href="dashboard.html"
                     class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
