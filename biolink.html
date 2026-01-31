@@ -289,12 +289,12 @@
                 </div>
 
                 <!-- Filters and Search -->
-                <div
-                    class="flex flex-col sm:flex-row justify-around items-start sm:items-center bg-white/5 bg-blur-sm border border-[#222328] p-2 py-4 rounded-lg gap-4">
+                 <div
+                    class="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-white/5 bg-blur-sm border border-[#222328] p-2 py-4 rounded-lg gap-4">
                     <!-- Tab Filters -->
-                    <div class="flex gap-2 bg-white/5 bg-blur py-1 px-1 rounded-lg flex-wrap">
+                    <div class="flex gap-2 bg-white/5 bg-blur py-1 px-1 rounded-md flex-wrap">
                         <button
-                            class="px-4 py-1 bg-gradient-to-br from-[#FACC15] to-[#EAB308] text-black font-semibold rounded-lg shadow-md">
+                            class="px-4 py-2 bg-gradient-to-br from-[#FACC15] to-[#EAB308] text-black font-semibold rounded-md shadow-md">
                             All
                         </button>
                         <button
@@ -316,14 +316,14 @@
                     </div>
 
                     <!-- Search and Filter -->
-                    <div class="flex gap-20">
-                        <div class="relative">
+                    <div class="flex gap-20 items-center flex-grow mx-8">
+                        <div class="relative flex-grow">
                             <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"></i>
                             <input type="text" placeholder="Search biolink pages..."
-                                class="pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white placeholder-whit[#9CA3AF] focus:outline focus:border-gray-500 transition w-64" />
+                                class="w-full pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white placeholder-whit[#9CA3AF] focus:outline focus:border-gray-500 transition" />
                         </div>
                         <button
-                            class="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-gray-500 rounded-lg transition-colors">
+                            class="flex items-center gap-2 px-4 py-3 bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-gray-500 rounded-lg transition-colors">
                             <i class="fas fa-filter"></i>
                             <span>Filter</span>
                         </button>
