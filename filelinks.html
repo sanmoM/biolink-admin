@@ -70,8 +70,12 @@
     <nav
         class="sticky top-0 z-50 flex items-center bg-black justify-between px-6 py-3 bg-[#18191d] border-b border-[#EAB308]/20">
 
-        <!-- Left: Logo -->
+        <!-- Left: Logo & Mobile Toggle -->
         <div class="flex items-center gap-4">
+            <button id="mobile-menu-toggle"
+                class="lg:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
             <img src="assets/logo.png" alt="Madwess Logo" class="h-12 w-auto">
         </div>
 
@@ -108,7 +112,8 @@
     <!-- Dashboard -->
     <div class="flex h-screen overflow-hidden text-sm">
         <!-- Sidebar -->
-        <aside class="w-64 bg-black border-r border-[#EAB308]/20 flex flex-col h-full flex-shrink-0">
+        <aside id="sidebar"
+            class="w-64 bg-black border-r border-[#EAB308]/20 flex flex-col h-full flex-shrink-0 fixed lg:static inset-y-0 left-0 z-40 -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out">
 
             <!-- Navigation -->
             <nav class="flex-1 mt-5 px-4 overflow-y-auto space-y-1">
@@ -207,18 +212,22 @@
         </aside>
 
         <!-- Main Content -->
-        <main class="flex-1 flex flex-col overflow-y-auto bg-gradient-to-br from-[#111827] via-[#000000] to-[#111827]">
+        <main
+            class="flex-1 flex flex-col overflow-y-auto bg-gradient-to-br from-[#111827] via-[#000000] to-[#111827] relative">
 
-            <div class="p-8  mx-auto w-full space-y-6">
+            <!-- Overlay for mobile sidebar -->
+            <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-30 hidden lg:hidden"></div>
+
+            <div class="p-4 sm:p-8 mx-auto w-full space-y-6">
 
                 <!-- Header -->
-                <header class="flex justify-between items-center">
+                <header class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                     <div>
-                        <h1 class="text-3xl font-bold text-white mb-2">File Links</h1>
-                        <p class="text-gray-400">Share files with shortened links</p>
+                        <h1 class="text-2xl sm:text-3xl font-bold text-white mb-2">File Links</h1>
+                        <p class="text-gray-400 text-sm sm:text-base">Share files with shortened links</p>
                     </div>
                     <button
-                        class="flex items-center gap-2 bg-gradient-to-br from-[#FACC15] to-[#EAB308] hover:outline outline-offset-2 outline-[#FACC15]/50 text-black font-semibold py-3 px-6 rounded-lg transition-all shadow-[0_0_20px_rgba(251,191,36,0.3)]">
+                        class="w-full md:w-auto flex items-center justify-center gap-2 bg-gradient-to-br from-[#FACC15] to-[#EAB308] hover:outline outline-offset-2 outline-[#FACC15]/50 text-black font-semibold py-3 px-6 rounded-lg transition-all shadow-[0_0_20px_rgba(251,191,36,0.3)]">
                         <img src="assets/Icon-15.svg" alt="">
                         <span>Upload File</span>
                     </button>
@@ -289,41 +298,42 @@
                 </div>
 
                 <!-- Filters and Search -->
-                 <div
-                    class="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-white/5 bg-blur-sm border border-[#222328] p-2 py-4 rounded-lg gap-4">
+                <!-- Filters and Search -->
+                <div
+                    class="flex flex-col md:flex-row justify-between items-stretch md:items-center bg-white/5 bg-blur-sm border border-[#222328] p-3 sm:p-4 rounded-lg gap-4">
                     <!-- Tab Filters -->
-                    <div class="flex gap-2 bg-white/5 bg-blur py-1 px-1 rounded-md flex-wrap">
+                    <div class="flex gap-1 bg-white/5 p-1 rounded-md flex-wrap w-full md:w-auto">
                         <button
-                            class="px-4 py-2 bg-gradient-to-br from-[#FACC15] to-[#EAB308] text-black font-semibold rounded-md shadow-md">
+                            class="flex-1 md:flex-none px-4 py-2 bg-gradient-to-br from-[#FACC15] to-[#EAB308] text-black font-semibold rounded-md shadow-md text-xs sm:text-sm">
                             All
                         </button>
                         <button
-                            class="px-4 py-1 text-[#9CA3AF] hover:text-white hover:bg-[#222328] rounded-lg transition-colors">
+                            class="flex-1 md:flex-none px-4 py-2 text-[#9CA3AF] hover:text-white hover:bg-[#222328] rounded-md transition-colors text-xs sm:text-sm">
                             Pdf
                         </button>
                         <button
-                            class="px-4 py-1 text-[#9CA3AF] hover:text-white hover:bg-[#222328] rounded-lg transition-colors">
+                            class="flex-1 md:flex-none px-4 py-2 text-[#9CA3AF] hover:text-white hover:bg-[#222328] rounded-md transition-colors text-xs sm:text-sm">
                             Video
                         </button>
                         <button
-                            class="px-4 py-1 text-[#9CA3AF] hover:text-white hover:bg-[#222328] rounded-lg transition-colors">
+                            class="flex-1 md:flex-none px-4 py-2 text-[#9CA3AF] hover:text-white hover:bg-[#222328] rounded-md transition-colors text-xs sm:text-sm">
                             Document
                         </button>
                         <button
-                            class="px-4 py-1 text-[#9CA3AF] hover:text-white hover:bg-[#222328] rounded-lg transition-colors">
+                            class="flex-1 md:flex-none px-4 py-2 text-[#9CA3AF] hover:text-white hover:bg-[#222328] rounded-md transition-colors text-xs sm:text-sm">
                             Archive
                         </button>
                     </div>
 
                     <!-- Search and Filter -->
-                    <div class="flex gap-20 items-center flex-grow mx-8">
-                        <div class="relative flex-grow">
+                    <div class="flex flex-col sm:flex-row gap-3 items-center flex-grow md:ml-4">
+                        <div class="relative w-full">
                             <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"></i>
                             <input type="text" placeholder="Search file links..."
-                                class="w-full pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white placeholder-whit[#9CA3AF] focus:outline focus:border-gray-500 transition" />
+                                class="w-full pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white placeholder-[#9CA3AF] focus:outline focus:border-gray-500 transition" />
                         </div>
                         <button
-                            class="flex items-center gap-2 px-4 py-3 bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-gray-500 rounded-lg transition-colors">
+                            class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-2 bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-gray-500 rounded-lg transition-colors whitespace-nowrap text-sm">
                             <i class="fas fa-filter"></i>
                             <span>Filter</span>
                         </button>
@@ -334,7 +344,7 @@
                 <div class="bg-white/5 bg-blur border border-white/10 rounded-xl overflow-hidden shadow-lg">
                     <div class="overflow-x-auto">
                         <table class="w-full whitespace-nowrap">
-                            <thead class="bg-[#0f1014] border-b border-[#222328]">
+                            <thead class="bg-white/5 border-b border-[#222328]">
                                 <tr>
                                     <th
                                         class="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider whitespace-nowrap">
@@ -925,30 +935,30 @@
                     </div>
 
                     <!-- Pagination -->
-                    <div class="bg-white/5 bg-blur border-t border-white/20 px-6 py-4">
-                        <div class="flex items-center justify-between">
-                            <div class="text-gray-400 text-sm">
-                                Showing 1 to 7 of 156 files
+                    <div class="bg-white/5 bg-blur border-t border-white/20 px-4 sm:px-6 py-4">
+                        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <div class="text-gray-400 text-xs sm:text-sm text-center sm:text-left order-2 sm:order-1">
+                                Showing 1 to 7 of 156 file links
                             </div>
-                            <div class="flex items-center gap-2">
+                            <div class="flex items-center gap-1 sm:gap-2 order-1 sm:order-2">
                                 <button
-                                    class="px-4 py-2 bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-gray-500 rounded-lg transition-colors text-sm">
+                                    class="px-3 sm:px-4 py-2 bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-gray-500 rounded-lg transition-colors text-xs sm:text-sm">
                                     Previous
                                 </button>
                                 <button
-                                    class="px-4 py-2 bg-gradient-to-r from-[#FACC15] to-[#EAB308] text-black font-semibold rounded-lg">
+                                    class="px-3 sm:px-4 py-2 bg-gradient-to-r from-[#FACC15] to-[#EAB308] text-black font-semibold rounded-lg text-xs sm:text-sm">
                                     1
                                 </button>
                                 <button
-                                    class="px-4 py-2 bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-gray-500 rounded-lg transition-colors">
+                                    class="px-3 sm:px-4 py-2 bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-gray-500 rounded-lg transition-colors text-xs sm:text-sm">
                                     2
                                 </button>
                                 <button
-                                    class="px-4 py-2 bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-gray-500 rounded-lg transition-colors">
+                                    class="px-3 sm:px-4 py-2 bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-gray-500 rounded-lg transition-colors text-xs sm:text-sm">
                                     3
                                 </button>
                                 <button
-                                    class="px-4 py-2 bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-gray-500 rounded-lg transition-colors text-sm">
+                                    class="px-3 sm:px-4 py-2 bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-gray-500 rounded-lg transition-colors text-xs sm:text-sm">
                                     Next
                                 </button>
                             </div>
@@ -959,6 +969,43 @@
             </div>
         </main>
     </div>
+
+    <script>
+        // Sidebar Toggle Logic
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+
+        function toggleSidebar() {
+            sidebar.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('hidden');
+            document.body.classList.toggle('overflow-hidden');
+        }
+
+        mobileMenuToggle.addEventListener('click', toggleSidebar);
+        overlay.addEventListener('click', toggleSidebar);
+
+        // Close sidebar on link click (for mobile)
+        const sidebarLinks = sidebar.querySelectorAll('a');
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 1024) {
+                    toggleSidebar();
+                }
+            });
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024) {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+            }
+        });
+    </script>
 
 </body>
 
