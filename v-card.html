@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madwess - Vcard Links</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Roboto', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: {
+                            900: '#0f1014', // Main bg
+                            800: '#18191d', // Card/Sidebar bg
+                            700: '#222328', // Hover/Border
+                        },
+                        accent: {
+                            yellow: '#fbbf24',
+                            blue: '#3b82f6',
+                            purple: '#a855f7',
+                            grey: '#374151',
+                            green: '#22c55e',
+                            green_dim: 'rgba(34, 197, 94, 0.1)',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .overflow-y-auto::-webkit-scrollbar {
+            display: none;
+        }
+
+        .overflow-x-auto::-webkit-scrollbar {
+            display: none;
+        }
+
+        .overflow-y-auto {
+            scrollbar-width: none;
+        }
+
+        .overflow-x-auto {
+            scrollbar-width: none;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav
+        class="sticky top-0 z-50 flex items-center bg-black justify-between px-6 py-3 bg-[#18191d] border-b border-[#EAB308]/20">
+
+        <!-- Left: Logo -->
+        <div class="flex items-center gap-4">
+            <img src="assets/logo.png" alt="Madwess Logo" class="h-12 w-auto">
+        </div>
+
+        <!-- Center: Search -->
+        <div class="hidden sm:flex flex-1 max-w-[500px] mx-auto">
+            <div class="relative w-full">
+                <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm"></i>
+                <input type="text" placeholder="Search links, QR codes, analytics..."
+                    class="w-full pl-10 pr-4 py-2 bg-white/5 border border-[#9CA3AF]/20 rounded-md text-sm text-white font-medium placeholder-gray-500 focus:outline-none focus:border-gray-500 focus:bg-[#14151a] transition" />
+            </div>
+        </div>
+
+        <!-- Right: Notification + Profile -->
+        <div class="flex items-center gap-4">
+
+            <!-- Notification -->
+            <div
+                class="relative w-9 h-9 flex items-center justify-center rounded-lg cursor-pointer hover:bg-[#1a1b20] transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24">
+                    <path fill="white" d="M20 17h2v2H2v-2h2v-7a8 8 0 1 1 16 0zm-2 0v-7a6 6 0 0 0-12 0v7zm-9 4h6v2H9z" />
+                </svg> <span
+                    class="absolute top-1 right-1 w-3 h-3 bg-yellow-400 rounded-full border-2 border-[#18191d]"></span>
+            </div>
+
+            <!-- Profile -->
+            <div
+                class="w-8 h-8 flex items-center justify-center rounded-full bg-gradient-to-br from-[#FACC15] to-[#3B82F6] text-sm font-bold text-black cursor-pointer hover:scale-105 transition">
+                JD
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- Dashboard -->
+    <div class="flex h-screen overflow-hidden text-sm">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-black border-r border-[#EAB308]/20 flex flex-col h-full flex-shrink-0">
+
+            <!-- Navigation -->
+            <nav class="flex-1 mt-5 px-4 overflow-y-auto space-y-1">
+                <a href="dashboard.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/dashboard.svg" alt="Dashboard" class="h-5 w-5">
+                    <span class="font-medium">Dashboard</span>
+                </a>
+
+                <a href="biolink.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/biolink-w.svg" alt="Biolink Pages" class="h-5 w-5">
+                    <span>Biolink Pages</span>
+                </a>
+
+                <a href="shortened.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/shortened.svg" alt="Shortened Links" class="h-5 w-5">
+                    <span>Shortened Links</span>
+                </a>
+
+                <a href="filelinks.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/file.svg" alt="File Links" class="h-5 w-5">
+                    <span>File Links</span>
+                </a>
+
+                <a href="v-card.html"
+                    class="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-[#FACC15]/20 to-[#3B82F6]/20 text-[#FACC15] rounded-lg border-2 border-yellow-400/20 shadow-[0_0_15px_rgba(251,191,36,0.1)]">
+                    <img src="assets/vcard-y.svg" alt="Vcard Links" class="h-5 w-5">
+                    <span>Vcard Links</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/event.svg" alt="Event Links" class="h-5 w-5">
+                    <span>Event Links</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/static.svg" alt="Static Sites" class="h-5 w-5">
+                    <span>Static Sites</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/statistics.svg" alt="Links Statistics" class="h-5 w-5">
+                    <span>Links Statistics</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/qrcode.svg" alt="QR Codes" class="h-5 w-5">
+                    <span>QR Codes</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/domain.svg" alt="Custom Domains" class="h-5 w-5">
+                    <span>Custom Domains</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/notification.svg" alt="Notification Handlers" class="h-5 w-5">
+                    <span>Notification Handlers</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/pixels.svg" alt="Pixels" class="h-5 w-5">
+                    <span>Pixels</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/splash.svg" alt="Splash Pages" class="h-5 w-5">
+                    <span>Splash Pages</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/data.svg" alt="Data" class="h-5 w-5">
+                    <span>Data</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/directory.svg" alt="Directory" class="h-5 w-5">
+                    <span>Directory</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 flex flex-col overflow-y-auto bg-gradient-to-br from-[#111827] via-[#000000] to-[#111827]">
+
+            <div class="p-8  mx-auto w-full space-y-6">
+
+                <!-- Header -->
+                <header class="flex justify-between items-center">
+                    <div>
+                        <h1 class="text-3xl font-bold text-white mb-2">VCard Links</h1>
+                        <p class="text-gray-400">Digital business cards with contact information</p>
+                    </div>
+                    <button
+                        class="flex items-center gap-2 bg-gradient-to-br from-[#FACC15] to-[#EAB308] hover:outline outline-offset-2 outline-[#FACC15]/50 text-black font-semibold py-3 px-6 rounded-lg transition-all shadow-[0_0_20px_rgba(251,191,36,0.3)]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M18 12.998h-5v5a1 1 0 0 1-2 0v-5H6a1 1 0 0 1 0-2h5v-5a1 1 0 0 1 2 0v5h5a1 1 0 0 1 0 2" />
+                        </svg>
+                        <span>Create VCard</span>
+                    </button>
+                </header>
+
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Total Vcards Card -->
+                    <div
+                        class="bg-white/5 border border-white/10 p-6 rounded-xl bg-blur hover:border-[#3B82F6]/40 transition-all shadow-lg">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div
+                                class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#60A5FA] to-[#2563EB] flex items-center justify-center">
+                                <img src="assets/vcard-w.svg" alt="Vcard Links" class="h-5 w-5">
+                            </div>
+                        </div>
+                        <h3 class="text-[#9CA3AF] mb-1">Total Vcards</h3>
+                        <p class="text-3xl font-bold text-white tracking-wide">89</p>
+                    </div>
+
+                    <!-- Total Views Card -->
+                    <div
+                        class="bg-white/5 border border-white/10 p-6 rounded-xl bg-blur hover:border-[#22C55E]/40 transition-all shadow-lg">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div
+                                class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#4ADE80] to-[#16A34A] flex items-center justify-center">
+                                <img src="assets/view.svg" alt="Views" class="h-5 w-5">
+                            </div>
+                        </div>
+                        <h3 class="text-[#9CA3AF] mb-1">Total Views</h3>
+                        <p class="text-3xl font-bold text-white tracking-wide">2.1K</p>
+                    </div>
+
+                    <!-- Contacts Saved Card -->
+                    <div
+                        class="bg-white/5 border border-white/10 p-6 rounded-xl bg-blur hover:border-[#F97316]/40 transition-all shadow-lg">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div
+                                class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#FACC15] to-[#F97316] flex items-center justify-center">
+                                <img src="assets/download.svg" alt="Downloads" class="h-5 w-5">
+                            </div>
+                        </div>
+                        <h3 class="text-[#9CA3AF] mb-1">Contacts Saved</h3>
+                        <p class="text-3xl font-bold text-white tracking-wide">1.5K</p>
+                    </div>
+
+                    <!-- Active Cards Card -->
+                    <div
+                        class="bg-white/5 border border-white/10 p-6 rounded-xl bg-blur hover:border-[#A855F7]/40 transition-all shadow-lg">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div
+                                class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#C084FC] to-[#9333EA] flex items-center justify-center">
+                                <img src="assets/tick.svg" alt="Leads" class="h-5 w-5">
+                            </div>
+                        </div>
+                        <h3 class="text-[#9CA3AF] mb-1">Active Cards</h3>
+                        <p class="text-3xl font-bold text-white tracking-wide">84</p>
+                    </div>
+                </div>
+
+                <!-- Filters and Search -->
+                <div
+                    class="flex flex-col sm:flex-row justify-around items-start sm:items-center bg-white/5 bg-blur-sm border border-[#222328] p-2 py-4 rounded-lg gap-4">
+                    <!-- Tab Filters -->
+                    <div class="flex gap-2 bg-white/5 bg-blur py-1 px-1 rounded-lg flex-wrap">
+                        <button
+                            class="px-4 py-1 bg-gradient-to-br from-[#FACC15] to-[#EAB308] text-black font-semibold rounded-lg shadow-md">
+                            All
+                        </button>
+                        <button
+                            class="px-4 py-1 text-[#9CA3AF] hover:text-white hover:bg-[#222328] rounded-lg transition-colors">
+                            Active
+                        </button>
+                        <button
+                            class="px-4 py-1 text-[#9CA3AF] hover:text-white hover:bg-[#222328] rounded-lg transition-colors">
+                            Paused
+                        </button>
+                        <button
+                            class="px-4 py-1 text-[#9CA3AF] hover:text-white hover:bg-[#222328] rounded-lg transition-colors">
+                            Archived
+                        </button>
+                    </div>
+
+                    <!-- Search and Filter -->
+                    <div class="flex gap-20">
+                        <div class="relative">
+                            <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"></i>
+                            <input type="text" placeholder="Search VCards..."
+                                class="pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white placeholder-whit[#9CA3AF] focus:outline focus:border-gray-500 transition w-64" />
+                        </div>
+                        <button
+                            class="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-gray-500 rounded-lg transition-colors">
+                            <i class="fas fa-filter"></i>
+                            <span>Filter</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Data Table -->
+                
+
+            </div>
+        </main>
+    </div>
+
+</body>
+
+</html>
