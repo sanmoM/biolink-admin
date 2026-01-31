@@ -72,8 +72,12 @@
     <nav
         class="sticky top-0 z-50 flex items-center bg-black justify-between px-6 py-3 bg-[#18191d] border-b border-[#EAB308]/20">
 
-        <!-- Left: Logo -->
+        <!-- Left: Logo & Hamburger -->
         <div class="flex items-center gap-4">
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="lg:hidden text-gray-400 hover:text-white focus:outline-none">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
             <img src="assets/logo.png" alt="Madwess Logo" class="h-12 w-auto">
         </div>
 
@@ -110,7 +114,13 @@
     <!-- Dashboard -->
     <div class="flex h-screen overflow-hidden text-sm">
         <!-- Sidebar -->
-        <aside class="w-64 bg-black border-r border-[#EAB308]/20 flex flex-col h-full flex-shrink-0">
+        <!-- Sidebar -->
+        <!-- Overlay -->
+        <div id="sidebar-overlay"
+            class="fixed inset-0 bg-black/50 z-30 hidden lg:hidden backdrop-blur-sm transition-opacity opacity-0"></div>
+
+        <aside id="sidebar"
+            class="fixed inset-y-0 left-0 z-40 w-64 bg-black border-r border-[#EAB308]/20 flex flex-col h-full transform -translate-x-full lg:translate-x-0 lg:relative transition-transform duration-300 ease-in-out shrink-0">
 
             <!-- Navigation -->
             <nav class="flex-1 mt-5 px-4 overflow-y-auto space-y-1">
@@ -268,7 +278,8 @@
         </aside>
 
         <!-- Main Content -->
-        <main class="flex-1 flex flex-col overflow-y-auto bg-gradient-to-br from-[#111827] via-[#000000] to-[#111827] bg-blur">
+        <main
+            class="flex-1 flex flex-col overflow-y-auto bg-gradient-to-br from-[#111827] via-[#000000] to-[#111827] bg-blur">
 
 
             <div class="p-8 mx-auto w-full z-10 space-y-8">
@@ -473,16 +484,18 @@
                                     </div>
 
                                     <div
-                                        class="flex items-center gap-6 w-full sm:w-auto justify-between sm:justify-end">
-                                        <div class="text-right">
+                                        class="flex flex-wrap items-center gap-3 sm:gap-6 w-full sm:w-auto justify-between sm:justify-end mt-2 sm:mt-0">
+                                        <div class="text-left sm:text-right w-auto">
                                             <div class="text-white font-bold text-lg">1,234</div>
                                             <div class="text-gray-500 text-xs">clicks</div>
                                         </div>
-                                        <span
-                                            class="bg-[#3B82F6]/20 text-blue-400 text-xs px-3 py-1.5 rounded-full border border-blue-500/30 font-medium">Bio
-                                            Link</span>
-                                        <span
-                                            class="text-green-400 bg-green-500/20 px-3 py-1.5 rounded-full text-xs font-semibold border border-green-500/30">Active</span>
+                                        <div class="flex items-center gap-2">
+                                            <span
+                                                class="bg-[#3B82F6]/20 text-blue-400 text-xs px-3 py-1.5 rounded-full border border-blue-500/30 font-medium whitespace-nowrap">Bio
+                                                Link</span>
+                                            <span
+                                                class="text-green-400 bg-green-500/20 px-3 py-1.5 rounded-full text-xs font-semibold border border-green-500/30 whitespace-nowrap">Active</span>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -496,16 +509,18 @@
                                     </div>
 
                                     <div
-                                        class="flex items-center gap-6 w-full sm:w-auto justify-between sm:justify-end">
-                                        <div class="text-right">
+                                        class="flex flex-wrap items-center gap-3 sm:gap-6 w-full sm:w-auto justify-between sm:justify-end mt-2 sm:mt-0">
+                                        <div class="text-left sm:text-right w-auto">
                                             <div class="text-white font-bold text-lg">892</div>
                                             <div class="text-gray-500 text-xs">clicks</div>
                                         </div>
-                                        <span
-                                            class="bg-[#3B82F6]/20 text-blue-400 text-xs px-3 py-1.5 rounded-full border border-blue-500/30 font-medium">Short
-                                            Link</span>
-                                        <span
-                                            class="text-green-400 bg-green-500/20 px-3 py-1.5 rounded-full text-xs font-semibold border border-green-500/30">Active</span>
+                                        <div class="flex items-center gap-2">
+                                            <span
+                                                class="bg-[#3B82F6]/20 text-blue-400 text-xs px-3 py-1.5 rounded-full border border-blue-500/30 font-medium whitespace-nowrap">Short
+                                                Link</span>
+                                            <span
+                                                class="text-green-400 bg-green-500/20 px-3 py-1.5 rounded-full text-xs font-semibold border border-green-500/30 whitespace-nowrap">Active</span>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -519,16 +534,18 @@
                                     </div>
 
                                     <div
-                                        class="flex items-center gap-6 w-full sm:w-auto justify-between sm:justify-end">
-                                        <div class="text-right">
+                                        class="flex flex-wrap items-center gap-3 sm:gap-6 w-full sm:w-auto justify-between sm:justify-end mt-2 sm:mt-0">
+                                        <div class="text-left sm:text-right w-auto">
                                             <div class="text-white font-bold text-lg">567</div>
                                             <div class="text-gray-500 text-xs">clicks</div>
                                         </div>
-                                        <span
-                                            class="bg-[#3B82F6]/20 text-blue-400 text-xs px-3 py-1.5 rounded-full border border-blue-500/30 font-medium">Event
-                                            Link</span>
-                                        <span
-                                            class="text-green-400 bg-green-500/20 px-3 py-1.5 rounded-full text-xs font-semibold border border-green-500/30">Active</span>
+                                        <div class="flex items-center gap-2">
+                                            <span
+                                                class="bg-[#3B82F6]/20 text-blue-400 text-xs px-3 py-1.5 rounded-full border border-blue-500/30 font-medium whitespace-nowrap">Event
+                                                Link</span>
+                                            <span
+                                                class="text-green-400 bg-green-500/20 px-3 py-1.5 rounded-full text-xs font-semibold border border-green-500/30 whitespace-nowrap">Active</span>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -542,15 +559,17 @@
                                     </div>
 
                                     <div
-                                        class="flex items-center gap-6 w-full sm:w-auto justify-between sm:justify-end">
-                                        <div class="text-right mr-5">
+                                        class="flex flex-wrap items-center gap-3 sm:gap-6 w-full sm:w-auto justify-between sm:justify-end mt-2 sm:mt-0">
+                                        <div class="text-left sm:text-right w-auto mr-auto sm:mr-0">
                                             <div class="text-white font-bold text-lg">345</div>
                                             <div class="text-gray-500 text-xs">clicks</div>
                                         </div>
-                                        <span
-                                            class="bg-[#3B82F6]/20 text-blue-400 text-xs px-3 py-1.5 rounded-full border border-blue-500/30 font-medium">VCard</span>
-                                        <span
-                                            class="text-green-400 bg-green-500/20 px-3 py-1.5 rounded-full text-xs font-semibold border border-green-500/30">Active</span>
+                                        <div class="flex items-center gap-2">
+                                            <span
+                                                class="bg-[#3B82F6]/20 text-blue-400 text-xs px-3 py-1.5 rounded-full border border-blue-500/30 font-medium whitespace-nowrap">VCard</span>
+                                            <span
+                                                class="text-green-400 bg-green-500/20 px-3 py-1.5 rounded-full text-xs font-semibold border border-green-500/30 whitespace-nowrap">Active</span>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -679,6 +698,62 @@
         </main>
     </div>
 
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+        const body = document.body;
+
+        function toggleSidebar() {
+            const isClosed = sidebar.classList.contains('-translate-x-full');
+
+            if (isClosed) {
+                // Open Sidebar
+                sidebar.classList.remove('-translate-x-full');
+                sidebarOverlay.classList.remove('hidden');
+                // Small delay to allow display:block to apply before opacity transition
+                setTimeout(() => {
+                    sidebarOverlay.classList.remove('opacity-0');
+                }, 10);
+            } else {
+                // Close Sidebar
+                sidebar.classList.add('-translate-x-full');
+                sidebarOverlay.classList.add('opacity-0');
+                setTimeout(() => {
+                    sidebarOverlay.classList.add('hidden');
+                }, 300); // Match transition duration
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleSidebar();
+        });
+
+        sidebarOverlay.addEventListener('click', toggleSidebar);
+
+        // Close sidebar when clicking a link on mobile
+        const sidebarLinks = sidebar.querySelectorAll('a');
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 1024) { // lg breakpoint
+                    // specific for mobile
+                    if (!sidebar.classList.contains('-translate-x-full')) {
+                        toggleSidebar();
+                    }
+                }
+            });
+        });
+
+        // Handle resize events to reset state if needed
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024) {
+                sidebarOverlay.classList.add('hidden', 'opacity-0');
+                // Ensure sidebar is visible on desktop (handled by CSS lg:translate-x-0, but good to be clean)
+            }
+        });
+
+    </script>
 </body>
 
 </html>
