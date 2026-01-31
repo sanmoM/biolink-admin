@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madwess - Event Links</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: {
+                            900: '#0f1014', // Main bg
+                            800: '#18191d', // Card/Sidebar bg
+                            700: '#222328', // Hover/Border
+                        },
+                        accent: {
+                            yellow: '#fbbf24',
+                            blue: '#3b82f6',
+                            purple: '#a855f7',
+                            grey: '#374151',
+                            green: '#22c55e',
+                            green_dim: 'rgba(34, 197, 94, 0.1)',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #0f1014;
+            color: white;
+        }
+
+        .overflow-y-auto::-webkit-scrollbar {
+            display: none;
+        }
+
+        .overflow-x-auto::-webkit-scrollbar {
+            display: none;
+        }
+
+        .overflow-y-auto {
+            scrollbar-width: none;
+        }
+
+        .overflow-x-auto {
+            scrollbar-width: none;
+        }
+
+        .bg-blur {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav
+        class="sticky top-0 z-50 flex items-center bg-black justify-between px-6 py-3 bg-[#18191d] border-b border-[#EAB308]/20">
+
+        <!-- Left: Logo & Mobile Toggle -->
+        <div class="flex items-center gap-4">
+            <button id="mobile-menu-toggle"
+                class="lg:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+            <img src="assets/logo.png" alt="Madwess Logo" class="h-12 w-auto">
+        </div>
+
+        <!-- Center: Search -->
+        <div class="hidden sm:flex flex-1 max-w-[500px] mx-auto">
+            <div class="relative w-full">
+                <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm"></i>
+                <input type="text" placeholder="Search events, locations..."
+                    class="w-full pl-10 pr-4 py-2 bg-white/5 border border-[#9CA3AF]/20 rounded-md text-sm text-white font-medium placeholder-gray-500 focus:outline-none focus:border-gray-500 focus:bg-[#14151a] transition" />
+            </div>
+        </div>
+
+        <!-- Right: Notification + Profile -->
+        <div class="flex items-center gap-4">
+
+            <!-- Notification -->
+            <div
+                class="relative w-9 h-9 flex items-center justify-center rounded-lg cursor-pointer hover:bg-[#1a1b20] transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24">
+                    <path fill="white" d="M20 17h2v2H2v-2h2v-7a8 8 0 1 1 16 0zm-2 0v-7a6 6 0 0 0-12 0v7zm-9 4h6v2H9z" />
+                </svg> <span
+                    class="absolute top-1 right-1 w-3 h-3 bg-yellow-400 rounded-full border-2 border-[#18191d]"></span>
+            </div>
+
+            <!-- Profile -->
+            <div
+                class="w-8 h-8 flex items-center justify-center rounded-full bg-gradient-to-br from-[#FACC15] to-[#3B82F6] text-sm font-bold text-black cursor-pointer hover:scale-105 transition">
+                JD
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- Dashboard -->
+    <div class="flex h-screen overflow-hidden text-sm">
+        <!-- Sidebar -->
+        <aside id="sidebar"
+            class="w-64 bg-black border-r border-[#EAB308]/20 flex flex-col h-full flex-shrink-0 fixed lg:static inset-y-0 left-0 z-40 -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out">
+
+            <!-- Navigation -->
+            <nav class="flex-1 mt-5 px-4 overflow-y-auto space-y-1">
+                <a href="dashboard.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/dashboard.svg" alt="Dashboard" class="h-5 w-5">
+                    <span class="font-medium">Dashboard</span>
+                </a>
+
+                <a href="biolink.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+
+                    <img src="assets/biolink-icon.svg" alt="Biolink Pages" class="h-5 w-5">
+                    <span>Biolink Pages</span>
+                </a>
+
+                <a href="shortened.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/shortened.svg" alt="Shortened Links" class="h-5 w-5">
+                    <span>Shortened Links</span>
+                </a>
+
+                <a href="filelinks.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/file.svg" alt="File Links" class="h-5 w-5">
+                    <span>File Links</span>
+                </a>
+
+                <a href="v-card.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+
+                    <img src="assets/vcard.svg" alt="Vcard Links" class="h-5 w-5">
+                    <span>Vcard Links</span>
+                </a>
+
+                <a href="eventlinks.html"
+                    class="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-[#FACC15]/20 to-[#3B82F6]/20 text-[#FACC15] rounded-lg border-2 border-yellow-400/20 shadow-[0_0_15px_rgba(251,191,36,0.1)]">
+                    <img src="assets/events-y.svg" alt="Event Links" class="h-5 w-5">
+                    <span>Event Links</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/static.svg" alt="Static Sites" class="h-5 w-5">
+                    <span>Static Sites</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/statistics.svg" alt="Links Statistics" class="h-5 w-5">
+                    <span>Links Statistics</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/qrcode.svg" alt="QR Codes" class="h-5 w-5">
+                    <span>QR Codes</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/domain.svg" alt="Custom Domains" class="h-5 w-5">
+                    <span>Custom Domains</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/notification.svg" alt="Notification Handlers" class="h-5 w-5">
+                    <span>Notification Handlers</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/pixels.svg" alt="Pixels" class="h-5 w-5">
+                    <span>Pixels</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/splash.svg" alt="Splash Pages" class="h-5 w-5">
+                    <span>Splash Pages</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/data.svg" alt="Data" class="h-5 w-5">
+                    <span>Data</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/directory.svg" alt="Directory" class="h-5 w-5">
+                    <span>Directory</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main
+            class="flex-1 flex flex-col overflow-y-auto bg-gradient-to-br from-[#111827] via-[#000000] to-[#111827] relative">
+
+            <!-- Overlay for mobile sidebar -->
+            <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-30 hidden lg:hidden"></div>
+
+            <div class="p-4 sm:p-8 mx-auto w-full space-y-6">
+
+                <!-- Header -->
+                <header class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <h1 class="text-2xl sm:text-3xl font-bold text-white mb-2">Event Links</h1>
+                        <p class="text-gray-400 text-sm sm:text-base">Manage and share your upcoming events</p>
+                    </div>
+                    <button
+                        class="w-full md:w-auto flex items-center justify-center gap-2 bg-gradient-to-br from-[#FACC15] to-[#EAB308] hover:outline outline-offset-2 outline-[#FACC15]/50 text-black font-semibold py-3 px-6 rounded-lg transition-all shadow-[0_0_20px_rgba(251,191,36,0.3)]">
+                        <img src="assets/event.svg" alt="" class="brightness-0">
+                        <span>Create Event</span>
+                    </button>
+                </header>
+
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Total Events -->
+                    <div
+                        class="bg-white/5 border border-white/10 p-6 rounded-xl bg-blur hover:border-[#FACC15]/40 transition-all shadow-lg group">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div
+                                class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#FACC15] to-[#EAB308] flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <img src="assets/event.svg" alt="" class="w-6 h-6 brightness-0">
+                            </div>
+                        </div>
+                        <h3 class="text-[#9CA3AF] mb-1">Total Events</h3>
+                        <p class="text-3xl font-bold text-white tracking-wide">24</p>
+                    </div>
+
+                    <!-- Upcoming Events -->
+                    <div
+                        class="bg-white/5 border border-white/10 p-6 rounded-xl bg-blur hover:border-[#3B82F6]/40 transition-all shadow-lg group">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div
+                                class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#60A5FA] to-[#2563EB] flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <i class="fas fa-calendar-check text-white text-xl"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-[#9CA3AF] mb-1">Upcoming</h3>
+                        <p class="text-3xl font-bold text-white tracking-wide">8</p>
+                    </div>
+
+                    <!-- Past Events -->
+                    <div
+                        class="bg-white/5 border border-white/10 p-6 rounded-xl bg-blur hover:border-[#A855F7]/40 transition-all shadow-lg group">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div
+                                class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#C084FC] to-[#9333EA] flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <i class="fas fa-history text-white text-xl"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-[#9CA3AF] mb-1">Past Events</h3>
+                        <p class="text-3xl font-bold text-white tracking-wide">16</p>
+                    </div>
+
+                    <!-- Total Signups -->
+                    <div
+                        class="bg-white/5 border border-white/10 p-6 rounded-xl bg-blur hover:border-[#22C55E]/40 transition-all shadow-lg group">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div
+                                class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#4ADE80] to-[#16A34A] flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <i class="fas fa-users text-white text-xl"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-[#9CA3AF] mb-1">Total Signups</h3>
+                        <p class="text-3xl font-bold text-white tracking-wide">1.2K</p>
+                    </div>
+                </div>
+
+                <!-- Filters and Search -->
+                <div
+                    class="flex flex-col md:flex-row justify-between items-stretch md:items-center bg-white/5 bg-blur-sm border border-[#222328] p-3 sm:p-4 rounded-lg gap-4">
+                    <!-- Tab Filters -->
+                    <div class="flex gap-1 bg-white/5 p-1 rounded-md flex-wrap w-full md:w-auto">
+                        <button
+                            class="flex-1 md:flex-none px-4 py-2 bg-gradient-to-br from-[#FACC15] to-[#EAB308] text-black font-semibold rounded-md shadow-md text-xs sm:text-sm">
+                            All Events
+                        </button>
+                        <button
+                            class="flex-1 md:flex-none px-4 py-2 text-[#9CA3AF] hover:text-white hover:bg-[#222328] rounded-md transition-colors text-xs sm:text-sm">
+                            Upcoming
+                        </button>
+                        <button
+                            class="flex-1 md:flex-none px-4 py-2 text-[#9CA3AF] hover:text-white hover:bg-[#222328] rounded-md transition-colors text-xs sm:text-sm">
+                            Past
+                        </button>
+                        <button
+                            class="flex-1 md:flex-none px-4 py-2 text-[#9CA3AF] hover:text-white hover:bg-[#222328] rounded-md transition-colors text-xs sm:text-sm">
+                            Drafts
+                        </button>
+                    </div>
+
+                    <!-- Search and Filter -->
+                    <div class="flex flex-col sm:flex-row gap-3 items-center flex-grow md:ml-4">
+                        <div class="relative w-full">
+                            <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"></i>
+                            <input type="text" placeholder="Search events..."
+                                class="w-full pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white placeholder-[#9CA3AF] focus:outline focus:border-gray-500 transition" />
+                        </div>
+                        <button
+                            class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-2 bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-gray-500 rounded-lg transition-colors whitespace-nowrap text-sm">
+                            <i class="fas fa-sort"></i>
+                            <span>Sort</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Events Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-6xl mx-auto">
+                    <!-- Card 1 -->
+                    <div class="border-t-2 border-t-blue-500 bg-black rounded-xl overflow-hidden">
+                        <div class="p-4 flex items-center">
+                            <div class="bg-blue-500 p-2 rounded-lg mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" class="w-5 h-5 text-white">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h2 class="text-xl font-bold text-white">Annual Marketing Summit 2024</h2>
+                                <p class="text-blue-400 text-sm">Conference</p>
+                            </div>
+                        </div>
+                        <div class="border-t border-gray-800 p-4 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" class="w-4 h-4 text-yellow-400 mr-2">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            <span class="text-gray-300 mr-4">2024-03-15</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" class="w-4 h-4 text-yellow-400 mr-2">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span class="text-gray-300">09:00 AM</span>
+                        </div>
+                        <div class="border-t border-gray-800 p-4 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" class="w-4 h-4 text-yellow-400 mr-2">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span class="text-gray-300">Convention Center, New York</span>
+                        </div>
+                        <div class="border-t border-gray-800 p-3 bg-gray-800">
+                            <div class="flex items-center justify-between">
+                                <a href="#" class="text-yellow-400 hover:underline">madw.es/summit24</a>
+                                <button class="text-gray-400 hover:text-white">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="border-t border-gray-800 p-4 flex justify-between items-center">
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" class="w-4 h-4 text-gray-400 mr-1">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                                <span class="text-gray-400">1234 RSVPs</span>
+                            </div>
+                            <span class="text-gray-500 text-sm">2024-01-20</span>
+                        </div>
+                        <div class="border-t border-gray-800 p-3 flex justify-end">
+                            <button class="text-gray-400 hover:text-white mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                </svg>
+                            </button>
+                            <button class="text-gray-400 hover:text-white mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 10H15a2 2 0 010 4H9.828l-3.414 3.414a2 2 0 01-2.828-2.828L9.172 10H5a2 2 0 010-4h4.172l2.414-2.414z" />
+                                </svg>
+                            </button>
+                            <button class="text-gray-400 hover:text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 7l-.867 12.142A2 2 0 0116.133 21H7.867a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="border-t-2 border-t-purple-500 bg-black rounded-xl overflow-hidden">
+                        <div class="p-4 flex items-center">
+                            <div class="bg-purple-500 p-2 rounded-lg mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" class="w-5 h-5 text-white">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h2 class="text-xl font-bold text-white">Product Launch Webinar</h2>
+                                <p class="text-purple-400 text-sm">Webinar</p>
+                            </div>
+                        </div>
+                        <div class="border-t border-gray-800 p-4 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" class="w-4 h-4 text-yellow-400 mr-2">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            <span class="text-gray-300 mr-4">2024-02-28</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" class="w-4 h-4 text-yellow-400 mr-2">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span class="text-gray-300">02:00 PM</span>
+                        </div>
+                        <div class="border-t border-gray-800 p-4 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" class="w-4 h-4 text-yellow-400 mr-2">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span class="text-gray-300">Online Event</span>
+                        </div>
+                        <div class="border-t border-gray-800 p-3 bg-gray-800">
+                            <div class="flex items-center justify-between">
+                                <a href="#" class="text-yellow-400 hover:underline">madw.es/webinar</a>
+                                <button class="text-gray-400 hover:text-white">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="border-t border-gray-800 p-4 flex justify-between items-center">
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" class="w-4 h-4 text-gray-400 mr-1">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                                <span class="text-gray-400">892 RSVPs</span>
+                            </div>
+                            <span class="text-gray-500 text-sm">2024-01-19</span>
+                        </div>
+                        <div class="border-t border-gray-800 p-3 flex justify-end">
+                            <button class="text-gray-400 hover:text-white mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" class="w-5 h-5">
+                                    < stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                </svg>
+                            </button>
+                            <button class="text-gray-400 hover:text-white mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M11 5H6a2 2 0 00-2 21a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 10H15a2 2 0 010 4H9.828l-3.414 3.414a2 2 0 01-2.828-2.828L9.172 10H5a2 2 0 010-4h4.172l2.414-2.414z" />
+                                </svg>
+                            </button>
+                            <button class="text-gray-400 hover:text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 7l-.867 12.142A2 2 0 0116.133 21H7.867a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="border-t-2 border-t-orange-500 bg-black rounded-xl overflow-hidden">
+                        <div class="p-4 flex items-center">
+                            <div class="bg-orange-500 p-2 rounded-lg mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" class="w-5 h-5 text-white">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h2 class="text-xl font-bold text-white">Team Building Workshop</h2>
+                                <p class="text-orange-400 text-sm">Workshop</p>
+                            </div>
+                        </div>
+                        <div class="border-t border-gray-800 p-4 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" class="w-4 h-4 text-yellow-400 mr-2">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            span class="text-gray-300 mr-4">2024-02-20</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" class="w-4 h-4 text-yellow-400 mr-2">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8v4l3 3m6-3a9 9 0 11-1 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span class="text-gray-300">10:00 AM</span>
+                        </div>
+                        <div class="border-t border-gray-800 p-4 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" class="w-4 h-4 text-yellow-400 mr-2">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span class="text-gray-300">Company Headquarters</span>
+                        </div>
+                        <div class="border-t border-gray-800 p-3 bg-gray-800">
+                            <div class="flex items-center justify-between">
+                                <a href="#" class="text-yellow-400 hover:underline">madw.es/team</a>
+                                <button class="text-gray-400 hover:text-white">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="border-t border-gray-800 p-4 flex justify-between items-center">
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" class="w-4 h-4 text-gray-400 mr-1">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                                <span class="text-gray-400">456 RSVPs</span>
+                            </div>
+                            <span class="text-gray-500 text-sm">2024-01-18</span>
+                        </div>
+                        <div class="border-t border-gray-800 p-3 flex justify-end">
+                            <button class="text-gray-400 hover:text-white mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                </svg>
+                            </button>
+                            <button class="text-gray-400 hover:text-white mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 10H15a2 2 0 010 4H9.828l-3.414 3.414a2 2 0 01-2.828-2.828L9.172 10H5a2 2 0 010-4h4.172l2.414-2.414z" />
+                                </svg>
+                            </button>
+                            <button class="text-gray-400 hover:text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 7l-.867 12.142A2 2 0 0116.133 21H7.867a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="border-t-2 border-t-green-500 bg-black rounded-xl overflow-hidden">
+                        <div class="p-4 flex items-center">
+                            <div class="bg-green-500 p-2 rounded-lg mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" class="w-5 h-5 text-white">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h2 class="text-xl font-bold text-white">Networking Mixer</h2>
+                                <p class="text-green-400 text-sm">Networking</p>
+                            </div>
+                        </div>
+                        <div class="border-t border-gray-800 p-4 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" class="w-4 h-4 text-yellow-400 mr-2">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            <span class="text-gray-300 mr-4">2024-02-15</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" class="w-4 h-4 text-yellow-400 mr-2">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span class="text-gray-300">06:00 PM</span>
+                        </div>
+                        <div class="border-t border-gray-800 p-4 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" class="w-4 h-4 text-yellow-400 mr-2">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span class="text-gray-300">Downtown Hotel</span>
+                        </div>
+                        <div class="border-t border-gray-800 p-3 bg-gray-800">
+                            <div class="flex items-center justify-between">
+                                <a href="#" class="text-yellow-400 hover:underline">madw.es/mixer</a>
+                                <button class="text-gray-400 hover:text-white">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="border-t border-gray-800 p-4 flex justify-between items-center">
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" class="w-4 h-4 text-gray-400 mr-1">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                                <span class="text-gray-400">678 RSVPs</span>
+                            </div>
+                            <span class="text-gray-500 text-sm">2024-01-17</span>
+                        </div>
+                        <div class="border-t border-gray-800 p-3 flex justify-end">
+                            <button class="text-gray-400 hover:text-white mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                </svg>
+                            </button>
+                            <button class="text-gray-400 hover:text-white mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 2 24"
+                                    stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 10H15a2 2 0 010 4H9.828l-3.414 3.414a2 2 0 01-2.828-2.828L9.172 10H5a2 2 0 010-4h4.172l2.414-2.414z" />
+                                </svg>
+                            </button>
+                            <button class="text-gray-400 hover:text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 7l-.867 12.142A2 2 0 0116.133 21H7.867a2 2 0 01-1.995-1.858L57m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                    <!-- Card 1 -->
+                    <div class="relative rounded-xl bg-gradient-to-b from-blue-500 to-transparent p-[2px]">
+                        <div class="rounded-xl bg-zinc-900 p-6 text-white">
+
+                            <div class="flex justify-between items-start">
+                                <div class="flex items-center gap-3">
+                                    <div class="bg-blue-500 p-3 rounded-lg">
+                                        📊
+                                    </div>
+                                    <div>
+                                        <h2 class="text-lg font-semibold">Annual Marketing Summit 2024</h2>
+                                        <p class="text-sm text-blue-400">Conference</p>
+                                    </div>
+                                </div>
+
+                                <span class="bg-green-900 text-green-400 text-xs px-3 py-1 rounded-full">
+                                    Active
+                                </span>
+                            </div>
+
+                            <div class="mt-4 space-y-2 text-sm text-gray-300">
+                                <p>📅 2024-03-15 &nbsp;&nbsp; ⏰ 09:00 AM</p>
+                                <p>📍 Convention Center, New York</p>
+                            </div>
+
+                            <div class="mt-4 flex items-center justify-between bg-zinc-800 rounded-lg px-4 py-2">
+                                <span class="text-yellow-400 text-sm">madw.es/summit24</span>
+                                📋
+                            </div>
+
+                            <div class="mt-4 flex justify-between text-sm text-gray-400">
+                                <span>👤 1234 RSVPs</span>
+                                <span>2024-01-20</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="relative rounded-xl bg-gradient-to-b from-purple-500 to-transparent p-[2px]">
+                        <div class="rounded-xl bg-zinc-900 p-6 text-white">
+
+                            <div class="flex justify-between items-start">
+                                <div class="flex items-center gap-3">
+                                    <div class="bg-purple-500 p-3 rounded-lg">▶</div>
+                                    <div>
+                                        <h2 class="text-lg font-semibold">Product Launch Webinar</h2>
+                                        <p class="text-sm text-purple-400">Webinar</p>
+                                    </div>
+                                </div>
+
+                                <span class="bg-green-900 text-green-400 text-xs px-3 py-1 rounded-full">
+                                    Active
+                                </span>
+                            </div>
+
+                            <div class="mt-4 space-y-2 text-sm text-gray-300">
+                                <p>📅 2024-02-28 &nbsp;&nbsp; ⏰ 02:00 PM</p>
+                                <p>📍 Online Event</p>
+                            </div>
+
+                            <div class="mt-4 flex items-center justify-between bg-zinc-800 rounded-lg px-4 py-2">
+                                <span class="text-yellow-400 text-sm">madw.es/webinar</span>
+                                📋
+                            </div>
+
+                            <div class="mt-4 flex justify-between text-sm text-gray-400">
+                                <span>👤 892 RSVPs</span>
+                                <span>2024-01-19</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="relative rounded-xl bg-gradient-to-b from-orange-500 to-transparent p-[2px]">
+                        <div class="rounded-xl bg-zinc-900 p-6 text-white">
+
+                            <div class="flex justify-between items-start">
+                                <div class="flex items-center gap-3">
+                                    <div class="bg-orange-500 p-3 rounded-lg">🛠</div>
+                                    <div>
+                                        <h2 class="text-lg font-semibold">Team Building Workshop</h2>
+                                        <p class="text-sm text-orange-400">Workshop</p>
+                                    </div>
+                                </div>
+
+                                <span class="bg-green-900 text-green-400 text-xs px-3 py-1 rounded-full">
+                                    Active
+                                </span>
+                            </div>
+
+                            <div class="mt-4 space-y-2 text-sm text-gray-300">
+                                <p>📅 2024-02-20 &nbsp;&nbsp; ⏰ 10:00 AM</p>
+                                <p>📍 Company Headquarters</p>
+                            </div>
+
+                            <div class="mt-4 flex items-center justify-between bg-zinc-800 rounded-lg px-4 py-2">
+                                <span class="text-yellow-400 text-sm">madw.es/team</span>
+                                📋
+                            </div>
+
+                            <div class="mt-4 flex justify-between text-sm text-gray-400">
+                                <span>👤 456 RSVPs</span>
+                                <span>2024-01-18</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="relative rounded-xl bg-gradient-to-b from-green-500 to-transparent p-[2px]">
+                        <div class="rounded-xl bg-zinc-900 p-6 text-white">
+
+                            <div class="flex justify-between items-start">
+                                <div class="flex items-center gap-3">
+                                    <div class="bg-green-500 p-3 rounded-lg">👥</div>
+                                    <div>
+                                        <h2 class="text-lg font-semibold">Networking Mixer</h2>
+                                        <p class="text-sm text-green-400">Networking</p>
+                                    </div>
+                                </div>
+
+                                <span class="bg-green-900 text-green-400 text-xs px-3 py-1 rounded-full">
+                                    Active
+                                </span>
+                            </div>
+
+                            <div class="mt-4 space-y-2 text-sm text-gray-300">
+                                <p>📅 2024-02-15 &nbsp;&nbsp; ⏰ 06:00 PM</p>
+                                <p>📍 Downtown Hotel</p>
+                            </div>
+
+                            <div class="mt-4 flex items-center justify-between bg-zinc-800 rounded-lg px-4 py-2">
+                                <span class="text-yellow-400 text-sm">madw.es/mixer</span>
+                                📋
+                            </div>
+
+                            <div class="mt-4 flex justify-between text-sm text-gray-400">
+                                <span>👤 678 RSVPs</span>
+                                <span>2024-01-17</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+        function toggleMobileMenu() {
+            const isClosed = sidebar.classList.contains('-translate-x-full');
+            if (isClosed) {
+                sidebar.classList.remove('-translate-x-full');
+                sidebarOverlay.classList.remove('hidden');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                sidebarOverlay.classList.add('hidden');
+            }
+        }
+
+        mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+        sidebarOverlay.addEventListener('click', toggleMobileMenu);
+    </script>
+</body>
+
+</html>
