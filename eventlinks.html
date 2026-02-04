@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
     <!-- Google Fonts -->
-   <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
@@ -48,6 +48,7 @@
         body {
             color: #FFFFFF;
         }
+
         .overflow-y-auto::-webkit-scrollbar {
             display: none;
         }
@@ -342,30 +343,33 @@
                 <div class="mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
 
                     <!-- Card 1 -->
-                    <div class="bg-white/5 border border-white/10 bg-blur p-6 rounded-xl w-full relative">
+                    <div class="bg-white/5 border border-white/10 bg-blur p-4 sm:p-6 rounded-xl w-full relative">
                         <!-- Gradient Top Border -->
                         <div
                             class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[#60A5FA] to-[#2563EB] rounded-t-lg">
                         </div>
 
-                        <div class="flex items-start justify-between mt-6">
-                            <div class="flex items-center justify-center gap-4 mb-5">
+                        <div class="flex flex-col sm:flex-row items-start justify-between mt-4 sm:mt-6 gap-3">
+                            <div class="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-5">
                                 <div
-                                    class="w-12 h-12 rounded-lg bg-gradient-to-r from-[#60A5FA] to-[#2563EB] flex items-center justify-center">
-                                    <img src="assets/conference.svg" alt="Conference" class="h-5 w-5">
+                                    class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-r from-[#60A5FA] to-[#2563EB] flex items-center justify-center flex-shrink-0">
+                                    <img src="assets/conference.svg" alt="Conference" class="h-4 w-4 sm:h-5 sm:w-5">
                                 </div>
                                 <div>
-                                    <p class="text-lg mb-1 font-semibold">Annual Marketing Summit 2024</p>
+                                    <p class="text-base sm:text-lg mb-1 font-semibold leading-tight">Annual Marketing
+                                        Summit 2024</p>
                                     <p class="text-[#60A5FA] font-semibold text-xs">Conference</p>
                                 </div>
                             </div>
-                            <p class="px-3 py-1 bg-[#22C55E]/20 text-green-400 text-xs font-semibold rounded-full">
+                            <p
+                                class="px-3 py-1 bg-[#22C55E]/20 text-green-400 text-xs font-semibold rounded-full whitespace-nowrap self-start sm:self-auto">
                                 Active
                             </p>
                         </div>
                         <div class="text-[#D1D5DB]">
                             <div>
-                                <div class="flex items-center gap-5 mt-2 text-sm">
+                                <div
+                                    class="flex flex-wrap items-center gap-x-3 sm:gap-x-5 gap-y-2 mt-2 text-xs sm:text-sm">
                                     <div class="flex items-center gap-3 mb-2 mt-2 text-[#D1D5DB]">
                                         <img src="assets/date-y.svg" alt="Phone">
                                         <p>2024-03-15</p>
@@ -375,18 +379,20 @@
                                         <p>09:00 AM</p>
                                     </div>
                                 </div>
-                                <div class="flex items-center gap-3">
-                                    <img src="assets/location-y.svg" alt="Email">
+                                <div class="flex items-center gap-2 sm:gap-3">
+                                    <img src="assets/location-y.svg" alt="Email" class="flex-shrink-0">
                                     <p>Convention Center, New York</p>
                                 </div>
                             </div>
-                            <div class="flex items-center justify-between p-3 mt-4 mb-4 bg-white/5 bg-blur rounded-lg">
-                                <p class="text-[#FACC15]">madw.es/summit24</p>
-                                <img src="assets/copy.svg" alt="Copy">
+                            <div
+                                class="flex items-center justify-between p-2 sm:p-3 mt-3 sm:mt-4 mb-3 sm:mb-4 bg-white/5 bg-blur rounded-lg gap-2">
+                                <p class="text-[#FACC15] text-xs sm:text-sm truncate">madw.es/summit24</p>
+                                <img src="assets/copy.svg" alt="Copy" class="flex-shrink-0 cursor-pointer">
                             </div>
                         </div>
-                        <div class="flex items-center justify-between font-light gap-2 border-t border-white/10 pt-5">
-                            <div class="flex items-center justify-between gap-5">
+                        <div
+                            class="flex flex-col sm:flex-row items-start sm:items-center justify-between font-light gap-3 sm:gap-2 border-t border-white/10 pt-4 sm:pt-5">
+                            <div class="flex items-center flex-wrap gap-x-3 sm:gap-x-5 gap-y-2">
                                 <div class="flex items-center justify-between gap-2">
                                     <img src="assets/rsvps.svg" alt="RSVPs" class="w-4 h-4">
                                     <p class="text-[#9CA3AF] text-sm">2024-03-15</p>
@@ -395,8 +401,8 @@
                                     <p class="text-[#6B7280] text-xs">09:00 AM</p>
                                 </div>
                             </div>
-                            <div class="flex items-center gap-5">
-                                <button class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <div class="flex items-center gap-3 sm:gap-5">
+                                <button class="text-gray-400 hover:text-blue-400 transition-colors p-1">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
                                         <path fill="currentColor" d="M3 12h2v9H3zm16-4h2v13h-2zm-8-6h2v19h-2z" />
                                     </svg>
@@ -419,30 +425,33 @@
                         </div>
                     </div>
                     <!-- Card 2 -->
-                    <div class="bg-white/5 border border-white/10 bg-blur p-6 rounded-xl w-full relative">
+                    <div class="bg-white/5 border border-white/10 bg-blur p-4 sm:p-6 rounded-xl w-full relative">
                         <!-- Gradient Top Border -->
                         <div
                             class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[#C084FC] to-[#9333EA] rounded-t-lg">
                         </div>
 
-                        <div class="flex items-start justify-between mt-6">
-                            <div class="flex items-center justify-center gap-4 mb-5">
+                        <div class="flex flex-col sm:flex-row items-start justify-between mt-4 sm:mt-6 gap-3">
+                            <div class="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-5">
                                 <div
-                                    class="w-12 h-12 rounded-lg bg-gradient-to-r from-[#C084FC] to-[#9333EA] flex items-center justify-center">
-                                    <img src="assets/webinar.svg" alt="Webinar" class="h-5 w-5">
+                                    class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-r from-[#C084FC] to-[#9333EA] flex items-center justify-center flex-shrink-0">
+                                    <img src="assets/webinar.svg" alt="Webinar" class="h-4 w-4 sm:h-5 sm:w-5">
                                 </div>
                                 <div>
-                                    <p class="text-lg mb-1 font-semibold">Product Launch Webinar</p>
+                                    <p class="text-base sm:text-lg mb-1 font-semibold leading-tight">Product Launch
+                                        Webinar</p>
                                     <p class="text-[#60A5FA] font-semibold text-xs">Webinar</p>
                                 </div>
                             </div>
-                            <p class="px-3 py-1 bg-[#22C55E]/20 text-green-400 text-xs font-semibold rounded-full">
+                            <p
+                                class="px-3 py-1 bg-[#22C55E]/20 text-green-400 text-xs font-semibold rounded-full whitespace-nowrap self-start sm:self-auto">
                                 Active
                             </p>
                         </div>
                         <div class="text-[#D1D5DB]">
                             <div>
-                                <div class="flex items-center gap-5 mt-2 text-sm">
+                                <div
+                                    class="flex flex-wrap items-center gap-x-3 sm:gap-x-5 gap-y-2 mt-2 text-xs sm:text-sm">
                                     <div class="flex items-center gap-3 mb-2 mt-2 text-[#D1D5DB]">
                                         <img src="assets/date-y.svg" alt="Phone">
                                         <p>2024-02-28</p>
@@ -452,18 +461,20 @@
                                         <p>02:00 PM</p>
                                     </div>
                                 </div>
-                                <div class="flex items-center gap-3">
-                                    <img src="assets/location-y.svg" alt="Email">
+                                <div class="flex items-center gap-2 sm:gap-3">
+                                    <img src="assets/location-y.svg" alt="Email" class="flex-shrink-0">
                                     <p>Online Event</p>
                                 </div>
                             </div>
-                            <div class="flex items-center justify-between p-3 mt-4 mb-4 bg-white/5 bg-blur rounded-lg">
-                                <p class="text-[#FACC15]">madw.es/webinar</p>
-                                <img src="assets/copy.svg" alt="Copy">
+                            <div
+                                class="flex items-center justify-between p-2 sm:p-3 mt-3 sm:mt-4 mb-3 sm:mb-4 bg-white/5 bg-blur rounded-lg gap-2">
+                                <p class="text-[#FACC15] text-xs sm:text-sm truncate">madw.es/webinar</p>
+                                <img src="assets/copy.svg" alt="Copy" class="flex-shrink-0 cursor-pointer">
                             </div>
                         </div>
-                        <div class="flex items-center justify-between font-light gap-2 border-t border-white/10 pt-5">
-                            <div class="flex items-center justify-between gap-5">
+                        <div
+                            class="flex flex-col sm:flex-row items-start sm:items-center justify-between font-light gap-3 sm:gap-2 border-t border-white/10 pt-4 sm:pt-5">
+                            <div class="flex items-center flex-wrap gap-x-3 sm:gap-x-5 gap-y-2">
                                 <div class="flex items-center justify-between gap-2">
                                     <img src="assets/rsvps.svg" alt="RSVPs" class="w-4 h-4">
                                     <p class="text-[#9CA3AF] text-sm">892 RSVPs</p>
@@ -472,8 +483,8 @@
                                     <p class="text-[#6B7280] text-xs">2024-01-19</p>
                                 </div>
                             </div>
-                            <div class="flex items-center gap-5">
-                                <button class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <div class="flex items-center gap-3 sm:gap-5">
+                                <button class="text-gray-400 hover:text-blue-400 transition-colors p-1">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
                                         <path fill="currentColor" d="M3 12h2v9H3zm16-4h2v13h-2zm-8-6h2v19h-2z" />
                                     </svg>
@@ -496,30 +507,33 @@
                         </div>
                     </div>
                     <!-- Card 3 -->
-                    <div class="bg-white/5 border border-white/10 bg-blur p-6 rounded-xl w-full relative">
+                    <div class="bg-white/5 border border-white/10 bg-blur p-4 sm:p-6 rounded-xl w-full relative">
                         <!-- Gradient Top Border -->
                         <div
                             class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[#FB923C] to-[#EA580C] rounded-t-lg">
                         </div>
 
-                        <div class="flex items-start justify-between mt-6">
-                            <div class="flex items-center justify-center gap-4 mb-5">
+                        <div class="flex flex-col sm:flex-row items-start justify-between mt-4 sm:mt-6 gap-3">
+                            <div class="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-5">
                                 <div
-                                    class="w-12 h-12 rounded-lg bg-gradient-to-r from-[#FB923C] to-[#EA580C] flex items-center justify-center">
-                                    <img src="assets/workshop.svg" alt="Workshop" class="h-5 w-5">
+                                    class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-r from-[#FB923C] to-[#EA580C] flex items-center justify-center flex-shrink-0">
+                                    <img src="assets/workshop.svg" alt="Workshop" class="h-4 w-4 sm:h-5 sm:w-5">
                                 </div>
                                 <div>
-                                    <p class="text-lg mb-1 font-semibold">Team Building Workshop</p>
+                                    <p class="text-base sm:text-lg mb-1 font-semibold leading-tight">Team Building
+                                        Workshop</p>
                                     <p class="text-[#60A5FA] font-semibold text-xs">Workshop</p>
                                 </div>
                             </div>
-                            <p class="px-3 py-1 bg-[#22C55E]/20 text-green-400 text-xs font-semibold rounded-full">
+                            <p
+                                class="px-3 py-1 bg-[#22C55E]/20 text-green-400 text-xs font-semibold rounded-full whitespace-nowrap self-start sm:self-auto">
                                 Active
                             </p>
                         </div>
                         <div class="text-[#D1D5DB]">
                             <div>
-                                <div class="flex items-center gap-5 mt-2 text-sm">
+                                <div
+                                    class="flex flex-wrap items-center gap-x-3 sm:gap-x-5 gap-y-2 mt-2 text-xs sm:text-sm">
                                     <div class="flex items-center gap-3 mb-2 mt-2 text-[#D1D5DB]">
                                         <img src="assets/date-y.svg" alt="Phone">
                                         <p>2024-02-20</p>
@@ -529,18 +543,20 @@
                                         <p>10:00 AM</p>
                                     </div>
                                 </div>
-                                <div class="flex items-center gap-3">
-                                    <img src="assets/location-y.svg" alt="Email">
+                                <div class="flex items-center gap-2 sm:gap-3">
+                                    <img src="assets/location-y.svg" alt="Email" class="flex-shrink-0">
                                     <p>Company Headquarters</p>
                                 </div>
                             </div>
-                            <div class="flex items-center justify-between p-3 mt-4 mb-4 bg-white/5 bg-blur rounded-lg">
-                                <p class="text-[#FACC15]">madw.es/team</p>
-                                <img src="assets/copy.svg" alt="Copy">
+                            <div
+                                class="flex items-center justify-between p-2 sm:p-3 mt-3 sm:mt-4 mb-3 sm:mb-4 bg-white/5 bg-blur rounded-lg gap-2">
+                                <p class="text-[#FACC15] text-xs sm:text-sm truncate">madw.es/team</p>
+                                <img src="assets/copy.svg" alt="Copy" class="flex-shrink-0 cursor-pointer">
                             </div>
                         </div>
-                        <div class="flex items-center justify-between font-light gap-2 border-t border-white/10 pt-5">
-                            <div class="flex items-center justify-between gap-5">
+                        <div
+                            class="flex flex-col sm:flex-row items-start sm:items-center justify-between font-light gap-3 sm:gap-2 border-t border-white/10 pt-4 sm:pt-5">
+                            <div class="flex items-center flex-wrap gap-x-3 sm:gap-x-5 gap-y-2">
                                 <div class="flex items-center justify-between gap-2">
                                     <img src="assets/rsvps.svg" alt="RSVPs" class="w-4 h-4">
                                     <p class="text-[#9CA3AF] text-sm">456 RSVPs</p>
@@ -549,8 +565,8 @@
                                     <p class="text-[#6B7280] text-xs">2024-01-18</p>
                                 </div>
                             </div>
-                            <div class="flex items-center gap-5">
-                                <button class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <div class="flex items-center gap-3 sm:gap-5">
+                                <button class="text-gray-400 hover:text-blue-400 transition-colors p-1">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
                                         <path fill="currentColor" d="M3 12h2v9H3zm16-4h2v13h-2zm-8-6h2v19h-2z" />
                                     </svg>
@@ -573,30 +589,33 @@
                         </div>
                     </div>
                     <!-- Card 4 -->
-                    <div class="bg-white/5 border border-white/10 bg-blur p-6 rounded-xl w-full relative">
+                    <div class="bg-white/5 border border-white/10 bg-blur p-4 sm:p-6 rounded-xl w-full relative">
                         <!-- Gradient Top Border -->
                         <div
                             class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[#4ADE80] to-[#16A34A] rounded-t-lg">
                         </div>
 
-                        <div class="flex items-start justify-between mt-6">
-                            <div class="flex items-center justify-center gap-4 mb-5">
+                        <div class="flex flex-col sm:flex-row items-start justify-between mt-4 sm:mt-6 gap-3">
+                            <div class="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-5">
                                 <div
-                                    class="w-12 h-12 rounded-lg bg-gradient-to-r from-[#4ADE80] to-[#16A34A] flex items-center justify-center">
-                                    <img src="assets/directory-w.svg" alt="Networking" class="h-5 w-5">
+                                    class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-r from-[#4ADE80] to-[#16A34A] flex items-center justify-center flex-shrink-0">
+                                    <img src="assets/directory-w.svg" alt="Networking" class="h-4 w-4 sm:h-5 sm:w-5">
                                 </div>
                                 <div>
-                                    <p class="text-lg mb-1 font-semibold">Networking Mixer</p>
+                                    <p class="text-base sm:text-lg mb-1 font-semibold leading-tight">Networking Mixer
+                                    </p>
                                     <p class="text-[#60A5FA] font-semibold text-xs">Networking</p>
                                 </div>
                             </div>
-                            <p class="px-3 py-1 bg-[#22C55E]/20 text-green-400 text-xs font-semibold rounded-full">
+                            <p
+                                class="px-3 py-1 bg-[#22C55E]/20 text-green-400 text-xs font-semibold rounded-full whitespace-nowrap self-start sm:self-auto">
                                 Active
                             </p>
                         </div>
                         <div class="text-[#D1D5DB]">
                             <div>
-                                <div class="flex items-center gap-5 mt-2 text-sm">
+                                <div
+                                    class="flex flex-wrap items-center gap-x-3 sm:gap-x-5 gap-y-2 mt-2 text-xs sm:text-sm">
                                     <div class="flex items-center gap-3 mb-2 mt-2 text-[#D1D5DB]">
                                         <img src="assets/date-y.svg" alt="Phone">
                                         <p>2024-02-15</p>
@@ -606,18 +625,20 @@
                                         <p>06:00 PM</p>
                                     </div>
                                 </div>
-                                <div class="flex items-center gap-3">
-                                    <img src="assets/location-y.svg" alt="Email">
+                                <div class="flex items-center gap-2 sm:gap-3">
+                                    <img src="assets/location-y.svg" alt="Email" class="flex-shrink-0">
                                     <p>Downtown Hotel</p>
                                 </div>
                             </div>
-                            <div class="flex items-center justify-between p-3 mt-4 mb-4 bg-white/5 bg-blur rounded-lg">
-                                <p class="text-[#FACC15]">madw.es/mixer</p>
-                                <img src="assets/copy.svg" alt="Copy">
+                            <div
+                                class="flex items-center justify-between p-2 sm:p-3 mt-3 sm:mt-4 mb-3 sm:mb-4 bg-white/5 bg-blur rounded-lg gap-2">
+                                <p class="text-[#FACC15] text-xs sm:text-sm truncate">madw.es/mixer</p>
+                                <img src="assets/copy.svg" alt="Copy" class="flex-shrink-0 cursor-pointer">
                             </div>
                         </div>
-                        <div class="flex items-center justify-between font-light gap-2 border-t border-white/10 pt-5">
-                            <div class="flex items-center justify-between gap-5">
+                        <div
+                            class="flex flex-col sm:flex-row items-start sm:items-center justify-between font-light gap-3 sm:gap-2 border-t border-white/10 pt-4 sm:pt-5">
+                            <div class="flex items-center flex-wrap gap-x-3 sm:gap-x-5 gap-y-2">
                                 <div class="flex items-center justify-between gap-2">
                                     <img src="assets/rsvps.svg" alt="RSVPs" class="w-4 h-4">
                                     <p class="text-[#9CA3AF] text-sm">678 RSVPs</p>
@@ -626,8 +647,8 @@
                                     <p class="text-[#6B7280] text-xs">2024-01-17</p>
                                 </div>
                             </div>
-                            <div class="flex items-center gap-5">
-                                <button class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <div class="flex items-center gap-3 sm:gap-5">
+                                <button class="text-gray-400 hover:text-blue-400 transition-colors p-1">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
                                         <path fill="currentColor" d="M3 12h2v9H3zm16-4h2v13h-2zm-8-6h2v19h-2z" />
                                     </svg>
@@ -650,30 +671,33 @@
                         </div>
                     </div>
                     <!-- Card 5 -->
-                    <div class="bg-white/5 border border-white/10 bg-blur p-6 rounded-xl w-full relative">
+                    <div class="bg-white/5 border border-white/10 bg-blur p-4 sm:p-6 rounded-xl w-full relative">
                         <!-- Gradient Top Border -->
                         <div
                             class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[#FACC15] to-[#CA8A04] rounded-t-lg">
                         </div>
 
-                        <div class="flex items-start justify-between mt-6">
-                            <div class="flex items-center justify-center gap-4 mb-5">
+                        <div class="flex flex-col sm:flex-row items-start justify-between mt-4 sm:mt-6 gap-3">
+                            <div class="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-5">
                                 <div
-                                    class="w-12 h-12 rounded-lg bg-gradient-to-r from-[#FACC15] to-[#CA8A04] flex items-center justify-center">
-                                    <img src="assets/training.svg" alt="Training" class="h-5 w-5">
+                                    class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-r from-[#FACC15] to-[#CA8A04] flex items-center justify-center flex-shrink-0">
+                                    <img src="assets/training.svg" alt="Training" class="h-4 w-4 sm:h-5 sm:w-5">
                                 </div>
                                 <div>
-                                    <p class="text-lg mb-1 font-semibold">Training Session - Digital Marketing</p>
+                                    <p class="text-base sm:text-lg mb-1 font-semibold leading-tight">Training Session -
+                                        Digital Marketing</p>
                                     <p class="text-[#60A5FA] font-semibold text-xs">Training</p>
                                 </div>
                             </div>
-                            <p class="px-3 py-1 bg-[#6B7280]/20 text-[#9CA3AF] text-xs font-semibold rounded-full">
+                            <p
+                                class="px-3 py-1 bg-[#6B7280]/20 text-[#9CA3AF] text-xs font-semibold rounded-full whitespace-nowrap self-start sm:self-auto">
                                 Paused
                             </p>
                         </div>
                         <div class="text-[#D1D5DB]">
                             <div>
-                                <div class="flex items-center gap-5 mt-2 text-sm">
+                                <div
+                                    class="flex flex-wrap items-center gap-x-3 sm:gap-x-5 gap-y-2 mt-2 text-xs sm:text-sm">
                                     <div class="flex items-center gap-3 mb-2 mt-2 text-[#D1D5DB]">
                                         <img src="assets/date-y.svg" alt="Phone">
                                         <p>2024-02-10</p>
@@ -683,18 +707,20 @@
                                         <p>01:00 PM</p>
                                     </div>
                                 </div>
-                                <div class="flex items-center gap-3">
-                                    <img src="assets/location-y.svg" alt="Email">
+                                <div class="flex items-center gap-2 sm:gap-3">
+                                    <img src="assets/location-y.svg" alt="Email" class="flex-shrink-0">
                                     <p>Training Center</p>
                                 </div>
                             </div>
-                            <div class="flex items-center justify-between p-3 mt-4 mb-4 bg-white/5 bg-blur rounded-lg">
-                                <p class="text-[#FACC15]">madw.es/training</p>
-                                <img src="assets/copy.svg" alt="Copy">
+                            <div
+                                class="flex items-center justify-between p-2 sm:p-3 mt-3 sm:mt-4 mb-3 sm:mb-4 bg-white/5 bg-blur rounded-lg gap-2">
+                                <p class="text-[#FACC15] text-xs sm:text-sm truncate">madw.es/training</p>
+                                <img src="assets/copy.svg" alt="Copy" class="flex-shrink-0 cursor-pointer">
                             </div>
                         </div>
-                        <div class="flex items-center justify-between font-light gap-2 border-t border-white/10 pt-5">
-                            <div class="flex items-center justify-between gap-5">
+                        <div
+                            class="flex flex-col sm:flex-row items-start sm:items-center justify-between font-light gap-3 sm:gap-2 border-t border-white/10 pt-4 sm:pt-5">
+                            <div class="flex items-center flex-wrap gap-x-3 sm:gap-x-5 gap-y-2">
                                 <div class="flex items-center justify-between gap-2">
                                     <img src="assets/rsvps.svg" alt="RSVPs" class="w-4 h-4">
                                     <p class="text-[#9CA3AF] text-sm">234 RSVPs</p>
@@ -703,8 +729,8 @@
                                     <p class="text-[#6B7280] text-xs">2024-01-16</p>
                                 </div>
                             </div>
-                            <div class="flex items-center gap-5">
-                                <button class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <div class="flex items-center gap-3 sm:gap-5">
+                                <button class="text-gray-400 hover:text-blue-400 transition-colors p-1">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
                                         <path fill="currentColor" d="M3 12h2v9H3zm16-4h2v13h-2zm-8-6h2v19h-2z" />
                                     </svg>
@@ -727,30 +753,33 @@
                         </div>
                     </div>
                     <!-- Card 6 -->
-                    <div class="bg-white/5 border border-white/10 bg-blur p-6 rounded-xl w-full relative">
+                    <div class="bg-white/5 border border-white/10 bg-blur p-4 sm:p-6 rounded-xl w-full relative">
                         <!-- Gradient Top Border -->
                         <div
                             class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[#F472B6] to-[#DB2777] rounded-t-lg">
                         </div>
 
-                        <div class="flex items-start justify-between mt-6">
-                            <div class="flex items-center justify-center gap-4 mb-5">
+                        <div class="flex flex-col sm:flex-row items-start justify-between mt-4 sm:mt-6 gap-3">
+                            <div class="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-5">
                                 <div
-                                    class="w-12 h-12 rounded-lg bg-gradient-to-r from-[#F472B6] to-[#DB2777] flex items-center justify-center">
-                                    <img src="assets/social.svg" alt="Social" class="h-5 w-5">
+                                    class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-r from-[#F472B6] to-[#DB2777] flex items-center justify-center flex-shrink-0">
+                                    <img src="assets/social.svg" alt="Social" class="h-4 w-4 sm:h-5 sm:w-5">
                                 </div>
                                 <div>
-                                    <p class="text-lg mb-1 font-semibold">Client Appreciation Dinner</p>
+                                    <p class="text-base sm:text-lg mb-1 font-semibold leading-tight">Client Appreciation
+                                        Dinner</p>
                                     <p class="text-[#60A5FA] font-semibold text-xs">Social</p>
                                 </div>
                             </div>
-                            <p class="px-3 py-1 bg-[#22C55E]/20 text-green-400 text-xs font-semibold rounded-full">
+                            <p
+                                class="px-3 py-1 bg-[#22C55E]/20 text-green-400 text-xs font-semibold rounded-full whitespace-nowrap self-start sm:self-auto">
                                 Active
                             </p>
                         </div>
                         <div class="text-[#D1D5DB]">
                             <div>
-                                <div class="flex items-center gap-5 mt-2 text-sm">
+                                <div
+                                    class="flex flex-wrap items-center gap-x-3 sm:gap-x-5 gap-y-2 mt-2 text-xs sm:text-sm">
                                     <div class="flex items-center gap-3 mb-2 mt-2 text-[#D1D5DB]">
                                         <img src="assets/date-y.svg" alt="Phone">
                                         <p>2024-03-01</p>
@@ -760,18 +789,20 @@
                                         <p>07:00 PM</p>
                                     </div>
                                 </div>
-                                <div class="flex items-center gap-3">
-                                    <img src="assets/location-y.svg" alt="Email">
+                                <div class="flex items-center gap-2 sm:gap-3">
+                                    <img src="assets/location-y.svg" alt="Email" class="flex-shrink-0">
                                     <p>Grand Restaurant</p>
                                 </div>
                             </div>
-                            <div class="flex items-center justify-between p-3 mt-4 mb-4 bg-white/5 bg-blur rounded-lg">
-                                <p class="text-[#FACC15]">madw.es/dinner</p>
-                                <img src="assets/copy.svg" alt="Copy">
+                            <div
+                                class="flex items-center justify-between p-2 sm:p-3 mt-3 sm:mt-4 mb-3 sm:mb-4 bg-white/5 bg-blur rounded-lg gap-2">
+                                <p class="text-[#FACC15] text-xs sm:text-sm truncate">madw.es/dinner</p>
+                                <img src="assets/copy.svg" alt="Copy" class="flex-shrink-0 cursor-pointer">
                             </div>
                         </div>
-                        <div class="flex items-center justify-between font-light gap-2 border-t border-white/10 pt-5">
-                            <div class="flex items-center justify-between gap-5">
+                        <div
+                            class="flex flex-col sm:flex-row items-start sm:items-center justify-between font-light gap-3 sm:gap-2 border-t border-white/10 pt-4 sm:pt-5">
+                            <div class="flex items-center flex-wrap gap-x-3 sm:gap-x-5 gap-y-2">
                                 <div class="flex items-center justify-between gap-2">
                                     <img src="assets/rsvps.svg" alt="RSVPs" class="w-4 h-4">
                                     <p class="text-[#9CA3AF] text-sm">567 RSVPs</p>
@@ -780,8 +811,8 @@
                                     <p class="text-[#6B7280] text-xs">2024-01-15</p>
                                 </div>
                             </div>
-                            <div class="flex items-center gap-5">
-                                <button class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <div class="flex items-center gap-3 sm:gap-5">
+                                <button class="text-gray-400 hover:text-blue-400 transition-colors p-1">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
                                         <path fill="currentColor" d="M3 12h2v9H3zm16-4h2v13h-2zm-8-6h2v19h-2z" />
                                     </svg>
@@ -804,26 +835,26 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Pagination -->
-            <div class="flex flex-wrap items-center justify-center mb-10 gap-1 sm:gap-2 px-4">
-                <button
-                    class="px-3 sm:px-4 py-2 bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-gray-500 rounded-lg transition-colors text-xs sm:text-sm">
-                    Previous
-                </button>
-                <button
-                    class="px-3 sm:px-4 py-2 bg-gradient-to-r from-[#FACC15] to-[#EAB308] text-black font-semibold rounded-lg text-xs sm:text-sm">
-                    1
-                </button>
-                <button
-                    class="px-3 sm:px-4 py-2 bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-gray-500 rounded-lg transition-colors text-xs sm:text-sm">
-                    2
-                </button>
-                <button
-                    class="px-3 sm:px-4 py-2 bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-gray-500 rounded-lg transition-colors text-xs sm:text-sm">
-                    Next
-                </button>
-            </div>
+                <div class="flex flex-wrap items-center justify-center mb-10 gap-1 sm:gap-2 px-4">
+                    <button
+                        class="px-3 sm:px-4 py-2 bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-gray-500 rounded-lg transition-colors text-xs sm:text-sm">
+                        Previous
+                    </button>
+                    <button
+                        class="px-3 sm:px-4 py-2 bg-gradient-to-r from-[#FACC15] to-[#EAB308] text-black font-semibold rounded-lg text-xs sm:text-sm">
+                        1
+                    </button>
+                    <button
+                        class="px-3 sm:px-4 py-2 bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-gray-500 rounded-lg transition-colors text-xs sm:text-sm">
+                        2
+                    </button>
+                    <button
+                        class="px-3 sm:px-4 py-2 bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-gray-500 rounded-lg transition-colors text-xs sm:text-sm">
+                        Next
+                    </button>
+                </div>
         </main>
     </div>
 
