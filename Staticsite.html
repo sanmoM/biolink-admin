@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madwess</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Roboto', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: {
+                            900: '#0f1014', // Main bg
+                            800: '#18191d', // Card/Sidebar bg
+                            700: '#222328', // Hover/Border
+                        },
+                        accent: {
+                            yellow: '#fbbf24',
+                            blue: '#3b82f6',
+                            purple: '#a855f7',
+                            grey: '#374151',
+                            green: '#22c55e',
+                            green_dim: 'rgba(34, 197, 94, 0.1)',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            color: #FFFFFF;
+        }
+
+        .overflow-y-auto::-webkit-scrollbar {
+            display: none;
+        }
+
+        .overflow-x-auto::-webkit-scrollbar {
+            display: none;
+        }
+
+        .overflow-y-auto {
+            scrollbar-width: none;
+        }
+
+        .overflow-x-auto {
+            scrollbar-width: none;
+        }
+
+        .bg-blur {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav
+        class="sticky top-0 z-50 flex items-center bg-black justify-between px-6 py-3 bg-[#18191d] border-b border-[#EAB308]/20">
+
+        <!-- Left: Logo & Mobile Toggle -->
+        <div class="flex items-center gap-4">
+            <button id="mobile-menu-toggle"
+                class="lg:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+            <img src="assets/logo.png" alt="Madwess Logo" class="h-12 w-auto">
+        </div>
+
+        <!-- Center: Search -->
+        <div class="hidden sm:flex flex-1 max-w-[500px] mx-auto">
+            <div class="relative w-full">
+                <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm"></i>
+                <input type="text" placeholder="Search events, locations..."
+                    class="w-full pl-10 pr-4 py-2 bg-white/5 border border-[#9CA3AF]/20 rounded-md text-sm text-white font-medium placeholder-gray-500 focus:outline-none focus:border-gray-500 focus:bg-[#14151a] transition" />
+            </div>
+        </div>
+
+        <!-- Right: Notification + Profile -->
+        <div class="flex items-center gap-4">
+
+            <!-- Notification -->
+            <div
+                class="relative w-9 h-9 flex items-center justify-center rounded-lg cursor-pointer hover:bg-[#1a1b20] transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24">
+                    <path fill="white" d="M20 17h2v2H2v-2h2v-7a8 8 0 1 1 16 0zm-2 0v-7a6 6 0 0 0-12 0v7zm-9 4h6v2H9z" />
+                </svg> <span
+                    class="absolute top-1 right-1 w-3 h-3 bg-yellow-400 rounded-full border-2 border-[#18191d]"></span>
+            </div>
+
+            <!-- Profile -->
+            <div
+                class="w-8 h-8 flex items-center justify-center rounded-full bg-gradient-to-r from-[#FACC15] to-[#3B82F6] text-sm font-bold text-black cursor-pointer hover:scale-105 transition">
+                JD
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- Dashboard -->
+    <div class="flex h-screen overflow-hidden text-sm">
+        <!-- Sidebar -->
+        <aside id="sidebar"
+            class="w-64 bg-black border-r border-[#EAB308]/20 flex flex-col h-full flex-shrink-0 fixed lg:static inset-y-0 left-0 z-40 -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out">
+
+            <!-- Navigation -->
+            <nav class="flex-1 mt-5 px-4 overflow-y-auto space-y-1">
+                <a href="dashboard.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/dashboard.svg" alt="Dashboard" class="h-5 w-5">
+                    <span class="font-medium">Dashboard</span>
+                </a>
+
+                <a href="biolink.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+
+                    <img src="assets/biolink-icon.svg" alt="Biolink Pages" class="h-5 w-5">
+                    <span>Biolink Pages</span>
+                </a>
+
+                <a href="shortened.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/shortened.svg" alt="Shortened Links" class="h-5 w-5">
+                    <span>Shortened Links</span>
+                </a>
+
+                <a href="filelinks.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/file.svg" alt="File Links" class="h-5 w-5">
+                    <span>File Links</span>
+                </a>
+
+                <a href="v-card.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+
+                    <img src="assets/vcard.svg" alt="Vcard Links" class="h-5 w-5">
+                    <span>Vcard Links</span>
+                </a>
+
+                <a href="eventlinks.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/event.svg" alt="Event Links" class="h-5 w-5">
+                    <span>Event Links</span>
+                </a>
+
+                <a href="Staticsite.html"
+                    class="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-[#FACC15]/20 to-[#3B82F6]/20 text-[#FACC15] rounded-lg border-2 border-yellow-400/20 shadow-[0_0_15px_rgba(251,191,36,0.1)]">
+                    <img src="assets/static-y.svg" alt="Static Sites" class="h-5 w-5">
+                    <span>Static Sites</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/statistics.svg" alt="Links Statistics" class="h-5 w-5">
+                    <span>Links Statistics</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/qrcode.svg" alt="QR Codes" class="h-5 w-5">
+                    <span>QR Codes</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/domain.svg" alt="Custom Domains" class="h-5 w-5">
+                    <span>Custom Domains</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/notification.svg" alt="Notification Handlers" class="h-5 w-5">
+                    <span>Notification Handlers</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/pixels.svg" alt="Pixels" class="h-5 w-5">
+                    <span>Pixels</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/splash.svg" alt="Splash Pages" class="h-5 w-5">
+                    <span>Splash Pages</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/data.svg" alt="Data" class="h-5 w-5">
+                    <span>Data</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/directory.svg" alt="Directory" class="h-5 w-5">
+                    <span>Directory</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main
+            class="flex-1 flex flex-col overflow-y-auto bg-gradient-to-br from-[#111827] via-[#000000] to-[#111827] relative">
+
+            <!-- Overlay for mobile sidebar -->
+            <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-30 hidden lg:hidden"></div>
+
+            <div class="p-4 sm:p-8 mx-auto w-full space-y-6">
+
+                <!-- Header -->
+                <header class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <h1 class="text-2xl sm:text-3xl font-bold text-white mb-2">Static Sites</h1>
+                        <p class="text-gray-400 text-sm sm:text-base">Build and manage your static websites
+                        </p>
+                    </div>
+                    <button
+                        class="w-full md:w-auto flex items-center justify-center gap-2 bg-gradient-to-br from-[#FACC15] to-[#EAB308] hover:outline outline-offset-2 outline-[#FACC15]/50 text-black font-semibold py-3 px-6 rounded-lg transition-all shadow-[0_0_20px_rgba(251,191,36,0.3)]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M18 12.998h-5v5a1 1 0 0 1-2 0v-5H6a1 1 0 0 1 0-2h5v-5a1 1 0 0 1 2 0v5h5a1 1 0 0 1 0 2" />
+                        </svg>
+                        <span>Create Site</span>
+                    </button>
+                </header>
+
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Total Sites Card -->
+                    <div
+                        class="bg-white/5 border border-white/10 p-6 rounded-xl bg-blur hover:border-[#3B82F6]/40 transition-all shadow-lg">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div
+                                class="w-12 h-12 rounded-lg bg-gradient-to-r from-[#60A5FA] to-[#2563EB] flex items-center justify-center">
+                                <img src="assets/static-w.svg" alt="Static Sites" class="h-5 w-5">
+                            </div>
+                        </div>
+                        <h3 class="text-[#9CA3AF] mb-1">Total Sites</h3>
+                        <p class="text-3xl font-bold text-white tracking-wide">42</p>
+                    </div>
+
+                    <!-- Total visits Card -->
+                    <div
+                        class="bg-white/5 border border-white/10 p-6 rounded-xl bg-blur hover:border-[#22C55E]/40 transition-all shadow-lg">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div
+                                class="w-12 h-12 rounded-lg bg-gradient-to-r from-[#4ADE80] to-[#16A34A] flex items-center justify-center">
+                                <img src="assets/view.svg" alt="Visits" class="h-5 w-5">
+                            </div>
+                        </div>
+                        <h3 class="text-[#9CA3AF] mb-1">Total Visits</h3>
+                        <p class="text-3xl font-bold text-white tracking-wide">15.2K</p>
+                    </div>
+
+                    <!-- Published Sites Card -->
+                    <div
+                        class="bg-white/5 border border-white/10 p-6 rounded-xl bg-blur hover:border-[#F97316]/40 transition-all shadow-lg">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div
+                                class="w-12 h-12 rounded-lg bg-gradient-to-r from-[#FACC15] to-[#F97316] flex items-center justify-center">
+                                <img src="assets/tick.svg" alt="Published" class="h-5 w-5">
+                            </div>
+                        </div>
+                        <h3 class="text-[#9CA3AF] mb-1">Published</h3>
+                        <p class="text-3xl font-bold text-white tracking-wide">38</p>
+                    </div>
+
+                    <!-- Total Pages Card -->
+                    <div
+                        class="bg-white/5 border border-white/10 p-6 rounded-xl bg-blur hover:border-[#A855F7]/40 transition-all shadow-lg">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div
+                                class="w-12 h-12 rounded-lg bg-gradient-to-r from-[#C084FC] to-[#9333EA] flex items-center justify-center">
+                                <img src="assets/pages.svg" alt="Pages" class="h-5 w-5">
+                            </div>
+                        </div>
+                        <h3 class="text-[#9CA3AF] mb-1">Total Pages</h3>
+                        <p class="text-3xl font-bold text-white tracking-wide">156</p>
+                    </div>
+                </div>
+
+                <!-- Filters and Search -->
+                <div
+                    class="flex flex-col md:flex-row justify-between items-stretch md:items-center bg-white/5 bg-blur-sm border border-[#222328] p-3 sm:p-7 rounded-lg gap-4">
+                    <!-- Tab Filters -->
+                    <div class="flex gap-1 bg-white/10 p-1 rounded-md flex-wrap w-full md:w-auto">
+                        <button
+                            class="flex-1 md:flex-none px-3 sm:px-4 py-2 bg-gradient-to-r from-[#FACC15] to-[#EAB308] text-black font-semibold rounded-md shadow-md text-sm">
+                            All
+                        </button>
+                        <button
+                            class="flex-1 md:flex-none px-3 sm:px-4 py-2 text-[#9CA3AF] hover:text-white hover:bg-[#222328] rounded-md transition-colors text-sm">
+                            Published
+                        </button>
+                        <button
+                            class="flex-1 md:flex-none px-3 sm:px-4 py-2 text-[#9CA3AF] hover:text-white hover:bg-[#222328] rounded-md transition-colors text-sm">
+                            Draft
+                        </button>
+                        <button
+                            class="flex-1 md:flex-none px-3 sm:px-4 py-2 text-[#9CA3AF] hover:text-white hover:bg-[#222328] rounded-md transition-colors text-sm">
+                            Archived
+                        </button>
+                    </div>
+
+                    <!-- Search and Filter -->
+                    <div class="flex flex-col sm:flex-row gap-3 items-center flex-grow md:ml-4">
+                        <div class="relative w-full">
+                            <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"></i>
+                            <input type="text" placeholder="Search sites..."
+                                class="w-full pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white placeholder-[#9CA3AF] focus:outline focus:border-gray-500 transition" />
+                        </div>
+                        <button
+                            class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-2 bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-gray-500 rounded-lg transition-colors whitespace-nowrap text-sm">
+                            <i class="fas fa-filter"></i>
+                            <span>Filter</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Events Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+
+                    <!-- Card 1 -->
+                    <div class="rounded-lg overflow-hidden bg-white/5 border border-white/10 bg-blur">
+                        <div class="relative bg-gradient-to-r from-[#1F2937] to-[#111827] p-16 flex justify-center">
+                            <span
+                                class="absolute top-4 right-4 text-xs font-semibold px-3 py-1 rounded-full bg-green-500/20 text-green-400">
+                                Published
+                            </span>
+                            <div
+                                class="w-20 h-20 flex items-center justify-center rounded-xl bg-gradient-to-r from-[#60A5FA] to-[#2563EB]">
+                                <img src="assets/portfolio.svg" alt="Portfolio" class="w-7 h-7">
+                            </div>
+                        </div>
+                        <div class="p-6 text-white">
+                            <h2 class="text-xl mb-3 font-bold">Personal Portfolio</h2>
+                            <p class="text-xs font-semibold text-[#60A5FA]">Portfolio Template</p>
+                            <div class="mt-6 flex items-center justify-between bg-white/5 rounded-lg px-4 py-3">
+                                <p class="text-[#FACC15] font-medium">madw.es/portfolio</p>
+                                <div class="flex gap-3">
+                                    <img src="assets/copy.svg" class="cursor-pointer" />
+                                    <img src="assets/send.svg" class=" cursor-pointer" />
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-4 text-center mt-4">
+                                <div>
+                                    <p class="text-xs mb-2 text-gray-400">Pages</p>
+                                    <p class="text-lg font-semibold">5</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs mb-2 text-gray-400">Visits</p>
+                                    <p class="text-lg font-semibold">3,421</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs mb-2 text-gray-400">Updated</p>
+                                    <p class="text-md font-semibold">2024-01-22</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-3 mt-3 border-t border-white/10 pt-3">
+                                <button
+                                    class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-white/5 hover:bg-white/10 transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                                        <path fill="currentColor" d="M3 12h2v9H3zm16-4h2v13h-2zm-8-6h2v19h-2z" />
+                                    </svg>
+                                    Analytics
+                                </button>
+
+                                <button
+                                    class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-yellow-400 hover:bg-yellow-300 text-black font-bold transition">
+                                    <img src="assets/edit.svg" class="w-4 h-4" />
+                                    Edit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="rounded-lg overflow-hidden bg-white/5 border border-white/10 bg-blur">
+                        <div class="relative bg-gradient-to-r from-[#1F2937] to-[#111827] p-16 flex justify-center">
+                            <span
+                                class="absolute top-4 right-4 text-xs font-semibold px-3 py-1 rounded-full bg-green-500/20 text-green-400">
+                                Published
+                            </span>
+                            <div
+                                class="w-20 h-20 flex items-center justify-center rounded-xl bg-gradient-to-r from-[#C084FC] to-[#9333EA]">
+                                <img src="assets/landing.svg" alt="Landing" class="w-7 h-7">
+                            </div>
+                        </div>
+                        <div class="p-6 text-white">
+                            <h2 class="text-xl mb-3 font-bold">Product Landing Page</h2>
+                            <p class="text-xs font-semibold text-[#60A5FA]">Landing Template</p>
+                            <div class="mt-6 flex items-center justify-between bg-white/5 rounded-lg px-4 py-3">
+                                <p class="text-[#FACC15] font-medium">madw.es/product</p>
+                                <div class="flex gap-3">
+                                    <img src="assets/copy.svg" class="cursor-pointer" />
+                                    <img src="assets/send.svg" class=" cursor-pointer" />
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-4 text-center mt-4">
+                                <div>
+                                    <p class="text-xs mb-2 text-gray-400">Pages</p>
+                                    <p class="text-lg font-semibold">3</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs mb-2 text-gray-400">Visits</p>
+                                    <p class="text-lg font-semibold">5,234</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs mb-2 text-gray-400">Updated</p>
+                                    <p class="text-md font-semibold">2024-01-21</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-3 mt-3 border-t border-white/10 pt-3">
+                                <button
+                                    class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-white/5 hover:bg-white/10 transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                                        <path fill="currentColor" d="M3 12h2v9H3zm16-4h2v13h-2zm-8-6h2v19h-2z" />
+                                    </svg>
+                                    Analytics
+                                </button>
+
+                                <button
+                                    class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-yellow-400 hover:bg-yellow-300 text-black font-bold transition">
+                                    <img src="assets/edit.svg" class="w-4 h-4" />
+                                    Edit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="rounded-lg overflow-hidden bg-white/5 border border-white/10 bg-blur">
+                        <div class="relative bg-gradient-to-r from-[#1F2937] to-[#111827] p-16 flex justify-center">
+                            <span
+                                class="absolute top-4 right-4 text-xs font-semibold px-3 py-1 rounded-full bg-green-500/20 text-green-400">
+                                Published
+                            </span>
+                            <div
+                                class="w-20 h-20 flex items-center justify-center rounded-xl bg-gradient-to-r from-[#4ADE80] to-[#16A34A]">
+                                <img src="assets/event-w.svg" alt="Event" class="w-7 h-7">
+                            </div>
+                        </div>
+                        <div class="p-6 text-white">
+                            <h2 class="text-xl mb-3 font-bold">Event Website</h2>
+                            <p class="text-xs font-semibold text-[#60A5FA]">Event Template</p>
+                            <div class="mt-6 flex items-center justify-between bg-white/5 rounded-lg px-4 py-3">
+                                <p class="text-[#FACC15] font-medium">madw.es/event-site</p>
+                                <div class="flex gap-3">
+                                    <img src="assets/copy.svg" class="cursor-pointer" />
+                                    <img src="assets/send.svg" class=" cursor-pointer" />
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-4 text-center mt-4">
+                                <div>
+                                    <p class="text-xs mb-2 text-gray-400">Pages</p>
+                                    <p class="text-lg font-semibold">4</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs mb-2 text-gray-400">Visits</p>
+                                    <p class="text-lg font-semibold">1,892</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs mb-2 text-gray-400">Updated</p>
+                                    <p class="text-md font-semibold">2024-01-20</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-3 mt-3 border-t border-white/10 pt-3">
+                                <button
+                                    class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-white/5 hover:bg-white/10 transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                                        <path fill="currentColor" d="M3 12h2v9H3zm16-4h2v13h-2zm-8-6h2v19h-2z" />
+                                    </svg>
+                                    Analytics
+                                </button>
+
+                                <button
+                                    class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-yellow-400 hover:bg-yellow-300 text-black font-bold transition">
+                                    <img src="assets/edit.svg" class="w-4 h-4" />
+                                    Edit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="rounded-lg overflow-hidden bg-white/5 border border-white/10 bg-blur">
+                        <div class="relative bg-gradient-to-r from-[#1F2937] to-[#111827] p-16 flex justify-center">
+                            <span
+                                class="absolute top-4 right-4 text-xs font-semibold px-3 py-1 rounded-full bg-green-500/20 text-green-400">
+                                Published
+                            </span>
+                            <div
+                                class="w-20 h-20 flex items-center justify-center rounded-xl bg-gradient-to-r from-[#FB923C] to-[#EA580C]">
+                                <img src="assets/social.svg" alt="Social" class="w-7 h-7">
+                            </div>
+                        </div>
+                        <div class="p-6 text-white">
+                            <h2 class="text-xl mb-3 font-bold">Restaurant Menu</h2>
+                            <p class="text-xs font-semibold text-[#60A5FA]">Restaurant Template</p>
+                            <div class="mt-6 flex items-center justify-between bg-white/5 rounded-lg px-4 py-3">
+                                <p class="text-[#FACC15] font-medium">madw.es/menu</p>
+                                <div class="flex gap-3">
+                                    <img src="assets/copy.svg" class="cursor-pointer" />
+                                    <img src="assets/send.svg" class=" cursor-pointer" />
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-4 text-center mt-4">
+                                <div>
+                                    <p class="text-xs mb-2 text-gray-400">Pages</p>
+                                    <p class="text-lg font-semibold">2</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs mb-2 text-gray-400">Visits</p>
+                                    <p class="text-lg font-semibold">2,567</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs mb-2 text-gray-400">Updated</p>
+                                    <p class="text-lg font-semibold">2024-01-19</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-3 mt-3 border-t border-white/10 pt-3">
+                                <button
+                                    class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-white/5 hover:bg-white/10 transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                                        <path fill="currentColor" d="M3 12h2v9H3zm16-4h2v13h-2zm-8-6h2v19h-2z" />
+                                    </svg>
+                                    Analytics
+                                </button>
+
+                                <button
+                                    class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-yellow-400 hover:bg-yellow-300 text-black font-bold transition">
+                                    <img src="assets/edit.svg" class="w-4 h-4" />
+                                    Edit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 5 -->
+                    <div class="rounded-lg overflow-hidden bg-white/5 border border-white/10 bg-blur">
+                        <div class="relative bg-gradient-to-r from-[#1F2937] to-[#111827] p-16 flex justify-center">
+                            <span
+                                class="absolute top-4 right-4 text-xs font-semibold px-3 py-1 rounded-full bg-[#6B7280]/20 text-[#9CA3AF]">
+                                Draft
+                            </span>
+                            <div
+                                class="w-20 h-20 flex items-center justify-center rounded-xl bg-gradient-to-r from-[#F472B6] to-[#DB2777]">
+                                <img src="assets/gallery.svg" alt="Gallery" class="w-7 h-7">
+                            </div>
+                        </div>
+                        <div class="p-6 text-white">
+                            <h2 class="text-xl mb-3 font-bold">Photography Gallery</h2>
+                            <p class="text-xs font-semibold text-[#60A5FA]">Gallery Template</p>
+                            <div class="mt-6 flex items-center justify-between bg-white/5 rounded-lg px-4 py-3">
+                                <p class="text-[#FACC15] font-medium">madw.es/gallery</p>
+                                <div class="flex gap-3">
+                                    <img src="assets/copy.svg" class="cursor-pointer" />
+                                    <img src="assets/send.svg" class=" cursor-pointer" />
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-4 text-center mt-4">
+                                <div>
+                                    <p class="text-xs mb-2 text-gray-400">Pages</p>
+                                    <p class="text-lg font-semibold">6</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs mb-2 text-gray-400">Visits</p>
+                                    <p class="text-lg font-semibold">1,234</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs mb-2 text-gray-400">Updated</p>
+                                    <p class="text-lg font-semibold">2024-01-18</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-3 mt-3 border-t border-white/10 pt-3">
+                                <button
+                                    class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-white/5 hover:bg-white/10 transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                                        <path fill="currentColor" d="M3 12h2v9H3zm16-4h2v13h-2zm-8-6h2v19h-2z" />
+                                    </svg>
+                                    Analytics
+                                </button>
+
+                                <button
+                                    class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-yellow-400 hover:bg-yellow-300 text-black font-bold transition">
+                                    <img src="assets/edit.svg" class="w-4 h-4" />
+                                    Edit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 6 -->
+                    <div class="rounded-lg overflow-hidden bg-white/5 border border-white/10 bg-blur">
+                        <div class="relative bg-gradient-to-r from-[#1F2937] to-[#111827] p-16 flex justify-center">
+                            <span
+                                class="absolute top-4 right-4 text-xs font-semibold px-3 py-1 rounded-full bg-green-500/20 text-green-400">
+                                Published
+                            </span>
+                            <div
+                                class="w-20 h-20 flex items-center justify-center rounded-xl bg-gradient-to-r from-[#FACC15] to-[#CA8A04]">
+                                <img src="assets/b-card.svg" alt="Business Card" class="w-7 h-7">
+                            </div>
+                        </div>
+                        <div class="p-6 text-white">
+                            <h2 class="text-xl mb-3 font-bold">Business Card Site</h2>
+                            <p class="text-xs font-semibold text-[#60A5FA]">Business Template</p>
+                            <div class="mt-6 flex items-center justify-between bg-white/5 rounded-lg px-4 py-3">
+                                <p class="text-[#FACC15] font-medium">madw.es/bizcard</p>
+                                <div class="flex gap-3">
+                                    <img src="assets/copy.svg" class="cursor-pointer" />
+                                    <img src="assets/send.svg" class=" cursor-pointer" />
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-4 text-center mt-4">
+                                <div>
+                                    <p class="text-xs mb-2 text-gray-400">Pages</p>
+                                    <p class="text-lg font-semibold">1</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs mb-2 text-gray-400">Visits</p>
+                                    <p class="text-lg font-semibold">892</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs mb-2 text-gray-400">Updated</p>
+                                    <p class="text-lg font-semibold">2024-01-17</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-3 mt-3 border-t border-white/10 pt-3">
+                                <button
+                                    class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-white/5 hover:bg-white/10 transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                                        <path fill="currentColor" d="M3 12h2v9H3zm16-4h2v13h-2zm-8-6h2v19h-2z" />
+                                    </svg>
+                                    Analytics
+                                </button>
+
+                                <button
+                                    class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-yellow-400 hover:bg-yellow-300 text-black font-bold transition">
+                                    <img src="assets/edit.svg" class="w-4 h-4" />
+                                    Edit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!-- Pagination -->
+                <div class="flex flex-wrap items-center justify-center mb-10 gap-1 sm:gap-2 px-4">
+                    <button
+                        class="px-3 sm:px-4 py-2 bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-gray-500 rounded-lg transition-colors text-xs sm:text-sm">
+                        Previous
+                    </button>
+                    <button
+                        class="px-3 sm:px-4 py-2 bg-gradient-to-r from-[#FACC15] to-[#EAB308] text-black font-semibold rounded-lg text-xs sm:text-sm">
+                        1
+                    </button>
+                    <button
+                        class="px-3 sm:px-4 py-2 bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-gray-500 rounded-lg transition-colors text-xs sm:text-sm">
+                        2
+                    </button>
+                    <button
+                        class="px-3 sm:px-4 py-2 bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-gray-500 rounded-lg transition-colors text-xs sm:text-sm">
+                        Next
+                    </button>
+                </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+        function toggleMobileMenu() {
+            const isClosed = sidebar.classList.contains('-translate-x-full');
+            if (isClosed) {
+                sidebar.classList.remove('-translate-x-full');
+                sidebarOverlay.classList.remove('hidden');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                sidebarOverlay.classList.add('hidden');
+            }
+        }
+
+        mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+        sidebarOverlay.addEventListener('click', toggleMobileMenu);
+    </script>
+</body>
+
+</html>
