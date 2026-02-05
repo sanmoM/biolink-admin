@@ -83,7 +83,7 @@
         <div class="hidden sm:flex flex-1 max-w-[500px] mx-auto">
             <div class="relative w-full">
                 <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm"></i>
-                <input type="text" placeholder="Search links, QR codes, analytics..."
+                <input type="text" placeholder="Search QR codes, links, analytics..."
                     class="w-full pl-10 pr-4 py-2 bg-white/5 border border-[#9CA3AF]/20 rounded-md text-sm text-white font-medium placeholder-gray-500 focus:outline-none focus:border-gray-500 focus:bg-[#14151a] transition" />
             </div>
         </div>
@@ -124,9 +124,9 @@
                 </a>
 
                 <a href="biolink.html"
-                    class="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-[#FACC15]/20 to-[#3B82F6]/20 text-[#FACC15] rounded-lg border-2 border-yellow-400/20 shadow-[0_0_15px_rgba(251,191,36,0.1)]">
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
 
-                    <img src="assets/biolink-y.svg" alt="Biolink Pages" class="h-5 w-5">
+                    <img src="assets/biolink-icon.svg" alt="Biolink Pages" class="h-5 w-5">
                     <span>Biolink Pages</span>
                 </a>
 
@@ -168,8 +168,8 @@
                 </a>
 
                 <a href="qr-codes.html"
-                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
-                    <img src="assets/qrcode.svg" alt="QR Codes" class="h-5 w-5">
+                    class="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-[#FACC15]/20 to-[#3B82F6]/20 text-[#FACC15] rounded-lg border-2 border-yellow-400/20 shadow-[0_0_15px_rgba(251,191,36,0.1)]">
+                    <img src="assets/qrcode-y.svg" alt="QR Codes" class="h-5 w-5">
                     <span>QR Codes</span>
                 </a>
 
@@ -223,8 +223,8 @@
                 <!-- Header -->
                 <header class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                     <div>
-                        <h1 class="text-2xl sm:text-3xl font-bold text-white mb-2">Biolink Pages</h1>
-                        <p class="text-gray-400 text-sm sm:text-base">Create and manage your bio.link pages</p>
+                        <h1 class="text-2xl sm:text-3xl font-bold text-white mb-2">QR Codes</h1>
+                        <p class="text-gray-400 text-sm sm:text-base">Generate and manage QR codes for your links</p>
                     </div>
                     <button
                         class="w-full md:w-auto flex items-center justify-center gap-2 bg-gradient-to-br from-[#FACC15] to-[#EAB308] hover:outline outline-offset-2 outline-[#FACC15]/50 text-black font-semibold py-3 px-6 rounded-lg transition-all shadow-[0_0_20px_rgba(251,191,36,0.3)]">
@@ -232,39 +232,39 @@
                             <path fill="currentColor"
                                 d="M18 12.998h-5v5a1 1 0 0 1-2 0v-5H6a1 1 0 0 1 0-2h5v-5a1 1 0 0 1 2 0v5h5a1 1 0 0 1 0 2" />
                         </svg>
-                        <span>Create Biolink Page</span>
+                        <span>Create QR Code</span>
                     </button>
                 </header>
 
                 <!-- Stats Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Total Biolinks Card -->
+                    <!-- Total QR Codes Card -->
                     <div
                         class="bg-white/5 border border-white/10 p-6 rounded-xl bg-blur hover:border-[#3B82F6]/40 transition-all shadow-lg">
                         <div class="flex items-center gap-4 mb-4">
                             <div
                                 class="w-12 h-12 rounded-lg bg-gradient-to-r from-[#60A5FA] to-[#2563EB] flex items-center justify-center">
-                                <img src="assets/biolink-w.svg" alt="Bio Links" class="h-5 w-5">
+                                <img src="assets/qrcode.svg" alt="QR Codes" class="h-5 w-5">
                             </div>
                         </div>
-                        <h3 class="text-[#9CA3AF] mb-1">Total Biolinks</h3>
+                        <h3 class="text-[#9CA3AF] mb-1">Total QR Codes</h3>
                         <p class="text-3xl font-bold text-white tracking-wide">124</p>
                     </div>
 
-                    <!-- Total Views Card -->
+                    <!-- Scans Card -->
                     <div
                         class="bg-white/5 border border-white/10 p-6 rounded-xl bg-blur hover:border-[#22C55E]/40 transition-all shadow-lg">
                         <div class="flex items-center gap-4 mb-4">
                             <div
                                 class="w-12 h-12 rounded-lg bg-gradient-to-r from-[#4ADE80] to-[#16A34A] flex items-center justify-center">
-                                <img src="assets/view.svg" alt="Bio Links" class="h-5 w-5">
+                                <img src="assets/view.svg" alt="Scans" class="h-5 w-5">
                             </div>
                         </div>
-                        <h3 class="text-[#9CA3AF] mb-1">Total Views</h3>
+                        <h3 class="text-[#9CA3AF] mb-1">Total Scans</h3>
                         <p class="text-3xl font-bold text-white tracking-wide">14.8K</p>
                     </div>
 
-                    <!-- Total Pages Card -->
+                    <!-- Active QR Codes Card -->
                     <div
                         class="bg-white/5 border border-white/10 p-6 rounded-xl bg-blur hover:border-[#F97316]/40 transition-all shadow-lg">
                         <div class="flex items-center gap-4 mb-4">
@@ -276,11 +276,11 @@
                                 </svg>
                             </div>
                         </div>
-                        <h3 class="text-[#9CA3AF] mb-1">Total Pages</h3>
+                        <h3 class="text-[#9CA3AF] mb-1">Active QR Codes</h3>
                         <p class="text-3xl font-bold text-white tracking-wide">98</p>
                     </div>
 
-                    <!-- Total Blocks Card -->
+                    <!-- Generated Today Card -->
                     <div
                         class="bg-white/5 border border-white/10 p-6 rounded-xl bg-blur hover:border-[#A855F7]/40 transition-all shadow-lg">
                         <div class="flex items-center gap-4 mb-4">
@@ -292,8 +292,8 @@
                                 </svg>
                             </div>
                         </div>
-                        <h3 class="text-[#9CA3AF] mb-1">Total Blocks</h3>
-                        <p class="text-3xl font-bold text-white tracking-wide">856</p>
+                        <h3 class="text-[#9CA3AF] mb-1">Generated Today</h3>
+                        <p class="text-3xl font-bold text-white tracking-wide">12</p>
                     </div>
                 </div>
 
@@ -308,19 +308,15 @@
                         </button>
                         <button
                             class="flex-1 md:flex-none px-3 sm:px-4 py-2 text-[#9CA3AF] hover:text-white hover:bg-[#222328] rounded-md transition-colors text-sm">
-                            Personal
+                            Active
                         </button>
                         <button
                             class="flex-1 md:flex-none px-3 sm:px-4 py-2 text-[#9CA3AF] hover:text-white hover:bg-[#222328] rounded-md transition-colors text-sm">
-                            Business
+                            Inactive
                         </button>
                         <button
                             class="flex-1 md:flex-none px-3 sm:px-4 py-2 text-[#9CA3AF] hover:text-white hover:bg-[#222328] rounded-md transition-colors text-sm">
-                            Social
-                        </button>
-                        <button
-                            class="flex-1 md:flex-none px-3 sm:px-4 py-2 text-[#9CA3AF] hover:text-white hover:bg-[#222328] rounded-md transition-colors text-sm">
-                            Event
+                            Expired
                         </button>
                     </div>
 
@@ -328,7 +324,7 @@
                     <div class="flex flex-col sm:flex-row gap-3 items-center flex-grow md:ml-4">
                         <div class="relative w-full">
                             <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"></i>
-                            <input type="text" placeholder="Search biolink pages..."
+                            <input type="text" placeholder="Search QR codes..."
                                 class="w-full pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white placeholder-[#9CA3AF] focus:outline focus:border-gray-500 transition" />
                         </div>
                         <button
@@ -347,23 +343,15 @@
                                 <tr>
                                     <th
                                         class="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider whitespace-nowrap">
-                                        Page Details
+                                        QR Code Details
                                     </th>
                                     <th
                                         class="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider whitespace-nowrap">
-                                        Short URL
+                                        Target URL
                                     </th>
                                     <th
                                         class="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider whitespace-nowrap">
-                                        Type
-                                    </th>
-                                    <th
-                                        class="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider whitespace-nowrap">
-                                        Blocks
-                                    </th>
-                                    <th
-                                        class="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider whitespace-nowrap">
-                                        Visits
+                                        Scans
                                     </th>
                                     <th
                                         class="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider whitespace-nowrap">
@@ -384,37 +372,14 @@
                                 <tr class="hover:bg-[#1f2025] transition-colors whitespace-nowrap">
                                     <td class="px-6 py-5 whitespace-nowrap">
                                         <div>
-                                            <div class="text-white font-semibold">Personal Portfolio</div>
-                                            <div class="text-gray-500 text-sm">Modern</div>
+                                            <div class="text-white font-semibold">Product Launch QR</div>
+                                            <div class="text-gray-500 text-sm">madw.es/prod24</div>
                                         </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <a href="#"
-                                            class="text-[#FACC15] hover:underline flex items-center gap-2 copy-url"
-                                            data-url="madw.es/john-portfolio">
-                                            madw.es/john-portfolio
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                viewBox="0 0 16 16">
-                                                <path fill="none" stroke="#9CA3AF" stroke-linejoin="round"
-                                                    d="M12 10.5h1.5v-8h-8V4m-3 9.5h8v-8h-8z" stroke-width="1" />
-                                            </svg>
+                                        <a href="#" class="text-[#FACC15] hover:underline">
+                                            https://madw.es/prod24
                                         </a>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <span
-                                            class="px-3 py-1 bg-[#3B82F6]/20 text-blue-400 text-xs font-medium rounded-full border border-blue-500/30">
-                                            Personal
-                                        </span>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="flex items-center gap-2 text-white">
-                                            <svg class="text-[#9CA3AF]" xmlns="http://www.w3.org/2000/svg" width="17"
-                                                height="17" viewBox="0 0 24 24">
-                                                <path fill="currentColor"
-                                                    d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.587 1.413T19 21zm8-8v6h6v-6zm0-2h6V5h-6zm-2 0V5H5v6zm0 2H5v6h6z" />
-                                            </svg>
-                                            <span>8</span>
-                                        </div>
                                     </td>
                                     <td class="px-6 py-4 text-white font-medium whitespace-nowrap">2,847</td>
                                     <td class="px-6 py-4 whitespace-nowrap">
@@ -457,35 +422,14 @@
                                 <tr class="hover:bg-[#1f2025] transition-colors whitespace-nowrap">
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div>
-                                            <div class="text-white font-semibold">Business Profile</div>
-                                            <div class="text-gray-500 text-sm">Professional</div>
+                                            <div class="text-white font-semibold">Marketing Campaign QR</div>
+                                            <div class="text-gray-500 text-sm">madw.es/campaign</div>
                                         </div>
                                     </td>
                                     <td class="px-6 py-5 whitespace-nowrap">
-                                        <a href="#"
-                                            class="text-[#FACC15] hover:underline flex items-center gap-2 copy-url"
-                                            data-url="madw.es/company-bio">
-                                            madw.es/company-bio
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                viewBox="0 0 16 16">
-                                                <path fill="none" stroke="#9CA3AF" stroke-linejoin="round"
-                                                    d="M12 10.5h1.5v-8h-8V4m-3 9.5h8v-8h-8z" stroke-width="1" />
-                                            </svg> </a>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <span
-                                            class="px-3 py-1 bg-[#3B82F6]/20 text-blue-400 text-xs font-medium rounded-full border border-blue-500/30">
-                                            Business
-                                        </span>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="flex items-center gap-2 text-white">
-                                            <svg class="text-[#9CA3AF]" xmlns="http://www.w3.org/2000/svg" width="17"
-                                                height="17" viewBox="0 0 24 24">
-                                                <path fill="currentColor"
-                                                    d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.587 1.413T19 21zm8-8v6h6v-6zm0-2h6V5h-6zm-2 0V5H5v6zm0 2H5v6h6z" />
-                                            </svg> <span>12</span>
-                                        </div>
+                                        <a href="#" class="text-[#FACC15] hover:underline">
+                                            https://madw.es/campaign
+                                        </a>
                                     </td>
                                     <td class="px-6 py-4 text-white font-medium whitespace-nowrap">1,923</td>
                                     <td class="px-6 py-4 whitespace-nowrap">
@@ -528,35 +472,14 @@
                                 <tr class="hover:bg-[#1f2025] transition-colors whitespace-nowrap">
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div>
-                                            <div class="text-white font-semibold">Social Media Hub</div>
-                                            <div class="text-gray-500 text-sm">Social</div>
+                                            <div class="text-white font-semibold">Social Media QR</div>
+                                            <div class="text-gray-500 text-sm">madw.es/social-links</div>
                                         </div>
                                     </td>
                                     <td class="px-6 py-5 whitespace-nowrap">
-                                        <a href="#"
-                                            class="text-[#FACC15] hover:underline flex items-center gap-2 copy-url"
-                                            data-url="madw.es/social-links">
-                                            madw.es/social-links
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                viewBox="0 0 16 16">
-                                                <path fill="none" stroke="#9CA3AF" stroke-linejoin="round"
-                                                    d="M12 10.5h1.5v-8h-8V4m-3 9.5h8v-8h-8z" stroke-width="1" />
-                                            </svg> </a>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <span
-                                            class="px-3 py-1 bg-[#3B82F6]/20 text-blue-400 text-xs font-medium rounded-full border border-blue-500/30">
-                                            Social
-                                        </span>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="flex items-center gap-2 text-white">
-                                            <svg class="text-[#9CA3AF]" xmlns="http://www.w3.org/2000/svg" width="17"
-                                                height="17" viewBox="0 0 24 24">
-                                                <path fill="currentColor"
-                                                    d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.587 1.413T19 21zm8-8v6h6v-6zm0-2h6V5h-6zm-2 0V5H5v6zm0 2H5v6h6z" />
-                                            </svg> <span>15</span>
-                                        </div>
+                                        <a href="#" class="text-[#FACC15] hover:underline">
+                                            https://madw.es/social-links
+                                        </a>
                                     </td>
                                     <td class="px-6 py-4 text-white font-medium whitespace-nowrap">3,456</td>
                                     <td class="px-6 py-4 whitespace-nowrap">
@@ -599,35 +522,14 @@
                                 <tr class="hover:bg-[#1f2025] transition-colors whitespace-nowrap">
                                     <td class="px-6 py-5 whitespace-nowrap">
                                         <div>
-                                            <div class="text-white font-semibold">Product Showcase</div>
-                                            <div class="text-gray-500 text-sm">Business</div>
+                                            <div class="text-white font-semibold">Event Registration QR</div>
+                                            <div class="text-gray-500 text-sm">madw.es/event-reg</div>
                                         </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <a href="#"
-                                            class="text-[#FACC15] hover:underline flex items-center gap-2 copy-url"
-                                            data-url="madw.es/products">
-                                            madw.es/products
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                viewBox="0 0 16 16">
-                                                <path fill="none" stroke="#9CA3AF" stroke-linejoin="round"
-                                                    d="M12 10.5h1.5v-8h-8V4m-3 9.5h8v-8h-8z" stroke-width="1" />
-                                            </svg> </a>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <span
-                                            class="px-3 py-1 bg-[#3B82F6]/20 text-blue-400 text-xs font-medium rounded-full border border-blue-500/30">
-                                            Business
-                                        </span>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="flex items-center gap-2 text-white">
-                                            <svg class="text-[#9CA3AF]" xmlns="http://www.w3.org/2000/svg" width="17"
-                                                height="17" viewBox="0 0 24 24">
-                                                <path fill="currentColor"
-                                                    d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.587 1.413T19 21zm8-8v6h6v-6zm0-2h6V5h-6zm-2 0V5H5v6zm0 2H5v6h6z" />
-                                            </svg> <span>10</span>
-                                        </div>
+                                        <a href="#" class="text-[#FACC15] hover:underline">
+                                            https://madw.es/event-reg
+                                        </a>
                                     </td>
                                     <td class="px-6 py-4 text-white font-medium whitespace-nowrap">1,567</td>
                                     <td class="px-6 py-4 whitespace-nowrap">
@@ -670,35 +572,14 @@
                                 <tr class="hover:bg-[#1f2025] transition-colors whitespace-nowrap">
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div>
-                                            <div class="text-white font-semibold">Event Landing</div>
-                                            <div class="text-gray-500 text-sm">Real</div>
+                                            <div class="text-white font-semibold">Business Card QR</div>
+                                            <div class="text-gray-500 text-sm">madw.es/vcard</div>
                                         </div>
                                     </td>
                                     <td class="px-6 py-5 whitespace-nowrap">
-                                        <a href="#"
-                                            class="text-[#FACC15] hover:underline flex items-center gap-2 copy-url"
-                                            data-url="madw.es/event-2024">
-                                            madw.es/event-2024
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                viewBox="0 0 16 16">
-                                                <path fill="none" stroke="#9CA3AF" stroke-linejoin="round"
-                                                    d="M12 10.5h1.5v-8h-8V4m-3 9.5h8v-8h-8z" stroke-width="1" />
-                                            </svg> </a>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <span
-                                            class="px-3 py-1 bg-[#3B82F6]/20 text-blue-400 text-xs font-medium rounded-full border border-blue-500/30">
-                                            Event
-                                        </span>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="flex items-center gap-2 text-white">
-                                            <svg class="text-[#9CA3AF]" xmlns="http://www.w3.org/2000/svg" width="17"
-                                                height="17" viewBox="0 0 24 24">
-                                                <path fill="currentColor"
-                                                    d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.587 1.413T19 21zm8-8v6h6v-6zm0-2h6V5h-6zm-2 0V5H5v6zm0 2H5v6h6z" />
-                                            </svg> <span>6</span>
-                                        </div>
+                                        <a href="#" class="text-[#FACC15] hover:underline">
+                                            https://madw.es/vcard
+                                        </a>
                                     </td>
                                     <td class="px-6 py-4 text-white font-medium whitespace-nowrap">892</td>
                                     <td class="px-6 py-4 whitespace-nowrap">
@@ -741,35 +622,14 @@
                                 <tr class="hover:bg-[#1f2025] transition-colors whitespace-nowrap">
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div>
-                                            <div class="text-white font-semibold">Creator Links</div>
-                                            <div class="text-gray-500 text-sm">Personal</div>
+                                            <div class="text-white font-semibold">Promotional QR</div>
+                                            <div class="text-gray-500 text-sm">madw.es/promo</div>
                                         </div>
                                     </td>
                                     <td class="px-6 py-5 whitespace-nowrap">
-                                        <a href="#"
-                                            class="text-[#FACC15] hover:underline flex items-center gap-2 copy-url"
-                                            data-url="madw.es/creator">
-                                            madw.es/creator
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17"
-                                                viewBox="0 0 16 16">
-                                                <path fill="none" stroke="#9CA3AF" stroke-linejoin="round"
-                                                    d="M12 10.5h1.5v-8h-8V4m-3 9.5h8v-8h-8z" stroke-width="1" />
-                                            </svg> </a>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <span
-                                            class="px-3 py-1 bg-[#3B82F6]/20 text-blue-400 text-xs font-medium rounded-full border border-blue-500/30">
-                                            Personal
-                                        </span>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="flex items-center gap-2 text-white">
-                                            <svg class="text-[#9CA3AF]" xmlns="http://www.w3.org/2000/svg" width="17"
-                                                height="17" viewBox="0 0 24 24">
-                                                <path fill="currentColor"
-                                                    d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.587 1.413T19 21zm8-8v6h6v-6zm0-2h6V5h-6zm-2 0V5H5v6zm0 2H5v6h6z" />
-                                            </svg> <span>14</span>
-                                        </div>
+                                        <a href="#" class="text-[#FACC15] hover:underline">
+                                            https://madw.es/promo
+                                        </a>
                                     </td>
                                     <td class="px-6 py-4 text-white font-medium whitespace-nowrap">4,123</td>
                                     <td class="px-6 py-4 whitespace-nowrap">
@@ -815,7 +675,7 @@
                     <div class="bg-white/5 bg-blur border-t border-white/20 px-4 sm:px-6 py-4">
                         <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
                             <div class="text-gray-400 text-xs sm:text-sm text-center sm:text-left order-2 sm:order-1">
-                                Showing 1 to 6 of 124 biolink pages
+                                Showing 1 to 6 of 124 QR codes
                             </div>
                             <div class="flex items-center gap-1 sm:gap-2 order-1 sm:order-2">
                                 <button
