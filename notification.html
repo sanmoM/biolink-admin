@@ -631,7 +631,7 @@
 
 
                 <!-- Configuration Row -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 pb-12">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <!-- Email Frequency -->
                     <div
                         class="bg-gradient-to-r from-[#1F2937]/50 to-[#111827]/50 bg-blur border border-white/10 p-6 rounded-xl hover:border-[#3B82F6]/40 transition-all">
@@ -700,6 +700,109 @@
                                 <input type="text" value="08:00"
                                     class="w-full bg-[#1F2937]/50 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#3B82F6]/50 transition-colors">
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Notifications -->
+                <div
+                    class="bg-gradient-to-r from-[#1F2937]/50 to-[#111827]/50 bg-blur border border-white/10 p-8 rounded-xl hover:border-[#3B82F6]/40 transition-all">
+                    <div class="flex items-center justify-between mb-7">
+                        <div class="flex items-center gap-3">
+                            <div class="w-5 h-5 flex items-center justify-center">
+                                <img src="assets/recent-n.svg" alt="" class="w-4 h-4">
+                            </div>
+                            <h2 class="text-xl font-bold text-white">Recent Notifications</h2>
+                        </div>
+                        <button
+                            class="text-[#FACC15] text-sm font-medium hover:underline flex items-center gap-2 transition-all">
+                            Clear All
+                            <img src="assets/delete-y.svg" alt="" class="w-3 h-3"> </button>
+                    </div>
+
+                    <div class="space-y-3">
+                        <!-- Item 1: Link Click -->
+                        <div
+                            class="flex items-center justify-between p-5 bg-[#1F2937]/30 border border-[#374151]/50 rounded-lg hover:bg-[#1F2937]/50 transition-all cursor-pointer group">
+                            <div class="flex items-center gap-5">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-gradient-to-r from-[#FACC15]/20 to-[#CA8A04]/20 flex items-center justify-center shrink-0">
+                                    <img src="assets/click-y.svg" alt="" class="w-5 h-5">
+                                </div>
+                                <div>
+                                    <h3 class="text-white font-medium text-base">Link Click</h3>
+                                    <p class="text-[#9CA3AF] text-sm mt-2">Your link "Summer Sale" received 50 new
+                                        clicks</p>
+                                </div>
+                            </div>
+                            <div class="text-[#9CA3AF] text-xs font-medium whitespace-nowrap pr-5">5 minutes ago</div>
+                        </div>
+
+                        <!-- Item 2: Security Alert -->
+                        <div
+                            class="flex items-center justify-between p-5 bg-[#1F2937]/30 border border-[#374151]/50 rounded-lg hover:bg-[#1F2937]/50 transition-all cursor-pointer group">
+                            <div class="flex items-center gap-5">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-gradient-to-r from-[#60A5FA]/20 to-[#2563EB]/20 flex items-center justify-center shrink-0">
+                                    <img src="assets/s-alert-b.svg" alt="" class="w-5 h-5">
+                                </div>
+                                <div>
+                                    <h3 class="text-white font-medium text-base">Security Alert</h3>
+                                    <p class="text-[#9CA3AF] text-sm mt-2">New login detected from Chrome on Windows
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="text-[#9CA3AF] text-xs font-medium whitespace-nowrap pr-5">1 hour ago</div>
+                        </div>
+
+                        <!-- Item 3: New Signup -->
+                        <div
+                            class="flex items-center justify-between p-5 bg-[#1F2937]/30 border border-[#374151]/50 rounded-lg hover:bg-[#1F2937]/50 transition-all cursor-pointer group">
+                            <div class="flex items-center gap-5">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-gradient-to-r from-[#FACC15]/20 to-[#CA8A04]/20 flex items-center justify-center shrink-0">
+                                    <img src="assets/new-signup-y.svg" alt="" class="w-5 h-5">
+                                </div>
+                                <div>
+                                    <h3 class="text-white font-medium text-base">New Signup</h3>
+                                    <p class="text-[#9CA3AF] text-sm mt-2">3 new users signed up through your
+                                        affiliate link</p>
+                                </div>
+                            </div>
+                            <div class="text-[#9CA3AF] text-xs font-medium whitespace-nowrap pr-5">2 hours ago</div>
+                        </div>
+
+                        <!-- Item 4: Weekly Report -->
+                        <div
+                            class="flex items-center justify-between p-5 bg-[#1F2937]/30 border border-[#374151]/50 rounded-lg hover:bg-[#1F2937]/50 transition-all cursor-pointer group">
+                            <div class="flex items-center gap-5">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-gradient-to-r from-[#60A5FA]/20 to-[#2563EB]/20 flex items-center justify-center shrink-0">
+                                    <img src="" alt="" class="">
+                                </div>
+                                <div>
+                                    <h3 class="text-white font-medium text-base">Weekly Report</h3>
+                                    <p class="text-[#9CA3AF] text-sm mt-2">Your weekly performance report is ready</p>
+                                </div>
+                            </div>
+                            <div class="text-[#9CA3AF] text-xs font-medium whitespace-nowrap pr-5">1 day ago</div>
+                        </div>
+
+                        <!-- Item 5: System Update -->
+                        <div
+                            class="flex items-center justify-between p-5 bg-[#1F2937]/30 border border-[#374151]/50 rounded-lg hover:bg-[#1F2937]/50 transition-all cursor-pointer group">
+                            <div class="flex items-center gap-5">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-gradient-to-r from-[#FACC15]/20 to-[#CA8A04]/20 flex items-center justify-center shrink-0">
+                                    <img src="assets/system-update.svg" alt="" class="w-5 h-5">
+                                </div>
+                                <div>
+                                    <h3 class="text-white font-medium text-base">System Update</h3>
+                                    <p class="text-[#9CA3AF] text-sm mt-2">New analytics features are now available
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="text-[#9CA3AF] text-xs font-medium whitespace-nowrap pr-5">2 days ago</div>
                         </div>
                     </div>
                 </div>
