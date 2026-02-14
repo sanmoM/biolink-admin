@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madwess</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Roboto', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: {
+                            900: '#0f1014', // Main bg
+                            800: '#18191d', // Card/Sidebar bg
+                            700: '#222328', // Hover/Border
+                        },
+                        accent: {
+                            yellow: '#fbbf24',
+                            blue: '#3b82f6',
+                            purple: '#a855f7',
+                            grey: '#374151',
+                            green: '#22c55e',
+                            green_dim: 'rgba(34, 197, 94, 0.1)',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .overflow-y-auto::-webkit-scrollbar {
+            display: none;
+        }
+
+        .overflow-x-auto::-webkit-scrollbar {
+            display: none;
+        }
+
+        .overflow-y-auto {
+            scrollbar-width: none;
+        }
+
+        .overflow-x-auto {
+            scrollbar-width: none;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav
+        class="sticky top-0 z-50 flex items-center bg-black justify-between px-6 py-3 bg-[#18191d] border-b border-[#EAB308]/20">
+
+        <!-- Left: Logo & Mobile Toggle -->
+        <div class="flex items-center gap-4">
+            <button id="mobile-menu-toggle"
+                class="lg:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+            <img src="assets/logo.png" alt="Madwess Logo" class="h-12 w-auto">
+        </div>
+
+        <!-- Center: Search -->
+        <div class="hidden sm:flex flex-1 max-w-[500px] mx-auto">
+            <div class="relative w-full">
+                <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm"></i>
+                <input type="text" placeholder="Search QR codes, links, analytics..."
+                    class="w-full pl-10 pr-4 py-2 bg-white/5 border border-[#9CA3AF]/20 rounded-md text-sm text-white font-medium placeholder-gray-500 focus:outline-none focus:border-gray-500 focus:bg-[#14151a] transition" />
+            </div>
+        </div>
+
+        <!-- Right: Notification + Profile -->
+        <div class="flex items-center gap-4">
+
+            <!-- Notification -->
+            <div
+                class="relative w-9 h-9 flex items-center justify-center rounded-lg cursor-pointer hover:bg-[#1a1b20] transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24">
+                    <path fill="white" d="M20 17h2v2H2v-2h2v-7a8 8 0 1 1 16 0zm-2 0v-7a6 6 0 0 0-12 0v7zm-9 4h6v2H9z" />
+                </svg> <span
+                    class="absolute top-1 right-1 w-3 h-3 bg-yellow-400 rounded-full border-2 border-[#18191d]"></span>
+            </div>
+
+            <!-- Profile -->
+            <div
+                class="w-8 h-8 flex items-center justify-center rounded-full bg-gradient-to-r from-[#FACC15] to-[#3B82F6] text-sm font-bold text-black cursor-pointer hover:scale-105 transition">
+                JD
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- Dashboard -->
+    <div class="flex h-screen overflow-hidden text-sm">
+        <!-- Sidebar -->
+        <aside id="sidebar"
+            class="w-64 bg-black border-r border-[#EAB308]/20 flex flex-col h-full pb-20 flex-shrink-0 fixed lg:static inset-y-0 left-0 z-40 -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out">
+
+            <!-- Navigation -->
+            <nav class="flex-1 mt-5 px-4 overflow-y-auto space-y-1">
+                <a href="dashboard.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/dashboard.svg" alt="Dashboard" class="h-5 w-5">
+                    <span class="font-medium">Dashboard</span>
+                </a>
+
+                <a href="biolink.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+
+                    <img src="assets/biolink-icon.svg" alt="Biolink Pages" class="h-5 w-5">
+                    <span>Biolink Pages</span>
+                </a>
+
+                <a href="shortened.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/shortened.svg" alt="Shortened Links" class="h-5 w-5">
+                    <span>Shortened Links</span>
+                </a>
+
+                <a href="filelinks.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/file.svg" alt="File Links" class="h-5 w-5">
+                    <span>File Links</span>
+                </a>
+
+                <a href="v-card.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+
+                    <img src="assets/vcard.svg" alt="Vcard Links" class="h-5 w-5">
+                    <span>Vcard Links</span>
+                </a>
+
+                <a href="eventlinks.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/event.svg" alt="Event Links" class="h-5 w-5">
+                    <span>Event Links</span>
+                </a>
+
+                <a href="staticsite.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/static.svg" alt="Static Sites" class="h-5 w-5">
+                    <span>Static Sites</span>
+                </a>
+
+                <a href="links-statistics.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/statistics.svg" alt="Links Statistics" class="h-5 w-5">
+                    <span>Links Statistics</span>
+                </a>
+
+                <a href="qr-codes.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/qrcode.svg" alt="QR Codes" class="h-5 w-5">
+                    <span>QR Codes</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/domain.svg" alt="Custom Domains" class="h-5 w-5">
+                    <span>Custom Domains</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/notification.svg" alt="Notification Handlers" class="h-5 w-5">
+                    <span>Notification Handlers</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/pixels.svg" alt="Pixels" class="h-5 w-5">
+                    <span>Pixels</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/splash.svg" alt="Splash Pages" class="h-5 w-5">
+                    <span>Splash Pages</span>
+                </a>
+
+                <a href="datamanage.html"
+                    class="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-[#FACC15]/20 to-[#3B82F6]/20 text-[#FACC15] rounded-lg border-2 border-yellow-400/20 shadow-[0_0_15px_rgba(251,191,36,0.1)]">
+                    <img src="assets/data-y.svg" alt="Data" class="h-5 w-5">
+                    <span>Data</span>
+                </a>
+
+                <a href="directory.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/directory.svg" alt="Directory" class="h-5 w-5">
+                    <span>Directory</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main
+            class="flex-1 flex flex-col overflow-y-auto bg-gradient-to-br from-[#111827] via-[#000000] to-[#111827] relative">
+            <div class="px-8 py-8 w-full max-w-7xl mx-auto space-y-8">
+
+                <!-- Header -->
+                <header>
+                    <h1 class="text-3xl font-bold text-white mb-2">Data Management</h1>
+                    <p class="text-gray-400">Export, import, and manage your data</p>
+                </header>
+
+                <!-- Tabs & Export Section -->
+                <div
+                    class="items-stretch md:items-center bg-white/5 bg-blur-sm border border-white/10 p-3 sm:p-7 rounded-lg gap-4">
+
+                    <!-- Tab Filters -->
+                    <div class="flex gap-1 bg-white/5 p-1 rounded-md flex-wrap w-full md:w-auto">
+                        <button
+                            class="flex-1 md:flex-none px-3 sm:px-4 py-3 bg-gradient-to-br from-[#FACC15] to-[#EAB308] text-black font-semibold rounded-md shadow-md text-sm">
+                            Export
+                        </button>
+                        <button
+                            class="flex-1 md:flex-none px-3 sm:px-4 py-3 text-[#9CA3AF] hover:text-white hover:bg-[#222328] rounded-md transition-colors text-sm">
+                            Import
+                        </button>
+                        <button
+                            class="flex-1 md:flex-none px-3 sm:px-4 py-3 text-[#9CA3AF] hover:text-white hover:bg-[#222328] rounded-md transition-colors text-sm">
+                            Backup
+                        </button>
+                    </div>
+
+                    <!-- Export Grid -->
+                    <div class="py-5 grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <!-- Card 1: Export All Links -->
+                        <div
+                            class="bg-white/5 border border-white/10 p-6 rounded-xl flex items-start gap-4 hover:border-[#3B82F6]/40 transition-all shadow-lg transition-all group">
+                            <div
+                                class="w-12 h-12 rounded-lg bg-gradient-to-r from-[#60A5FA] to-[#2563EB] flex items-center justify-center">
+                                <img src="assets/shortened-w.svg" alt="Links" class="h-5 w-5">
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-white font-semibold text-lg mb-2">Export All Links</h3>
+                                <p class="text-[#9CA3AF] text-sm mb-4">Download all your links in CSV format</p>
+                                <button
+                                    class="flex items-center gap-2 bg-gradient-to-r from-[#FACC15] to-[#EAB308] hover:outline outline-offset-2 outline-[#FACC15]/50 text-black font-bold py-2 px-4 rounded-lg transition-all shadow-md">
+                                    <img src="assets/download-b.svg" alt="Download" class="h-3 w-3">
+                                    <span>Export</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Export Analytics -->
+                        <div
+                            class="bg-white/5 border border-white/10 p-6 rounded-xl flex items-start gap-4 hover:border-[#22C55E]/40 transition-all shadow-lg group">
+                            <div
+                                class="w-12 h-12 rounded-lg bg-gradient-to-r from-[#4ADE80] to-[#16A34A] flex items-center justify-center">
+                                <img src="assets/action1-w.svg" alt="Analytics" class="h-5 w-5">
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-white font-semibold text-lg mb-2">Export Analytics</h3>
+                                <p class="text-[#9CA3AF] text-sm mb-4">Download analytics data and reports</p>
+                                <button
+                                    class="flex items-center gap-2 bg-gradient-to-r from-[#FACC15] to-[#EAB308] hover:outline outline-offset-2 outline-[#FACC15]/50 text-black font-bold py-2 px-4 rounded-lg transition-all shadow-md">
+                                    <img src="assets/download-b.svg" alt="Download" class="h-3 w-3">
+                                    <span>Export</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Export QR Codes -->
+                        <div
+                            class="bg-white/5 border border-white/10 p-6 rounded-xl flex items-start gap-4 hover:border-[#F97316]/40 transition-all shadow-lg group">
+                            <div
+                                class="w-12 h-12 rounded-lg bg-gradient-to-r from-[#FACC15] to-[#F97316] flex items-center justify-center">
+                                <img src="assets/qrcode-w.svg" alt="QR Codes" class="h-5 w-5">
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-white font-semibold text-lg mb-2">Export QR Codes</h3>
+                                <p class="text-[#9CA3AF] text-sm mb-4">Download all QR codes as images</p>
+                                <button
+                                    class="flex items-center gap-2 bg-gradient-to-r from-[#FACC15] to-[#EAB308] hover:outline outline-offset-2 outline-[#FACC15]/50 text-black font-bold py-2 px-4 rounded-lg transition-all shadow-md">
+                                    <img src="assets/download-b.svg" alt="Download" class="h-3 w-3">
+                                    <span>Export</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: Export Bio Pages -->
+                        <div
+                            class="bg-white/5 border border-white/10 p-6 rounded-xl flex items-start gap-4 hover:border-[#A855F7]/40 transition-all shadow-lg group">
+                            <div
+                                class="w-12 h-12 rounded-lg bg-gradient-to-r from-[#C084FC] to-[#9333EA] flex items-center justify-center">
+                                <img src="assets/biolink-w.svg" alt="Bio Pages" class="h-5 w-5">
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-white font-semibold text-lg mb-2">Export Bio Pages</h3>
+                                <p class="text-[#9CA3AF] text-sm mb-4">Download bio pages data</p>
+                                <button
+                                    class="flex items-center gap-2 bg-gradient-to-r from-[#FACC15] to-[#EAB308] hover:outline outline-offset-2 outline-[#FACC15]/50 text-black font-bold py-2 px-4 rounded-lg transition-all shadow-md">
+                                    <img src="assets/download-b.svg" alt="Download" class="h-3 w-3">
+                                    <span>Export</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Export Information Box -->
+                    <div
+                        class="mb- mt-1 p-4 bg-[#3B82F6]/10 border border-[#3B82F6]/20 rounded-lg flex items-start gap-3">
+                        <img src="assets/export-info.svg" alt="Export Info" class="h-4 w-4 mt-1">
+                        <div>
+                            <h4 class="text-[#60A5FA] font-semibold text-base mb-1">Export Information</h4>
+                            <p class="text-[#9CA3AF] text-sm">Exported data will be available in CSV or JSON format.
+                                Large exports may take a few minutes to process.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Storage Usage Section -->
+                <div class="bg-white/5 bg-blur border border-white/10 rounded-lg p-8 space-y-4 shadow-xl">
+                    <div class="flex justify-between items-end">
+                        <h2 class="text-2xl font-bold text-white">Storage Usage</h2>
+
+                    </div>
+
+                    <!-- Progress Bar -->
+                    <div class="space-y-3">
+                        <div class="flex justify-between text-base font-medium  text-white">
+                            <span>Used Storage</span>
+                            <span class="text-[#9CA3AF] font-base">2.4 GB / 10 GB</span>
+                        </div>
+                        <div class="w-full h-4 bg-white/5 rounded-full overflow-hidden flex">
+                            <div class="h-full bg-gradient-to-r from-[#FACC15] to-[#3B82F6] rounded-full shadow-[0_0_10px_rgba(59,130,246,0.3)]"
+                                style="width: 24%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Usage Stats Grid -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-white/5 p-5 rounded-lg space-y-1">
+                            <div class="">
+                                <div class="w-3 h-3 rounded-full bg-blue-500 mb-1"></div>
+                                <span class="text-[#9CA3AF] text-xs">Links Data</span>
+                            </div>
+                            <p class="text-base font-bold text-white">1.2 GB</p>
+                        </div>
+                        <div class="bg-white/5 p-5 rounded-lg space-y-1">
+                            <div class="">
+                               <div class="w-3 h-3 rounded-full bg-[#22C55E] mb-1"></div>
+                                <span class="text-[#9CA3AF] text-xs">QR Codes</span>
+                            </div>
+                            <p class="text-base font-bold text-white">0.8 GB</p>
+                        </div>
+                        <div class="bg-white/5 p-5 rounded-lg space-y-1">
+                            <div class="">
+                               <div class="w-3 h-3 rounded-full bg-[#EAB308] mb-1"></div>
+                                <span class="text-[#9CA3AF] text-xs">Analytics</span>
+                            </div>
+                            <p class="text-base font-bold text-white">0.3 GB</p>
+                        </div>
+                        <div class="bg-white/5 p-5 rounded-lg space-y-1">
+                            <div class="">
+                               <div class="w-3 h-3 rounded-full bg-[#A855F7] mb-1"></div>
+                                <span class="text-[#9CA3AF] text-xs">Other</span>
+                            </div>
+                            <p class="text-base font-bold text-white">0.1 GB</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Sidebar Toggle Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+        function toggleSidebar() {
+            const isClosed = sidebar.classList.contains('-translate-x-full');
+            if (isClosed) {
+                sidebar.classList.remove('-translate-x-full');
+                sidebarOverlay.classList.remove('hidden');
+                setTimeout(() => sidebarOverlay.classList.remove('opacity-0'), 10);
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                sidebarOverlay.classList.add('opacity-0');
+                setTimeout(() => sidebarOverlay.classList.add('hidden'), 300);
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleSidebar);
+        sidebarOverlay.addEventListener('click', toggleSidebar);
+    </script>
+</body>
+
+</html>
