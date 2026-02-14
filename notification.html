@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madwess</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Roboto', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: {
+                            900: '#0f1014',
+                            800: '#18191d',
+                            700: '#222328',
+                        },
+                        accent: {
+                            yellow: '#fbbf24',
+                            blue: '#3b82f6',
+                            purple: '#a855f7',
+                            grey: '#374151',
+                            green: '#22c55e',
+                            green_dim: 'rgba(34, 197, 94, 0.1)',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            color: #FFFFFF;
+        }
+
+        .overflow-y-auto::-webkit-scrollbar {
+            display: none;
+        }
+
+        .overflow-x-auto::-webkit-scrollbar {
+            display: none;
+        }
+
+        .overflow-y-auto {
+            scrollbar-width: none;
+        }
+
+        .overflow-x-auto {
+            scrollbar-width: none;
+        }
+
+        .bg-blur {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav
+        class="sticky top-0 z-50 flex items-center bg-black justify-between px-6 py-3 bg-[#18191d] border-b border-[#EAB308]/20">
+
+        <!-- Left: Logo & Mobile Toggle -->
+        <div class="flex items-center gap-4">
+            <button id="mobile-menu-toggle"
+                class="lg:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+            <img src="assets/logo.png" alt="Madwess Logo" class="h-12 w-auto">
+        </div>
+
+        <!-- Center: Search -->
+        <div class="hidden sm:flex flex-1 max-w-[500px] mx-auto">
+            <div class="relative w-full">
+                <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm"></i>
+                <input type="text" placeholder="Search events, locations..."
+                    class="w-full pl-10 pr-4 py-2 bg-white/5 border border-[#9CA3AF]/20 rounded-md text-sm text-white font-medium placeholder-gray-500 focus:outline-none focus:border-gray-500 focus:bg-[#14151a] transition" />
+            </div>
+        </div>
+
+        <!-- Right: Notification + Profile -->
+        <div class="flex items-center gap-4">
+
+            <!-- Notification -->
+            <div
+                class="relative w-9 h-9 flex items-center justify-center rounded-lg cursor-pointer hover:bg-[#1a1b20] transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24">
+                    <path fill="white" d="M20 17h2v2H2v-2h2v-7a8 8 0 1 1 16 0zm-2 0v-7a6 6 0 0 0-12 0v7zm-9 4h6v2H9z" />
+                </svg> <span
+                    class="absolute top-1 right-1 w-3 h-3 bg-yellow-400 rounded-full border-2 border-[#18191d]"></span>
+            </div>
+
+            <!-- Profile -->
+            <div
+                class="w-8 h-8 flex items-center justify-center rounded-full bg-gradient-to-r from-[#FACC15] to-[#3B82F6] text-sm font-bold text-black cursor-pointer hover:scale-105 transition">
+                JD
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- Dashboard -->
+    <div class="flex h-screen overflow-hidden text-sm">
+        <!-- Sidebar -->
+        <aside id="sidebar"
+            class="w-64 bg-black border-r border-[#EAB308]/20 pb-20 flex flex-col h-full flex-shrink-0 fixed lg:static inset-y-0 left-0 z-40 -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out">
+
+            <!-- Navigation -->
+            <nav class="flex-1 mt-5 px-4 overflow-y-auto space-y-1">
+                <a href="dashboard.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/dashboard.svg" alt="Dashboard" class="h-5 w-5">
+                    <span class="font-medium">Dashboard</span>
+                </a>
+
+                <a href="biolink.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+
+                    <img src="assets/biolink-icon.svg" alt="Biolink Pages" class="h-5 w-5">
+                    <span>Biolink Pages</span>
+                </a>
+
+                <a href="shortened.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/shortened.svg" alt="Shortened Links" class="h-5 w-5">
+                    <span>Shortened Links</span>
+                </a>
+
+                <a href="filelinks.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/file.svg" alt="File Links" class="h-5 w-5">
+                    <span>File Links</span>
+                </a>
+
+                <a href="v-card.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+
+                    <img src="assets/vcard.svg" alt="Vcard Links" class="h-5 w-5">
+                    <span>Vcard Links</span>
+                </a>
+
+                <a href="eventlinks.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/event.svg" alt="Event Links" class="h-5 w-5">
+                    <span>Event Links</span>
+                </a>
+
+                <a href="staticsite.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/static.svg" alt="Static Sites" class="h-5 w-5">
+                    <span>Static Sites</span>
+                </a>
+
+                <a href="links-statistics.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/statistics.svg" alt="Links Statistics" class="h-5 w-5">
+                    <span>Links Statistics</span>
+                </a>
+
+                <a href="qr-codes.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/qrcode.svg" alt="QR Codes" class="h-5 w-5">
+                    <span>QR Codes</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/domain.svg" alt="Custom Domains" class="h-5 w-5">
+                    <span>Custom Domains</span>
+                </a>
+
+                <a href="notification.html"
+                    class="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-[#FACC15]/20 to-[#3B82F6]/20 text-[#FACC15] rounded-lg border-2 border-yellow-400/20 shadow-[0_0_15px_rgba(251,191,36,0.1)]">
+                    <img src="assets/notification-y.svg" alt="Notification Handlers" class="h-5 w-5">
+                    <span>Notification Handlers</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/pixels.svg" alt="Pixels" class="h-5 w-5">
+                    <span>Pixels</span>
+                </a>
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/splash.svg" alt="Splash Pages" class="h-5 w-5">
+                    <span>Splash Pages</span>
+                </a>
+
+                <a href="datamanage.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/data.svg" alt="Data" class="h-5 w-5">
+                    <span>Data</span>
+                </a>
+
+                <a href="directory.html"
+                    class="flex items-center gap-3 px-4 py-3 text-[#D1D5DB] hover:text-white hover:bg-[#222328] rounded-lg transition-colors group">
+                    <img src="assets/directory.svg" alt="Directory" class="h-5 w-5">
+                    <span>Directory</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main
+            class="flex-1 flex flex-col overflow-y-auto bg-gradient-to-br from-[#111827] via-[#000000] to-[#111827] relative">
+
+            <!-- Overlay for mobile sidebar -->
+            <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-30 hidden lg:hidden"></div>
+
+            <div class="p-4 sm:p-8 mx-auto w-full space-y-6">
+
+                <!-- Header -->
+                <header class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <h1
+                            class="text-2xl sm:text-3xl font-bold mb-2 bg-gradient-to-r from-[#FACC15] to-[#60A5FA] bg-clip-text text-transparent">
+                            Notification Settings
+                        </h1>
+                        <p class="text-gray-400 text-sm">Manage how you receive notifications</p>
+                    </div>
+                    <div class="">
+                        <button
+                            class="flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-[#FACC15] to-[#60A5FA] text-black font-medium rounded-lg hover:shadow-lg transition text-sm">
+                            <img src="assets/save.svg" alt="" class="h-3 w-3"> Save Changes
+                        </button>
+                    </div>
+                </header>
+
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Email Notifications Card -->
+                    <div
+                        class="bg-gradient-to-r from-[#1F2937]/50 to-[#111827]/50 border border-white/10 p-6 rounded-xl hover:border-[#3B82F6]/40 transition-all">
+                        <div class="flex items-center justify-between mb-4">
+                            <div
+                                class="w-10 h-10 rounded-lg bg-gradient-to-r from-[#FACC15]/20 to-[#CA8A04]/20 flex items-center justify-center">
+                                <img src="assets/email-y.svg" alt="">
+                            </div>
+                            <span class="text-[#4ADE80] text-sm font-medium">Active</span>
+                        </div>
+                        <p class="text-gray-400 text-xs mb-1">Email Notifications</p>
+                        <p class="text-3xl font-bold text-white">4 Active</p>
+                    </div>
+
+                    <!-- Push Notifications Card -->
+                    <div
+                        class="bg-gradient-to-r from-[#1F2937]/50 to-[#111827]/50 border border-white/10 p-6 rounded-xl hover:border-[#3B82F6]/40 transition-all">
+                        <div class="flex items-center justify-between mb-4">
+                            <div
+                                class="w-10 h-10 rounded-lg bg-gradient-to-r from-[#60A5FA]/20 to-[#2563EB]/20 flex items-center justify-center">
+                                <img src="assets/notification-blue.svg" alt="">
+                            </div>
+                            <span class="text-[#4ADE80] text-sm font-medium">Active</span>
+                        </div>
+                        <p class="text-gray-400 text-xs mb-1">Push Notifications</p>
+                        <p class="text-3xl font-bold text-white">3 Active</p>
+                    </div>
+
+                    <!-- SMS Notifications Card -->
+                    <div
+                        class="bg-gradient-to-r from-[#1F2937]/50 to-[#111827]/50 border border-white/10 p-6 rounded-xl hover:border-[#3B82F6]/40 transition-all">
+                        <div class="flex items-center justify-between mb-4">
+                            <div
+                                class="w-10 h-10 rounded-lg bg-gradient-to-r from-[#FACC15]/20 to-[#CA8A04]/20 flex items-center justify-center">
+                                <img src="assets/sms-y.svg" alt="">
+                            </div>
+                            <span class="text-[#FACC15] text-sm font-medium">Limited</span>
+                        </div>
+                        <p class="text-gray-400 text-xs mb-1">SMS Notifications</p>
+                        <p class="text-3xl font-bold text-white">1 Active</p>
+                    </div>
+
+                </div>
+
+                <!-- Notification Preferences -->
+                <div
+                    class="bg-gradient-to-r from-[#1F2937]/50 to-[#111827]/50 bg-blur border border-white/10 rounded-xl overflow-hidden shadow-2xl">
+                    <!-- Header -->
+                    <div class="p-6 flex items-center gap-2">
+                        <div class="flex items-center justify-center">
+                            <img src="assets/settings-y.svg" alt="">
+                        </div>
+                        <h2 class="text-xl font-bold text-white">Notification Preferences</h2>
+                    </div>
+
+                    <div class="p-6">
+                        <!-- Table Headers -->
+                        <div class="grid grid-cols-12 gap-4 px-4 border-b border-white/10">
+                            <div class="col-span-12 md:col-span-6">
+                                <span class="text-[#9CA3AF] text-sm font-medium">Notification
+                                    Type</span>
+                            </div>
+                            <div class="hidden md:col-span-6 md:grid grid-cols-3 text-center">
+                                <div class="flex flex-col items-center gap-1">
+                                    <img src="assets/email-g.svg" alt=""> <span
+                                        class="text-gray-500 text-sm font-medium">Email</span>
+                                </div>
+                                <div class="flex flex-col items-center gap-1">
+                                    <img src="assets/notification-g.svg" alt=""> <span
+                                        class="text-gray-500 text-sm font-medium">Push</span>
+                                </div>
+                                <div class="flex flex-col items-center gap-1">
+                                    <img src="assets/sms-g.svg" alt=""> <span
+                                        class="text-gray-500 text-sm font-medium">SMS</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Rows Container -->
+                        <div class="space-y-1">
+                            <!-- Toggle Helper Component Logic -->
+                            <style>
+                                .toggle-switch {
+                                    @apply relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 bg-[#374151];
+                                }
+
+                                .toggle-switch[aria-checked="true"] {
+                                    background: linear-gradient(135deg, #FACC15 0%, #60A5FA 100%);
+                                }
+
+                                .toggle-switch .dot {
+                                    @apply inline-block h-4 w-4 transform rounded-full bg-white transition-transform;
+                                }
+
+                                .toggle-switch[aria-checked="true"] .dot {
+                                    @apply translate-x-6;
+                                }
+
+                                .toggle-switch[aria-checked="false"] .dot {
+                                    @apply translate-x-1;
+                                }
+
+                                /* Pure CSS Toggles for non-interactive demo */
+                                .switch-input {
+                                    display: none;
+                                }
+
+                                .switch-label {
+                                    position: relative;
+                                    display: inline-block;
+                                    width: 44px;
+                                    height: 22px;
+                                    background: #374151;
+                                    /* gray-700 */
+                                    border-radius: 22px;
+                                    cursor: pointer;
+                                    transition: 0.3s;
+                                }
+
+                                .switch-label::after {
+                                    content: '';
+                                    position: absolute;
+                                    width: 16px;
+                                    height: 16px;
+                                    background: white;
+                                    border-radius: 50%;
+                                    top: 3px;
+                                    left: 3px;
+                                    transition: 0.3s;
+                                }
+
+                                .switch-input:checked+.switch-label {
+                                    background: linear-gradient(90deg, #FACC15, #60A5FA);
+                                }
+
+                                .switch-input:checked+.switch-label::after {
+                                    left: calc(100% - 3px);
+                                    transform: translateX(-100%);
+                                }
+                            </style>
+
+                            <!-- Row Generator Component -->
+                            <!-- Item 1: Link Clicks -->
+                            <div
+                                class="grid grid-cols-12 gap-4 items-center p-4 hover:bg-white/5 hover:rounded-xl border-b border-white/10 transition-all group">
+                                <div class="col-span-12 md:col-span-6 flex items-center gap-4">
+                                    <div
+                                        class="w-10 h-10 rounded-lg bg-gradient-to-r from-[#FACC15]/20 to-[#60A5FA]/20 flex items-center justify-center shrink-0">
+                                        <img src="assets/click-y.svg" alt="" class="w-4 h-4">
+                                    </div>
+                                    <div>
+                                        <h3 class="text-white font-semibold text-sm">Link Clicks</h3>
+                                        <p class="text-gray-500 text-[11px]">Get notified when someone clicks your links
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 grid grid-cols-3 items-center">
+                                    <div class="flex justify-center">
+                                        <input type="checkbox" id="email-clicks" class="switch-input" checked>
+                                        <label for="email-clicks" class="switch-label"></label>
+                                    </div>
+                                    <div class="flex justify-center">
+                                        <input type="checkbox" id="push-clicks" class="switch-input">
+                                        <label for="push-clicks" class="switch-label"></label>
+                                    </div>
+                                    <div class="flex justify-center">
+                                        <input type="checkbox" id="sms-clicks" class="switch-input">
+                                        <label for="sms-clicks" class="switch-label"></label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Item 2: New Signups -->
+                            <div
+                                class="grid grid-cols-12 gap-4 items-center p-4 hover:bg-white/5 border-b border-white/10 hover:rounded-xl transition-all group border-t border-white/5 md:border-t-0">
+                                <div class="col-span-12 md:col-span-6 flex items-center gap-4">
+                                    <div
+                                        class="w-10 h-10 rounded-lg bg-gradient-to-r from-[#FACC15]/20 to-[#60A5FA]/20 flex items-center justify-center shrink-0">
+                                        <img src="assets/new-signup-y.svg" alt="" class="w-4 h-4">
+                                    </div>
+                                    <div>
+                                        <h3 class="text-white font-semibold text-sm">New Signups</h3>
+                                        <p class="text-gray-500 text-[11px]">Notifications for new user registrations
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 grid grid-cols-3 items-center">
+                                    <div class="flex justify-center">
+                                        <input type="checkbox" id="email-signups" class="switch-input" checked>
+                                        <label for="email-signups" class="switch-label"></label>
+                                    </div>
+                                    <div class="flex justify-center">
+                                        <input type="checkbox" id="push-signups" class="switch-input" checked>
+                                        <label for="push-signups" class="switch-label"></label>
+                                    </div>
+                                    <div class="flex justify-center">
+                                        <input type="checkbox" id="sms-signups" class="switch-input">
+                                        <label for="sms-signups" class="switch-label"></label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Item 3: Weekly Reports -->
+                            <div
+                                class="grid grid-cols-12 gap-4 items-center p-4 hover:bg-white/5 border-b border-white/10 hover:rounded-xl transition-all group border-t border-white/5 md:border-t-0">
+                                <div class="col-span-12 md:col-span-6 flex items-center gap-4">
+                                    <div
+                                        class="w-10 h-10 rounded-lg bg-gradient-to-r from-[#FACC15]/20 to-[#60A5FA]/20 flex items-center justify-center shrink-0">
+                                        <img src="" alt="">
+                                    </div>
+                                    <div>
+                                        <h3 class="text-white font-semibold text-sm">Weekly Reports</h3>
+                                        <p class="text-gray-500 text-[11px]">Receive weekly performance summaries</p>
+                                    </div>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 grid grid-cols-3 items-center">
+                                    <div class="flex justify-center">
+                                        <input type="checkbox" id="email-weekly" class="switch-input" checked>
+                                        <label for="email-weekly" class="switch-label"></label>
+                                    </div>
+                                    <div class="flex justify-center">
+                                        <input type="checkbox" id="push-weekly" class="switch-input">
+                                        <label for="push-weekly" class="switch-label"></label>
+                                    </div>
+                                    <div class="flex justify-center">
+                                        <input type="checkbox" id="sms-weekly" class="switch-input">
+                                        <label for="sms-weekly" class="switch-label"></label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Item 4: Monthly Reports -->
+                            <div
+                                class="grid grid-cols-12 gap-4 items-center p-4 hover:bg-white/5 border-b border-white/10 hover:rounded-xl transition-all group border-t border-white/5 md:border-t-0">
+                                <div class="col-span-12 md:col-span-6 flex items-center gap-4">
+                                    <div
+                                        class="w-10 h-10 rounded-lg bg-gradient-to-r from-[#FACC15]/20 to-[#60A5FA]/20 flex items-center justify-center shrink-0">
+                                        <img src="assets/monthly-reports.svg" alt="" class="w-4 h-4">
+                                    </div>
+                                    <div>
+                                        <h3 class="text-white font-semibold text-sm">Monthly Reports</h3>
+                                        <p class="text-gray-500 text-[11px]">Get monthly analytics reports</p>
+                                    </div>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 grid grid-cols-3 items-center">
+                                    <div class="flex justify-center">
+                                        <input type="checkbox" id="email-monthly" class="switch-input">
+                                        <label for="email-monthly" class="switch-label"></label>
+                                    </div>
+                                    <div class="flex justify-center">
+                                        <input type="checkbox" id="push-monthly" class="switch-input">
+                                        <label for="push-monthly" class="switch-label"></label>
+                                    </div>
+                                    <div class="flex justify-center">
+                                        <input type="checkbox" id="sms-monthly" class="switch-input">
+                                        <label for="sms-monthly" class="switch-label"></label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Item 5: Security Alerts -->
+                            <div
+                                class="grid grid-cols-12 gap-4 items-center p-4 hover:bg-white/5 border-b border-white/10 hover:rounded-xl transition-all group border-t border-white/5 md:border-t-0">
+                                <div class="col-span-12 md:col-span-6 flex items-center gap-4">
+                                    <div
+                                        class="w-10 h-10 rounded-lg bg-gradient-to-r from-[#FACC15]/20 to-[#60A5FA]/20 flex items-center justify-center shrink-0">
+                                        <img src="assets/s-alerts-y.svg" alt="" class="w-4 h-4">
+                                    </div>
+                                    <div>
+                                        <h3 class="text-white font-semibold text-sm">Security Alerts</h3>
+                                        <p class="text-gray-500 text-[11px]">Important security notifications</p>
+                                    </div>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 grid grid-cols-3 items-center">
+                                    <div class="flex justify-center">
+                                        <input type="checkbox" id="email-security" class="switch-input" checked>
+                                        <label for="email-security" class="switch-label"></label>
+                                    </div>
+                                    <div class="flex justify-center">
+                                        <input type="checkbox" id="push-security" class="switch-input" checked>
+                                        <label for="push-security" class="switch-label"></label>
+                                    </div>
+                                    <div class="flex justify-center">
+                                        <input type="checkbox" id="sms-security" class="switch-input" checked>
+                                        <label for="sms-security" class="switch-label"></label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Item 6: System Updates -->
+                            <div
+                                class="grid grid-cols-12 gap-4 items-center p-4 hover:bg-white/5 border-b border-white/10 hover:rounded-xl transition-all group border-t border-white/5 md:border-t-0">
+                                <div class="col-span-12 md:col-span-6 flex items-center gap-4">
+                                    <div
+                                        class="w-10 h-10 rounded-lg bg-gradient-to-r from-[#FACC15]/20 to-[#60A5FA]/20 flex items-center justify-center shrink-0">
+                                        <img src="assets/system-update.svg" alt="">
+                                    </div>
+                                    <div>
+                                        <h3 class="text-white font-semibold text-sm">System Updates</h3>
+                                        <p class="text-gray-500 text-[11px]">Platform updates and new features</p>
+                                    </div>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 grid grid-cols-3 items-center">
+                                    <div class="flex justify-center">
+                                        <input type="checkbox" id="email-system" class="switch-input">
+                                        <label for="email-system" class="switch-label"></label>
+                                    </div>
+                                    <div class="flex justify-center">
+                                        <input type="checkbox" id="push-system" class="switch-input" checked>
+                                        <label for="push-system" class="switch-label"></label>
+                                    </div>
+                                    <div class="flex justify-center">
+                                        <input type="checkbox" id="sms-system" class="switch-input">
+                                        <label for="sms-system" class="switch-label"></label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Item 7: Promotions -->
+                            <div
+                                class="grid grid-cols-12 gap-4 items-center p-4 hover:bg-white/5 border-b border-white/10 hover:rounded-xl transition-all group border-t border-white/5 md:border-t-0">
+                                <div class="col-span-12 md:col-span-6 flex items-center gap-4">
+                                    <div
+                                        class="w-10 h-10 rounded-lg bg-gradient-to-r from-[#FACC15]/20 to-[#60A5FA]/20 flex items-center justify-center shrink-0">
+                                        <img src="assets/promotions.svg" alt="" class="w-4 h-4">
+                                    </div>
+                                    <div>
+                                        <h3 class="text-white font-semibold text-sm">Promotions</h3>
+                                        <p class="text-gray-500 text-[11px]">Special offers and promotional content</p>
+                                    </div>
+                                </div>
+                                <div class="col-span-12 md:col-span-6 grid grid-cols-3 items-center">
+                                    <div class="flex justify-center">
+                                        <input type="checkbox" id="email-promotions" class="switch-input">
+                                        <label for="email-promotions" class="switch-label"></label>
+                                    </div>
+                                    <div class="flex justify-center">
+                                        <input type="checkbox" id="push-promotions" class="switch-input">
+                                        <label for="push-promotions" class="switch-label"></label>
+                                    </div>
+                                    <div class="flex justify-center">
+                                        <input type="checkbox" id="sms-promotions" class="switch-input">
+                                        <label for="sms-promotions" class="switch-label"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Top Performing Links -->
+                <div
+                    class="bg-gradient-to-r from-[#1F2937]/50 to-[#111827]/50 bg-blur border border-white/10 p-6 rounded-xl hover:border-[#3B82F6]/40 transition-all">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center gap-2">
+                            <img src="assets/top-performing.svg" alt="">
+                            <h2 class="text-lg font-bold text-white">Top Performing Links</h2>
+                        </div>
+                        <a href="#" class="text-yellow-400 text-sm hover:underline flex items-center gap-1">
+                            View All Links
+                            <i class="fas fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+        function toggleMobileMenu() {
+            const isClosed = sidebar.classList.contains('-translate-x-full');
+            if (isClosed) {
+                sidebar.classList.remove('-translate-x-full');
+                sidebarOverlay.classList.remove('hidden');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                sidebarOverlay.classList.add('hidden');
+            }
+        }
+
+        mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+        sidebarOverlay.addEventListener('click', toggleMobileMenu);
+    </script>
+</body>
+
+</html>
