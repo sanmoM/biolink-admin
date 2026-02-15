@@ -238,12 +238,6 @@
                         </h1>
                         <p class="text-gray-400 text-sm">Manage how you receive notifications</p>
                     </div>
-                    <div class="">
-                        <button
-                            class="flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-[#FACC15] to-[#60A5FA] text-black font-medium rounded-lg hover:shadow-lg transition text-base">
-                            <img src="assets/save.svg" alt="" class="h-3 w-3"> Save Changes
-                        </button>
-                    </div>
                 </header>
 
                 <!-- Stats Grid -->
@@ -423,8 +417,8 @@
                             <!-- Row Generator Component -->
                             <!-- Item 1: Link Clicks -->
                             <div
-                                class="grid grid-cols-12 gap-4 items-center p-4 hover:bg-white/5 hover:rounded-xl border-b border-white/10 transition-all group">
-                                <div class="col-span-12 md:col-span-6 flex items-center gap-4">
+                                class="grid grid-cols-12 gap-2 md:gap-4 items-center p-3 md:p-4 hover:bg-white/5 hover:rounded-xl border-b border-white/10 transition-all group">
+                                <div class="col-span-12 md:col-span-6 flex items-center gap-3 md:gap-4">
                                     <div
                                         class="w-10 h-10 rounded-lg bg-gradient-to-r from-[#FACC15]/20 to-[#60A5FA]/20 flex items-center justify-center shrink-0">
                                         <img src="assets/click-y.svg" alt="" class="w-4 h-4">
@@ -435,26 +429,39 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-span-12 md:col-span-6 grid grid-cols-3 items-center">
-                                    <div class="flex justify-center">
-                                        <input type="checkbox" id="email-clicks" class="switch-input" checked>
-                                        <label for="email-clicks" class="switch-label"></label>
+                                <div
+                                    class="col-span-12 md:col-span-6 flex flex-col md:grid md:grid-cols-3 gap-3 md:gap-0 items-center">
+                                    <div
+                                        class="flex flex-row md:flex-row items-center justify-between md:justify-center w-full md:w-auto gap-2">
+                                        <span class="md:hidden text-sm text-gray-400 font-medium">Email</span>
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="email-clicks" class="switch-input" checked>
+                                            <label for="email-clicks" class="switch-label"></label>
+                                        </div>
                                     </div>
-                                    <div class="flex justify-center">
-                                        <input type="checkbox" id="push-clicks" class="switch-input">
-                                        <label for="push-clicks" class="switch-label"></label>
+                                    <div
+                                        class="flex flex-row md:flex-row items-center justify-between md:justify-center w-full md:w-auto gap-2">
+                                        <span class="md:hidden text-sm text-gray-400 font-medium">Push</span>
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="push-clicks" class="switch-input">
+                                            <label for="push-clicks" class="switch-label"></label>
+                                        </div>
                                     </div>
-                                    <div class="flex justify-center">
-                                        <input type="checkbox" id="sms-clicks" class="switch-input">
-                                        <label for="sms-clicks" class="switch-label"></label>
+                                    <div
+                                        class="flex flex-row md:flex-row items-center justify-between md:justify-center w-full md:w-auto gap-2">
+                                        <span class="md:hidden text-sm text-gray-400 font-medium">SMS</span>
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="sms-clicks" class="switch-input">
+                                            <label for="sms-clicks" class="switch-label"></label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Item 2: New Signups -->
                             <div
-                                class="grid grid-cols-12 gap-4 items-center p-4 hover:bg-white/5 border-b border-white/10 hover:rounded-xl transition-all group border-t border-white/5 md:border-t-0">
-                                <div class="col-span-12 md:col-span-6 flex items-center gap-4">
+                                class="grid grid-cols-12 gap-2 md:gap-4 items-center p-3 md:p-4 hover:bg-white/5 border-b border-white/10 hover:rounded-xl transition-all group border-t border-white/5 md:border-t-0">
+                                <div class="col-span-12 md:col-span-6 flex items-center gap-3 md:gap-4">
                                     <div
                                         class="w-10 h-10 rounded-lg bg-gradient-to-r from-[#FACC15]/20 to-[#60A5FA]/20 flex items-center justify-center shrink-0">
                                         <img src="assets/new-signup-y.svg" alt="" class="w-4 h-4">
@@ -465,55 +472,81 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-span-12 md:col-span-6 grid grid-cols-3 items-center">
-                                    <div class="flex justify-center">
-                                        <input type="checkbox" id="email-signups" class="switch-input" checked>
-                                        <label for="email-signups" class="switch-label"></label>
+                                <div
+                                    class="col-span-12 md:col-span-6 flex flex-col md:grid md:grid-cols-3 gap-3 md:gap-0 items-center">
+                                    <div
+                                        class="flex flex-row md:flex-row items-center justify-between md:justify-center w-full md:w-auto gap-2">
+                                        <span class="md:hidden text-sm text-gray-400 font-medium">Email</span>
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="email-signups" class="switch-input" checked>
+                                            <label for="email-signups" class="switch-label"></label>
+                                        </div>
                                     </div>
-                                    <div class="flex justify-center">
-                                        <input type="checkbox" id="push-signups" class="switch-input" checked>
-                                        <label for="push-signups" class="switch-label"></label>
+                                    <div
+                                        class="flex flex-row md:flex-row items-center justify-between md:justify-center w-full md:w-auto gap-2">
+                                        <span class="md:hidden text-sm text-gray-400 font-medium">Push</span>
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="push-signups" class="switch-input" checked>
+                                            <label for="push-signups" class="switch-label"></label>
+                                        </div>
                                     </div>
-                                    <div class="flex justify-center">
-                                        <input type="checkbox" id="sms-signups" class="switch-input">
-                                        <label for="sms-signups" class="switch-label"></label>
+                                    <div
+                                        class="flex flex-row md:flex-row items-center justify-between md:justify-center w-full md:w-auto gap-2">
+                                        <span class="md:hidden text-sm text-gray-400 font-medium">SMS</span>
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="sms-signups" class="switch-input">
+                                            <label for="sms-signups" class="switch-label"></label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Item 3: Weekly Reports -->
                             <div
-                                class="grid grid-cols-12 gap-4 items-center p-4 hover:bg-white/5 border-b border-white/10 hover:rounded-xl transition-all group border-t border-white/5 md:border-t-0">
-                                <div class="col-span-12 md:col-span-6 flex items-center gap-4">
+                                class="grid grid-cols-12 gap-2 md:gap-4 items-center p-3 md:p-4 hover:bg-white/5 border-b border-white/10 hover:rounded-xl transition-all group border-t border-white/5 md:border-t-0">
+                                <div class="col-span-12 md:col-span-6 flex items-center gap-3 md:gap-4">
                                     <div
                                         class="w-10 h-10 rounded-lg bg-gradient-to-r from-[#FACC15]/20 to-[#60A5FA]/20 flex items-center justify-center shrink-0">
-                                        <img src="" alt="">
+                                        <img src="assets/email-y.svg" alt="" class="w-4 h-4">
                                     </div>
                                     <div>
                                         <h3 class="text-white font-medium text-base">Weekly Reports</h3>
                                         <p class="text-[#9CA3AF] text-sm">Receive weekly performance summaries</p>
                                     </div>
                                 </div>
-                                <div class="col-span-12 md:col-span-6 grid grid-cols-3 items-center">
-                                    <div class="flex justify-center">
-                                        <input type="checkbox" id="email-weekly" class="switch-input" checked>
-                                        <label for="email-weekly" class="switch-label"></label>
+                                <div
+                                    class="col-span-12 md:col-span-6 flex flex-col md:grid md:grid-cols-3 gap-3 md:gap-0 items-center">
+                                    <div
+                                        class="flex flex-row md:flex-row items-center justify-between md:justify-center w-full md:w-auto gap-2">
+                                        <span class="md:hidden text-sm text-gray-400 font-medium">Email</span>
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="email-weekly" class="switch-input" checked>
+                                            <label for="email-weekly" class="switch-label"></label>
+                                        </div>
                                     </div>
-                                    <div class="flex justify-center">
-                                        <input type="checkbox" id="push-weekly" class="switch-input">
-                                        <label for="push-weekly" class="switch-label"></label>
+                                    <div
+                                        class="flex flex-row md:flex-row items-center justify-between md:justify-center w-full md:w-auto gap-2">
+                                        <span class="md:hidden text-sm text-gray-400 font-medium">Push</span>
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="push-weekly" class="switch-input">
+                                            <label for="push-weekly" class="switch-label"></label>
+                                        </div>
                                     </div>
-                                    <div class="flex justify-center">
-                                        <input type="checkbox" id="sms-weekly" class="switch-input">
-                                        <label for="sms-weekly" class="switch-label"></label>
+                                    <div
+                                        class="flex flex-row md:flex-row items-center justify-between md:justify-center w-full md:w-auto gap-2">
+                                        <span class="md:hidden text-sm text-gray-400 font-medium">SMS</span>
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="sms-weekly" class="switch-input">
+                                            <label for="sms-weekly" class="switch-label"></label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Item 4: Monthly Reports -->
                             <div
-                                class="grid grid-cols-12 gap-4 items-center p-4 hover:bg-white/5 border-b border-white/10 hover:rounded-xl transition-all group border-t border-white/5 md:border-t-0">
-                                <div class="col-span-12 md:col-span-6 flex items-center gap-4">
+                                class="grid grid-cols-12 gap-2 md:gap-4 items-center p-3 md:p-4 hover:bg-white/5 border-b border-white/10 hover:rounded-xl transition-all group border-t border-white/5 md:border-t-0">
+                                <div class="col-span-12 md:col-span-6 flex items-center gap-3 md:gap-4">
                                     <div
                                         class="w-10 h-10 rounded-lg bg-gradient-to-r from-[#FACC15]/20 to-[#60A5FA]/20 flex items-center justify-center shrink-0">
                                         <img src="assets/monthly-reports.svg" alt="" class="w-4 h-4">
@@ -523,26 +556,39 @@
                                         <p class="text-[#9CA3AF] text-sm">Get monthly analytics reports</p>
                                     </div>
                                 </div>
-                                <div class="col-span-12 md:col-span-6 grid grid-cols-3 items-center">
-                                    <div class="flex justify-center">
-                                        <input type="checkbox" id="email-monthly" class="switch-input">
-                                        <label for="email-monthly" class="switch-label"></label>
+                                <div
+                                    class="col-span-12 md:col-span-6 flex flex-col md:grid md:grid-cols-3 gap-3 md:gap-0 items-center">
+                                    <div
+                                        class="flex flex-row md:flex-row items-center justify-between md:justify-center w-full md:w-auto gap-2">
+                                        <span class="md:hidden text-sm text-gray-400 font-medium">Email</span>
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="email-monthly" class="switch-input">
+                                            <label for="email-monthly" class="switch-label"></label>
+                                        </div>
                                     </div>
-                                    <div class="flex justify-center">
-                                        <input type="checkbox" id="push-monthly" class="switch-input">
-                                        <label for="push-monthly" class="switch-label"></label>
+                                    <div
+                                        class="flex flex-row md:flex-row items-center justify-between md:justify-center w-full md:w-auto gap-2">
+                                        <span class="md:hidden text-sm text-gray-400 font-medium">Push</span>
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="push-monthly" class="switch-input">
+                                            <label for="push-monthly" class="switch-label"></label>
+                                        </div>
                                     </div>
-                                    <div class="flex justify-center">
-                                        <input type="checkbox" id="sms-monthly" class="switch-input">
-                                        <label for="sms-monthly" class="switch-label"></label>
+                                    <div
+                                        class="flex flex-row md:flex-row items-center justify-between md:justify-center w-full md:w-auto gap-2">
+                                        <span class="md:hidden text-sm text-gray-400 font-medium">SMS</span>
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="sms-monthly" class="switch-input">
+                                            <label for="sms-monthly" class="switch-label"></label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Item 5: Security Alerts -->
                             <div
-                                class="grid grid-cols-12 gap-4 items-center p-4 hover:bg-white/5 border-b border-white/10 hover:rounded-xl transition-all group border-t border-white/5 md:border-t-0">
-                                <div class="col-span-12 md:col-span-6 flex items-center gap-4">
+                                class="grid grid-cols-12 gap-2 md:gap-4 items-center p-3 md:p-4 hover:bg-white/5 border-b border-white/10 hover:rounded-xl transition-all group border-t border-white/5 md:border-t-0">
+                                <div class="col-span-12 md:col-span-6 flex items-center gap-3 md:gap-4">
                                     <div
                                         class="w-10 h-10 rounded-lg bg-gradient-to-r from-[#FACC15]/20 to-[#60A5FA]/20 flex items-center justify-center shrink-0">
                                         <img src="assets/s-alerts-y.svg" alt="" class="w-4 h-4">
@@ -552,26 +598,39 @@
                                         <p class="text-[#9CA3AF] text-sm">Important security notifications</p>
                                     </div>
                                 </div>
-                                <div class="col-span-12 md:col-span-6 grid grid-cols-3 items-center">
-                                    <div class="flex justify-center">
-                                        <input type="checkbox" id="email-security" class="switch-input" checked>
-                                        <label for="email-security" class="switch-label"></label>
+                                <div
+                                    class="col-span-12 md:col-span-6 flex flex-col md:grid md:grid-cols-3 gap-3 md:gap-0 items-center">
+                                    <div
+                                        class="flex flex-row md:flex-row items-center justify-between md:justify-center w-full md:w-auto gap-2">
+                                        <span class="md:hidden text-sm text-gray-400 font-medium">Email</span>
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="email-security" class="switch-input" checked>
+                                            <label for="email-security" class="switch-label"></label>
+                                        </div>
                                     </div>
-                                    <div class="flex justify-center">
-                                        <input type="checkbox" id="push-security" class="switch-input" checked>
-                                        <label for="push-security" class="switch-label"></label>
+                                    <div
+                                        class="flex flex-row md:flex-row items-center justify-between md:justify-center w-full md:w-auto gap-2">
+                                        <span class="md:hidden text-sm text-gray-400 font-medium">Push</span>
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="push-security" class="switch-input" checked>
+                                            <label for="push-security" class="switch-label"></label>
+                                        </div>
                                     </div>
-                                    <div class="flex justify-center">
-                                        <input type="checkbox" id="sms-security" class="switch-input" checked>
-                                        <label for="sms-security" class="switch-label"></label>
+                                    <div
+                                        class="flex flex-row md:flex-row items-center justify-between md:justify-center w-full md:w-auto gap-2">
+                                        <span class="md:hidden text-sm text-gray-400 font-medium">SMS</span>
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="sms-security" class="switch-input" checked>
+                                            <label for="sms-security" class="switch-label"></label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Item 6: System Updates -->
                             <div
-                                class="grid grid-cols-12 gap-4 items-center p-4 hover:bg-white/5 border-b border-white/10 hover:rounded-xl transition-all group border-t border-white/5 md:border-t-0">
-                                <div class="col-span-12 md:col-span-6 flex items-center gap-4">
+                                class="grid grid-cols-12 gap-2 md:gap-4 items-center p-3 md:p-4 hover:bg-white/5 border-b border-white/10 hover:rounded-xl transition-all group border-t border-white/5 md:border-t-0">
+                                <div class="col-span-12 md:col-span-6 flex items-center gap-3 md:gap-4">
                                     <div
                                         class="w-10 h-10 rounded-lg bg-gradient-to-r from-[#FACC15]/20 to-[#60A5FA]/20 flex items-center justify-center shrink-0">
                                         <img src="assets/system-update.svg" alt="">
@@ -581,26 +640,39 @@
                                         <p class="text-[#9CA3AF] text-sm">Platform updates and new features</p>
                                     </div>
                                 </div>
-                                <div class="col-span-12 md:col-span-6 grid grid-cols-3 items-center">
-                                    <div class="flex justify-center">
-                                        <input type="checkbox" id="email-system" class="switch-input">
-                                        <label for="email-system" class="switch-label"></label>
+                                <div
+                                    class="col-span-12 md:col-span-6 flex flex-col md:grid md:grid-cols-3 gap-3 md:gap-0 items-center">
+                                    <div
+                                        class="flex flex-row md:flex-row items-center justify-between md:justify-center w-full md:w-auto gap-2">
+                                        <span class="md:hidden text-sm text-gray-400 font-medium">Email</span>
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="email-system" class="switch-input">
+                                            <label for="email-system" class="switch-label"></label>
+                                        </div>
                                     </div>
-                                    <div class="flex justify-center">
-                                        <input type="checkbox" id="push-system" class="switch-input" checked>
-                                        <label for="push-system" class="switch-label"></label>
+                                    <div
+                                        class="flex flex-row md:flex-row items-center justify-between md:justify-center w-full md:w-auto gap-2">
+                                        <span class="md:hidden text-sm text-gray-400 font-medium">Push</span>
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="push-system" class="switch-input" checked>
+                                            <label for="push-system" class="switch-label"></label>
+                                        </div>
                                     </div>
-                                    <div class="flex justify-center">
-                                        <input type="checkbox" id="sms-system" class="switch-input">
-                                        <label for="sms-system" class="switch-label"></label>
+                                    <div
+                                        class="flex flex-row md:flex-row items-center justify-between md:justify-center w-full md:w-auto gap-2">
+                                        <span class="md:hidden text-sm text-gray-400 font-medium">SMS</span>
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="sms-system" class="switch-input">
+                                            <label for="sms-system" class="switch-label"></label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Item 7: Promotions -->
                             <div
-                                class="grid grid-cols-12 gap-4 items-center p-4 hover:bg-white/5 border-b border-white/10 hover:rounded-xl transition-all group border-t border-white/5 md:border-t-0">
-                                <div class="col-span-12 md:col-span-6 flex items-center gap-4">
+                                class="grid grid-cols-12 gap-2 md:gap-4 items-center p-3 md:p-4 hover:bg-white/5 border-b border-white/10 hover:rounded-xl transition-all group border-t border-white/5 md:border-t-0">
+                                <div class="col-span-12 md:col-span-6 flex items-center gap-3 md:gap-4">
                                     <div
                                         class="w-10 h-10 rounded-lg bg-gradient-to-r from-[#FACC15]/20 to-[#60A5FA]/20 flex items-center justify-center shrink-0">
                                         <img src="assets/promotions.svg" alt="" class="w-4 h-4">
@@ -610,18 +682,31 @@
                                         <p class="text-[#9CA3AF] text-sm">Special offers and promotional content</p>
                                     </div>
                                 </div>
-                                <div class="col-span-12 md:col-span-6 grid grid-cols-3 items-center">
-                                    <div class="flex justify-center">
-                                        <input type="checkbox" id="email-promotions" class="switch-input">
-                                        <label for="email-promotions" class="switch-label"></label>
+                                <div
+                                    class="col-span-12 md:col-span-6 flex flex-col md:grid md:grid-cols-3 gap-3 md:gap-0 items-center">
+                                    <div
+                                        class="flex flex-row md:flex-row items-center justify-between md:justify-center w-full md:w-auto gap-2">
+                                        <span class="md:hidden text-sm text-gray-400 font-medium">Email</span>
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="email-promotions" class="switch-input">
+                                            <label for="email-promotions" class="switch-label"></label>
+                                        </div>
                                     </div>
-                                    <div class="flex justify-center">
-                                        <input type="checkbox" id="push-promotions" class="switch-input">
-                                        <label for="push-promotions" class="switch-label"></label>
+                                    <div
+                                        class="flex flex-row md:flex-row items-center justify-between md:justify-center w-full md:w-auto gap-2">
+                                        <span class="md:hidden text-sm text-gray-400 font-medium">Push</span>
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="push-promotions" class="switch-input">
+                                            <label for="push-promotions" class="switch-label"></label>
+                                        </div>
                                     </div>
-                                    <div class="flex justify-center">
-                                        <input type="checkbox" id="sms-promotions" class="switch-input">
-                                        <label for="sms-promotions" class="switch-label"></label>
+                                    <div
+                                        class="flex flex-row md:flex-row items-center justify-between md:justify-center w-full md:w-auto gap-2">
+                                        <span class="md:hidden text-sm text-gray-400 font-medium">SMS</span>
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="sms-promotions" class="switch-input">
+                                            <label for="sms-promotions" class="switch-label"></label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -706,8 +791,8 @@
 
                 <!-- Recent Notifications -->
                 <div
-                    class="bg-gradient-to-r from-[#1F2937]/50 to-[#111827]/50 bg-blur border border-white/10 p-8 rounded-xl hover:border-[#3B82F6]/40 transition-all">
-                    <div class="flex items-center justify-between mb-7">
+                    class="bg-gradient-to-r from-[#1F2937]/50 to-[#111827]/50 bg-blur border border-white/10 p-4 sm:p-6 md:p-8 rounded-xl hover:border-[#3B82F6]/40 transition-all">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 sm:mb-7">
                         <div class="flex items-center gap-3">
                             <div class="w-5 h-5 flex items-center justify-center">
                                 <img src="assets/recent-n.svg" alt="" class="w-4 h-4">
@@ -715,7 +800,7 @@
                             <h2 class="text-xl font-bold text-white">Recent Notifications</h2>
                         </div>
                         <button
-                            class="text-[#FACC15] text-sm font-medium hover:underline flex items-center gap-2 transition-all">
+                            class="text-[#FACC15] text-sm font-medium hover:underline flex items-center gap-2 transition-all self-start sm:self-auto">
                             Clear All
                             <img src="assets/delete-y.svg" alt="" class="w-3 h-3"> </button>
                     </div>
@@ -723,7 +808,7 @@
                     <div class="space-y-3">
                         <!-- Item 1: Link Click -->
                         <div
-                            class="flex items-center justify-between p-5 bg-[#1F2937]/30 border border-[#374151]/50 rounded-lg hover:bg-[#1F2937]/50 transition-all cursor-pointer group">
+                            class="flex flex-col sm:flex-row sm:items-center justify-between p-3 md:p-5 bg-[#1F2937]/30 border border-[#374151]/50 rounded-lg hover:bg-[#1F2937]/50 transition-all cursor-pointer group gap-3 md:gap-4">
                             <div class="flex items-center gap-5">
                                 <div
                                     class="w-12 h-12 rounded-xl bg-gradient-to-r from-[#FACC15]/20 to-[#CA8A04]/20 flex items-center justify-center shrink-0">
@@ -735,12 +820,14 @@
                                         clicks</p>
                                 </div>
                             </div>
-                            <div class="text-[#9CA3AF] text-xs font-medium whitespace-nowrap pr-5">5 minutes ago</div>
+                            <div
+                                class="text-[#9CA3AF] text-xs font-medium whitespace-nowrap sm:pr-5 pl-[4.25rem] sm:pl-0">
+                                5 minutes ago</div>
                         </div>
 
                         <!-- Item 2: Security Alert -->
                         <div
-                            class="flex items-center justify-between p-5 bg-[#1F2937]/30 border border-[#374151]/50 rounded-lg hover:bg-[#1F2937]/50 transition-all cursor-pointer group">
+                            class="flex flex-col sm:flex-row sm:items-center justify-between p-3 md:p-5 bg-[#1F2937]/30 border border-[#374151]/50 rounded-lg hover:bg-[#1F2937]/50 transition-all cursor-pointer group gap-3 md:gap-4">
                             <div class="flex items-center gap-5">
                                 <div
                                     class="w-12 h-12 rounded-xl bg-gradient-to-r from-[#60A5FA]/20 to-[#2563EB]/20 flex items-center justify-center shrink-0">
@@ -752,12 +839,14 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="text-[#9CA3AF] text-xs font-medium whitespace-nowrap pr-5">1 hour ago</div>
+                            <div
+                                class="text-[#9CA3AF] text-xs font-medium whitespace-nowrap sm:pr-5 pl-[4.25rem] sm:pl-0">
+                                1 hour ago</div>
                         </div>
 
                         <!-- Item 3: New Signup -->
                         <div
-                            class="flex items-center justify-between p-5 bg-[#1F2937]/30 border border-[#374151]/50 rounded-lg hover:bg-[#1F2937]/50 transition-all cursor-pointer group">
+                            class="flex flex-col sm:flex-row sm:items-center justify-between p-3 md:p-5 bg-[#1F2937]/30 border border-[#374151]/50 rounded-lg hover:bg-[#1F2937]/50 transition-all cursor-pointer group gap-3 md:gap-4">
                             <div class="flex items-center gap-5">
                                 <div
                                     class="w-12 h-12 rounded-xl bg-gradient-to-r from-[#FACC15]/20 to-[#CA8A04]/20 flex items-center justify-center shrink-0">
@@ -769,12 +858,14 @@
                                         affiliate link</p>
                                 </div>
                             </div>
-                            <div class="text-[#9CA3AF] text-xs font-medium whitespace-nowrap pr-5">2 hours ago</div>
+                            <div
+                                class="text-[#9CA3AF] text-xs font-medium whitespace-nowrap sm:pr-5 pl-[4.25rem] sm:pl-0">
+                                2 hours ago</div>
                         </div>
 
                         <!-- Item 4: Weekly Report -->
                         <div
-                            class="flex items-center justify-between p-5 bg-[#1F2937]/30 border border-[#374151]/50 rounded-lg hover:bg-[#1F2937]/50 transition-all cursor-pointer group">
+                            class="flex flex-col sm:flex-row sm:items-center justify-between p-3 md:p-5 bg-[#1F2937]/30 border border-[#374151]/50 rounded-lg hover:bg-[#1F2937]/50 transition-all cursor-pointer group gap-3 md:gap-4">
                             <div class="flex items-center gap-5">
                                 <div
                                     class="w-12 h-12 rounded-xl bg-gradient-to-r from-[#60A5FA]/20 to-[#2563EB]/20 flex items-center justify-center shrink-0">
@@ -785,12 +876,14 @@
                                     <p class="text-[#9CA3AF] text-sm mt-2">Your weekly performance report is ready</p>
                                 </div>
                             </div>
-                            <div class="text-[#9CA3AF] text-xs font-medium whitespace-nowrap pr-5">1 day ago</div>
+                            <div
+                                class="text-[#9CA3AF] text-xs font-medium whitespace-nowrap sm:pr-5 pl-[4.25rem] sm:pl-0">
+                                1 day ago</div>
                         </div>
 
                         <!-- Item 5: System Update -->
                         <div
-                            class="flex items-center justify-between p-5 bg-[#1F2937]/30 border border-[#374151]/50 rounded-lg hover:bg-[#1F2937]/50 transition-all cursor-pointer group">
+                            class="flex flex-col sm:flex-row sm:items-center justify-between p-3 md:p-5 bg-[#1F2937]/30 border border-[#374151]/50 rounded-lg hover:bg-[#1F2937]/50 transition-all cursor-pointer group gap-3 md:gap-4">
                             <div class="flex items-center gap-5">
                                 <div
                                     class="w-12 h-12 rounded-xl bg-gradient-to-r from-[#FACC15]/20 to-[#CA8A04]/20 flex items-center justify-center shrink-0">
@@ -802,9 +895,20 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="text-[#9CA3AF] text-xs font-medium whitespace-nowrap pr-5">2 days ago</div>
+                            <div
+                                class="text-[#9CA3AF] text-xs font-medium whitespace-nowrap sm:pr-5 pl-[4.25rem] sm:pl-0">
+                                2 days ago</div>
                         </div>
                     </div>
+                </div>
+
+                <!-- Save Changes Button -->
+                <div class="flex justify-end pt-4 pb-8">
+                    <button
+                        class="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3 bg-gradient-to-r from-[#FACC15] to-[#60A5FA] text-black font-medium rounded-lg text-base shadow-lg hover:scale-105 transition-transform">
+                        <img src="assets/save.svg" alt="" class="h-3 w-3">
+                        Save Changes
+                    </button>
                 </div>
 
             </div>
