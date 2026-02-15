@@ -305,23 +305,39 @@
                 <div
                     class="flex flex-col md:flex-row justify-between items-stretch md:items-center bg-white/5 bg-blur-sm border border-[#222328] p-3 sm:p-7 rounded-lg gap-4">
                     <!-- Tab Filters -->
-                    <div class="flex gap-1 bg-white/10 p-1 rounded-md flex-wrap w-full md:w-auto">
-                        <button
-                            class="flex-1 md:flex-none px-3 sm:px-4 py-2 bg-gradient-to-r from-[#FACC15] to-[#EAB308] text-black font-semibold rounded-md shadow-md text-sm">
-                            All
-                        </button>
-                        <button
-                            class="flex-1 md:flex-none px-3 sm:px-4 py-2 text-[#9CA3AF] hover:text-white hover:bg-[#222328] rounded-md transition-colors text-sm">
-                            Published
-                        </button>
-                        <button
-                            class="flex-1 md:flex-none px-3 sm:px-4 py-2 text-[#9CA3AF] hover:text-white hover:bg-[#222328] rounded-md transition-colors text-sm">
-                            Draft
-                        </button>
-                        <button
-                            class="flex-1 md:flex-none px-3 sm:px-4 py-2 text-[#9CA3AF] hover:text-white hover:bg-[#222328] rounded-md transition-colors text-sm">
-                            Archived
-                        </button>
+                    <div class="flex flex-wrap gap-2 sm:gap-1 bg-white/10 p-1 rounded-md w-full md:w-auto">
+                        <label class="flex-1 md:flex-none">
+                            <input type="radio" name="staticsite-filter" class="peer hidden" checked>
+                            <div class="cursor-pointer text-center px-3 sm:px-4 py-2 rounded-md transition-all text-sm font-semibold 
+                                        peer-checked:bg-gradient-to-br peer-checked:from-[#FACC15] peer-checked:to-[#EAB308] peer-checked:text-black peer-checked:shadow-md
+                                        text-[#9CA3AF] hover:text-white hover:bg-[#222328]">
+                                All
+                            </div>
+                        </label>
+                        <label class="flex-1 md:flex-none">
+                            <input type="radio" name="staticsite-filter" class="peer hidden">
+                            <div class="cursor-pointer text-center px-3 sm:px-4 py-2 rounded-md transition-all text-sm font-semibold 
+                                        peer-checked:bg-gradient-to-br peer-checked:from-[#FACC15] peer-checked:to-[#EAB308] peer-checked:text-black peer-checked:shadow-md
+                                        text-[#9CA3AF] hover:text-white hover:bg-[#222328]">
+                                Published
+                            </div>
+                        </label>
+                        <label class="flex-1 md:flex-none">
+                            <input type="radio" name="staticsite-filter" class="peer hidden">
+                            <div class="cursor-pointer text-center px-3 sm:px-4 py-2 rounded-md transition-all text-sm font-semibold 
+                                        peer-checked:bg-gradient-to-br peer-checked:from-[#FACC15] peer-checked:to-[#EAB308] peer-checked:text-black peer-checked:shadow-md
+                                        text-[#9CA3AF] hover:text-white hover:bg-[#222328]">
+                                Draft
+                            </div>
+                        </label>
+                        <label class="flex-1 md:flex-none">
+                            <input type="radio" name="staticsite-filter" class="peer hidden">
+                            <div class="cursor-pointer text-center px-3 sm:px-4 py-2 rounded-md transition-all text-sm font-semibold 
+                                        peer-checked:bg-gradient-to-br peer-checked:from-[#FACC15] peer-checked:to-[#EAB308] peer-checked:text-black peer-checked:shadow-md
+                                        text-[#9CA3AF] hover:text-white hover:bg-[#222328]">
+                                Archived
+                            </div>
+                        </label>
                     </div>
 
                     <!-- Search and Filter -->
