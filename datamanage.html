@@ -227,19 +227,31 @@
                     class="items-stretch md:items-center bg-white/5 bg-blur-sm border border-white/10 p-3 sm:p-7 rounded-lg gap-4">
 
                     <!-- Tab Filters -->
-                    <div class="flex gap-1 bg-white/5 p-1 rounded-md flex-wrap w-full md:w-auto">
-                        <button
-                            class="flex-1 md:flex-none px-3 sm:px-4 py-3 bg-gradient-to-br from-[#FACC15] to-[#EAB308] text-black font-semibold rounded-md shadow-md text-sm">
-                            Export
-                        </button>
-                        <button
-                            class="flex-1 md:flex-none px-3 sm:px-4 py-3 text-[#9CA3AF] hover:text-white hover:bg-[#222328] rounded-md transition-colors text-sm">
-                            Import
-                        </button>
-                        <button
-                            class="flex-1 md:flex-none px-3 sm:px-4 py-3 text-[#9CA3AF] hover:text-white hover:bg-[#222328] rounded-md transition-colors text-sm">
-                            Backup
-                        </button>
+                    <div class="flex flex-wrap gap-2 sm:gap-1 bg-white/5 p-1 rounded-md w-full md:w-auto">
+                        <label class="flex-1 md:flex-none">
+                            <input type="radio" name="datamanage-filter" class="peer hidden" checked>
+                            <div class="cursor-pointer text-center px-3 sm:px-4 py-3 rounded-md transition-all text-sm font-semibold 
+                                        peer-checked:bg-gradient-to-br peer-checked:from-[#FACC15] peer-checked:to-[#EAB308] peer-checked:text-black peer-checked:shadow-md
+                                        text-[#9CA3AF] hover:text-white hover:bg-[#222328]">
+                                Export
+                            </div>
+                        </label>
+                        <label class="flex-1 md:flex-none">
+                            <input type="radio" name="datamanage-filter" class="peer hidden">
+                            <div class="cursor-pointer text-center px-3 sm:px-4 py-3 rounded-md transition-all text-sm font-semibold 
+                                        peer-checked:bg-gradient-to-br peer-checked:from-[#FACC15] peer-checked:to-[#EAB308] peer-checked:text-black peer-checked:shadow-md
+                                        text-[#9CA3AF] hover:text-white hover:bg-[#222328]">
+                                Import
+                            </div>
+                        </label>
+                        <label class="flex-1 md:flex-none">
+                            <input type="radio" name="datamanage-filter" class="peer hidden">
+                            <div class="cursor-pointer text-center px-3 sm:px-4 py-3 rounded-md transition-all text-sm font-semibold 
+                                        peer-checked:bg-gradient-to-br peer-checked:from-[#FACC15] peer-checked:to-[#EAB308] peer-checked:text-black peer-checked:shadow-md
+                                        text-[#9CA3AF] hover:text-white hover:bg-[#222328]">
+                                Backup
+                            </div>
+                        </label>
                     </div>
 
                     <!-- Export Grid -->
@@ -359,21 +371,21 @@
                         </div>
                         <div class="bg-white/5 p-5 rounded-lg space-y-1">
                             <div class="">
-                               <div class="w-3 h-3 rounded-full bg-[#22C55E] mb-1"></div>
+                                <div class="w-3 h-3 rounded-full bg-[#22C55E] mb-1"></div>
                                 <span class="text-[#9CA3AF] text-xs">QR Codes</span>
                             </div>
                             <p class="text-base font-bold text-white">0.8 GB</p>
                         </div>
                         <div class="bg-white/5 p-5 rounded-lg space-y-1">
                             <div class="">
-                               <div class="w-3 h-3 rounded-full bg-[#EAB308] mb-1"></div>
+                                <div class="w-3 h-3 rounded-full bg-[#EAB308] mb-1"></div>
                                 <span class="text-[#9CA3AF] text-xs">Analytics</span>
                             </div>
                             <p class="text-base font-bold text-white">0.3 GB</p>
                         </div>
                         <div class="bg-white/5 p-5 rounded-lg space-y-1">
                             <div class="">
-                               <div class="w-3 h-3 rounded-full bg-[#A855F7] mb-1"></div>
+                                <div class="w-3 h-3 rounded-full bg-[#A855F7] mb-1"></div>
                                 <span class="text-[#9CA3AF] text-xs">Other</span>
                             </div>
                             <p class="text-base font-bold text-white">0.1 GB</p>
