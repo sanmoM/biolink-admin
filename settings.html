@@ -279,50 +279,49 @@
 
                 <!-- filter -->
                 <div
-                    class="flex gap-12 bg-gradient-to-r from-[#1F2937]/50 to-[#111827]/50 bg-blur border border-[#374151]/50 p-1 rounded-xl flex-wrap w-full md:w-auto">
+                    class="grid grid-cols-2 sm:grid-cols-3 md:flex md:flex-row gap-1 bg-gradient-to-r from-[#1F2937]/50 to-[#111827]/50 bg-blur border border-[#374151]/50 p-1.5 rounded-xl w-full md:w-auto">
                     <div
-                        class="flex items-center gap-2 flex-1 md:flex-none px-3 sm:px-4 py-3 bg-gradient-to-r from-[#FACC15] to-[#60A5FA] text-black font-semibold rounded-lg shadow-md text-sm">
-                        <img src="assets/accoubt.svg" alt="">
+                        class="flex items-center gap-2 px-2 sm:px-4 py-2.5 sm:py-3 bg-gradient-to-r from-[#FACC15] to-[#60A5FA] text-black font-semibold rounded-lg shadow-md text-[11px] sm:text-sm whitespace-nowrap justify-center md:justify-start">
+                        <img src="assets/accoubt.svg" alt="" class="h-3.5 w-3.5 sm:h-4 sm:w-4">
                         <button>
                             Account
                         </button>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <img src="assets/settings.svg" alt="">
+                    <div class="flex items-center gap-2 justify-center md:justify-start px-2 py-2.5">
+                        <img src="assets/settings.svg" alt="" class="h-3.5 w-3.5 sm:h-4 sm:w-4">
                         <button
-                            class="flex-1 md:flex-none py-3 text-[#D1D5DB] hover:text-white rounded-md transition-colors text-sm">
+                            class="text-[#D1D5DB] hover:text-white rounded-md transition-colors text-[11px] sm:text-sm whitespace-nowrap">
                             Preferences
                         </button>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <img src="assets/pixels.svg" alt="">
+                    <div class="flex items-center gap-2 justify-center md:justify-start px-2 py-2.5">
+                        <img src="assets/pixels.svg" alt="" class="h-3.5 w-3.5 sm:h-4 sm:w-4">
                         <button
-                            class="flex-1 md:flex-none py-3 text-[#D1D5DB] hover:text-white rounded-md transition-colors text-sm">
+                            class="text-[#D1D5DB] hover:text-white rounded-md transition-colors text-[11px] sm:text-sm whitespace-nowrap">
                             API
                         </button>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <img src="assets/plan.svg" alt="">
+                    <div class="flex items-center gap-2 justify-center md:justify-start px-2 py-2.5">
+                        <img src="assets/plan.svg" alt="" class="h-3.5 w-3.5 sm:h-4 sm:w-4">
                         <button
-                            class="flex-1 md:flex-none py-3 text-[#D1D5DB] hover:text-white rounded-md transition-colors text-sm">
+                            class="text-[#D1D5DB] hover:text-white rounded-md transition-colors text-[11px] sm:text-sm whitespace-nowrap">
                             Plan
                         </button>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <img src="assets/logs.svg" alt="">
+                    <div class="flex items-center gap-2 justify-center md:justify-start px-2 py-2.5">
+                        <img src="assets/logs.svg" alt="" class="h-4 w-4">
                         <button
-                            class="flex-1 md:flex-none py-3 text-[#D1D5DB] hover:text-white rounded-md transition-colors text-sm">
+                            class="text-[#D1D5DB] hover:text-white rounded-md transition-colors text-[11px] sm:text-sm whitespace-nowrap">
                             Logs
                         </button>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <img src="assets/delete-w.svg" alt="">
+                    <div class="flex items-center gap-2 justify-center md:justify-start px-2 py-2.5">
+                        <img src="assets/delete-w.svg" alt="" class="h-3.5 w-3.5 sm:h-4 sm:w-4">
                         <button
-                            class="flex-1 md:flex-none py-3 text-[#D1D5DB] hover:text-white rounded-md transition-colors text-sm">
+                            class="text-[#D1D5DB] hover:text-white rounded-md transition-colors text-[11px] sm:text-sm whitespace-nowrap">
                             Delete account
                         </button>
                     </div>
-
                 </div>
 
                 <!-- Avatar -->
@@ -337,9 +336,9 @@
                             class="w-24 h-24 flex items-center justify-center rounded-full bg-gradient-to-r from-[#FACC15] to-[#3B82F6] text-2xl font-bold text-white shadow-lg">
                             JD
                         </div>
-                        <div class="space-y-2">
+                        <div class="space-y-2 w-full sm:w-auto">
                             <button
-                                class="px-6 py-2.5 bg-gradient-to-r from-[#FACC15] to-[#60A5FA] text-black font-medium rounded-lg shadow-md text-base hover:scale-105 transition-transform">
+                                class="w-full sm:w-auto px-6 py-2.5 bg-gradient-to-r from-[#FACC15] to-[#60A5FA] text-black font-medium rounded-lg shadow-md text-base hover:scale-105 transition-transform">
                                 Choose file
                             </button>
                             <p class="text-sm text-[#9CA3AF]">.jpg, .jpeg, .png, .svg, .gif, .webp, .avif allowed. MB
@@ -408,15 +407,15 @@
 
                 <!-- Two-Factor Authentication -->
                 <div
-                    class="bg-gradient-to-r from-[#1F2937]/50 to-[#111827]/50 bg-blur border border-[#374151]/50 p-6 rounded-xl w-full flex items-center justify-between">
-                    <div>
-                        <div class="flex items-center gap-3 mb-2">
-                            <img src="assets/two-factor.svg" alt="" class="h-5 w-5">
-                            <h2 class="font-semibold text-xl">Two-Factor Authentication</h2>
+                    class="bg-gradient-to-r from-[#1F2937]/50 to-[#111827]/50 bg-blur border border-[#374151]/50 p-4 sm:p-6 rounded-xl w-full flex flex-row items-center justify-between gap-4">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-1">
+                            <img src="assets/two-factor.svg" alt="" class="h-4 w-4 sm:h-5 sm:w-5">
+                            <h2 class="font-semibold text-lg sm:text-xl">Two-Factor Authentication</h2>
                         </div>
-                        <p class="text-sm text-[#9CA3AF]">Add an extra layer of security to your account</p>
+                        <p class="text-xs sm:text-sm text-[#9CA3AF]">Add an extra layer of security to your account</p>
                     </div>
-                    <div class="flex justify-center">
+                    <div class="flex items-center justify-center shrink-0">
                         <input type="checkbox" id="two-factor-auth" class="switch-input">
                         <label for="two-factor-auth" class="switch-label"></label>
                     </div>
@@ -479,7 +478,7 @@
                 <!-- Save Changes Button -->
                 <div class="flex justify-end pt-4">
                     <button
-                        class="flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-[#FACC15] to-[#60A5FA] text-black font-medium rounded-lg text-base shadow-lg hover:scale-105 transition-transform">
+                        class="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3 bg-gradient-to-r from-[#FACC15] to-[#60A5FA] text-black font-medium rounded-lg text-base shadow-lg hover:scale-105 transition-transform">
                         <img src="assets/save.svg" alt="" class="h-3 w-3">
                         Save Changes
                     </button>
