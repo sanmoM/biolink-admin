@@ -242,7 +242,7 @@
 
                 <!-- filter -->
                 <div
-                    class="flex gap-10 bg-gradient-to-r from-[#1F2937]/50 to-[#111827]/50 bg-blur border border-[#374151]/50 p-1 rounded-xl flex-wrap w-full md:w-auto">
+                    class="flex gap-12 bg-gradient-to-r from-[#1F2937]/50 to-[#111827]/50 bg-blur border border-[#374151]/50 p-1 rounded-xl flex-wrap w-full md:w-auto">
                     <div
                         class="flex items-center gap-2 flex-1 md:flex-none px-3 sm:px-4 py-3 bg-gradient-to-r from-[#FACC15] to-[#60A5FA] text-black font-semibold rounded-lg shadow-md text-sm">
                         <img src="assets/accoubt.svg" alt="">
@@ -289,8 +289,83 @@
                 </div>
 
                 <!-- Avatar -->
-                <div class="flex gap-10 bg-gradient-to-r from-[#1F2937]/50 to-[#111827]/50 bg-blur border border-[#374151]/50 p-1 rounded-xl flex-wrap w-full md:w-auto">
+                <div
+                    class="bg-gradient-to-r from-[#1F2937]/50 to-[#111827]/50 bg-blur border border-[#374151]/50 p-6 rounded-xl w-full">
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="assets/avatar.svg" alt="">
+                        <h2 class="font-semibold text-xl">Avatar</h2>
+                    </div>
+                    <div class="flex flex-col sm:flex-row items-center gap-6">
+                        <div
+                            class="w-24 h-24 flex items-center justify-center rounded-full bg-gradient-to-r from-[#FACC15] to-[#3B82F6] text-2xl font-bold text-white shadow-lg">
+                            JD
+                        </div>
+                        <div class="space-y-2">
+                            <button
+                                class="px-6 py-2.5 bg-gradient-to-r from-[#FACC15] to-[#60A5FA] text-black font-medium rounded-lg shadow-md text-base hover:scale-105 transition-transform">
+                                Choose file
+                            </button>
+                            <p class="text-sm text-[#9CA3AF]">.jpg, .jpeg, .png, .svg, .gif, .webp, .avif allowed. MB
+                                maximum.</p>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Name -->
+                <div
+                    class="bg-gradient-to-r from-[#1F2937]/50 to-[#111827]/50 bg-blur border border-[#374151]/50 p-6 rounded-xl w-full">
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="assets/name.svg" alt="">
+                        <h2 class="font-semibold text-xl">Name</h2>
+                    </div>
+                    <input type="text" value="Muhammad Kashif Ali"
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-accent-yellow/50 transition-colors">
+                </div>
+
+                <!-- Email -->
+                <div
+                    class="bg-gradient-to-r from-[#1F2937]/50 to-[#111827]/50 bg-blur border border-[#374151]/50 p-6 rounded-xl w-full">
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="assets/email-y.svg" alt="">
+                        <h2 class="font-semibold text-xl">Email</h2>
+                    </div>
+                    <input type="email" value="kashif123rana.rk@gmail.com"
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-accent-yellow/50 transition-colors">
+                </div>
+
+                <!-- Timezone -->
+                <div
+                    class="bg-gradient-to-r from-[#1F2937]/50 to-[#111827]/50 bg-blur border border-[#374151]/50 p-6 rounded-xl w-full">
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="assets/timezone.svg" alt="" class="h-5 w-5">
+                        <h2 class="font-semibold text-xl">Timezone</h2>
+                    </div>
+                    <div class="relative">
+                        <select
+                            class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white appearance-none focus:outline-none focus:border-accent-yellow/50 transition-colors">
+                            <div class="text-black bg-blur">
+                                <option value="UTC">UTC</option>
+                                <option value="EST">EST</option>
+                                <option value="PST">PST</option>
+                            </div>
+                        </select>
+                        <i
+                            class="fas fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-black pointer-events-none"></i>
+                    </div>
+                    <p class="mt-2 text-sm text-[#9CA3AF]">Your preferred way of displaying dates.</p>
+                </div>
+
+                <!-- Anti phishing code -->
+                <div
+                    class="bg-gradient-to-r from-[#1F2937]/50 to-[#111827]/50 bg-blur border border-[#374151]/50 p-6 rounded-xl w-full">
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="assets/s-alerts-y.svg" alt="" class="h-5 w-5">
+                        <h2 class="font-semibold text-xl">Anti-phishing code</h2>
+                    </div>
+                    <input type="text" placeholder="Enter your anti-phishing code"
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-accent-yellow/50 transition-colors">
+                    <p class="mt-2 text-sm text-[#9CA3AF]">You'll get this code on each email that we send you, so you'll
+                        know it's a valid email from us.</p>
                 </div>
 
             </div>
