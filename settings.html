@@ -69,6 +69,43 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
         }
+
+        /* Toggle Styles from Notification Page */
+        .switch-input {
+            display: none;
+        }
+
+        .switch-label {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 25px;
+            background: #374151;
+            border-radius: 22px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .switch-label::after {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            background: white;
+            border-radius: 50%;
+            top: 3.5px;
+            left: 3px;
+            transition: 0.3s;
+        }
+
+        .switch-input:checked+.switch-label {
+            background: linear-gradient(90deg, #FACC15, #60A5FA);
+        }
+
+        .switch-input:checked+.switch-label::after {
+            left: calc(100% - 3px);
+            transform: translateX(-100%);
+        }
     </style>
 
 </head>
@@ -364,8 +401,88 @@
                     </div>
                     <input type="text" placeholder="Enter your anti-phishing code"
                         class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-accent-yellow/50 transition-colors">
-                    <p class="mt-2 text-sm text-[#9CA3AF]">You'll get this code on each email that we send you, so you'll
+                    <p class="mt-2 text-sm text-[#9CA3AF]">You'll get this code on each email that we send you, so
+                        you'll
                         know it's a valid email from us.</p>
+                </div>
+
+                <!-- Two-Factor Authentication -->
+                <div
+                    class="bg-gradient-to-r from-[#1F2937]/50 to-[#111827]/50 bg-blur border border-[#374151]/50 p-6 rounded-xl w-full flex items-center justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-2">
+                            <img src="assets/two-factor.svg" alt="" class="h-5 w-5">
+                            <h2 class="font-semibold text-xl">Two-Factor Authentication</h2>
+                        </div>
+                        <p class="text-sm text-[#9CA3AF]">Add an extra layer of security to your account</p>
+                    </div>
+                    <div class="flex justify-center">
+                        <input type="checkbox" id="two-factor-auth" class="switch-input">
+                        <label for="two-factor-auth" class="switch-label"></label>
+                    </div>
+                </div>
+
+                <!-- Change Password -->
+                <div
+                    class="bg-gradient-to-r from-[#1F2937]/50 to-[#111827]/50 bg-blur border border-[#374151]/50 p-6 rounded-xl w-full">
+                    <div class="flex items-center gap-3 mb-3">
+                        <img src="assets/change-p.svg" alt="" class="h-5 w-5">
+                        <h2 class="font-semibold text-xl">Change Password</h2>
+                    </div>
+                    <p class="text-sm text-[#9CA3AF] mb-6">You can change your password by clicking on the <i
+                            class="fas fa-download"></i> icon in the top right of the address bar.</p>
+
+                    <div class="space-y-4">
+                        <!-- Current Password -->
+                        <div class="space-y-3">
+                            <label class="flex items-center gap-2 text-sm text-[#9CA3AF]">
+                                <img src="assets/pass.svg" alt=""> Current password
+                            </label>
+                            <div class="relative">
+                                <input type="password" placeholder="Enter current password"
+                                    class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-accent-yellow/50 transition-colors">
+                                <img src="assets/view-g.svg" alt="" class="absolute right-5 top-1/2 -translate-y-1/2">
+                            </div>
+                        </div>
+
+                        <!-- New Password -->
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2 text-sm text-[#9CA3AF]">
+                                <img src="assets/pass.svg" alt=""> New password
+                            </label>
+                            <div class="relative">
+                                <input type="password" placeholder="Enter new password"
+                                    class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-accent-yellow/50 transition-colors">
+                                <img src="assets/view-g.svg" alt="" class="absolute right-5 top-1/2 -translate-y-1/2">
+                            </div>
+                        </div>
+
+                        <!-- Repeat New Password -->
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2 text-sm text-[#9CA3AF]">
+                                <img src="assets/pass.svg" alt=""> Repeat new password
+                            </label>
+                            <div class="relative">
+                                <input type="password" placeholder="Confirm new password"
+                                    class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-accent-yellow/50 transition-colors">
+                                <img src="assets/view-g.svg" alt="" class="absolute right-5 top-1/2 -translate-y-1/2">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button
+                        class="mt-6 px-6 py-2.5 bg-gradient-to-r from-[#FACC15] to-[#60A5FA] text-black font-medium rounded-lg shadow-md text-base hover:scale-105 transition-transform">
+                        Update Password
+                    </button>
+                </div>
+
+                <!-- Save Changes Button -->
+                <div class="flex justify-end pt-4">
+                    <button
+                        class="flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-[#FACC15] to-[#60A5FA] text-black font-medium rounded-lg text-base shadow-lg hover:scale-105 transition-transform">
+                        <img src="assets/save.svg" alt="" class="h-3 w-3">
+                        Save Changes
+                    </button>
                 </div>
 
             </div>
