@@ -72,7 +72,7 @@
 
         <!-- Left: Toggle -->
         <div class="flex-1 sm:flex-none flex items-center justify-start gap-4">
-            <button id="mobile-menu-toggle"
+            <button id="mobile-menu-btn"
                 class="lg:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors">
                 <i class="fas fa-bars text-xl"></i>
             </button>
@@ -123,7 +123,7 @@
     <div class="flex h-screen overflow-hidden text-sm">
         <!-- Sidebar -->
         <aside id="sidebar"
-            class="w-64 bg-black border-r border-[#EAB308]/20 flex flex-col h-full pb-20 flex-shrink-0 fixed lg:static inset-y-0 left-0 z-40 -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out">
+            class="w-64 bg-black border-r border-[#EAB308]/20 flex flex-col h-full pb-20 flex-shrink-0 fixed lg:static left-0 z-40 -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out">
 
             <!-- Navigation -->
             <nav class="flex-1 mt-5 px-4 overflow-y-auto space-y-1">
@@ -224,6 +224,12 @@
         <!-- Main Content -->
         <main
             class="flex-1 flex flex-col overflow-y-auto bg-gradient-to-br from-[#111827] via-[#000000] to-[#111827] relative">
+
+            <!-- Overlay for mobile sidebar -->
+            <div id="sidebar-overlay"
+                class="fixed inset-0 bg-black/50 z-30 hidden lg:hidden backdrop-blur-sm transition-opacity opacity-0">
+            </div>
+
             <div class="px-8 py-8 w-full mx-auto space-y-8">
 
                 <!-- Header -->
@@ -428,6 +434,25 @@
 
         mobileMenuBtn.addEventListener('click', toggleSidebar);
         sidebarOverlay.addEventListener('click', toggleSidebar);
+
+        // Close sidebar on link click (for mobile)
+        const sidebarLinks = sidebar.querySelectorAll('a');
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 1024) {
+                    toggleSidebar();
+                }
+            });
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024) {
+                sidebar.classList.add('-translate-x-full');
+                sidebarOverlay.classList.add('hidden', 'opacity-0');
+                document.body.classList.remove('overflow-hidden');
+            }
+        });
     </script>
 </body>
 
