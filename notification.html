@@ -77,10 +77,10 @@
 
     <!-- Navbar -->
     <nav
-        class="relative sticky top-0 z-50 flex items-center bg-black justify-between px-6 py-3 bg-[#18191d] border-b border-[#EAB308]/20">
+        class="relative sticky top-0 z-50 flex items-center bg-black justify-between px-4 sm:px-6 py-3 bg-[#18191d] border-b border-[#EAB308]/20">
 
-        <!-- Left: Logo & Mobile Toggle -->
-        <div class="flex items-center gap-4">
+        <!-- Left: Toggle -->
+        <div class="flex-1 flex items-center justify-start gap-4">
             <button id="mobile-menu-toggle"
                 class="lg:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors">
                 <i class="fas fa-bars text-xl"></i>
@@ -88,22 +88,28 @@
             <img src="assets/logo.png" alt="Madwess Logo" class="hidden sm:block h-12 w-auto">
         </div>
 
-        <!-- Mobile Logo (Centered) -->
-        <div class="sm:hidden absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2">
-            <img src="assets/logo.png" alt="Madwess Logo" class="h-10 w-auto">
-        </div>
+        <!-- Center: Logo (Mobile) / Search (Desktop) -->
+        <div class="flex-shrink-0 flex items-center justify-center">
+            <!-- Mobile Logo -->
+            <img src="assets/logo.png" alt="Madwess Logo" class="sm:hidden h-10 w-auto">
 
-        <!-- Center: Search -->
-        <div class="hidden sm:flex flex-1 max-w-[500px] mx-auto">
-            <div class="relative w-full">
-                <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm"></i>
-                <input type="text" placeholder="Search links, QR codes, analytics..."
-                    class="w-full pl-10 pr-4 py-2 bg-white/5 border border-[#9CA3AF]/20 rounded-md text-sm text-white font-medium placeholder-gray-500 focus:outline-none focus:border-gray-500 focus:bg-[#14151a] transition" />
+            <!-- Center Search (Desktop) -->
+            <div class="hidden sm:flex flex-1 max-w-[500px] mx-auto">
+                <div class="relative w-full">
+                    <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm"></i>
+                    <input type="text" placeholder="Search links, QR codes, analytics..."
+                        class="w-full pl-10 pr-4 py-2 bg-white/5 border border-[#9CA3AF]/20 rounded-md text-sm text-white font-medium placeholder-gray-500 focus:outline-none focus:border-gray-500 focus:bg-[#14151a] transition" />
+                </div>
             </div>
         </div>
 
-        <!-- Right: Notification + Profile -->
-        <div class="flex items-center gap-4">
+        <!-- Right: Icons -->
+        <div class="flex-1 flex items-center justify-end gap-2 sm:gap-4">
+            <!-- Mobile Search Icon -->
+            <button aria-label="Search"
+                class="sm:hidden w-9 h-9 flex items-center justify-center text-white hover:bg-[#1a1b20] active:scale-95 rounded-lg transition-all duration-200">
+                <i class="fas fa-search text-lg"></i>
+            </button>
 
             <!-- Notification -->
             <div
@@ -119,7 +125,6 @@
                 class="w-8 h-8 flex items-center justify-center rounded-full bg-gradient-to-r from-[#FACC15] to-[#3B82F6] text-sm font-bold text-black cursor-pointer hover:scale-105 transition">
                 JD
             </div>
-
         </div>
     </nav>
 
