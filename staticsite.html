@@ -317,7 +317,7 @@
                     <!-- Tab Filters -->
                     <div class="flex flex-wrap gap-2 sm:gap-1 bg-white/10 p-1 rounded-md w-full md:w-auto">
                         <label class="flex-1 md:flex-none">
-                            <input type="radio" name="staticsite-filter" class="peer hidden" checked>
+                            <input type="radio" name="staticsite-filter" value="all" class="peer hidden" checked>
                             <div class="cursor-pointer text-center px-3 sm:px-4 py-2 rounded-md transition-all text-sm font-semibold 
                                         peer-checked:bg-gradient-to-br peer-checked:from-[#FACC15] peer-checked:to-[#EAB308] peer-checked:text-black peer-checked:shadow-md
                                         text-[#9CA3AF] hover:text-white hover:bg-[#222328]">
@@ -325,7 +325,7 @@
                             </div>
                         </label>
                         <label class="flex-1 md:flex-none">
-                            <input type="radio" name="staticsite-filter" class="peer hidden">
+                            <input type="radio" name="staticsite-filter" value="Published" class="peer hidden">
                             <div class="cursor-pointer text-center px-3 sm:px-4 py-2 rounded-md transition-all text-sm font-semibold 
                                         peer-checked:bg-gradient-to-br peer-checked:from-[#FACC15] peer-checked:to-[#EAB308] peer-checked:text-black peer-checked:shadow-md
                                         text-[#9CA3AF] hover:text-white hover:bg-[#222328]">
@@ -333,7 +333,7 @@
                             </div>
                         </label>
                         <label class="flex-1 md:flex-none">
-                            <input type="radio" name="staticsite-filter" class="peer hidden">
+                            <input type="radio" name="staticsite-filter" value="Draft" class="peer hidden">
                             <div class="cursor-pointer text-center px-3 sm:px-4 py-2 rounded-md transition-all text-sm font-semibold 
                                         peer-checked:bg-gradient-to-br peer-checked:from-[#FACC15] peer-checked:to-[#EAB308] peer-checked:text-black peer-checked:shadow-md
                                         text-[#9CA3AF] hover:text-white hover:bg-[#222328]">
@@ -341,7 +341,7 @@
                             </div>
                         </label>
                         <label class="flex-1 md:flex-none">
-                            <input type="radio" name="staticsite-filter" class="peer hidden">
+                            <input type="radio" name="staticsite-filter" value="Archived" class="peer hidden">
                             <div class="cursor-pointer text-center px-3 sm:px-4 py-2 rounded-md transition-all text-sm font-semibold 
                                         peer-checked:bg-gradient-to-br peer-checked:from-[#FACC15] peer-checked:to-[#EAB308] peer-checked:text-black peer-checked:shadow-md
                                         text-[#9CA3AF] hover:text-white hover:bg-[#222328]">
@@ -354,22 +354,58 @@
                     <div class="flex flex-col sm:flex-row gap-3 items-center flex-grow md:ml-4">
                         <div class="relative w-full">
                             <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"></i>
-                            <input type="text" placeholder="Search sites..."
+                            <input type="text" id="staticsite-search" placeholder="Search sites..."
                                 class="w-full pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white placeholder-[#9CA3AF] focus:outline focus:border-gray-500 transition" />
                         </div>
-                        <button
-                            class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-2 bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-gray-500 rounded-lg transition-colors whitespace-nowrap text-sm">
-                            <i class="fas fa-filter"></i>
-                            <span>Filter</span>
-                        </button>
+                        <div class="relative w-full sm:w-auto">
+                            <button id="filter-btn"
+                                class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-2 bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-gray-500 rounded-lg transition-colors whitespace-nowrap text-sm">
+                                <i class="fas fa-filter"></i>
+                                <span>Filter</span>
+                            </button>
+
+                            <!-- Advanced Filter Dropdown -->
+                            <div id="filter-dropdown"
+                                class="absolute right-0 mt-2 w-64 bg-[#18191d] border border-white/10 rounded-xl shadow-2xl p-4 hidden z-[60]">
+                                <div class="space-y-4">
+                                    <div>
+                                        <label
+                                            class="block text-xs font-semibold text-gray-400 uppercase mb-2">Status</label>
+                                        <select id="status-filter"
+                                            class="w-full bg-[#18191d] border border-white/10 rounded-lg px-3 py-2 text-sm text-gray-400 focus:outline-none focus:border-gray-500">
+                                            <option value="all">All Status</option>
+                                            <option value="Published">Published</option>
+                                            <option value="Draft">Draft</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold text-gray-400 uppercase mb-2">Sort
+                                            By</label>
+                                        <select id="sort-filter"
+                                            class="w-full bg-[#18191d] border border-white/10 rounded-lg px-3 py-2 text-sm text-gray-400 focus:outline-none focus:border-gray-500">
+                                            <option value="newest">Newest</option>
+                                            <option value="oldest">Oldest</option>
+                                            <option value="visits-high">Visits: High to Low</option>
+                                            <option value="visits-low">Visits: Low to High</option>
+                                        </select>
+                                    </div>
+                                    <button id="clear-filters"
+                                        class="w-full text-xs text-[#FACC15] hover:underline pt-2">
+                                        Clear All Filters
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Events Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Sites Grid -->
+                <div id="staticsite-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                     <!-- Card 1 -->
-                    <div class="rounded-lg overflow-hidden bg-white/5 border border-white/10 bg-blur">
+                    <div data-name="Personal Portfolio" data-status="Published" data-visits="3421"
+                        data-created="2024-01-22"
+                        class="rounded-lg overflow-hidden bg-white/5 border border-white/10 bg-blur">
                         <div class="relative bg-gradient-to-r from-[#1F2937] to-[#111827] p-16 flex justify-center">
                             <span
                                 class="absolute top-4 right-4 text-xs font-semibold px-3 py-1 rounded-full bg-green-500/20 text-green-400">
@@ -422,7 +458,9 @@
                         </div>
                     </div>
                     <!-- Card 2 -->
-                    <div class="rounded-lg overflow-hidden bg-white/5 border border-white/10 bg-blur">
+                    <div data-name="Product Landing Page" data-status="Published" data-visits="5234"
+                        data-created="2024-01-21"
+                        class="rounded-lg overflow-hidden bg-white/5 border border-white/10 bg-blur">
                         <div class="relative bg-gradient-to-r from-[#1F2937] to-[#111827] p-16 flex justify-center">
                             <span
                                 class="absolute top-4 right-4 text-xs font-semibold px-3 py-1 rounded-full bg-green-500/20 text-green-400">
@@ -475,7 +513,8 @@
                         </div>
                     </div>
                     <!-- Card 3 -->
-                    <div class="rounded-lg overflow-hidden bg-white/5 border border-white/10 bg-blur">
+                    <div data-name="Event Website" data-status="Published" data-visits="1892" data-created="2024-01-20"
+                        class="rounded-lg overflow-hidden bg-white/5 border border-white/10 bg-blur">
                         <div class="relative bg-gradient-to-r from-[#1F2937] to-[#111827] p-16 flex justify-center">
                             <span
                                 class="absolute top-4 right-4 text-xs font-semibold px-3 py-1 rounded-full bg-green-500/20 text-green-400">
@@ -528,7 +567,9 @@
                         </div>
                     </div>
                     <!-- Card 4 -->
-                    <div class="rounded-lg overflow-hidden bg-white/5 border border-white/10 bg-blur">
+                    <div data-name="Restaurant Menu" data-status="Published" data-visits="2567"
+                        data-created="2024-01-19"
+                        class="rounded-lg overflow-hidden bg-white/5 border border-white/10 bg-blur">
                         <div class="relative bg-gradient-to-r from-[#1F2937] to-[#111827] p-16 flex justify-center">
                             <span
                                 class="absolute top-4 right-4 text-xs font-semibold px-3 py-1 rounded-full bg-green-500/20 text-green-400">
@@ -581,7 +622,9 @@
                         </div>
                     </div>
                     <!-- Card 5 -->
-                    <div class="rounded-lg overflow-hidden bg-white/5 border border-white/10 bg-blur">
+                    <div data-name="Photography Gallery" data-status="Draft" data-visits="1234"
+                        data-created="2024-01-18"
+                        class="rounded-lg overflow-hidden bg-white/5 border border-white/10 bg-blur">
                         <div class="relative bg-gradient-to-r from-[#1F2937] to-[#111827] p-16 flex justify-center">
                             <span
                                 class="absolute top-4 right-4 text-xs font-semibold px-3 py-1 rounded-full bg-[#6B7280]/20 text-[#9CA3AF]">
@@ -634,7 +677,9 @@
                         </div>
                     </div>
                     <!-- Card 6 -->
-                    <div class="rounded-lg overflow-hidden bg-white/5 border border-white/10 bg-blur">
+                    <div data-name="Business Card Site" data-status="Published" data-visits="892"
+                        data-created="2024-01-17"
+                        class="rounded-lg overflow-hidden bg-white/5 border border-white/10 bg-blur">
                         <div class="relative bg-gradient-to-r from-[#1F2937] to-[#111827] p-16 flex justify-center">
                             <span
                                 class="absolute top-4 right-4 text-xs font-semibold px-3 py-1 rounded-full bg-green-500/20 text-green-400">
@@ -720,18 +765,99 @@
         const sidebarOverlay = document.getElementById('sidebar-overlay');
 
         function toggleMobileMenu() {
-            const isClosed = sidebar.classList.contains('-translate-x-full');
-            if (isClosed) {
-                sidebar.classList.remove('-translate-x-full');
-                sidebarOverlay.classList.remove('hidden');
-            } else {
-                sidebar.classList.add('-translate-x-full');
-                sidebarOverlay.classList.add('hidden');
-            }
+            sidebar.classList.toggle('-translate-x-full');
+            sidebarOverlay.classList.toggle('hidden');
+            document.body.classList.toggle('overflow-hidden');
         }
 
         mobileMenuToggle.addEventListener('click', toggleMobileMenu);
         sidebarOverlay.addEventListener('click', toggleMobileMenu);
+
+        // Search and Filter Logic
+        const staticsiteSearch = document.getElementById('staticsite-search');
+        const staticsiteFilters = document.querySelectorAll('input[name="staticsite-filter"]');
+        const staticsiteGrid = document.getElementById('staticsite-grid');
+        const filterBtn = document.getElementById('filter-btn');
+        const filterDropdown = document.getElementById('filter-dropdown');
+        const statusFilter = document.getElementById('status-filter');
+        const sortFilter = document.getElementById('sort-filter');
+        const clearFiltersBtn = document.getElementById('clear-filters');
+
+        // Toggle Filter Dropdown
+        filterBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            filterDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!filterDropdown.contains(e.target) && e.target !== filterBtn) {
+                filterDropdown.classList.add('hidden');
+            }
+        });
+
+        function filterAndSortSites() {
+            const searchTerm = staticsiteSearch.value.toLowerCase();
+            const activeTabFilter = document.querySelector('input[name="staticsite-filter"]:checked').value;
+            const activeStatusFilter = statusFilter.value;
+            const activeSort = sortFilter.value;
+
+            let cards = Array.from(staticsiteGrid.children);
+
+            // Filter logic
+            cards.forEach(card => {
+                const name = card.getAttribute('data-name').toLowerCase();
+                const status = card.getAttribute('data-status');
+
+                const matchesSearch = name.includes(searchTerm);
+                const matchesTab = activeTabFilter === 'all' || status === activeTabFilter;
+                const matchesStatus = activeStatusFilter === 'all' || status === activeStatusFilter;
+
+                if (matchesSearch && matchesTab && matchesStatus) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            // Sort logic
+            const visibleCards = cards.filter(card => !card.classList.contains('hidden'));
+            const invisibleCards = cards.filter(card => card.classList.contains('hidden'));
+
+            visibleCards.sort((a, b) => {
+                if (activeSort === 'newest') {
+                    return new Date(b.getAttribute('data-created')) - new Date(a.getAttribute('data-created'));
+                } else if (activeSort === 'oldest') {
+                    return new Date(a.getAttribute('data-created')) - new Date(b.getAttribute('data-created'));
+                } else if (activeSort === 'visits-high') {
+                    return parseInt(b.getAttribute('data-visits')) - parseInt(a.getAttribute('data-visits'));
+                } else if (activeSort === 'visits-low') {
+                    return parseInt(a.getAttribute('data-visits')) - parseInt(b.getAttribute('data-visits'));
+                }
+                return 0;
+            });
+
+            // Re-append cards in sorted order
+            staticsiteGrid.innerHTML = '';
+            visibleCards.forEach(card => staticsiteGrid.appendChild(card));
+            invisibleCards.forEach(card => staticsiteGrid.appendChild(card));
+        }
+
+        staticsiteSearch.addEventListener('input', filterAndSortSites);
+        staticsiteFilters.forEach(filter => {
+            filter.addEventListener('change', filterAndSortSites);
+        });
+        statusFilter.addEventListener('change', filterAndSortSites);
+        sortFilter.addEventListener('change', filterAndSortSites);
+
+        clearFiltersBtn.addEventListener('click', () => {
+            staticsiteSearch.value = '';
+            document.querySelector('input[name="staticsite-filter"][value="all"]').checked = true;
+            statusFilter.value = 'all';
+            sortFilter.value = 'newest';
+            filterAndSortSites();
+            filterDropdown.classList.add('hidden');
+        });
     </script>
 </body>
 
