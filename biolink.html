@@ -84,7 +84,7 @@
             <!-- Mobile Logo -->
             <img src="assets/logo.png" alt="Madwess Logo" class="sm:hidden h-10 w-auto">
 
-             <div class="hidden sm:flex flex-1 max-w-[500px] mx-auto">
+            <div class="hidden sm:flex flex-1 max-w-[500px] mx-auto">
                 <div class="relative w-full">
                     <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm"></i>
                     <input type="text" placeholder="Search links, QR codes, analytics..."
@@ -319,7 +319,7 @@
                     <!-- Tab Filters -->
                     <div class="flex gap-1 bg-white/10 p-1 rounded-md flex-wrap w-full md:w-auto">
                         <label class="flex-1 md:flex-none">
-                            <input type="radio" name="biolink-filter" class="peer hidden" checked>
+                            <input type="radio" name="biolink-filter" value="all" class="peer hidden" checked>
                             <div class="cursor-pointer text-center px-3 sm:px-4 py-2 rounded-md transition-all text-sm font-semibold 
                                         peer-checked:bg-gradient-to-br peer-checked:from-[#FACC15] peer-checked:to-[#EAB308] peer-checked:text-black peer-checked:shadow-md
                                         text-[#9CA3AF] hover:text-white hover:bg-[#222328]">
@@ -327,7 +327,7 @@
                             </div>
                         </label>
                         <label class="flex-1 md:flex-none">
-                            <input type="radio" name="biolink-filter" class="peer hidden">
+                            <input type="radio" name="biolink-filter" value="Personal" class="peer hidden">
                             <div class="cursor-pointer text-center px-3 sm:px-4 py-2 rounded-md transition-all text-sm font-semibold 
                                         peer-checked:bg-gradient-to-br peer-checked:from-[#FACC15] peer-checked:to-[#EAB308] peer-checked:text-black peer-checked:shadow-md
                                         text-[#9CA3AF] hover:text-white hover:bg-[#222328]">
@@ -335,7 +335,7 @@
                             </div>
                         </label>
                         <label class="flex-1 md:flex-none">
-                            <input type="radio" name="biolink-filter" class="peer hidden">
+                            <input type="radio" name="biolink-filter" value="Business" class="peer hidden">
                             <div class="cursor-pointer text-center px-3 sm:px-4 py-2 rounded-md transition-all text-sm font-semibold 
                                         peer-checked:bg-gradient-to-br peer-checked:from-[#FACC15] peer-checked:to-[#EAB308] peer-checked:text-black peer-checked:shadow-md
                                         text-[#9CA3AF] hover:text-white hover:bg-[#222328]">
@@ -343,7 +343,7 @@
                             </div>
                         </label>
                         <label class="flex-1 md:flex-none">
-                            <input type="radio" name="biolink-filter" class="peer hidden">
+                            <input type="radio" name="biolink-filter" value="Social" class="peer hidden">
                             <div class="cursor-pointer text-center px-3 sm:px-4 py-2 rounded-md transition-all text-sm font-semibold 
                                         peer-checked:bg-gradient-to-br peer-checked:from-[#FACC15] peer-checked:to-[#EAB308] peer-checked:text-black peer-checked:shadow-md
                                         text-[#9CA3AF] hover:text-white hover:bg-[#222328]">
@@ -351,7 +351,7 @@
                             </div>
                         </label>
                         <label class="flex-1 md:flex-none">
-                            <input type="radio" name="biolink-filter" class="peer hidden">
+                            <input type="radio" name="biolink-filter" value="Event" class="peer hidden">
                             <div class="cursor-pointer text-center px-3 sm:px-4 py-2 rounded-md transition-all text-sm font-semibold 
                                         peer-checked:bg-gradient-to-br peer-checked:from-[#FACC15] peer-checked:to-[#EAB308] peer-checked:text-black peer-checked:shadow-md
                                         text-[#9CA3AF] hover:text-white hover:bg-[#222328]">
@@ -364,14 +364,48 @@
                     <div class="flex flex-col sm:flex-row gap-3 items-center flex-grow md:ml-4">
                         <div class="relative w-full">
                             <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"></i>
-                            <input type="text" placeholder="Search biolink pages..."
+                            <input type="text" id="biolink-search" placeholder="Search biolink pages..."
                                 class="w-full pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white placeholder-[#9CA3AF] focus:outline focus:border-gray-500 transition" />
                         </div>
-                        <button
-                            class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-2 bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-gray-500 rounded-lg transition-colors whitespace-nowrap text-sm">
-                            <i class="fas fa-filter"></i>
-                            <span>Filter</span>
-                        </button>
+                        <div class="relative w-full sm:w-auto">
+                            <button id="filter-btn"
+                                class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-2 bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-gray-500 rounded-lg transition-colors whitespace-nowrap text-sm">
+                                <i class="fas fa-filter"></i>
+                                <span>Filter</span>
+                            </button>
+
+                            <!-- Advanced Filter Dropdown -->
+                            <div id="filter-dropdown"
+                                class="absolute right-0 mt-2 w-64 bg-[#18191d] border border-white/10 rounded-xl shadow-2xl p-4 hidden z-[60]">
+                                <div class="space-y-4">
+                                    <div>
+                                        <label
+                                            class="block text-xs font-semibold text-gray-400 uppercase mb-2">Status</label>
+                                        <select id="status-filter"
+                                            class="w-full bg-[#18191d] border border-white/10 rounded-lg px-3 py-2 text-sm text-gray-400 focus:outline-none focus:border-gray-500">
+                                            <option value="all">All Status</option>
+                                            <option value="Active">Active</option>
+                                            <option value="Paused">Paused</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold text-gray-400 uppercase mb-2">Sort
+                                            By</label>
+                                        <select id="sort-filter"
+                                            class="w-full bg-[#18191d] border border-white/10 rounded-lg px-3 py-2 text-sm text-gray-400 focus:outline-none focus:border-gray-500">
+                                            <option value="newest">Newest</option>
+                                            <option value="oldest">Oldest</option>
+                                            <option value="visits-high">Visits: High to Low</option>
+                                            <option value="visits-low">Visits: Low to High</option>
+                                        </select>
+                                    </div>
+                                    <button id="clear-filters"
+                                        class="w-full text-xs text-[#FACC15] hover:underline pt-2">
+                                        Clear All Filters
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -415,9 +449,11 @@
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody class="divide-y divide-[#222328]">
+                            <tbody id="biolink-table-body" class="divide-y divide-[#222328]">
                                 <!-- Row 1 -->
-                                <tr class="hover:bg-[#1f2025] transition-colors whitespace-nowrap">
+                                <tr data-name="Personal Portfolio" data-type="Personal" data-status="Active"
+                                    data-visits="2847" data-created="2024-01-20"
+                                    class="hover:bg-[#1f2025] transition-colors whitespace-nowrap">
                                     <td class="px-6 py-5 whitespace-nowrap">
                                         <div>
                                             <div class="text-white font-semibold">Personal Portfolio</div>
@@ -490,7 +526,9 @@
                                 </tr>
 
                                 <!-- Row 2 -->
-                                <tr class="hover:bg-[#1f2025] transition-colors whitespace-nowrap">
+                                <tr data-name="Business Profile" data-type="Business" data-status="Active"
+                                    data-visits="1923" data-created="2024-01-18"
+                                    class="hover:bg-[#1f2025] transition-colors whitespace-nowrap">
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div>
                                             <div class="text-white font-semibold">Business Profile</div>
@@ -561,7 +599,9 @@
                                 </tr>
 
                                 <!-- Row 3 -->
-                                <tr class="hover:bg-[#1f2025] transition-colors whitespace-nowrap">
+                                <tr data-name="Social Media Hub" data-type="Social" data-status="Active"
+                                    data-visits="3456" data-created="2024-01-15"
+                                    class="hover:bg-[#1f2025] transition-colors whitespace-nowrap">
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div>
                                             <div class="text-white font-semibold">Social Media Hub</div>
@@ -632,7 +672,9 @@
                                 </tr>
 
                                 <!-- Row 4 -->
-                                <tr class="hover:bg-[#1f2025] transition-colors whitespace-nowrap">
+                                <tr data-name="Product Showcase" data-type="Business" data-status="Active"
+                                    data-visits="1567" data-created="2024-01-12"
+                                    class="hover:bg-[#1f2025] transition-colors whitespace-nowrap">
                                     <td class="px-6 py-5 whitespace-nowrap">
                                         <div>
                                             <div class="text-white font-semibold">Product Showcase</div>
@@ -703,7 +745,9 @@
                                 </tr>
 
                                 <!-- Row 5 -->
-                                <tr class="hover:bg-[#1f2025] transition-colors whitespace-nowrap">
+                                <tr data-name="Event Landing" data-type="Event" data-status="Paused" data-visits="892"
+                                    data-created="2024-01-10"
+                                    class="hover:bg-[#1f2025] transition-colors whitespace-nowrap">
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div>
                                             <div class="text-white font-semibold">Event Landing</div>
@@ -774,7 +818,9 @@
                                 </tr>
 
                                 <!-- Row 6 -->
-                                <tr class="hover:bg-[#1f2025] transition-colors whitespace-nowrap">
+                                <tr data-name="Creator Links" data-type="Personal" data-status="Active"
+                                    data-visits="4123" data-created="2024-01-04"
+                                    class="hover:bg-[#1f2025] transition-colors whitespace-nowrap">
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div>
                                             <div class="text-white font-semibold">Creator Links</div>
@@ -908,15 +954,91 @@
             });
         });
 
-        // Handle window resize
-        window.addEventListener('resize', () => {
-            if (window.innerWidth >= 1024) {
-                sidebar.classList.remove('-translate-x-full');
-                overlay.classList.add('hidden');
-                document.body.classList.remove('overflow-hidden');
-            } else {
-                sidebar.classList.add('-translate-x-full');
+        // Search and Filter Logic
+        const biolinkSearch = document.getElementById('biolink-search');
+        const biolinkFilters = document.querySelectorAll('input[name="biolink-filter"]');
+        const biolinkTableBody = document.getElementById('biolink-table-body');
+        const filterBtn = document.getElementById('filter-btn');
+        const filterDropdown = document.getElementById('filter-dropdown');
+        const statusFilter = document.getElementById('status-filter');
+        const sortFilter = document.getElementById('sort-filter');
+        const clearFiltersBtn = document.getElementById('clear-filters');
+
+        // Toggle Filter Dropdown
+        filterBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            filterDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!filterDropdown.contains(e.target) && e.target !== filterBtn) {
+                filterDropdown.classList.add('hidden');
             }
+        });
+
+        function filterAndSortBiolinks() {
+            const searchTerm = biolinkSearch.value.toLowerCase();
+            const activeTypeFilter = document.querySelector('input[name="biolink-filter"]:checked').value;
+            const activeStatusFilter = statusFilter.value;
+            const activeSort = sortFilter.value;
+
+            let biolinkRows = Array.from(biolinkTableBody.querySelectorAll('tr'));
+
+            // Filter logic
+            biolinkRows.forEach(row => {
+                const name = row.getAttribute('data-name').toLowerCase();
+                const type = row.getAttribute('data-type');
+                const status = row.getAttribute('data-status');
+
+                const matchesSearch = name.includes(searchTerm);
+                const matchesType = activeTypeFilter === 'all' || type === activeTypeFilter;
+                const matchesStatus = activeStatusFilter === 'all' || status === activeStatusFilter;
+
+                if (matchesSearch && matchesType && matchesStatus) {
+                    row.classList.remove('hidden');
+                } else {
+                    row.classList.add('hidden');
+                }
+            });
+
+            // Sort logic
+            const visibleRows = biolinkRows.filter(row => !row.classList.contains('hidden'));
+            const invisibleRows = biolinkRows.filter(row => row.classList.contains('hidden'));
+
+            visibleRows.sort((a, b) => {
+                if (activeSort === 'newest') {
+                    return new Date(b.getAttribute('data-created')) - new Date(a.getAttribute('data-created'));
+                } else if (activeSort === 'oldest') {
+                    return new Date(a.getAttribute('data-created')) - new Date(b.getAttribute('data-created'));
+                } else if (activeSort === 'visits-high') {
+                    return parseInt(b.getAttribute('data-visits')) - parseInt(a.getAttribute('data-visits'));
+                } else if (activeSort === 'visits-low') {
+                    return parseInt(a.getAttribute('data-visits')) - parseInt(b.getAttribute('data-visits'));
+                }
+                return 0;
+            });
+
+            // Re-append rows to table body in sorted order
+            biolinkTableBody.innerHTML = '';
+            visibleRows.forEach(row => biolinkTableBody.appendChild(row));
+            invisibleRows.forEach(row => biolinkTableBody.appendChild(row));
+        }
+
+        biolinkSearch.addEventListener('input', filterAndSortBiolinks);
+        biolinkFilters.forEach(filter => {
+            filter.addEventListener('change', filterAndSortBiolinks);
+        });
+        statusFilter.addEventListener('change', filterAndSortBiolinks);
+        sortFilter.addEventListener('change', filterAndSortBiolinks);
+
+        clearFiltersBtn.addEventListener('click', () => {
+            biolinkSearch.value = '';
+            document.querySelector('input[name="biolink-filter"][value="all"]').checked = true;
+            statusFilter.value = 'all';
+            sortFilter.value = 'newest';
+            filterAndSortBiolinks();
+            filterDropdown.classList.add('hidden');
         });
     </script>
 
