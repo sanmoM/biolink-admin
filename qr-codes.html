@@ -304,7 +304,7 @@
                     <!-- Tab Filters -->
                     <div class="flex flex-wrap gap-2 sm:gap-1 bg-white/10 p-1 rounded-md w-full md:w-auto">
                         <label class="flex-1 md:flex-none">
-                            <input type="radio" name="qrcode-filter" class="peer hidden" checked>
+                            <input type="radio" name="qrcode-filter" value="all" class="peer hidden" checked>
                             <div class="cursor-pointer text-center px-3 sm:px-4 py-2 rounded-md transition-all text-sm font-semibold 
                                         peer-checked:bg-gradient-to-br peer-checked:from-[#FACC15] peer-checked:to-[#EAB308] peer-checked:text-black peer-checked:shadow-md
                                         text-[#9CA3AF] hover:text-white hover:bg-[#222328]">
@@ -312,7 +312,7 @@
                             </div>
                         </label>
                         <label class="flex-1 md:flex-none">
-                            <input type="radio" name="qrcode-filter" class="peer hidden">
+                            <input type="radio" name="qrcode-filter" value="Dynamic" class="peer hidden">
                             <div class="cursor-pointer text-center px-3 sm:px-4 py-2 rounded-md transition-all text-sm font-semibold 
                                         peer-checked:bg-gradient-to-br peer-checked:from-[#FACC15] peer-checked:to-[#EAB308] peer-checked:text-black peer-checked:shadow-md
                                         text-[#9CA3AF] hover:text-white hover:bg-[#222328]">
@@ -320,7 +320,7 @@
                             </div>
                         </label>
                         <label class="flex-1 md:flex-none">
-                            <input type="radio" name="qrcode-filter" class="peer hidden">
+                            <input type="radio" name="qrcode-filter" value="Static" class="peer hidden">
                             <div class="cursor-pointer text-center px-3 sm:px-4 py-2 rounded-md transition-all text-sm font-semibold 
                                         peer-checked:bg-gradient-to-br peer-checked:from-[#FACC15] peer-checked:to-[#EAB308] peer-checked:text-black peer-checked:shadow-md
                                         text-[#9CA3AF] hover:text-white hover:bg-[#222328]">
@@ -333,21 +333,48 @@
                     <div class="flex flex-col sm:flex-row gap-3 items-center flex-grow md:ml-4">
                         <div class="relative w-full">
                             <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"></i>
-                            <input type="text" placeholder="Search QR codes..."
+                            <input type="text" id="qrcode-search" placeholder="Search QR codes..."
                                 class="w-full pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white placeholder-[#9CA3AF] focus:outline focus:border-gray-500 transition" />
                         </div>
-                        <button
-                            class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-2 bg-white/5 border border-white/10 text-white hover:text-white hover:border-gray-500 rounded-lg transition-colors whitespace-nowrap text-sm">
-                            <img src="assets/sort.svg" alt=""> <span>Sort By</span>
-                        </button>
+                        <div class="relative w-full sm:w-auto">
+                            <button id="filter-btn"
+                                class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-2 bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-gray-500 rounded-lg transition-colors whitespace-nowrap text-sm">
+                                <i class="fas fa-filter"></i>
+                                <span>Filter</span>
+                            </button>
+
+                            <!-- Advanced Filter Dropdown -->
+                            <div id="filter-dropdown"
+                                class="absolute right-0 mt-2 w-64 bg-[#18191d] border border-white/10 rounded-xl shadow-2xl p-4 hidden z-[60]">
+                                <div class="space-y-4">
+                                    <!-- Status filter removed as QR codes don't have active/paused status -->
+                                    <div>
+                                        <label class="block text-xs font-semibold text-gray-400 uppercase mb-2">Sort
+                                            By</label>
+                                        <select id="sort-filter"
+                                            class="w-full bg-[#18191d] border border-white/10 rounded-lg px-3 py-2 text-sm text-gray-400 focus:outline-none focus:border-gray-500">
+                                            <option value="newest">Newest</option>
+                                            <option value="oldest">Oldest</option>
+                                            <option value="scans-high">Scans: High to Low</option>
+                                            <option value="scans-low">Scans: Low to High</option>
+                                        </select>
+                                    </div>
+                                    <button id="clear-filters"
+                                        class="w-full text-xs text-[#FACC15] hover:underline pt-2">
+                                        Clear All Filters
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- card grid -->
-                <div class="mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div id="qrcode-grid" class="mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
                     <!-- card-1 -->
-                    <div
+                    <div data-name="Summer Campaign QR" data-url="madw.es/summer24" data-type="Dynamic"
+                        data-scans="2345" data-created="2024-01-15"
                         class="w-full rounded-2xl pb-4 bg-white/5 bg-blur border border-white/10 shadow-2xl flex flex-col">
                         <div class="p-6">
                             <div class="bg-white rounded-xl px-5 py-6 flex items-center justify-center">
@@ -397,7 +424,8 @@
                         </div>
                     </div>
                     <!-- card-2 -->
-                    <div
+                    <div data-name="Product Launch QR" data-url="madw.es/launch" data-type="Dynamic" data-scans="1567"
+                        data-created="2024-01-14"
                         class="w-full rounded-2xl pb-4 bg-white/5 bg-blur border border-white/10 shadow-2xl flex flex-col">
                         <div class="p-6">
                             <div class="bg-white rounded-xl px-5 py-6 flex items-center justify-center">
@@ -447,7 +475,8 @@
                         </div>
                     </div>
                     <!-- card-3 -->
-                    <div
+                    <div data-name="Event Registration QR" data-url="madw.es/event" data-type="Static" data-scans="892"
+                        data-created="2024-01-13"
                         class="w-full rounded-2xl pb-4 bg-white/5 bg-blur border border-white/10 shadow-2xl flex flex-col">
                         <div class="p-6">
                             <div class="bg-white rounded-xl px-5 py-6 flex items-center justify-center">
@@ -497,7 +526,8 @@
                         </div>
                     </div>
                     <!-- card-4 -->
-                    <div
+                    <div data-name="Contact Card QR" data-url="madw.es/contact" data-type="Dynamic" data-scans="456"
+                        data-created="2024-01-15"
                         class="w-full rounded-2xl pb-4 bg-white/5 bg-blur border border-white/10 shadow-2xl flex flex-col">
                         <div class="p-6">
                             <div class="bg-white rounded-xl px-5 py-6 flex items-center justify-center">
@@ -547,7 +577,8 @@
                         </div>
                     </div>
                     <!-- card-5 -->
-                    <div
+                    <div data-name="Menu QR Code" data-url="madw.es/menu" data-type="Static" data-scans="3421"
+                        data-created="2024-01-11"
                         class="w-full rounded-2xl pb-4 bg-white/5 bg-blur border border-white/10 shadow-2xl flex flex-col">
                         <div class="p-6">
                             <div class="bg-white rounded-xl px-5 py-6 flex items-center justify-center">
@@ -597,7 +628,8 @@
                         </div>
                     </div>
                     <!-- card-6 -->
-                    <div
+                    <div data-name="WiFi QR Code" data-url="madw.es/wifi" data-type="Static" data-scans="789"
+                        data-created="2024-01-15"
                         class="w-full rounded-2xl pb-4 bg-white/5 bg-blur border border-white/10 shadow-2xl flex flex-col">
                         <div class="p-6">
                             <div class="bg-white rounded-xl px-5 py-6 flex items-center justify-center">
@@ -711,6 +743,88 @@
             } else {
                 sidebar.classList.add('-translate-x-full');
             }
+        });
+
+        // Search and Filter Logic
+        const qrcodeSearch = document.getElementById('qrcode-search');
+        const qrcodeFilters = document.querySelectorAll('input[name="qrcode-filter"]');
+        const qrcodeGrid = document.getElementById('qrcode-grid');
+        const filterBtn = document.getElementById('filter-btn');
+        const filterDropdown = document.getElementById('filter-dropdown');
+        const sortFilter = document.getElementById('sort-filter');
+        const clearFiltersBtn = document.getElementById('clear-filters');
+
+        // Toggle Filter Dropdown
+        filterBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            filterDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!filterDropdown.contains(e.target) && e.target !== filterBtn) {
+                filterDropdown.classList.add('hidden');
+            }
+        });
+
+        function filterAndSortQRCodes() {
+            const searchTerm = qrcodeSearch.value.toLowerCase();
+            const activeTabFilter = document.querySelector('input[name="qrcode-filter"]:checked').value;
+            const activeSort = sortFilter.value;
+
+            let cards = Array.from(qrcodeGrid.children);
+
+            // Filter logic
+            cards.forEach(card => {
+                const name = (card.getAttribute('data-name') || "").toLowerCase();
+                const url = (card.getAttribute('data-url') || "").toLowerCase();
+                const type = card.getAttribute('data-type');
+
+                const matchesSearch = name.includes(searchTerm) || url.includes(searchTerm);
+                const matchesTab = activeTabFilter === 'all' || type === activeTabFilter;
+
+                if (matchesSearch && matchesTab) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            // Sort logic
+            const visibleCards = cards.filter(card => !card.classList.contains('hidden'));
+            const invisibleCards = cards.filter(card => card.classList.contains('hidden'));
+
+            visibleCards.sort((a, b) => {
+                if (activeSort === 'newest') {
+                    return new Date(b.getAttribute('data-created')) - new Date(a.getAttribute('data-created'));
+                } else if (activeSort === 'oldest') {
+                    return new Date(a.getAttribute('data-created')) - new Date(b.getAttribute('data-created'));
+                } else if (activeSort === 'scans-high') {
+                    return parseInt(b.getAttribute('data-scans')) - parseInt(a.getAttribute('data-scans'));
+                } else if (activeSort === 'scans-low') {
+                    return parseInt(a.getAttribute('data-scans')) - parseInt(b.getAttribute('data-scans'));
+                }
+                return 0;
+            });
+
+            // Re-append cards in sorted order
+            qrcodeGrid.innerHTML = '';
+            visibleCards.forEach(card => qrcodeGrid.appendChild(card));
+            invisibleCards.forEach(card => qrcodeGrid.appendChild(card));
+        }
+
+        qrcodeSearch.addEventListener('input', filterAndSortQRCodes);
+        qrcodeFilters.forEach(filter => {
+            filter.addEventListener('change', filterAndSortQRCodes);
+        });
+        sortFilter.addEventListener('change', filterAndSortQRCodes);
+
+        clearFiltersBtn.addEventListener('click', () => {
+            qrcodeSearch.value = '';
+            document.querySelector('input[name="qrcode-filter"][value="all"]').checked = true;
+            sortFilter.value = 'newest';
+            filterAndSortQRCodes();
+            filterDropdown.classList.add('hidden');
         });
     </script>
 
