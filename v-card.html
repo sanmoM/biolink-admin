@@ -249,7 +249,7 @@
                         <p class="text-gray-400 text-sm sm:text-base">Digital business cards with contact information
                         </p>
                     </div>
-                    <button
+                    <button id="create-vcard-btn"
                         class="w-full md:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-[#FACC15] to-[#EAB308] hover:outline outline-offset-2 outline-[#FACC15]/50 text-black font-semibold py-3 px-6 rounded-lg transition-all shadow-[0_0_20px_rgba(251,191,36,0.3)]">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
                             <path fill="currentColor"
@@ -874,6 +874,226 @@
         });
     </script>
     <script src="navbar-search.js"></script>
+
+    <!-- Create VCard Modal -->
+    <div id="create-vcard-modal" class="fixed inset-0 z-[60] flex items-center justify-center hidden">
+        <div id="create-vcard-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity"></div>
+        <div id="create-vcard-card"
+            class="relative w-full max-w-[540px] mx-4 bg-[#111827] border border-[#FACC15]/20 rounded-xl shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden transform transition-all scale-95 opacity-0 duration-300 max-h-[90vh] flex flex-col">
+
+            <!-- Header -->
+            <div class="flex items-center justify-between px-6 sm:px-8 py-4 sm:py-6 border-b border-white/10 shrink-0">
+                <h2 class="text-xl sm:text-2xl font-bold text-white">Create New VCard</h2>
+                <button id="close-create-vcard-modal" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fas fa-times text-lg sm:text-xl cursor-pointer"></i>
+                </button>
+            </div>
+
+            <!-- Body -->
+            <div class="px-6 sm:px-8 py-4 sm:py-6 space-y-4 overflow-y-auto flex-1">
+
+                <!-- Row: Full Name + Job Title -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-white text-sm font-semibold mb-1.5">Full Name</label>
+                        <input type="text" id="vcard-name" placeholder="e.g. Jane Doe"
+                            class="w-full bg-[#1F2937]/50 border border-white/10 rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors placeholder:text-[#9CA3AF]">
+                    </div>
+                    <div>
+                        <label class="block text-white text-sm font-semibold mb-1.5">Job Title</label>
+                        <input type="text" id="vcard-title" placeholder="e.g. CEO & Founder"
+                            class="w-full bg-[#1F2937]/50 border border-white/10 rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors placeholder:text-[#9CA3AF]">
+                    </div>
+                </div>
+
+                <!-- Company -->
+                <div>
+                    <label class="block text-white text-sm font-semibold mb-1.5">Company</label>
+                    <input type="text" id="vcard-company" placeholder="e.g. Madwess LLC"
+                        class="w-full bg-[#1F2937]/50 border border-white/10 rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors placeholder:text-[#9CA3AF]">
+                </div>
+
+                <!-- Row: Phone + Email -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-white text-sm font-semibold mb-1.5">Phone</label>
+                        <input type="tel" id="vcard-phone" placeholder="+1 (555) 000-0000"
+                            class="w-full bg-[#1F2937]/50 border border-white/10 rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors placeholder:text-[#9CA3AF]">
+                    </div>
+                    <div>
+                        <label class="block text-white text-sm font-semibold mb-1.5">Email</label>
+                        <input type="email" id="vcard-email" placeholder="jane@madwess.store"
+                            class="w-full bg-[#1F2937]/50 border border-white/10 rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors placeholder:text-[#9CA3AF]">
+                    </div>
+                </div>
+
+                <!-- URL Alias -->
+                <div>
+                    <label class="block text-white text-sm font-semibold mb-1.5">Custom Short URL <span
+                            class="text-gray-500 font-normal">(Optional)</span></label>
+                    <div class="flex group">
+                        <span
+                            class="inline-flex items-center px-4 rounded-l-lg border border-r-0 border-white/10 bg-[#1F2937]/80 text-gray-400 text-sm">madw.es/</span>
+                        <input type="text" id="vcard-alias" placeholder="jane"
+                            class="flex-1 bg-[#1F2937]/50 border border-white/10 rounded-r-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors placeholder:text-[#9CA3AF]">
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer -->
+            <div class="p-4 sm:p-6 border-t border-white/10 shrink-0 flex gap-3">
+                <button id="cancel-edit-link"
+                    class="flex-1 px-4 py-2.5 sm:py-3 rounded-lg bg-white/5 border border-white/10 text-white font-semibold hover:bg-white/10 transition-all text-sm sm:text-base">
+                    Cancel
+                </button>
+                <button id="update-short-link"
+                    class="flex-1 px-4 py-2.5 sm:py-3 rounded-lg bg-gradient-to-br from-[#FACC15] to-[#EAB308] text-black font-semibold hover:outline outline-offset-2 outline-[#FACC15]/50 transition-all text-sm sm:text-base flex items-center justify-center gap-2">
+                    <i class="fas fa-save"></i>
+                    Create VCard
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="vcard-toast"
+        class="fixed bottom-6 right-6 z-[100] flex items-center gap-3 bg-[#1a1b20] border border-[#22C55E]/30 text-white px-5 py-3.5 rounded-xl shadow-2xl translate-y-20 opacity-0 transition-all duration-500 pointer-events-none">
+        <div class="w-8 h-8 rounded-full bg-[#22C55E]/20 flex items-center justify-center flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                <path fill="#22C55E" d="m9 20l-5.447-5.448l1.414-1.414L9 17.172l9.533-9.534l1.414 1.414z" />
+            </svg>
+        </div>
+        <span id="vcard-toast-msg" class="text-sm font-medium">VCard created successfully!</span>
+    </div>
+
+    <script>
+        // --- Create VCard Modal Logic ---
+        const createVcardBtn = document.getElementById('create-vcard-btn');
+        const createVcardModal = document.getElementById('create-vcard-modal');
+        const createVcardCard = document.getElementById('create-vcard-card');
+        const closeVcardBtn = document.getElementById('close-create-vcard-modal');
+        const cancelVcardBtn = document.getElementById('cancel-create-vcard');
+        const saveVcardBtn = document.getElementById('save-create-vcard');
+        const vcardBackdrop = document.getElementById('create-vcard-backdrop');
+        const vcardToast = document.getElementById('vcard-toast');
+        const vcardToastMsg = document.getElementById('vcard-toast-msg');
+
+        function openVcardModal() {
+            // Reset all fields
+            ['vcard-name', 'vcard-title', 'vcard-company', 'vcard-phone', 'vcard-email', 'vcard-alias'].forEach(id => {
+                document.getElementById(id).value = '';
+            });
+            createVcardModal.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                createVcardCard.classList.remove('scale-95', 'opacity-0');
+                createVcardCard.classList.add('scale-100', 'opacity-100');
+            });
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeVcardModal() {
+            createVcardCard.classList.add('scale-95', 'opacity-0');
+            createVcardCard.classList.remove('scale-100', 'opacity-100');
+            setTimeout(() => createVcardModal.classList.add('hidden'), 300);
+            document.body.style.overflow = '';
+        }
+
+        function showVcardToast(msg) {
+            vcardToastMsg.textContent = msg;
+            vcardToast.classList.remove('translate-y-20', 'opacity-0');
+            vcardToast.classList.add('translate-y-0', 'opacity-100');
+            setTimeout(() => {
+                vcardToast.classList.add('translate-y-20', 'opacity-0');
+                vcardToast.classList.remove('translate-y-0', 'opacity-100');
+            }, 3000);
+        }
+
+        function getInitials(name) {
+            return name.trim().split(/\s+/).map(w => w[0].toUpperCase()).slice(0, 2).join('');
+        }
+
+        createVcardBtn.addEventListener('click', openVcardModal);
+        closeVcardBtn.addEventListener('click', closeVcardModal);
+        cancelVcardBtn.addEventListener('click', closeVcardModal);
+        vcardBackdrop.addEventListener('click', closeVcardModal);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !createVcardModal.classList.contains('hidden')) closeVcardModal();
+        });
+
+        saveVcardBtn.addEventListener('click', () => {
+            const name = document.getElementById('vcard-name').value.trim() || 'New Contact';
+            const title = document.getElementById('vcard-title').value.trim() || 'No Title';
+            const company = document.getElementById('vcard-company').value.trim() || 'Madwess LLC';
+            const phone = document.getElementById('vcard-phone').value.trim() || '—';
+            const email = document.getElementById('vcard-email').value.trim() || '—';
+            const alias = document.getElementById('vcard-alias').value.trim() || name.toLowerCase().replace(/\s+/g, '');
+            const today = new Date().toISOString().split('T')[0];
+            const initials = getInitials(name);
+
+            const newCard = document.createElement('div');
+            newCard.setAttribute('data-name', name);
+            newCard.setAttribute('data-status', 'Active');
+            newCard.setAttribute('data-views', '0');
+            newCard.setAttribute('data-created', today);
+            newCard.className = 'bg-white/5 bg-blur border border-white/10 p-6 rounded-xl';
+            newCard.innerHTML = `
+                <div>
+                    <div class="flex items-start justify-between">
+                        <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-r from-[#FACC15] to-[#3B82F6] text-2xl font-bold text-white cursor-pointer hover:scale-105 transition">
+                            ${initials}
+                        </div>
+                        <p class="px-3 py-1 bg-[#22C55E]/20 text-green-400 text-xs font-semibold rounded-full">Active</p>
+                    </div>
+                </div>
+                <div class="text-white">
+                    <p class="text-lg font-bold mt-3 mb-1">${name}</p>
+                    <p class="text-[#9CA3AF]">${title}</p>
+                    <p class="text-[#6B7280] text-sm"><small>${company}</small></p>
+                    <div>
+                        <div class="flex items-center gap-2 mb-2 mt-2 text-[#D1D5DB]">
+                            <img src="assets/call.svg" alt="Phone">
+                            <p>${phone}</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <img src="assets/mail.svg" alt="Email">
+                            <p>${email}</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-3 mt-3 mb-3 bg-white/5 bg-blur rounded-lg">
+                        <p class="text-[#FACC15]">madw.es/${alias}</p>
+                        <img src="assets/copy.svg" alt="Copy">
+                    </div>
+                    <div class="flex items-center justify-between pb-5">
+                        <div class="flex items-center gap-2">
+                            <img src="assets/view-g.svg" alt="Eye">
+                            <p class="text-[#9CA3AF]">0 views</p>
+                        </div>
+                        <div>
+                            <p class="text-[#6B7280] text-xs">${today}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between gap-2 border-t border-white/10 pt-5">
+                    <div class="flex justify-center items-center gap-2 text-center bg-white/5 text-white px-4 py-2 w-full rounded-lg">
+                        <img class="w-3 h-3" src="assets/qrcode.svg" alt="QR">
+                        <button>QR Code</button>
+                    </div>
+                    <div class="flex justify-center items-center gap-2 text-center bg-gradient-to-r from-[#FACC15] to-[#EAB308] text-black font-bold px-4 py-2 w-full rounded-lg">
+                        <img src="assets/edit.svg" alt="Edit">
+                        <button>Edit</button>
+                    </div>
+                </div>
+            `;
+
+            const grid = document.getElementById('vcard-grid');
+            grid.prepend(newCard);
+
+            closeVcardModal();
+            showVcardToast('VCard created successfully!');
+        });
+    </script>
 
 </body>
 
