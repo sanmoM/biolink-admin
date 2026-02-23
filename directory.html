@@ -596,6 +596,74 @@
         </div>
     </div>
 
+    <!-- Edit Role Modal -->
+    <div id="edit-role-modal" class="fixed inset-0 z-[65] flex items-center justify-center hidden">
+        <div id="edit-role-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity"></div>
+        <div class="relative w-full max-w-[450px] mx-4 bg-[#111827] border border-[#FACC15]/20 rounded-xl shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden transform transition-all scale-95 opacity-0 duration-300"
+            id="edit-role-card">
+            <div class="flex items-center justify-between px-6 sm:px-8 pt-6 sm:pt-8">
+                <h2 class="text-xl sm:text-2xl font-bold text-white pt-2 sm:pt-3">Edit Member Role</h2>
+                <button id="close-edit-role-modal" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fas fa-times text-lg sm:text-xl cursor-pointer mt-2 sm:mt-4"></i>
+                </button>
+            </div>
+            <div class="px-6 sm:px-8 pt-4 sm:pt-6 space-y-4">
+                <div>
+                    <label class="block text-white text-sm sm:text-base font-semibold mb-1.5 sm:mb-2 pr-1">Full
+                        Name</label>
+                    <input type="text" id="edit-member-name" placeholder="Member Name"
+                        class="w-full bg-[#1F2937]/50 border border-white/10 rounded-lg px-3 sm:px-4 py-2.5 sm:py-3 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors placeholder:text-[#9CA3AF]">
+                </div>
+                <div>
+                    <label class="block text-white text-sm sm:text-base font-semibold mb-1.5 sm:mb-2 pr-1">Email
+                        Address</label>
+                    <input type="email" id="edit-member-email" placeholder="Email Address"
+                        class="w-full bg-[#1F2937]/50 border border-white/10 rounded-lg px-3 sm:px-4 py-2.5 sm:py-3 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors placeholder:text-[#9CA3AF]">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label
+                            class="block text-white text-sm sm:text-base font-semibold mb-1.5 sm:mb-2 pr-1">Role</label>
+                        <div class="relative">
+                            <select id="edit-member-role"
+                                class="w-full appearance-none bg-[#1F2937] border border-white/10 rounded-lg px-3 sm:px-4 py-2.5 sm:py-3 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors cursor-pointer">
+                                <option>Owner</option>
+                                <option>Admin</option>
+                                <option>Member</option>
+                            </select>
+                            <i
+                                class="fas fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-[10px] sm:text-xs pointer-events-none"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <label
+                            class="block text-white text-sm sm:text-base font-semibold mb-1.5 sm:mb-2 pr-1">Workspace</label>
+                        <div class="relative">
+                            <select id="edit-member-workspace"
+                                class="w-full appearance-none bg-[#1F2937] border border-white/10 rounded-lg px-3 sm:px-4 py-2.5 sm:py-3 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors cursor-pointer">
+                                <option>Main Workspace</option>
+                                <option>Marketing</option>
+                                <option>Development</option>
+                            </select>
+                            <i
+                                class="fas fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-[10px] sm:text-xs pointer-events-none"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-6 sm:p-8 flex gap-3">
+                <button id="cancel-edit-role"
+                    class="flex-1 px-4 py-2.5 sm:py-3 rounded-lg bg-white/5 border border-white/10 text-white font-semibold hover:bg-white/10 transition-all text-sm sm:text-base">
+                    Cancel
+                </button>
+                <button id="save-edit-role"
+                    class="flex-1 px-4 py-2.5 sm:py-3 rounded-lg bg-gradient-to-br from-[#FACC15] to-[#EAB308] text-black font-semibold hover:outline outline-offset-2 outline-[#FACC15]/50 transition-all text-sm sm:text-base">
+                    Save Changes
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Delete Confirmation Modal -->
     <div id="delete-confirm-modal" class="fixed inset-0 z-[70] flex items-center justify-center hidden">
         <div id="delete-modal-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity"></div>
@@ -703,7 +771,91 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 if (!inviteModal.classList.contains('hidden')) closeModal();
+                if (!editRoleModal.classList.contains('hidden')) closeEditModal();
                 if (!deleteConfirmModal.classList.contains('hidden')) closeDeleteModal();
+            }
+        });
+
+        // Edit Role Modal Logic
+        const editRoleModal = document.getElementById('edit-role-modal');
+        const editRoleCard = document.getElementById('edit-role-card');
+        const closeEditRoleBtn = document.getElementById('close-edit-role-modal');
+        const cancelEditRoleBtn = document.getElementById('cancel-edit-role');
+        const saveEditRoleBtn = document.getElementById('save-edit-role');
+        const editRoleBackdrop = document.getElementById('edit-role-backdrop');
+
+        const editNameInput = document.getElementById('edit-member-name');
+        const editEmailInput = document.getElementById('edit-member-email');
+        const editRoleSelect = document.getElementById('edit-member-role');
+        const editWorkspaceSelect = document.getElementById('edit-member-workspace');
+
+        let cardToEdit = null;
+
+        function openEditModal(card) {
+            cardToEdit = card;
+            const name = card.querySelector('h3').textContent.trim();
+            const email = card.querySelector('p.truncate').textContent.trim();
+            const role = card.querySelector('span:nth-child(1)').textContent.trim();
+
+            editNameInput.value = name;
+            editEmailInput.value = email;
+            editRoleSelect.value = role;
+
+            editRoleModal.classList.remove('hidden');
+            setTimeout(() => {
+                editRoleCard.classList.remove('scale-95', 'opacity-0');
+                editRoleCard.classList.add('scale-100', 'opacity-100');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeEditModal() {
+            editRoleCard.classList.add('scale-95', 'opacity-0');
+            editRoleCard.classList.remove('scale-100', 'opacity-100');
+            setTimeout(() => {
+                editRoleModal.classList.add('hidden');
+            }, 300);
+            document.body.style.overflow = '';
+            cardToEdit = null;
+        }
+
+        closeEditRoleBtn.addEventListener('click', closeEditModal);
+        cancelEditRoleBtn.addEventListener('click', closeEditModal);
+        editRoleBackdrop.addEventListener('click', closeEditModal);
+
+        saveEditRoleBtn.addEventListener('click', () => {
+            if (cardToEdit) {
+                // Update Name
+                cardToEdit.querySelector('h3').textContent = editNameInput.value;
+                // Update Avatar Initials
+                const initials = editNameInput.value.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
+                const initialsEl = cardToEdit.querySelector('.shrink-0');
+                if (initialsEl) initialsEl.textContent = initials;
+                // Update Email
+                cardToEdit.querySelector('p.truncate').textContent = editEmailInput.value;
+                // Update Role Badge
+                const roleBadge = cardToEdit.querySelector('span:nth-child(1)');
+                roleBadge.textContent = editRoleSelect.value;
+
+                // Update role colors if needed (Owner vs Admin vs Member)
+                if (editRoleSelect.value === 'Owner') {
+                    roleBadge.className = 'rounded-full bg-[#EAB308]/20 px-2 py-0.5 text-[10px] sm:text-xs font-semibold text-[#FACC15]';
+                } else if (editRoleSelect.value === 'Admin') {
+                    roleBadge.className = 'rounded-full bg-blue-500/20 px-2 py-0.5 text-[10px] sm:text-xs font-semibold text-blue-400';
+                } else {
+                    roleBadge.className = 'rounded-full bg-gray-500/20 px-2 py-0.5 text-[10px] sm:text-xs font-semibold text-gray-400';
+                }
+            }
+            closeEditModal();
+        });
+
+        // Setup individual buttons
+        document.querySelectorAll('.flex-1.sm\\:flex-none.rounded-lg').forEach(btn => {
+            if (btn.textContent.trim() === 'Edit Role') {
+                btn.addEventListener('click', () => {
+                    const card = btn.closest('.group');
+                    openEditModal(card);
+                });
             }
         });
 
