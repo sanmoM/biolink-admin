@@ -1022,6 +1022,43 @@
         </div>
     </div>
 
+    <!-- Delete Confirmation Modal -->
+    <div id="delete-confirm-modal" class="fixed inset-0 z-[70] flex items-center justify-center hidden">
+        <div id="delete-modal-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity"></div>
+        <!-- Modal Card -->
+        <div class="relative w-full max-w-[400px] mx-4 bg-[#111827] border border-red-500/20 rounded-xl shadow-[0_0_50px_rgba(239,68,68,0.2)] overflow-hidden transform transition-all scale-95 opacity-0 duration-300"
+            id="delete-modal-card">
+
+            <div class="p-6 sm:p-8 text-center">
+                <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-500/10 mb-5">
+                    <svg class="h-6 w-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                </div>
+
+                <h3 class="text-xl font-bold text-white mb-2">Delete Biolink Page</h3>
+                <p class="text-gray-400 text-sm mb-6">
+                    Are you sure you want to delete <span id="delete-target-name"
+                        class="font-semibold text-white"></span>? This action cannot be undone.
+                </p>
+
+                <!-- Actions -->
+                <div class="flex gap-3">
+                    <button id="cancel-delete"
+                        class="flex-1 px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white font-semibold hover:bg-white/10 transition-all text-sm">
+                        Cancel
+                    </button>
+                    <button id="confirm-delete"
+                        class="flex-1 px-4 py-2.5 rounded-lg bg-red-500 text-white font-semibold hover:bg-red-600 transition-all text-sm shadow-[0_0_15px_rgba(239,68,68,0.4)]">
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <script>
         // Sidebar Toggle Logic
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
@@ -1047,7 +1084,7 @@
             });
         });
 
-        // Modal Logic
+        // Create Modal Logic
         const createBiolinkModal = document.getElementById('create-biolink-modal');
         const biolinkModalCard = document.getElementById('biolink-modal-card');
         const openCreateBiolinkBtn = document.getElementById('open-create-biolink-modal');
@@ -1078,9 +1115,53 @@
         cancelCreateBiolinkBtn.addEventListener('click', closeBiolinkModal);
         biolinkModalBackdrop.addEventListener('click', closeBiolinkModal);
 
+        // Delete Modal Logic
+        const deleteConfirmModal = document.getElementById('delete-confirm-modal');
+        const deleteModalCard = document.getElementById('delete-modal-card');
+        const cancelDeleteBtn = document.getElementById('cancel-delete');
+        const confirmDeleteBtn = document.getElementById('confirm-delete');
+        const deleteModalBackdrop = document.getElementById('delete-modal-backdrop');
+        const deleteTargetNameSpan = document.getElementById('delete-target-name');
+        let rowToDelete = null;
+
+        function openDeleteModal(row, pageName) {
+            rowToDelete = row;
+            deleteTargetNameSpan.textContent = `"${pageName}"`;
+            deleteConfirmModal.classList.remove('hidden');
+            setTimeout(() => {
+                deleteModalCard.classList.remove('scale-95', 'opacity-0');
+                deleteModalCard.classList.add('scale-100', 'opacity-100');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDeleteModal() {
+            deleteModalCard.classList.add('scale-95', 'opacity-0');
+            deleteModalCard.classList.remove('scale-100', 'opacity-100');
+            setTimeout(() => {
+                deleteConfirmModal.classList.add('hidden');
+                rowToDelete = null;
+            }, 300);
+            document.body.style.overflow = '';
+        }
+
+        cancelDeleteBtn.addEventListener('click', closeDeleteModal);
+        deleteModalBackdrop.addEventListener('click', closeDeleteModal);
+
+        confirmDeleteBtn.addEventListener('click', () => {
+            if (rowToDelete) {
+                rowToDelete.remove();
+                if (typeof filterAndSortBiolinks === 'function') filterAndSortBiolinks();
+            }
+            closeDeleteModal();
+        });
+
+
+        // Global Esc Key Handler for Modals
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !createBiolinkModal.classList.contains('hidden')) {
-                closeBiolinkModal();
+            if (e.key === 'Escape') {
+                if (!createBiolinkModal.classList.contains('hidden')) closeBiolinkModal();
+                if (!deleteConfirmModal.classList.contains('hidden')) closeDeleteModal();
             }
         });
 
@@ -1195,6 +1276,38 @@
             filterAndSortBiolinks();
         });
 
+
+        // Table Action Buttons Logic
+        document.getElementById('biolink-table-body').addEventListener('click', function (e) {
+            const btn = e.target.closest('button');
+            const copyUrlBtn = e.target.closest('.copy-url');
+
+            if (copyUrlBtn) {
+                e.preventDefault();
+                const url = copyUrlBtn.getAttribute('data-url');
+                navigator.clipboard.writeText(url).then(() => {
+                    const originalHTML = copyUrlBtn.innerHTML;
+                    copyUrlBtn.innerHTML = '<span class="text-green-400 text-xs font-semibold">Copied!</span>';
+                    setTimeout(() => {
+                        copyUrlBtn.innerHTML = originalHTML;
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                });
+                return;
+            }
+
+            if (!btn) return;
+            const row = btn.closest('tr');
+            if (!row) return;
+
+            const pageName = row.getAttribute('data-name');
+
+            if (btn.classList.contains('hover:text-red-400')) {
+                // Delete
+                openDeleteModal(row, pageName);
+            }
+        });
 
         // Search and Filter Logic
         const biolinkSearch = document.getElementById('biolink-search');
