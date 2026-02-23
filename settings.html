@@ -514,7 +514,7 @@
                         </div>
                     </div>
 
-                    <button
+                    <button id="update-password-btn"
                         class="mt-6 px-6 py-2.5 bg-gradient-to-r from-[#FACC15] to-[#60A5FA] text-black font-medium rounded-lg shadow-md text-base hover:scale-105 transition-transform">
                         Update Password
                     </button>
@@ -522,7 +522,7 @@
 
                 <!-- Save Changes Button -->
                 <div class="flex justify-end pt-4">
-                    <button
+                    <button id="save-changes-btn"
                         class="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3 bg-gradient-to-r from-[#FACC15] to-[#60A5FA] text-black font-medium rounded-lg text-base shadow-lg hover:scale-105 transition-transform">
                         <img src="assets/save.svg" alt="" class="h-3 w-3">
                         Save Changes
@@ -531,6 +531,20 @@
 
             </div>
         </main>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast-notification"
+        class="fixed bottom-6 right-6 flex items-center gap-3 px-5 py-3 rounded-xl bg-[#1f2025] border border-white/10 shadow-2xl translate-y-full opacity-0 transition-all duration-300 z-[100]">
+        <div class="w-8 h-8 rounded-lg bg-green-500/20 flex items-center justify-center">
+            <i class="fas fa-check text-green-500"></i>
+        </div>
+        <div class="flex flex-col">
+            <p id="toast-message" class="text-white font-medium text-sm"></p>
+        </div>
+        <button id="close-toast" class="ml-2 text-gray-500 hover:text-white transition-colors">
+            <i class="fas fa-times"></i>
+        </button>
     </div>
 
     <!-- Scripts -->
@@ -570,6 +584,46 @@
                 }
             });
         });
+
+        // Toast Notification Logic
+        const toast = document.getElementById('toast-notification');
+        const toastMessage = document.getElementById('toast-message');
+        const closeToastBtn = document.getElementById('close-toast');
+        let toastTimeout;
+
+        function showToast(message) {
+            toastMessage.textContent = message;
+            toast.classList.remove('translate-y-full', 'opacity-0');
+
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                hideToast();
+            }, 3000);
+        }
+
+        function hideToast() {
+            toast.classList.add('translate-y-full', 'opacity-0');
+        }
+
+        if (closeToastBtn) {
+            closeToastBtn.addEventListener('click', hideToast);
+        }
+
+        // Action Buttons with Toasts
+        const updatePasswordBtn = document.getElementById('update-password-btn');
+        const saveChangesBtn = document.getElementById('save-changes-btn');
+
+        if (updatePasswordBtn) {
+            updatePasswordBtn.addEventListener('click', () => {
+                showToast('Password updated successfully!');
+            });
+        }
+
+        if (saveChangesBtn) {
+            saveChangesBtn.addEventListener('click', () => {
+                showToast('Changes saved successfully!');
+            });
+        }
     </script>
     <script src="navbar-search.js"></script>
 </body>
