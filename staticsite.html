@@ -463,7 +463,7 @@
                                     Analytics
                                 </button>
 
-                                <button
+                                <button data-action="edit-site"
                                     class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-r from-[#FACC15] to-[#EAB308] hover:bg-yellow-300 text-black font-bold transition">
                                     <img src="assets/edit.svg" class="w-4 h-4" />
                                     Edit
@@ -518,7 +518,7 @@
                                     Analytics
                                 </button>
 
-                                <button
+                                <button data-action="edit-site"
                                     class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-r from-[#FACC15] to-[#EAB308] hover:bg-yellow-300 text-black font-bold transition">
                                     <img src="assets/edit.svg" class="w-4 h-4" />
                                     Edit
@@ -572,7 +572,7 @@
                                     Analytics
                                 </button>
 
-                                <button
+                                <button data-action="edit-site"
                                     class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-r from-[#FACC15] to-[#EAB308] hover:bg-yellow-300 text-black font-bold transition">
                                     <img src="assets/edit.svg" class="w-4 h-4" />
                                     Edit
@@ -627,7 +627,7 @@
                                     Analytics
                                 </button>
 
-                                <button
+                                <button data-action="edit-site"
                                     class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-r from-[#FACC15] to-[#EAB308] hover:bg-yellow-300 text-black font-bold transition">
                                     <img src="assets/edit.svg" class="w-4 h-4" />
                                     Edit
@@ -682,7 +682,7 @@
                                     Analytics
                                 </button>
 
-                                <button
+                                <button data-action="edit-site"
                                     class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-r from-[#FACC15] to-[#EAB308] hover:bg-yellow-300 text-black font-bold transition">
                                     <img src="assets/edit.svg" class="w-4 h-4" />
                                     Edit
@@ -737,7 +737,7 @@
                                     Analytics
                                 </button>
 
-                                <button
+                                <button data-action="edit-site"
                                     class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-r from-[#FACC15] to-[#EAB308] hover:bg-yellow-300 text-black font-bold transition">
                                     <img src="assets/edit.svg" class="w-4 h-4" />
                                     Edit
@@ -787,22 +787,20 @@
             <div class="px-6 sm:px-8 py-4 sm:py-6 space-y-5 overflow-y-auto flex-1 custom-scrollbar">
                 <div>
                     <label class="block text-white text-sm sm:text-base font-semibold mb-1.5 sm:mb-2 pr-1">Site Name
-                        <span class="text-red-500">*</span></label>
-                    <input type="text" id="site-name" placeholder="e.g. My Awesome Portfolio"
-                        class="w-full bg-[#1F2937]/50 border border-white/10 rounded-lg px-3 sm:px-4 py-2.5 sm:py-3 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors placeholder:text-[#9CA3AF]">
+                        <input type="text" id="site-name" placeholder="e.g. My Awesome Portfolio"
+                            class="w-full bg-[#1F2937]/50 border border-white/10 rounded-lg px-3 sm:px-4 py-2.5 sm:py-3 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors placeholder:text-[#9CA3AF]">
                 </div>
 
                 <div>
                     <label class="block text-white text-sm sm:text-base font-semibold mb-1.5 sm:mb-2 pr-1">URL Alias
-                        <span class="text-red-500">*</span></label>
-                    <div class="flex group">
-                        <span
-                            class="inline-flex items-center px-4 rounded-l-lg border border-r-0 border-white/10 bg-[#1F2937]/80 text-gray-400 text-sm">
-                            madw.es/
-                        </span>
-                        <input type="text" id="site-alias" placeholder="e.g. my-portfolio"
-                            class="flex-1 min-w-0 block w-full bg-[#1F2937]/50 border border-white/10 rounded-none rounded-r-lg px-3 sm:px-4 py-2.5 sm:py-3 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors placeholder:text-[#9CA3AF]">
-                    </div>
+                        <div class="flex group">
+                            <span
+                                class="inline-flex items-center px-4 rounded-l-lg border border-r-0 border-white/10 bg-[#1F2937]/80 text-gray-400 text-sm">
+                                madw.es/
+                            </span>
+                            <input type="text" id="site-alias" placeholder="e.g. my-portfolio"
+                                class="flex-1 min-w-0 block w-full bg-[#1F2937]/50 border border-white/10 rounded-none rounded-r-lg px-3 sm:px-4 py-2.5 sm:py-3 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors placeholder:text-[#9CA3AF]">
+                        </div>
                 </div>
 
                 <div>
@@ -828,6 +826,61 @@
                     class="flex-1 px-4 py-2.5 sm:py-3 rounded-lg bg-gradient-to-br from-[#FACC15] to-[#EAB308] text-black font-semibold hover:outline outline-offset-2 outline-[#FACC15]/50 transition-all text-sm sm:text-base flex items-center justify-center gap-2">
                     <i class="fas fa-plus"></i>
                     Create Site
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Site Modal -->
+    <div id="edit-site-modal" class="fixed inset-0 z-[60] flex items-center justify-center hidden">
+        <div id="edit-modal-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+        <div id="edit-modal-card"
+            class="relative w-full max-w-[600px] mx-4 bg-[#111827] border border-[#FACC15]/20 rounded-xl shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden transform transition-all scale-95 opacity-0 duration-300 max-h-[90vh] flex flex-col">
+
+            <div class="flex items-center justify-between px-6 sm:px-8 py-4 sm:py-6 border-b border-white/10 shrink-0">
+                <h2 class="text-xl sm:text-2xl font-bold text-white">Edit Static Site</h2>
+                <button id="close-edit-modal" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fas fa-times text-lg sm:text-xl cursor-pointer"></i>
+                </button>
+            </div>
+
+            <div class="px-6 sm:px-8 py-4 sm:py-6 space-y-5 overflow-y-auto flex-1">
+                <div>
+                    <label class="block text-white text-sm font-semibold mb-2">Site Name</label>
+                    <input type="text" id="edit-site-name" placeholder="e.g. My Awesome Portfolio"
+                        class="w-full bg-[#1F2937] border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors placeholder:text-gray-500">
+                </div>
+                <div>
+                    <label class="block text-white text-sm font-semibold mb-2">URL Alias</label>
+                    <div class="flex">
+                        <span
+                            class="inline-flex items-center px-4 rounded-l-lg border border-r-0 border-white/10 bg-white/5 text-gray-400 text-sm">madw.es/</span>
+                        <input type="text" id="edit-site-alias" placeholder="e.g. my-portfolio"
+                            class="flex-1 bg-[#1F2937] border border-white/10 rounded-r-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors placeholder:text-gray-500">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-white text-sm font-semibold mb-2">Template</label>
+                    <select id="edit-site-template"
+                        class="w-full bg-[#1F2937] border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors">
+                        <option value="Blank">Blank Site</option>
+                        <option value="Portfolio">Portfolio</option>
+                        <option value="Landing">Landing Page</option>
+                        <option value="Event">Event Site</option>
+                        <option value="Business">Business Card</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="p-4 sm:p-6 border-t border-white/10 shrink-0 flex gap-3">
+                <button id="cancel-edit-site"
+                    class="flex-1 px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white font-semibold hover:bg-white/10 transition-all text-sm">
+                    Cancel
+                </button>
+                <button id="update-site"
+                    class="flex-1 px-4 py-3 rounded-lg bg-gradient-to-br from-[#FACC15] to-[#EAB308] text-black font-semibold transition-all text-sm flex items-center justify-center gap-2">
+                    <i class="fas fa-save"></i>
+                    Save Changes
                 </button>
             </div>
         </div>
@@ -1073,7 +1126,7 @@
                                     </svg>
                                     Analytics
                                 </button>
-                                <button class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-r from-[#FACC15] to-[#EAB308] hover:bg-yellow-300 text-black font-bold transition">
+                                <button data-action="edit-site" class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-r from-[#FACC15] to-[#EAB308] hover:bg-yellow-300 text-black font-bold transition">
                                     <img src="assets/edit.svg" class="w-4 h-4" />
                                     Edit
                                 </button>
@@ -1097,10 +1150,100 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 if (createModal && !createModal.classList.contains('hidden')) closeCreateModal();
+                if (editModal && !editModal.classList.contains('hidden')) closeEditModal();
             }
         });
+
+        // --- Edit Site Modal Logic ---
+        const editModal = document.getElementById('edit-site-modal');
+        const editModalCard = document.getElementById('edit-modal-card');
+        const closeEditModalBtn = document.getElementById('close-edit-modal');
+        const cancelEditModalBtn = document.getElementById('cancel-edit-site');
+        const editModalBackdrop = document.getElementById('edit-modal-backdrop');
+        const updateSiteBtn = document.getElementById('update-site');
+        let currentCardToEdit = null;
+
+        function openEditModal(card) {
+            currentCardToEdit = card;
+            const name = card.getAttribute('data-name') || '';
+            const aliasEl = card.querySelector('.text-\\[\\#FACC15\\].font-medium');
+            const alias = aliasEl ? aliasEl.textContent.replace('madw.es/', '').trim() : '';
+            const templateEl = card.querySelector('.text-\\[\\#60A5FA\\]');
+            const templateText = templateEl ? templateEl.textContent.replace(' Template', '').trim() : 'Blank';
+
+            document.getElementById('edit-site-name').value = name;
+            document.getElementById('edit-site-alias').value = alias;
+
+            const sel = document.getElementById('edit-site-template');
+            if (templateText.includes('Portfolio')) sel.value = 'Portfolio';
+            else if (templateText.includes('Landing')) sel.value = 'Landing';
+            else if (templateText.includes('Event')) sel.value = 'Event';
+            else if (templateText.includes('Business')) sel.value = 'Business';
+            else sel.value = 'Blank';
+
+            editModal.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                editModalCard.classList.remove('scale-95', 'opacity-0');
+                editModalCard.classList.add('scale-100', 'opacity-100');
+            });
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeEditModal() {
+            editModalCard.classList.add('scale-95', 'opacity-0');
+            editModalCard.classList.remove('scale-100', 'opacity-100');
+            setTimeout(() => editModal.classList.add('hidden'), 300);
+            document.body.style.overflow = '';
+        }
+
+        closeEditModalBtn && closeEditModalBtn.addEventListener('click', closeEditModal);
+        cancelEditModalBtn && cancelEditModalBtn.addEventListener('click', closeEditModal);
+        editModalBackdrop && editModalBackdrop.addEventListener('click', closeEditModal);
+
+        updateSiteBtn && updateSiteBtn.addEventListener('click', () => {
+            if (!currentCardToEdit) return;
+            const name = document.getElementById('edit-site-name').value.trim() || 'Unnamed Site';
+            const alias = document.getElementById('edit-site-alias').value.trim();
+            const template = document.getElementById('edit-site-template').value;
+
+            currentCardToEdit.setAttribute('data-name', name);
+            const h2 = currentCardToEdit.querySelector('h2');
+            if (h2) h2.textContent = name;
+
+            const aliasEl = currentCardToEdit.querySelector('.text-\\[\\#FACC15\\].font-medium');
+            if (aliasEl) aliasEl.textContent = `madw.es/${alias}`;
+
+            const templateEl = currentCardToEdit.querySelector('.text-\\[\\#60A5FA\\]');
+            if (templateEl) templateEl.textContent = `${template} Template`;
+
+            const iconMap = {
+                Portfolio: { src: 'assets/portfolio.svg', grad: 'from-[#60A5FA] to-[#2563EB]' },
+                Landing: { src: 'assets/landing.svg', grad: 'from-[#C084FC] to-[#9333EA]' },
+                Event: { src: 'assets/event-w.svg', grad: 'from-[#4ADE80] to-[#16A34A]' },
+                Business: { src: 'assets/b-card.svg', grad: 'from-[#FACC15] to-[#CA8A04]' },
+                Blank: { src: 'assets/static-w.svg', grad: 'from-[#60A5FA] to-[#2563EB]' },
+            };
+            const chosen = iconMap[template] || iconMap.Blank;
+            const iconWrapper = currentCardToEdit.querySelector('.w-20.h-20');
+            if (iconWrapper) {
+                iconWrapper.className = `w-20 h-20 flex items-center justify-center rounded-xl bg-gradient-to-r ${chosen.grad}`;
+                const img = iconWrapper.querySelector('img');
+                if (img) img.src = chosen.src;
+            }
+
+            closeEditModal();
+            showToast('Static Site updated successfully!');
+        });
+
+        // Event delegation: open edit modal when any Edit button (data-action="edit-site") is clicked
+        document.getElementById('staticsite-grid').addEventListener('click', (e) => {
+            const btn = e.target.closest('[data-action="edit-site"]');
+            if (!btn) return;
+            const card = btn.closest('[data-name]');
+            if (card) openEditModal(card);
+        });
+
     </script>
-    <script src="navbar-search.js"></script>
     <script src="navbar-search.js"></script>
 </body>
 
