@@ -1084,6 +1084,118 @@
             }
         });
 
+        // Add new Biolink Page logic
+        const createPageBtn = createBiolinkModal.querySelector('button.bg-gradient-to-br');
+
+        createPageBtn.addEventListener('click', () => {
+            const urlInput = createBiolinkModal.querySelector('input[placeholder="your-custom-alias"]').value;
+            const nameInput = createBiolinkModal.querySelector('input[placeholder="e.g. My Personal Portfolio"]').value;
+            const categorySelect = createBiolinkModal.querySelector('select').value;
+            const detailsInput = createBiolinkModal.querySelector('textarea').value;
+
+            if (!urlInput || !nameInput) {
+                alert('Please fill in both URL and Page Name.');
+                return;
+            }
+
+            const currentDate = new Date().toISOString().split('T')[0];
+            const fullUrl = `madw.es/${urlInput}`;
+
+            const newRow = document.createElement('tr');
+            newRow.className = 'hover:bg-[#1f2025] transition-colors whitespace-nowrap';
+            newRow.setAttribute('data-name', nameInput);
+            newRow.setAttribute('data-type', categorySelect);
+            newRow.setAttribute('data-status', 'Active');
+            newRow.setAttribute('data-visits', '0');
+            newRow.setAttribute('data-created', currentDate);
+
+            let typeColorClass = '';
+            if (categorySelect === 'Personal') typeColorClass = 'text-blue-400 border-blue-500/30 bg-[#3B82F6]/20';
+            else if (categorySelect === 'Business') typeColorClass = 'text-blue-400 border-blue-500/30 bg-[#3B82F6]/20'; // Matching existing design where both are blue, or can customize
+            else if (categorySelect === 'Social') typeColorClass = 'text-blue-400 border-blue-500/30 bg-[#3B82F6]/20';
+            else if (categorySelect === 'Event') typeColorClass = 'text-blue-400 border-blue-500/30 bg-[#3B82F6]/20';
+
+            newRow.innerHTML = `
+                <td class="px-6 py-5 whitespace-nowrap">
+                    <div>
+                        <div class="text-white font-semibold">${nameInput}</div>
+                        <div class="text-gray-500 text-sm" ${detailsInput ? `title="${detailsInput}"` : ''}>${categorySelect}</div>
+                    </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <a href="#" class="text-[#FACC15] hover:underline flex items-center gap-2 copy-url" data-url="${fullUrl}">
+                        ${fullUrl}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16">
+                            <path fill="none" stroke="#9CA3AF" stroke-linejoin="round" d="M12 10.5h1.5v-8h-8V4m-3 9.5h8v-8h-8z" stroke-width="1" />
+                        </svg>
+                    </a>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <span class="px-3 py-1 ${typeColorClass} text-xs font-medium rounded-full border">
+                        ${categorySelect}
+                    </span>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center gap-2 text-white">
+                        <svg class="text-[#9CA3AF]" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.587 1.413T19 21zm8-8v6h6v-6zm0-2h6V5h-6zm-2 0V5H5v6zm0 2H5v6h6z" />
+                        </svg>
+                        <span>0</span>
+                    </div>
+                </td>
+                <td class="px-6 py-4 text-white font-medium whitespace-nowrap">0</td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <span class="px-3 py-1 bg-[#22C55E]/20 text-green-400 text-xs font-semibold rounded-full border border-green-500/30">
+                        Active
+                    </span>
+                </td>
+                <td class="px-6 py-4 text-gray-400 whitespace-nowrap">${currentDate}</td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center gap-4">
+                        <button class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                    <path d="M2.062 12.348a1 1 0 0 1 0-.696a10.75 10.75 0 0 1 19.876 0a1 1 0 0 1 0 .696a10.75 10.75 0 0 1-19.876 0" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </g>
+                            </svg>
+                        </button>
+                        <button class="text-gray-400 hover:text-yellow-400 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M6.414 15.89L16.556 5.748l-1.414-1.414L5 14.476v1.414zm.829 2H3v-4.243L14.435 2.212a1 1 0 0 1 1.414 0l2.829 2.829a1 1 0 0 1 0 1.414zM3 19.89h18v2H3z" />
+                            </svg>
+                        </button>
+                        <button class="text-gray-400 hover:text-red-400 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 1024 1024">
+                                <path fill="currentColor" d="M160 256H96a32 32 0 0 1 0-64h256V96a32 32 0 0 1 32-32h256a32 32 0 0 1 32 32v96h256a32 32 0 1 1 0 64h-64v672a32 32 0 0 1-32 32H192a32 32 0 0 1-32-32zm448-64v-64H416v64zM224 896h576V256H224zm192-128a32 32 0 0 1-32-32V416a32 32 0 0 1 64 0v320a32 32 0 0 1-32 32m192 0a32 32 0 0 1-32-32V416a32 32 0 0 1 64 0v320a32 32 0 0 1-32 32" stroke-width="25.5" stroke="currentColor" />
+                            </svg>
+                        </button>
+                    </div>
+                </td>
+            `;
+
+            // Prepend new row to the table body
+            const tbody = document.getElementById('biolink-table-body');
+            tbody.insertBefore(newRow, tbody.firstChild);
+
+            // Optional: Show details as a tooltip if provided
+            if (detailsInput) {
+                newRow.querySelector('td:first-child div.text-gray-500').title = detailsInput;
+            }
+
+            // Reset form and close modal
+            createBiolinkModal.querySelector('input[placeholder="your-custom-alias"]').value = '';
+            createBiolinkModal.querySelector('input[placeholder="e.g. My Personal Portfolio"]').value = '';
+            createBiolinkModal.querySelector('select').selectedIndex = 0;
+            createBiolinkModal.querySelector('textarea').value = '';
+
+            closeBiolinkModal();
+
+            // Re-apply filters just in case
+            filterAndSortBiolinks();
+        });
+
+
         // Search and Filter Logic
         const biolinkSearch = document.getElementById('biolink-search');
         const biolinkFilters = document.querySelectorAll('input[name="biolink-filter"]');
