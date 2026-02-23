@@ -1093,45 +1093,52 @@
             // Generate today's date formatted as YYYY-MM-DD
             const today = new Date().toISOString().split('T')[0];
 
-            let badgeClass = type === 'Dynamic'
-                ? 'px-3 py-1 text-xs rounded-full bg-green-500/20 text-green-400 font-semibold'
-                : 'px-3 py-1 text-xs rounded-full bg-[#3B82F6]/20 text-[#60A5FA] font-semibold';
+            let badgeHtml = type === 'Dynamic'
+                ? '<span class="px-3 py-1 text-xs rounded-full bg-green-500/20 text-green-400 font-semibold">Dynamic</span>'
+                : '<span class="px-3 py-1 text-xs rounded-full bg-[#3B82F6]/20 text-[#60A5FA] font-semibold">Static</span>';
 
             const newCardHTML = `
-                <div class="bg-white/5 border border-white/10 rounded-xl p-5 hover:border-[#FACC15]/30 transition-all shadow-lg group relative"
-                     data-name="${name}" data-url="${url}" data-type="${type}" data-date="${today}" data-scans="0">
-                    <div class="flex items-start justify-between mb-4">
-                        <div class="w-16 h-16 bg-white p-2 rounded-xl flex-shrink-0">
-                            <img src="assets/dashboard-qr.png" alt="QR" class="w-full h-full object-cover rounded-md">
-                        </div>
-                        <div class="flex gap-2">
-                            <button class="p-2 bg-white/5 hover:bg-[#FACC15]/20 text-gray-400 hover:text-[#FACC15] rounded-lg transition-colors" title="Download PNG">
-                                <i class="fas fa-download"></i>
-                            </button>
-                            <button class="p-2 bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white rounded-lg transition-colors">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-semibold text-white mb-1">${name}</h3>
-                        <p class="text-sm text-gray-400 mb-3 truncate">${url}</p>
-                        
-                        <div class="flex items-center justify-between mt-4 pb-4 border-b border-white/10">
-                            <span class="${badgeClass}">${type}</span>
-                            <div class="flex items-center gap-1 text-gray-400 text-sm">
-                                <i class="fas fa-chart-line text-[#FACC15] mr-1"></i>0 scans
+                <div data-name="${name}" data-url="${url}" data-type="${type}" data-scans="0" data-created="${today}"
+                    class="w-full rounded-2xl pb-4 bg-white/5 bg-blur border border-white/10 shadow-2xl flex flex-col">
+                    <div class="p-6">
+                        <div class="bg-white rounded-xl px-5 py-6 flex items-center justify-center">
+                            <div class="bg-gradient-to-b from-[#E5E7EB] to-[#D1D5DB] rounded-lg p-16">
+                                <img src="assets/qrcode-gray.svg" alt="" class="">
                             </div>
                         </div>
-                        
+                    </div>
+                    <div class="px-5 pb-5 text-white flex flex-col flex-1">
+                        <h3 class="text-lg font-semibold">${name}</h3>
+                        <p class="text-sm text-gray-400 mt-1">${url}</p>
+                        <div class="mt-4 flex items-center justify-between">
+                            <div>
+                                <p class="text-xs text-gray-400">Total Scans</p>
+                                <p class="text-2xl font-bold mt-1">0</p>
+                            </div>
+                            ${badgeHtml}
+                        </div>
                         <div class="flex items-center justify-between mt-4">
-                            <span class="text-xs text-gray-500">${today}</span>
-                            <div class="flex items-center gap-3">
-                                <button class="text-gray-400 hover:text-white transition edit-qr-btn">
-                                    <img src="assets/edit-g.svg" alt="" class="h-4 w-4">
+                            <div class="flex items-center gap-2">
+                                <span class="text-sm text-gray-400">Color:</span>
+                                <span class="w-6 h-6 border-2 border-white/20 rounded-full bg-[#FFD700]"></span>
+                            </div>
+                        </div>
+                        <div class="flex-1"></div>
+                        <div class="border-t border-white/10 my-4"></div>
+                        <div class="flex items-center justify-between text-gray-400 text-sm">
+                            <span>${today}</span>
+
+                            <div class="flex items-center gap-4">
+                                <button class="hover:text-white transition">
+                                    <img src="assets/download-g.svg" alt="" class="">
                                 </button>
-                                <button class="text-gray-400 hover:text-red-400 transition delete-qr-btn">
-                                    <img src="assets/delete-g.svg" alt="" class="h-4 w-4">
+
+                                <button class="edit-qr-btn hover:text-white transition">
+                                    <img src="assets/edit-g.svg" alt="">
+                                </button>
+
+                                <button class="delete-qr-btn hover:text-red-400 transition">
+                                    <img src="assets/delete-g.svg" alt="">
                                 </button>
                             </div>
                         </div>
