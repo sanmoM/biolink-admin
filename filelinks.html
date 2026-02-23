@@ -521,13 +521,15 @@
                                                         <circle cx="12" cy="12" r="3" />
                                                     </g>
                                                 </svg> </button>
-                                            <button class="text-gray-400 hover:text-yellow-400 transition-colors">
+                                            <button
+                                                class="edit-file-btn text-gray-400 hover:text-yellow-400 transition-colors">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                     viewBox="0 0 24 24">
                                                     <path fill="currentColor"
                                                         d="M6.414 15.89L16.556 5.748l-1.414-1.414L5 14.476v1.414zm.829 2H3v-4.243L14.435 2.212a1 1 0 0 1 1.414 0l2.829 2.829a1 1 0 0 1 0 1.414zM3 19.89h18v2H3z" />
                                                 </svg> </button>
-                                            <button class="text-gray-400 hover:text-red-400 transition-colors">
+                                            <button
+                                                class="delete-file-btn text-gray-400 hover:text-red-400 transition-colors">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                     viewBox="0 0 1024 1024">
                                                     <path fill="currentColor"
@@ -1164,6 +1166,119 @@
         </div>
     </div>
 
+    <!-- Edit File Modal -->
+    <div id="edit-file-modal" class="fixed inset-0 z-[65] flex items-center justify-center hidden">
+        <div id="edit-file-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity"></div>
+        <div class="relative w-full max-w-[600px] mx-4 bg-[#111827] border border-[#FACC15]/20 rounded-xl shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden transform transition-all scale-95 opacity-0 duration-300 max-h-[90vh] flex flex-col"
+            id="edit-file-card">
+
+            <div class="flex items-center justify-between px-6 sm:px-8 py-4 sm:py-6 border-b border-white/10 shrink-0">
+                <h2 class="text-xl sm:text-2xl font-bold text-white">Edit File Details</h2>
+                <button id="close-edit-file-modal" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fas fa-times text-lg sm:text-xl cursor-pointer"></i>
+                </button>
+            </div>
+
+            <div class="px-6 sm:px-8 py-4 sm:py-6 space-y-5 overflow-y-auto flex-1 custom-scrollbar">
+
+                <div>
+                    <label class="block text-white text-sm sm:text-base font-semibold mb-1.5 sm:mb-2 pr-1">Custom Short
+                        URL <span class="text-gray-500 font-normal">(Optional)</span></label>
+                    <div class="flex group">
+                        <span
+                            class="inline-flex items-center px-4 rounded-l-lg border border-r-0 border-white/10 bg-[#1F2937]/80 text-gray-400 text-sm">
+                            madw.es/
+                        </span>
+                        <input type="text" id="edit-file-url" placeholder="e.g. spring-catalog"
+                            class="flex-1 min-w-0 block w-full bg-[#1F2937]/50 border border-white/10 rounded-none rounded-r-lg px-3 sm:px-4 py-2.5 sm:py-3 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors placeholder:text-[#9CA3AF]">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-white text-sm sm:text-base font-semibold mb-1.5 sm:mb-2 pr-1">File
+                        Name</label>
+                    <input type="text" id="edit-file-name" placeholder="e.g. Spring 2024 Product Catalog"
+                        class="w-full bg-[#1F2937]/50 border border-white/10 rounded-lg px-3 sm:px-4 py-2.5 sm:py-3 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors placeholder:text-[#9CA3AF]">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-white text-sm sm:text-base font-semibold mb-1.5 sm:mb-2 pr-1">File
+                            Type</label>
+                        <div class="relative">
+                            <select id="edit-file-type"
+                                class="w-full appearance-none bg-[#1F2937] border border-white/10 rounded-lg px-3 sm:px-4 py-2.5 sm:py-3 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors cursor-pointer">
+                                <option value="PDF">PDF Document</option>
+                                <option value="MP4">MP4 Video</option>
+                                <option value="PPTX">PowerPoint (PPTX)</option>
+                                <option value="Archive">Archive (ZIP/RAR)</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <i
+                                class="fas fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-[10px] sm:text-xs pointer-events-none"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-white text-sm sm:text-base font-semibold mb-1.5 sm:mb-2 pr-1">Download
+                            Limit <span class="text-gray-500 font-normal">(Optional)</span></label>
+                        <input type="number" id="edit-file-limit" placeholder="e.g. 100" min="1"
+                            class="w-full bg-[#1F2937]/50 border border-white/10 rounded-lg px-3 sm:px-4 py-2.5 sm:py-3 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors placeholder:text-[#9CA3AF]">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label
+                            class="block text-white text-sm sm:text-base font-semibold mb-1.5 sm:mb-2 pr-1">Expiration
+                            Date <span class="text-gray-500 font-normal">(Optional)</span></label>
+                        <input type="date" id="edit-file-expiry"
+                            class="w-full bg-[#1F2937]/50 border border-white/10 rounded-lg px-3 sm:px-4 py-2.5 sm:py-3 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors placeholder:text-[#9CA3AF] [color-scheme:dark]">
+                    </div>
+                    <div>
+                        <label class="block text-white text-sm sm:text-base font-semibold mb-1.5 sm:mb-2 pr-1">Password
+                            Protection <span class="text-gray-500 font-normal">(Optional)</span></label>
+                        <input type="password" id="edit-file-password" placeholder="Enter new password"
+                            class="w-full bg-[#1F2937]/50 border border-white/10 rounded-lg px-3 sm:px-4 py-2.5 sm:py-3 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors placeholder:text-[#9CA3AF]">
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-4 sm:p-6 border-t border-white/10 shrink-0 flex gap-3">
+                <button id="cancel-edit-file"
+                    class="flex-1 px-4 py-2.5 sm:py-3 rounded-lg bg-white/5 border border-white/10 text-white font-semibold hover:bg-white/10 transition-all text-sm sm:text-base">
+                    Cancel
+                </button>
+                <button id="save-edit-file"
+                    class="flex-1 px-4 py-2.5 sm:py-3 rounded-lg bg-gradient-to-br from-[#FACC15] to-[#EAB308] text-black font-semibold hover:outline outline-offset-2 outline-[#FACC15]/50 transition-all text-sm sm:text-base flex items-center justify-center gap-2">
+                    <i class="fas fa-save"></i>
+                    Save Changes
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="delete-file-modal" class="fixed inset-0 z-[70] flex items-center justify-center hidden">
+        <div id="delete-file-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity"></div>
+        <div id="delete-file-card"
+            class="relative w-full max-w-[400px] mx-4 bg-[#111827] border border-red-500/20 rounded-xl shadow-[0_0_50px_rgba(239,68,68,0.15)] overflow-hidden transform transition-all scale-95 opacity-0 duration-300">
+            <div class="p-6 sm:p-8 text-center">
+                <div class="w-16 h-16 rounded-full bg-red-500/10 flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-exclamation-triangle text-2xl text-red-500"></i>
+                </div>
+                <h2 class="text-xl font-bold text-white mb-2">Delete File?</h2>
+                <p class="text-gray-400 text-sm mb-6">Are you sure you want to delete <span id="delete-file-name"
+                        class="text-white font-semibold"></span>? This action cannot be undone.</p>
+                <div class="flex gap-3">
+                    <button id="cancel-delete-file"
+                        class="flex-1 px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white font-semibold hover:bg-white/10 transition-all text-sm">Cancel</button>
+                    <button id="confirm-delete-file"
+                        class="flex-1 px-4 py-2.5 rounded-lg bg-red-500 text-white font-semibold hover:bg-red-600 transition-all text-sm shadow-[0_0_15px_rgba(239,68,68,0.4)]">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Sidebar Toggle Logic
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
@@ -1287,7 +1402,7 @@
             filterDropdown.classList.add('hidden');
         });
 
-        // ============ Upload File Modal Logic ============
+        // Upload File Modal Logic
         const uploadFileModal = document.getElementById('upload-file-modal');
         const uploadFileCard = document.getElementById('upload-file-card');
         const openUploadFileBtn = document.getElementById('open-upload-file-modal');
@@ -1318,10 +1433,126 @@
         cancelUploadFileBtn.addEventListener('click', closeUploadModal);
         uploadFileBackdrop.addEventListener('click', closeUploadModal);
 
+        // ============ Edit File Modal Logic ============
+        const editFileModal = document.getElementById('edit-file-modal');
+        const editFileCard = document.getElementById('edit-file-card');
+        const editFileBackdrop = document.getElementById('edit-file-backdrop');
+        let rowToEdit = null;
+
+        function openEditFileModal(row) {
+            rowToEdit = row;
+
+            // Populate data from row
+            document.getElementById('edit-file-name').value = row.getAttribute('data-name') || '';
+            document.getElementById('edit-file-type').value = row.getAttribute('data-type') || 'Other';
+
+            // Extract URL 
+            const urlEl = row.querySelector('.copy-url');
+            if (urlEl) {
+                const fullUrl = urlEl.getAttribute('data-url') || '';
+                document.getElementById('edit-file-url').value = fullUrl.replace('madw.es/', '');
+            }
+
+            // Expiration (if we added it as a data attribute, otherwise empty)
+            document.getElementById('edit-file-expiry').value = row.getAttribute('data-expiry') || '';
+
+            editFileModal.classList.remove('hidden');
+            setTimeout(() => { editFileCard.classList.remove('scale-95', 'opacity-0'); editFileCard.classList.add('scale-100', 'opacity-100'); }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeEditModal() {
+            editFileCard.classList.add('scale-95', 'opacity-0');
+            editFileCard.classList.remove('scale-100', 'opacity-100');
+            setTimeout(() => editFileModal.classList.add('hidden'), 300);
+            document.body.style.overflow = '';
+            rowToEdit = null;
+        }
+
+        document.getElementById('close-edit-file-modal').addEventListener('click', closeEditModal);
+        document.getElementById('cancel-edit-file').addEventListener('click', closeEditModal);
+        editFileBackdrop.addEventListener('click', closeEditModal);
+
+        document.getElementById('save-edit-file').addEventListener('click', () => {
+            if (rowToEdit) {
+                const newName = document.getElementById('edit-file-name').value;
+                const newType = document.getElementById('edit-file-type').value;
+                const newUrlExt = document.getElementById('edit-file-url').value;
+
+                rowToEdit.setAttribute('data-name', newName);
+                rowToEdit.setAttribute('data-type', newType);
+
+                // Update UI visually
+                const titleEl = rowToEdit.querySelector('.text-white.font-semibold');
+                if (titleEl) titleEl.textContent = newName;
+
+                const typeEl = rowToEdit.querySelector('span.border'); // The badge
+                if (typeEl) typeEl.textContent = newType;
+
+                const urlEl = rowToEdit.querySelector('.copy-url');
+                if (urlEl) {
+                    const newUrl = 'madw.es/' + newUrlExt;
+                    urlEl.setAttribute('data-url', newUrl);
+                    // Update text node while preserving SVG icon
+                    const svg = urlEl.querySelector('svg');
+                    urlEl.textContent = newUrl + ' ';
+                    if (svg) urlEl.appendChild(svg);
+                }
+            }
+            closeEditModal();
+        });
+
+        // ============ Delete File Modal Logic ============
+        const deleteFileModal = document.getElementById('delete-file-modal');
+        const deleteFileCard = document.getElementById('delete-file-card');
+        const deleteFileBackdrop = document.getElementById('delete-file-backdrop');
+        let rowToDelete = null;
+
+        function openDeleteModal(row) {
+            rowToDelete = row;
+            document.getElementById('delete-file-name').textContent = row.getAttribute('data-name');
+            deleteFileModal.classList.remove('hidden');
+            setTimeout(() => { deleteFileCard.classList.remove('scale-95', 'opacity-0'); deleteFileCard.classList.add('scale-100', 'opacity-100'); }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDeleteModal() {
+            deleteFileCard.classList.add('scale-95', 'opacity-0');
+            deleteFileCard.classList.remove('scale-100', 'opacity-100');
+            setTimeout(() => deleteFileModal.classList.add('hidden'), 300);
+            document.body.style.overflow = '';
+            rowToDelete = null;
+        }
+
+        document.getElementById('cancel-delete-file').addEventListener('click', closeDeleteModal);
+        deleteFileBackdrop.addEventListener('click', closeDeleteModal);
+        document.getElementById('confirm-delete-file').addEventListener('click', () => {
+            if (rowToDelete) rowToDelete.remove();
+            closeDeleteModal();
+        });
+
+        // ============ Event delegation for Edit/Delete buttons ============
+        filelinksTableBody.addEventListener('click', (e) => {
+            const editBtn = e.target.closest('.edit-file-btn');
+            if (editBtn) {
+                const row = editBtn.closest('tr');
+                if (row) openEditFileModal(row);
+                return;
+            }
+            const deleteBtn = e.target.closest('.delete-file-btn');
+            if (deleteBtn) {
+                const row = deleteBtn.closest('tr');
+                if (row) openDeleteModal(row);
+                return;
+            }
+        });
+
         // Document level escape key handling
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 if (!uploadFileModal.classList.contains('hidden')) closeUploadModal();
+                if (!editFileModal.classList.contains('hidden')) closeEditModal();
+                if (!deleteFileModal.classList.contains('hidden')) closeDeleteModal();
             }
         });
     </script>
