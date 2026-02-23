@@ -483,13 +483,13 @@
                                         <path fill="currentColor" d="M3 12h2v9H3zm16-4h2v13h-2zm-8-6h2v19h-2z" />
                                     </svg>
                                 </button>
-                                <button class="text-gray-400 hover:text-yellow-400 transition-colors">
+                                <button class="edit-event-btn text-gray-400 hover:text-yellow-400 transition-colors">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
                                         <path fill="currentColor"
                                             d="M6.414 15.89L16.556 5.748l-1.414-1.414L5 14.476v1.414zm.829 2H3v-4.243L14.435 2.212a1 1 0 0 1 1.414 0l2.829 2.829a1 1 0 0 1 0 1.414zM3 19.89h18v2H3z" />
                                     </svg>
                                 </button>
-                                <button class="text-gray-400 hover:text-red-400 transition-colors">
+                                <button class="delete-event-btn text-gray-400 hover:text-red-400 transition-colors">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15"
                                         viewBox="0 0 1024 1024">
                                         <path fill="currentColor"
@@ -1026,6 +1026,93 @@
         </div>
     </div>
 
+    <!-- Edit Event Modal -->
+    <div id="edit-event-modal" class="fixed inset-0 z-[65] flex items-center justify-center hidden">
+        <div id="edit-event-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+        <div id="edit-event-card"
+            class="relative w-full max-w-[500px] mx-4 bg-[#111827] border border-[#FACC15]/20 rounded-xl shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden transform transition-all scale-95 opacity-0 duration-300 max-h-[90vh] flex flex-col">
+            <div class="flex items-center justify-between px-6 sm:px-8 py-4 sm:py-6 border-b border-white/10 shrink-0">
+                <h2 class="text-xl sm:text-2xl font-bold text-white">Edit Event</h2>
+                <button id="close-edit-event-modal" class="text-gray-400 hover:text-white transition-colors"><i
+                        class="fas fa-times text-lg sm:text-xl cursor-pointer"></i></button>
+            </div>
+            <div class="px-6 sm:px-8 py-4 sm:py-6 space-y-4 overflow-y-auto flex-1">
+                <div>
+                    <label class="block text-white text-sm font-semibold mb-2">Event Name</label>
+                    <input type="text" id="edit-event-name" placeholder="e.g. Summer Tech Retreat"
+                        class="w-full bg-[#1F2937]/50 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors placeholder:text-[#9CA3AF]">
+                </div>
+                <div>
+                    <label class="block text-white text-sm font-semibold mb-2">Event Type</label>
+                    <div class="relative">
+                        <select id="edit-event-type"
+                            class="w-full appearance-none bg-[#1F2937]/50 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors cursor-pointer">
+                            <option value="Conference">Conference</option>
+                            <option value="Webinar">Webinar</option>
+                            <option value="Workshop">Workshop</option>
+                            <option value="Social">Social</option>
+                            <option value="Networking">Networking</option>
+                            <option value="Training">Training</option>
+                        </select>
+                        <i
+                            class="fas fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none"></i>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-white text-sm font-semibold mb-2">Date</label>
+                        <input type="date" id="edit-event-date"
+                            class="w-full bg-[#1F2937]/50 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors [color-scheme:dark]">
+                    </div>
+                    <div>
+                        <label class="block text-white text-sm font-semibold mb-2">Start Time</label>
+                        <input type="text" id="edit-event-time" placeholder="09:00 AM"
+                            class="w-full bg-[#1F2937]/50 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors placeholder:text-[#9CA3AF]">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-white text-sm font-semibold mb-2">Location / Platform</label>
+                    <input type="text" id="edit-event-location" placeholder="e.g. Grand Hotel or Zoom"
+                        class="w-full bg-[#1F2937]/50 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors placeholder:text-[#9CA3AF]">
+                </div>
+                <div>
+                    <label class="block text-white text-sm font-semibold mb-2">RSVP Link (Optional)</label>
+                    <input type="url" id="edit-event-rsvplink" placeholder="https://..."
+                        class="w-full bg-[#1F2937]/50 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors placeholder:text-[#9CA3AF]">
+                </div>
+            </div>
+            <div class="p-4 sm:p-6 border-t border-white/10 shrink-0 flex gap-3">
+                <button id="cancel-edit-event"
+                    class="flex-1 px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white font-semibold hover:bg-white/10 transition-all text-sm">Cancel</button>
+                <button id="save-edit-event"
+                    class="flex-1 px-4 py-3 rounded-lg bg-gradient-to-br from-[#FACC15] to-[#EAB308] text-black font-semibold hover:outline outline-offset-2 outline-[#FACC15]/50 transition-all text-sm">Save
+                    Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="delete-event-modal" class="fixed inset-0 z-[70] flex items-center justify-center hidden">
+        <div id="delete-event-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+        <div id="delete-event-card"
+            class="relative w-full max-w-[400px] mx-4 bg-[#111827] border border-red-500/20 rounded-xl shadow-[0_0_50px_rgba(239,68,68,0.15)] overflow-hidden transform transition-all scale-95 opacity-0 duration-300">
+            <div class="p-6 sm:p-8 text-center">
+                <div class="w-16 h-16 rounded-full bg-red-500/10 flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-exclamation-triangle text-2xl text-red-500"></i>
+                </div>
+                <h2 class="text-xl font-bold text-white mb-2">Delete Event?</h2>
+                <p class="text-gray-400 text-sm mb-6">Are you sure you want to delete <span id="delete-event-name"
+                        class="text-white font-semibold"></span>? This action cannot be undone.</p>
+                <div class="flex gap-3">
+                    <button id="cancel-delete-event"
+                        class="flex-1 px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white font-semibold hover:bg-white/10 transition-all text-sm">Cancel</button>
+                    <button id="confirm-delete-event"
+                        class="flex-1 px-4 py-2.5 rounded-lg bg-red-500 text-white font-semibold hover:bg-red-600 transition-all text-sm shadow-[0_0_15px_rgba(239,68,68,0.4)]">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script>
         // Mobile menu toggle
@@ -1179,6 +1266,115 @@
             sortFilter.value = 'newest';
             filterAndSortEvents();
             filterDropdown.classList.add('hidden');
+        });
+
+        // ============ Edit Event Modal Logic ============
+        const editEventModal = document.getElementById('edit-event-modal');
+        const editEventCard = document.getElementById('edit-event-card');
+        const editEventBackdrop = document.getElementById('edit-event-backdrop');
+        let cardToEdit = null;
+
+        function openEditEventModal(card) {
+            cardToEdit = card;
+            document.getElementById('edit-event-name').value = card.getAttribute('data-name') || '';
+            document.getElementById('edit-event-type').value = card.getAttribute('data-type') || 'Conference';
+            document.getElementById('edit-event-date').value = card.getAttribute('data-event-date') || '';
+            const timeEl = Array.from(card.querySelectorAll('p')).find(p => p.textContent.includes('AM') || p.textContent.includes('PM'));
+            document.getElementById('edit-event-time').value = timeEl ? timeEl.textContent.trim() : '';
+            const locImg = card.querySelector('img[src="assets/location-y.svg"]');
+            document.getElementById('edit-event-location').value = locImg && locImg.nextElementSibling ? locImg.nextElementSibling.textContent.trim() : '';
+            const linkP = card.querySelector('p.truncate');
+            document.getElementById('edit-event-rsvplink').value = linkP ? 'https://' + linkP.textContent.trim() : '';
+            editEventModal.classList.remove('hidden');
+            setTimeout(() => { editEventCard.classList.remove('scale-95', 'opacity-0'); editEventCard.classList.add('scale-100', 'opacity-100'); }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeEditModal() {
+            editEventCard.classList.add('scale-95', 'opacity-0');
+            editEventCard.classList.remove('scale-100', 'opacity-100');
+            setTimeout(() => editEventModal.classList.add('hidden'), 300);
+            document.body.style.overflow = '';
+            cardToEdit = null;
+        }
+
+        document.getElementById('close-edit-event-modal').addEventListener('click', closeEditModal);
+        document.getElementById('cancel-edit-event').addEventListener('click', closeEditModal);
+        editEventBackdrop.addEventListener('click', closeEditModal);
+
+        document.getElementById('save-edit-event').addEventListener('click', () => {
+            if (cardToEdit) {
+                const newName = document.getElementById('edit-event-name').value;
+                const newType = document.getElementById('edit-event-type').value;
+                const newDate = document.getElementById('edit-event-date').value;
+                const newTime = document.getElementById('edit-event-time').value;
+                const newLocation = document.getElementById('edit-event-location').value;
+                const newLink = document.getElementById('edit-event-rsvplink').value.replace('https://', '');
+                cardToEdit.setAttribute('data-name', newName);
+                cardToEdit.setAttribute('data-type', newType);
+                cardToEdit.setAttribute('data-event-date', newDate);
+                // Update card title (first <p> with font-semibold in header area)
+                const allPs = Array.from(cardToEdit.querySelectorAll('p'));
+                const titleEl = allPs.find(p => p.classList.contains('font-semibold') && (p.classList.contains('text-base') || p.classList.contains('text-lg') || p.parentElement.classList.contains('flex')));
+                if (titleEl) titleEl.textContent = newName;
+                // Update time
+                const timeEl = allPs.find(p => p.textContent.includes('AM') || p.textContent.includes('PM'));
+                if (timeEl) timeEl.textContent = newTime;
+                // Update date shown in card
+                const dateEls = allPs.filter(p => /^\d{4}-\d{2}-\d{2}$/.test(p.textContent.trim()));
+                if (dateEls.length > 0) dateEls[0].textContent = newDate;
+                // Update location
+                const locImg = cardToEdit.querySelector('img[src="assets/location-y.svg"]');
+                if (locImg && locImg.nextElementSibling) locImg.nextElementSibling.textContent = newLocation;
+                // Update RSVP link
+                const linkP = cardToEdit.querySelector('p.truncate');
+                if (linkP) linkP.textContent = newLink;
+            }
+            closeEditModal();
+        });
+
+        // ============ Delete Event Modal Logic ============
+        const deleteEventModal = document.getElementById('delete-event-modal');
+        const deleteEventCard = document.getElementById('delete-event-card');
+        const deleteEventBackdrop = document.getElementById('delete-event-backdrop');
+        let cardToDelete = null;
+
+        function openDeleteModal(card) {
+            cardToDelete = card;
+            document.getElementById('delete-event-name').textContent = card.getAttribute('data-name');
+            deleteEventModal.classList.remove('hidden');
+            setTimeout(() => { deleteEventCard.classList.remove('scale-95', 'opacity-0'); deleteEventCard.classList.add('scale-100', 'opacity-100'); }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDeleteModal() {
+            deleteEventCard.classList.add('scale-95', 'opacity-0');
+            deleteEventCard.classList.remove('scale-100', 'opacity-100');
+            setTimeout(() => deleteEventModal.classList.add('hidden'), 300);
+            document.body.style.overflow = '';
+            cardToDelete = null;
+        }
+
+        document.getElementById('cancel-delete-event').addEventListener('click', closeDeleteModal);
+        deleteEventBackdrop.addEventListener('click', closeDeleteModal);
+        document.getElementById('confirm-delete-event').addEventListener('click', () => {
+            if (cardToDelete) cardToDelete.remove();
+            closeDeleteModal();
+        });
+
+        // ============ Event delegation for Edit/Delete buttons ============
+        eventlinksGrid.addEventListener('click', (e) => {
+            const editBtn = e.target.closest('.edit-event-btn');
+            if (editBtn) { const card = editBtn.closest('[data-name]'); if (card) openEditEventModal(card); return; }
+            const deleteBtn = e.target.closest('.delete-event-btn');
+            if (deleteBtn) { const card = deleteBtn.closest('[data-name]'); if (card) openDeleteModal(card); return; }
+        });
+
+        // Escape key for all modals
+        document.addEventListener('keydown', (e) => {
+            if (e.key !== 'Escape') return;
+            if (!editEventModal.classList.contains('hidden')) closeEditModal();
+            if (!deleteEventModal.classList.contains('hidden')) closeDeleteModal();
         });
     </script>
     <script src="navbar-search.js"></script>
