@@ -263,11 +263,35 @@
                         <p class="text-gray-400 text-sm">Comprehensive analytics for all your links</p>
                     </div>
                     <div class="flex gap-3">
-                        <button
-                            class="flex items-center gap-2 px-4 py-2 bg-[#1F2937]/50 border border-white/10 text-gray-300 rounded-lg hover:bg-white/10 transition text-sm">
-                            Last 24 Hours
-                            <i class="fas fa-chevron-down text-xs"></i>
-                        </button>
+
+                        <!-- Time Filter Dropdown -->
+                        <div class="relative" id="time-filter-dropdown">
+                            <button id="time-filter-btn"
+                                class="flex items-center gap-2 px-4 py-2 bg-[#1F2937]/50 border border-white/10 text-gray-300 rounded-lg hover:bg-white/10 transition text-sm">
+                                <span id="time-filter-text">Last 24 Hours</span>
+                                <i class="fas fa-chevron-down text-xs transition-transform duration-200"
+                                    id="time-filter-icon"></i>
+                            </button>
+                            
+                            <!-- Dropdown Menu -->
+                            <div id="time-filter-menu"
+                                class="absolute right-0 mt-2 w-40 bg-[#1F2937] border border-white/10 rounded-lg shadow-xl opacity-0 invisible transform scale-95 transition-all duration-200 z-50">
+                                <div class="py-1">
+                                    <button
+                                        class="time-option block w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-[#3B82F6]/10 hover:text-white transition-colors"
+                                        data-value="Last 24 Hours">Last 24 Hours</button>
+                                    <button
+                                        class="time-option block w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-[#3B82F6]/10 hover:text-white transition-colors"
+                                        data-value="Last 7 Days">Last 7 Days</button>
+                                    <button
+                                        class="time-option block w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-[#3B82F6]/10 hover:text-white transition-colors"
+                                        data-value="Last 30 Days">Last 30 Days</button>
+                                    <button
+                                        class="time-option block w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-[#3B82F6]/10 hover:text-white transition-colors"
+                                        data-value="All Time">All Time</button>
+                                </div>
+                            </div>
+                        </div>
                         <button
                             class="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#FACC15] to-[#60A5FA] text-black font-medium rounded-lg hover:shadow-lg transition text-sm">
                             <img src="assets/download-b.svg" alt="" class="h-3 w-3"> Export Report
@@ -919,6 +943,56 @@
 
         mobileMenuToggle.addEventListener('click', toggleMobileMenu);
         sidebarOverlay.addEventListener('click', toggleMobileMenu);
+
+        // Time Filter Dropdown Logic
+        const timeFilterBtn = document.getElementById('time-filter-btn');
+        const timeFilterMenu = document.getElementById('time-filter-menu');
+        const timeFilterText = document.getElementById('time-filter-text');
+        const timeFilterIcon = document.getElementById('time-filter-icon');
+        const timeOptions = document.querySelectorAll('.time-option');
+
+        // Toggle dropdown
+        timeFilterBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isExpanded = !timeFilterMenu.classList.contains('opacity-0');
+
+            if (isExpanded) {
+                closeDropdown();
+            } else {
+                openDropdown();
+            }
+        });
+
+        // Handle option selection
+        timeOptions.forEach(option => {
+            option.addEventListener('click', (e) => {
+                timeFilterText.textContent = e.target.getAttribute('data-value');
+                closeDropdown();
+
+                // Here you would typically also trigger data fetching/filtering based on the new time range
+                // console.log(`Selected timeframe: ${e.target.getAttribute('data-value')}`);
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!timeFilterBtn.contains(e.target) && !timeFilterMenu.contains(e.target)) {
+                closeDropdown();
+            }
+        });
+
+        // Helper functions for animation
+        function openDropdown() {
+            timeFilterMenu.classList.remove('opacity-0', 'invisible', 'scale-95');
+            timeFilterMenu.classList.add('opacity-100', 'visible', 'scale-100');
+            timeFilterIcon.classList.add('rotate-180');
+        }
+
+        function closeDropdown() {
+            timeFilterMenu.classList.add('opacity-0', 'invisible', 'scale-95');
+            timeFilterMenu.classList.remove('opacity-100', 'visible', 'scale-100');
+            timeFilterIcon.classList.remove('rotate-180');
+        }
     </script>
     <script src="navbar-search.js"></script>
 </body>
