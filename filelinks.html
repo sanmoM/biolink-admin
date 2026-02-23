@@ -1697,6 +1697,52 @@
                 if (!deleteFileModal.classList.contains('hidden')) closeDeleteModal();
             }
         });
+
+        // ===== Copy to Clipboard (.copy-url anchors) =====
+        function showCopyToast(msg) {
+            const existing = document.getElementById('copy-toast');
+            if (existing) existing.remove();
+            const toast = document.createElement('div');
+            toast.id = 'copy-toast';
+            toast.textContent = msg;
+            Object.assign(toast.style, {
+                position: 'fixed', bottom: '24px', left: '50%', transform: 'translateX(-50%)',
+                background: '#FACC15', color: '#000', fontWeight: '600', padding: '10px 20px',
+                borderRadius: '8px', zIndex: '9999', fontSize: '14px',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.4)', transition: 'opacity 0.3s'
+            });
+            document.body.appendChild(toast);
+            setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 300); }, 2000);
+        }
+
+        document.addEventListener('click', (e) => {
+            const anchor = e.target.closest('a.copy-url');
+            if (!anchor) return;
+            e.preventDefault();
+
+            const url = anchor.getAttribute('data-url') || anchor.textContent.trim();
+            if (!url) return;
+
+            navigator.clipboard.writeText(url).then(() => {
+                const svg = anchor.querySelector('svg');
+                if (svg) {
+                    const originalColor = svg.style.color;
+                    svg.style.color = '#22C55E';
+                    setTimeout(() => { svg.style.color = originalColor; }, 1200);
+                }
+                showCopyToast('Copied: ' + url);
+            }).catch(() => {
+                const ta = document.createElement('textarea');
+                ta.value = url;
+                ta.style.position = 'fixed';
+                ta.style.opacity = '0';
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                showCopyToast('Copied: ' + url);
+            });
+        });
     </script>
     <script src="navbar-search.js"></script>
 
