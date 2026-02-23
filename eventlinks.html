@@ -1507,6 +1507,70 @@
             if (!editEventModal.classList.contains('hidden')) closeEditModal();
             if (!deleteEventModal.classList.contains('hidden')) closeDeleteModal();
         });
+        // ===== Copy to Clipboard (.copy-url anchors or copy.svg icons) =====
+        function showCopyToast(msg) {
+            const existing = document.getElementById('copy-toast');
+            if (existing) existing.remove();
+            const toast = document.createElement('div');
+            toast.id = 'copy-toast';
+            toast.textContent = msg;
+            Object.assign(toast.style, {
+                position: 'fixed', bottom: '24px', left: '50%', transform: 'translateX(-50%)',
+                background: '#FACC15', color: '#000', fontWeight: '600', padding: '10px 20px',
+                borderRadius: '8px', zIndex: '9999', fontSize: '14px',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.4)', transition: 'opacity 0.3s'
+            });
+            document.body.appendChild(toast);
+            setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 300); }, 2000);
+        }
+
+        document.addEventListener('click', (e) => {
+            const anchor = e.target.closest('a.copy-url');
+            const copyImg = e.target.closest('img[src*="copy.svg"]');
+
+            if (anchor) {
+                e.preventDefault();
+                const url = anchor.getAttribute('data-url') || anchor.textContent.trim();
+                copyToClipboard(url, anchor);
+            } else if (copyImg) {
+                // Find nearest URL text
+                const container = copyImg.closest('div');
+                const urlEl = container ? container.querySelector('p.text-\\[\\#FACC15\\]') : null;
+                const textToCopy = urlEl ? urlEl.textContent.trim() : '';
+                if (textToCopy) copyToClipboard(textToCopy, copyImg);
+            }
+        });
+
+        function copyToClipboard(text, triggerEl) {
+            navigator.clipboard.writeText(text).then(() => {
+                feedback(triggerEl);
+                showCopyToast('Copied: ' + text);
+            }).catch(() => {
+                const ta = document.createElement('textarea');
+                ta.value = text;
+                ta.style.position = 'fixed';
+                ta.style.opacity = '0';
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                feedback(triggerEl);
+                showCopyToast('Copied: ' + text);
+            });
+        }
+
+        function feedback(el) {
+            if (el.tagName.toLowerCase() === 'svg' || el.querySelector('svg')) {
+                const svg = el.tagName.toLowerCase() === 'svg' ? el : el.querySelector('svg');
+                const originalColor = svg.style.color;
+                svg.style.color = '#22C55E';
+                setTimeout(() => { svg.style.color = originalColor; }, 1200);
+            } else if (el.tagName.toLowerCase() === 'img') {
+                const originalFilter = el.style.filter;
+                el.style.filter = 'invert(48%) sepia(60%) saturate(500%) hue-rotate(85deg)';
+                setTimeout(() => { el.style.filter = originalFilter; }, 1200);
+            }
+        }
     </script>
     <script src="navbar-search.js"></script>
 </body>
