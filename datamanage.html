@@ -467,6 +467,54 @@
                 document.body.classList.remove('overflow-hidden');
             }
         });
+
+        <!-- Toast Notification -->
+        <div id="toast-notification"
+            class="fixed bottom-5 right-5 z-[60] transform transition-all duration-300 translate-y-full opacity-0 flex items-center gap-3 bg-[#1F2937] border border-green-500/30 text-white px-4 py-3 rounded-lg shadow-2xl">
+            <div class="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center">
+                <i class="fas fa-check text-green-400"></i>
+            </div>
+            <div>
+                <h4 class="font-semibold text-sm">Success</h4>
+                <p id="toast-message" class="text-gray-400 text-xs">Action completed successfully.</p>
+            </div>
+            <button id="close-toast" class="ml-4 text-gray-500 hover:text-white transition">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        // --- Toast Notification Logic ---
+        const toast = document.getElementById('toast-notification');
+        const toastMessage = document.getElementById('toast-message');
+        const closeToastBtn = document.getElementById('close-toast');
+        let toastTimeout;
+
+        function showToast(message) {
+            toastMessage.textContent = message;
+            toast.classList.remove('translate-y-full', 'opacity-0');
+
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                hideToast();
+            }, 3000);
+        }
+
+        function hideToast() {
+            toast.classList.add('translate-y-full', 'opacity-0');
+        }
+
+        if (closeToastBtn) {
+            closeToastBtn.addEventListener('click', hideToast);
+        }
+
+        // Add export toast logic
+        const exportButtons = document.querySelectorAll('button:has(img[src="assets/download-b.svg"])');
+        exportButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                showToast('Export started successfully!');
+            });
+        });
+
     </script>
     <script src="navbar-search.js"></script>
 </body>

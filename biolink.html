@@ -1128,6 +1128,21 @@
         </div>
     </div>
 
+    <!-- Toast Notification -->
+    <div id="toast-notification"
+        class="fixed bottom-5 right-5 z-[60] transform transition-all duration-300 translate-y-full opacity-0 flex items-center gap-3 bg-[#1F2937] border border-green-500/30 text-white px-4 py-3 rounded-lg shadow-2xl">
+        <div class="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center">
+            <i class="fas fa-check text-green-400"></i>
+        </div>
+        <div>
+            <h4 class="font-semibold text-sm">Success</h4>
+            <p id="toast-message" class="text-gray-400 text-xs">Action completed successfully.</p>
+        </div>
+        <button id="close-toast" class="ml-4 text-gray-500 hover:text-white transition">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
     <script>
         // Sidebar Toggle Logic
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
@@ -1152,6 +1167,30 @@
                 }
             });
         });
+
+        // --- Toast Notification Logic ---
+        const toast = document.getElementById('toast-notification');
+        const toastMessage = document.getElementById('toast-message');
+        const closeToastBtn = document.getElementById('close-toast');
+        let toastTimeout;
+
+        function showToast(message) {
+            toastMessage.textContent = message;
+            toast.classList.remove('translate-y-full', 'opacity-0');
+
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                hideToast();
+            }, 3000);
+        }
+
+        function hideToast() {
+            toast.classList.add('translate-y-full', 'opacity-0');
+        }
+
+        if (closeToastBtn) {
+            closeToastBtn.addEventListener('click', hideToast);
+        }
 
         // Create Modal Logic
         const createBiolinkModal = document.getElementById('create-biolink-modal');
@@ -1381,6 +1420,7 @@
                 biolinksData = biolinksData.filter(item => item.id !== id);
                 saveBiolinks();
                 renderTable();
+                showToast('Biolink page deleted successfully!');
             }
             closeDeleteModal();
         });
@@ -1423,6 +1463,7 @@
             createBiolinkModal.querySelector('textarea').value = '';
 
             closeBiolinkModal();
+            showToast('Biolink page created successfully!');
         });
 
         saveEditBiolinkBtn.addEventListener('click', () => {
@@ -1449,6 +1490,7 @@
                 biolinksData[itemIndex].details = detailsInput;
                 saveBiolinks();
                 renderTable();
+                showToast('Biolink page updated successfully!');
             }
 
             closeEditModal();
@@ -1472,6 +1514,7 @@
                 e.preventDefault();
                 const url = copyUrlBtn.getAttribute('data-url');
                 navigator.clipboard.writeText(url).then(() => {
+                    showToast('URL copied to clipboard!');
                     const originalHTML = copyUrlBtn.innerHTML;
                     copyUrlBtn.innerHTML = '<span class="text-green-400 text-xs font-semibold">Copied!</span>';
                     setTimeout(() => {

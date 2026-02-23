@@ -414,7 +414,7 @@
 
                         <!-- List Container -->
                         <div>
-                            <div class="flex flex-col gap-3">
+                            <div id="recent-links-container" class="flex flex-col gap-3">
 
                                 <!-- Link Item 1 -->
                                 <div
@@ -658,7 +658,7 @@
                 <div>
                     <label class="block text-white text-sm sm:text-base font-semibold mb-1.5 sm:mb-2 pr-1">Destination
                         URL</label>
-                    <input type="url" placeholder="https://example.com/your-long-url"
+                    <input type="url" id="modal-destination-url" placeholder="https://example.com/your-long-url"
                         class="w-full bg-[#1F2937]/50 border border-white/10 rounded-lg px-3 sm:px-4 py-2.5 sm:py-3 text-white text-sm focus:outline-none focus:border-[#3B82F6]/50 transition-colors placeholder:text-[#9CA3AF]">
                 </div>
 
@@ -670,7 +670,7 @@
                         class="flex items-center bg-[#1F2937]/50 border border-white/10 rounded-lg overflow-hidden focus-within:border-[#3B82F6]/50 transition-colors">
                         <span
                             class="px-3 sm:px-4 py-2.5 sm:py-3 text-gray-400 text-sm bg-black/20 border-r border-white/10">madw.es/</span>
-                        <input type="text" placeholder="custom-alias"
+                        <input type="text" id="modal-short-alias" placeholder="custom-alias"
                             class="w-full bg-transparent px-3 sm:px-4 py-2.5 sm:py-3 text-white text-sm focus:outline-none placeholder:text-[#9CA3AF]">
                     </div>
                 </div>
@@ -679,7 +679,7 @@
                 <div>
                     <label class="block text-white text-sm sm:text-base font-semibold mb-1.5 sm:mb-2 pr-1">Link Title
                         (Internal)</label>
-                    <input type="text" placeholder="e.g. Summer Campaign '24"
+                    <input type="text" id="modal-link-title" placeholder="e.g. Summer Campaign '24"
                         class="w-full bg-[#1F2937]/50 border border-white/10 rounded-lg px-3 sm:px-4 py-2.5 sm:py-3 text-white text-sm focus:outline-none focus:border-[#3B82F6]/50 transition-colors placeholder:text-[#9CA3AF]">
                 </div>
             </div>
@@ -696,6 +696,20 @@
                 </button>
             </div>
         </div>
+    </div>
+    <!-- Toast Notification -->
+    <div id="toast-notification"
+        class="fixed bottom-5 right-5 z-[60] transform transition-all duration-300 translate-y-full opacity-0 flex items-center gap-3 bg-[#1F2937] border border-green-500/30 text-white px-4 py-3 rounded-lg shadow-2xl">
+        <div class="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center">
+            <i class="fas fa-check text-green-400"></i>
+        </div>
+        <div>
+            <h4 class="font-semibold text-sm">Success</h4>
+            <p id="toast-message" class="text-gray-400 text-xs">Action completed successfully.</p>
+        </div>
+        <button id="close-toast" class="ml-4 text-gray-500 hover:text-white transition">
+            <i class="fas fa-times"></i>
+        </button>
     </div>
 
     <script>
@@ -750,6 +764,30 @@
             }
         });
 
+        // --- Toast Notification Logic ---
+        const toast = document.getElementById('toast-notification');
+        const toastMessage = document.getElementById('toast-message');
+        const closeToastBtn = document.getElementById('close-toast');
+        let toastTimeout;
+
+        function showToast(message) {
+            toastMessage.textContent = message;
+            toast.classList.remove('translate-y-full', 'opacity-0');
+
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                hideToast();
+            }, 3000);
+        }
+
+        function hideToast() {
+            toast.classList.add('translate-y-full', 'opacity-0');
+        }
+
+        if (closeToastBtn) {
+            closeToastBtn.addEventListener('click', hideToast);
+        }
+
         // Create Link Modal Logic
         const createLinkModal = document.getElementById('create-link-modal');
         const createLinkModalCard = document.getElementById('create-link-modal-card');
@@ -780,6 +818,52 @@
         if (closeCreateLinkBtn) closeCreateLinkBtn.addEventListener('click', closeLinkModal);
         if (cancelCreateLinkBtn) cancelCreateLinkBtn.addEventListener('click', closeLinkModal);
         if (createLinkModalBackdrop) createLinkModalBackdrop.addEventListener('click', closeLinkModal);
+        const createLinkBtn = createLinkModal.querySelector('button.bg-gradient-to-br');
+        if (createLinkBtn) {
+            createLinkBtn.addEventListener('click', () => {
+                const title = document.getElementById('modal-link-title').value || 'New Link';
+                const alias = document.getElementById('modal-short-alias').value || 'link-' + Math.floor(Math.random() * 1000);
+                const dest = document.getElementById('modal-destination-url').value;
+
+                if (!dest) {
+                    alert('Please enter a destination URL');
+                    return;
+                }
+
+                // Construct new link item HTML
+                const newLinkHtml = `
+                    <div class="bg-white/5 p-5 rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 hover:bg-[#1f2025] transition-all group shadow-md hover:cursor-pointer">
+                        <div class="flex-1">
+                            <h4 class="text-white font-semibold text-base mb-1">${title}</h4>
+                            <a href="#" class="text-[#9CA3AF] hover:text-blue-400 text-sm transition-colors">madw.es/${alias}</a>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-3 sm:gap-6 w-full sm:w-auto justify-between sm:justify-end mt-2 sm:mt-0">
+                            <div class="text-left sm:text-right w-auto">
+                                <div class="text-white font-bold text-lg">0</div>
+                                <div class="text-gray-500 text-xs">clicks</div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="bg-[#3B82F6]/20 text-blue-400 text-xs px-3 py-1.5 rounded-full border border-blue-500/30 font-medium whitespace-nowrap">Short Link</span>
+                                <span class="text-green-400 bg-green-500/20 px-3 py-1.5 rounded-full text-xs font-semibold border border-green-500/30 whitespace-nowrap">Active</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                const container = document.getElementById('recent-links-container');
+                if (container) {
+                    container.insertAdjacentHTML('afterbegin', newLinkHtml);
+                }
+
+                closeLinkModal();
+                showToast('Link created successfully!');
+
+                // Clear form
+                document.getElementById('modal-link-title').value = '';
+                document.getElementById('modal-short-alias').value = '';
+                document.getElementById('modal-destination-url').value = '';
+            });
+        }
 
         // Global Esc Key Handler for Modals
         document.addEventListener('keydown', (e) => {
