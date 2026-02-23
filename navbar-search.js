@@ -97,7 +97,7 @@
         },
     ];
 
-    /** Build and attach a dropdown to a given input element inside a wrapper */
+    /* Build and attach a dropdown to a given input element inside a wrapper */
     function attachSearch(input, getWrapper) {
         const wrapper = getWrapper();
         if (!wrapper) return;

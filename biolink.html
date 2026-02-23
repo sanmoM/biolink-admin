@@ -256,7 +256,7 @@
                         <h1 class="text-2xl sm:text-3xl font-bold text-white mb-2">Biolink Pages</h1>
                         <p class="text-gray-400 text-sm sm:text-base">Create and manage your bio.link pages</p>
                     </div>
-                    <button
+                    <button id="open-create-biolink-modal"
                         class="w-full md:w-auto flex items-center justify-center gap-2 bg-gradient-to-br from-[#FACC15] to-[#EAB308] hover:outline outline-offset-2 outline-[#FACC15]/50 text-black font-semibold py-3 px-6 rounded-lg transition-all shadow-[0_0_20px_rgba(251,191,36,0.3)]">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
                             <path fill="currentColor"
@@ -943,6 +943,85 @@
         </main>
     </div>
 
+    <!-- Create Biolink Modal -->
+    <div id="create-biolink-modal" class="fixed inset-0 z-[60] flex items-center justify-center hidden">
+        <!-- Backdrop -->
+        <div id="biolink-modal-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity"></div>
+
+        <!-- Modal Card -->
+        <div class="relative w-full max-w-[450px] mx-4 bg-[#111827] border border-[#EAB308]/20 rounded-xl shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden transform transition-all scale-95 opacity-0 duration-300"
+            id="biolink-modal-card">
+            <!-- Header -->
+            <div class="flex items-center justify-between px-6 sm:px-8 pt-6 sm:pt-8">
+                <h2 class="text-xl sm:text-2xl font-bold text-white pt-2 sm:pt-3">Create Biolink Page</h2>
+                <button id="close-create-biolink-modal" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fas fa-times text-lg sm:text-xl cursor-pointer mt-2 sm:mt-4"></i>
+                </button>
+            </div>
+
+            <!-- Form -->
+            <div class="px-6 sm:px-8 pt-4 sm:pt-6 space-y-4">
+                <!-- Biolink URL -->
+                <div>
+                    <label class="block text-white text-sm sm:text-base font-semibold mb-1.5 sm:mb-2 pr-1">Biolink
+                        URL</label>
+                    <div
+                        class="flex items-center bg-[#1F2937]/50 border border-white/10 rounded-lg overflow-hidden focus-within:border-[#3B82F6]/50 transition-colors">
+                        <span
+                            class="px-3 sm:px-4 py-2.5 sm:py-3 text-gray-400 text-sm bg-black/20 border-r border-white/10">madw.es/</span>
+                        <input type="text" placeholder="your-custom-alias"
+                            class="w-full bg-transparent px-3 sm:px-4 py-2.5 sm:py-3 text-white text-sm focus:outline-none placeholder:text-[#9CA3AF]">
+                    </div>
+                </div>
+
+                <!-- Page Name -->
+                <div>
+                    <label class="block text-white text-sm sm:text-base font-semibold mb-1.5 sm:mb-2 pr-1">Page Name
+                        (Internal)</label>
+                    <input type="text" placeholder="e.g. My Personal Portfolio"
+                        class="w-full bg-[#1F2937]/50 border border-white/10 rounded-lg px-3 sm:px-4 py-2.5 sm:py-3 text-white text-sm focus:outline-none focus:border-[#3B82F6]/50 transition-colors placeholder:text-[#9CA3AF]">
+                </div>
+
+                <!-- Category -->
+                <div>
+                    <label
+                        class="block text-white text-sm sm:text-base font-semibold mb-1.5 sm:mb-2 pr-1">Category</label>
+                    <div class="relative">
+                        <select
+                            class="w-full appearance-none bg-[#1F2937] border border-white/10 rounded-lg px-3 sm:px-4 py-2.5 sm:py-3 text-white text-sm focus:outline-none focus:border-[#3B82F6]/50 transition-colors cursor-pointer">
+                            <option>Personal</option>
+                            <option>Business</option>
+                            <option>Social</option>
+                            <option>Event</option>
+                        </select>
+                        <i
+                            class="fas fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-[10px] sm:text-xs pointer-events-none"></i>
+                    </div>
+                </div>
+
+                <!-- Page Details -->
+                <div>
+                    <label class="block text-white text-sm sm:text-base font-semibold mb-1.5 sm:mb-2 pr-1">Page Details
+                        (Optional)</label>
+                    <textarea placeholder="Brief description of your page..." rows="3"
+                        class="w-full bg-[#1F2937]/50 border border-white/10 rounded-lg px-3 sm:px-4 py-2.5 sm:py-3 text-white text-sm focus:outline-none focus:border-[#3B82F6]/50 transition-colors placeholder:text-[#9CA3AF] resize-none"></textarea>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="p-6 sm:p-8 flex gap-3">
+                <button id="cancel-create-biolink"
+                    class="flex-1 px-4 py-2.5 sm:py-3 rounded-lg bg-white/5 border border-white/10 text-white font-semibold hover:bg-white/10 transition-all text-sm sm:text-base">
+                    Cancel
+                </button>
+                <button
+                    class="flex-1 px-4 py-2.5 sm:py-3 rounded-lg bg-gradient-to-br from-[#FACC15] to-[#EAB308] text-black font-semibold hover:outline outline-offset-2 outline-[#FACC15]/50 transition-all text-sm sm:text-base">
+                    Create Page
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Sidebar Toggle Logic
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
@@ -966,6 +1045,43 @@
                     toggleSidebar();
                 }
             });
+        });
+
+        // Modal Logic
+        const createBiolinkModal = document.getElementById('create-biolink-modal');
+        const biolinkModalCard = document.getElementById('biolink-modal-card');
+        const openCreateBiolinkBtn = document.getElementById('open-create-biolink-modal');
+        const closeCreateBiolinkBtn = document.getElementById('close-create-biolink-modal');
+        const cancelCreateBiolinkBtn = document.getElementById('cancel-create-biolink');
+        const biolinkModalBackdrop = document.getElementById('biolink-modal-backdrop');
+
+        function openBiolinkModal() {
+            createBiolinkModal.classList.remove('hidden');
+            setTimeout(() => {
+                biolinkModalCard.classList.remove('scale-95', 'opacity-0');
+                biolinkModalCard.classList.add('scale-100', 'opacity-100');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBiolinkModal() {
+            biolinkModalCard.classList.add('scale-95', 'opacity-0');
+            biolinkModalCard.classList.remove('scale-100', 'opacity-100');
+            setTimeout(() => {
+                createBiolinkModal.classList.add('hidden');
+            }, 300);
+            document.body.style.overflow = '';
+        }
+
+        openCreateBiolinkBtn.addEventListener('click', openBiolinkModal);
+        closeCreateBiolinkBtn.addEventListener('click', closeBiolinkModal);
+        cancelCreateBiolinkBtn.addEventListener('click', closeBiolinkModal);
+        biolinkModalBackdrop.addEventListener('click', closeBiolinkModal);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !createBiolinkModal.classList.contains('hidden')) {
+                closeBiolinkModal();
+            }
         });
 
         // Search and Filter Logic
