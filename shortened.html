@@ -250,7 +250,7 @@
                         <h1 class="text-2xl sm:text-3xl font-bold text-white mb-2">Shortened Links</h1>
                         <p class="text-gray-400 text-sm sm:text-base">Manage your shortened URL links</p>
                     </div>
-                    <button
+                    <button id="open-create-short-link-modal"
                         class="w-full md:w-auto flex items-center justify-center gap-2 bg-gradient-to-b from-[#FACC15] to-[#EAB308] hover:outline outline-offset-2 outline-[#FACC15]/50 text-black font-semibold py-3 px-6 rounded-lg transition-all shadow-[0_0_20px_rgba(251,191,36,0.3)]">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
                             <path fill="currentColor"
@@ -930,6 +930,78 @@
         </main>
     </div>
 
+    <!-- Create Short Link Modal -->
+    <div id="create-short-link-modal" class="fixed inset-0 z-[60] flex items-center justify-center hidden">
+        <div id="create-modal-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity"></div>
+        <div class="relative w-full max-w-[600px] mx-4 bg-[#111827] border border-[#FACC15]/20 rounded-xl shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden transform transition-all scale-95 opacity-0 duration-300 max-h-[90vh] flex flex-col"
+            id="create-modal-card">
+
+            <div class="flex items-center justify-between px-6 sm:px-8 py-4 sm:py-6 border-b border-white/10 shrink-0">
+                <h2 class="text-xl sm:text-2xl font-bold text-white">Create Short Link</h2>
+                <button id="close-create-modal" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fas fa-times text-lg sm:text-xl cursor-pointer"></i>
+                </button>
+            </div>
+
+            <div class="px-6 sm:px-8 py-4 sm:py-6 space-y-5 overflow-y-auto flex-1 custom-scrollbar">
+                <div>
+                    <label class="block text-white text-sm sm:text-base font-semibold mb-1.5 sm:mb-2 pr-1">Short URL
+                        Alias
+                        </label>
+                    <div class="flex group">
+                        <span
+                            class="inline-flex items-center px-4 rounded-l-lg border border-r-0 border-white/10 bg-[#1F2937]/80 text-gray-400 text-sm">
+                            madw.es/
+                        </span>
+                        <input type="text" id="short-alias" placeholder="e.g. summer-sale"
+                            class="flex-1 min-w-0 block w-full bg-[#1F2937]/50 border border-white/10 rounded-none rounded-r-lg px-3 sm:px-4 py-2.5 sm:py-3 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors placeholder:text-[#9CA3AF]">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-white text-sm sm:text-base font-semibold mb-1.5 sm:mb-2 pr-1">Link
+                        Name</label>
+                    <input type="text" id="link-name" placeholder="e.g. Summer 2024 Campaign"
+                        class="w-full bg-[#1F2937]/50 border border-white/10 rounded-lg px-3 sm:px-4 py-2.5 sm:py-3 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors placeholder:text-[#9CA3AF]">
+                </div>
+
+                <div>
+                    <label class="block text-white text-sm sm:text-base font-semibold mb-1.5 sm:mb-2 pr-1">Long
+                        URL</label>
+                    <input type="url" id="long-url" placeholder="https://example.com/long-original-url"
+                        class="w-full bg-[#1F2937]/50 border border-white/10 rounded-lg px-3 sm:px-4 py-2.5 sm:py-3 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors placeholder:text-[#9CA3AF]">
+                </div>
+            </div>
+
+            <div class="p-4 sm:p-6 border-t border-white/10 shrink-0 flex gap-3">
+                <button id="cancel-create-link"
+                    class="flex-1 px-4 py-2.5 sm:py-3 rounded-lg bg-white/5 border border-white/10 text-white font-semibold hover:bg-white/10 transition-all text-sm sm:text-base">
+                    Cancel
+                </button>
+                <button id="save-new-short-link"
+                    class="flex-1 px-4 py-2.5 sm:py-3 rounded-lg bg-gradient-to-br from-[#FACC15] to-[#EAB308] text-black font-semibold hover:outline outline-offset-2 outline-[#FACC15]/50 transition-all text-sm sm:text-base flex items-center justify-center gap-2">
+                    <i class="fas fa-link"></i>
+                    Create Link
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast-notification"
+        class="fixed bottom-5 right-5 z-[60] transform transition-all duration-300 translate-y-full opacity-0 flex items-center gap-3 bg-[#1F2937] border border-green-500/30 text-white px-4 py-3 rounded-lg shadow-2xl">
+        <div class="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center">
+            <i class="fas fa-check text-green-400"></i>
+        </div>
+        <div>
+            <h4 class="font-semibold text-sm">Success</h4>
+            <p id="toast-message" class="text-gray-400 text-xs">Action completed successfully.</p>
+        </div>
+        <button id="close-toast" class="ml-4 text-gray-500 hover:text-white transition">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
     <script>
         // Sidebar Toggle Logic
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
@@ -1050,6 +1122,133 @@
             sortFilter.value = 'newest';
             filterAndSortShortened();
             filterDropdown.classList.add('hidden');
+        });
+
+        // --- Toast Notification Logic ---
+        const toast = document.getElementById('toast-notification');
+        const toastMessage = document.getElementById('toast-message');
+        const closeToastBtn = document.getElementById('close-toast');
+        let toastTimeout;
+
+        function showToast(message) {
+            toastMessage.textContent = message;
+            toast.classList.remove('translate-y-full', 'opacity-0');
+
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                hideToast();
+            }, 3000);
+        }
+
+        function hideToast() {
+            toast.classList.add('translate-y-full', 'opacity-0');
+        }
+
+        if (closeToastBtn) {
+            closeToastBtn.addEventListener('click', hideToast);
+        }
+
+        // --- Create Short Link Modal Logic ---
+        const createModal = document.getElementById('create-short-link-modal');
+        const createModalCard = document.getElementById('create-modal-card');
+        const openModalBtn = document.getElementById('open-create-short-link-modal');
+        const closeModalBtn = document.getElementById('close-create-modal');
+        const cancelModalBtn = document.getElementById('cancel-create-link');
+        const modalBackdrop = document.getElementById('create-modal-backdrop');
+        const saveLinkBtn = document.getElementById('save-new-short-link');
+
+        function openCreateModal() {
+            createModal.classList.remove('hidden');
+            setTimeout(() => {
+                createModalCard.classList.remove('scale-95', 'opacity-0');
+                createModalCard.classList.add('scale-100', 'opacity-100');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCreateModal() {
+            createModalCard.classList.add('scale-95', 'opacity-0');
+            createModalCard.classList.remove('scale-100', 'opacity-100');
+            setTimeout(() => {
+                createModal.classList.add('hidden');
+            }, 300);
+            document.body.style.overflow = '';
+        }
+
+        if (openModalBtn) openModalBtn.addEventListener('click', openCreateModal);
+        if (closeModalBtn) closeModalBtn.addEventListener('click', closeCreateModal);
+        if (cancelModalBtn) cancelModalBtn.addEventListener('click', closeCreateModal);
+        if (modalBackdrop) modalBackdrop.addEventListener('click', closeCreateModal);
+
+        if (saveLinkBtn) {
+            saveLinkBtn.addEventListener('click', () => {
+                const name = document.getElementById('link-name').value || 'Unnamed Link';
+                const longUrl = document.getElementById('long-url').value || 'https://google.com';
+                const alias = document.getElementById('short-alias').value || Math.random().toString(36).substring(7);
+                const createdDate = new Date().toISOString().split('T')[0];
+
+                const newRow = `
+                    <tr data-name="${name}" data-status="Active" data-clicks="0" data-created="${createdDate}"
+                        class="hover:bg-[#1f2025] transition-colors whitespace-nowrap">
+                        <td class="px-6 py-5 whitespace-nowrap">
+                            <div>
+                                <div class="text-white font-semibold">${name}</div>
+                                <div class="text-gray-500 text-sm">${longUrl}</div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <a href="#" class="text-[#FACC15] hover:underline flex items-center gap-2 copy-url" data-url="madw.es/${alias}">
+                                madw.es/${alias}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16">
+                                    <path fill="none" stroke="#9CA3AF" stroke-linejoin="round" d="M12 10.5h1.5v-8h-8V4m-3 9.5h8v-8h-8z" stroke-width="1" />
+                                </svg>
+                            </a>
+                        </td>
+                        <td class="px-6 py-4 text-white font-medium whitespace-nowrap">0</td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <span class="px-3 py-1 bg-[#22C55E]/20 text-green-400 text-xs font-semibold rounded-full border border-green-500/30">
+                                Active
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 text-gray-400 whitespace-nowrap">${createdDate}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="flex items-center gap-5">
+                                <button class="text-gray-400 hover:text-blue-400 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                                        <path fill="currentColor" d="M3 12h2v9H3zm16-4h2v13h-2zm-8-6h2v19h-2z" />
+                                    </svg>
+                                </button>
+                                <button class="text-gray-400 hover:text-yellow-400 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                                        <path fill="currentColor" d="M6.414 15.89L16.556 5.748l-1.414-1.414L5 14.476v1.414zm.829 2H3v-4.243L14.435 2.212a1 1 0 0 1 1.414 0l2.829 2.829a1 1 0 0 1 0 1.414zM3 19.89h18v2H3z" />
+                                    </svg>
+                                </button>
+                                <button class="text-gray-400 hover:text-red-400 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 1024 1024">
+                                        <path fill="currentColor" d="M160 256H96a32 32 0 0 1 0-64h256V96a32 32 0 0 1 32-32h256a32 32 0 0 1 32 32v96h256a32 32 0 1 1 0 64h-64v672a32 32 0 0 1-32 32H192a32 32 0 0 1-32-32zm448-64v-64H416v64zM224 896h576V256H224zm192-128a32 32 0 0 1-32-32V416a32 32 0 0 1 64 0v320a32 32 0 0 1-32 32m192 0a32 32 0 0 1-32-32V416a32 32 0 0 1 64 0v320a32 32 0 0 1-32 32" stroke-width="25.5" stroke="currentColor" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+
+                shortenedTableBody.insertAdjacentHTML('afterbegin', newRow);
+                closeCreateModal();
+                showToast('Short link created successfully!');
+
+                // Clear form
+                document.getElementById('link-name').value = '';
+                document.getElementById('long-url').value = '';
+                document.getElementById('short-alias').value = '';
+            });
+        }
+
+        // Global Escape key to close modals
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (!createModal.classList.contains('hidden')) closeCreateModal();
+            }
         });
     </script>
     <script src="navbar-search.js"></script>
