@@ -947,7 +947,7 @@
                 <div>
                     <label class="block text-white text-sm sm:text-base font-semibold mb-1.5 sm:mb-2 pr-1">Short URL
                         Alias
-                        </label>
+                    </label>
                     <div class="flex group">
                         <span
                             class="inline-flex items-center px-4 rounded-l-lg border border-r-0 border-white/10 bg-[#1F2937]/80 text-gray-400 text-sm">
@@ -983,6 +983,85 @@
                     <i class="fas fa-link"></i>
                     Create Link
                 </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Short Link Modal -->
+    <div id="edit-short-link-modal" class="fixed inset-0 z-[60] flex items-center justify-center hidden">
+        <div id="edit-modal-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity"></div>
+        <div class="relative w-full max-w-[600px] mx-4 bg-[#111827] border border-[#FACC15]/20 rounded-xl shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden transform transition-all scale-95 opacity-0 duration-300 max-h-[90vh] flex flex-col"
+            id="edit-modal-card">
+
+            <div class="flex items-center justify-between px-6 sm:px-8 py-4 sm:py-6 border-b border-white/10 shrink-0">
+                <h2 class="text-xl sm:text-2xl font-bold text-white">Edit Short Link</h2>
+                <button id="close-edit-modal" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fas fa-times text-lg sm:text-xl cursor-pointer"></i>
+                </button>
+            </div>
+
+            <div class="px-6 sm:px-8 py-4 sm:py-6 space-y-5 overflow-y-auto flex-1 custom-scrollbar">
+                <div>
+                    <label class="block text-white text-sm sm:text-base font-semibold mb-1.5 sm:mb-2 pr-1">Short URL
+                        Alias</label>
+                    <div class="flex group">
+                        <span
+                            class="inline-flex items-center px-4 rounded-l-lg border border-r-0 border-white/10 bg-[#1F2937]/80 text-gray-400 text-sm">
+                            madw.es/
+                        </span>
+                        <input type="text" id="edit-short-alias" placeholder="e.g. summer-sale"
+                            class="flex-1 min-w-0 block w-full bg-[#1F2937]/50 border border-white/10 rounded-none rounded-r-lg px-3 sm:px-4 py-2.5 sm:py-3 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors placeholder:text-[#9CA3AF]">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-white text-sm sm:text-base font-semibold mb-1.5 sm:mb-2 pr-1">Link
+                        Name</label>
+                    <input type="text" id="edit-link-name" placeholder="e.g. Summer 2024 Campaign"
+                        class="w-full bg-[#1F2937]/50 border border-white/10 rounded-lg px-3 sm:px-4 py-2.5 sm:py-3 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors placeholder:text-[#9CA3AF]">
+                </div>
+
+                <div>
+                    <label class="block text-white text-sm sm:text-base font-semibold mb-1.5 sm:mb-2 pr-1">Long
+                        URL</label>
+                    <input type="url" id="edit-long-url" placeholder="https://example.com/long-original-url"
+                        class="w-full bg-[#1F2937]/50 border border-white/10 rounded-lg px-3 sm:px-4 py-2.5 sm:py-3 text-white text-sm focus:outline-none focus:border-[#FACC15]/50 transition-colors placeholder:text-[#9CA3AF]">
+                </div>
+            </div>
+
+            <div class="p-4 sm:p-6 border-t border-white/10 shrink-0 flex gap-3">
+                <button id="cancel-edit-link"
+                    class="flex-1 px-4 py-2.5 sm:py-3 rounded-lg bg-white/5 border border-white/10 text-white font-semibold hover:bg-white/10 transition-all text-sm sm:text-base">
+                    Cancel
+                </button>
+                <button id="update-short-link"
+                    class="flex-1 px-4 py-2.5 sm:py-3 rounded-lg bg-gradient-to-br from-[#FACC15] to-[#EAB308] text-black font-semibold hover:outline outline-offset-2 outline-[#FACC15]/50 transition-all text-sm sm:text-base flex items-center justify-center gap-2">
+                    <i class="fas fa-save"></i>
+                    Save Changes
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="delete-short-link-modal" class="fixed inset-0 z-[70] flex items-center justify-center hidden">
+        <div id="delete-modal-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity"></div>
+        <div id="delete-modal-card"
+            class="relative w-full max-w-[400px] mx-4 bg-[#111827] border border-red-500/20 rounded-xl shadow-[0_0_50px_rgba(239,68,68,0.15)] overflow-hidden transform transition-all scale-95 opacity-0 duration-300">
+            <div class="p-6 sm:p-8 text-center">
+                <div class="w-16 h-16 rounded-full bg-red-500/10 flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-exclamation-triangle text-2xl text-red-500"></i>
+                </div>
+                <h2 class="text-xl font-bold text-white mb-2">Delete Short Link?</h2>
+                <p class="text-gray-400 text-sm mb-6">Are you sure you want to delete <span
+                        id="delete-link-display-name" class="text-white font-semibold"></span>? This action cannot be
+                    undone.</p>
+                <div class="flex gap-3">
+                    <button id="cancel-delete-link"
+                        class="flex-1 px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white font-semibold hover:bg-white/10 transition-all text-sm">Cancel</button>
+                    <button id="confirm-delete-link"
+                        class="flex-1 px-4 py-2.5 rounded-lg bg-red-500 text-white font-semibold hover:bg-red-600 transition-all text-sm shadow-[0_0_15px_rgba(239,68,68,0.4)]">Delete</button>
+                </div>
             </div>
         </div>
     </div>
@@ -1244,10 +1323,152 @@
             });
         }
 
+        // --- Edit Short Link Modal Logic ---
+        const editModal = document.getElementById('edit-short-link-modal');
+        const editModalCard = document.getElementById('edit-modal-card');
+        const closeEditModalBtn = document.getElementById('close-edit-modal');
+        const cancelEditModalBtn = document.getElementById('cancel-edit-link');
+        const editModalBackdrop = document.getElementById('edit-modal-backdrop');
+        const updateLinkBtn = document.getElementById('update-short-link');
+
+        let currentRowToEdit = null;
+
+        function openEditModal(row) {
+            currentRowToEdit = row;
+            const name = row.getAttribute('data-name');
+            const url = row.querySelector('.text-gray-500').textContent;
+
+            // Safer extraction in case copy-url doesn't exist
+            let alias = '';
+            const copyUrlElem = row.querySelector('.copy-url');
+            if (copyUrlElem && copyUrlElem.hasAttribute('data-url')) {
+                alias = copyUrlElem.getAttribute('data-url').replace('madw.es/', '');
+            }
+
+            document.getElementById('edit-link-name').value = name;
+            document.getElementById('edit-long-url').value = url;
+            document.getElementById('edit-short-alias').value = alias;
+
+            editModal.classList.remove('hidden');
+            setTimeout(() => {
+                editModalCard.classList.remove('scale-95', 'opacity-0');
+                editModalCard.classList.add('scale-100', 'opacity-100');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeEditModal() {
+            editModalCard.classList.add('scale-95', 'opacity-0');
+            editModalCard.classList.remove('scale-100', 'opacity-100');
+            setTimeout(() => {
+                editModal.classList.add('hidden');
+            }, 300);
+            document.body.style.overflow = '';
+        }
+
+        if (closeEditModalBtn) closeEditModalBtn.addEventListener('click', closeEditModal);
+        if (cancelEditModalBtn) cancelEditModalBtn.addEventListener('click', closeEditModal);
+        if (editModalBackdrop) editModalBackdrop.addEventListener('click', closeEditModal);
+
+        if (updateLinkBtn) {
+            updateLinkBtn.addEventListener('click', () => {
+                if (currentRowToEdit) {
+                    const name = document.getElementById('edit-link-name').value;
+                    const longUrl = document.getElementById('edit-long-url').value;
+                    const alias = document.getElementById('edit-short-alias').value;
+
+                    currentRowToEdit.setAttribute('data-name', name);
+                    const nameElem = currentRowToEdit.querySelector('.text-white.font-semibold');
+                    if (nameElem) nameElem.textContent = name;
+
+                    const longUrlElem = currentRowToEdit.querySelector('.text-gray-500');
+                    if (longUrlElem) longUrlElem.textContent = longUrl;
+
+                    const aliasLink = currentRowToEdit.querySelector('.copy-url');
+                    if (aliasLink) {
+                        aliasLink.setAttribute('data-url', `madw.es/${alias}`);
+                        aliasLink.innerHTML = `
+                            madw.es/${alias}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16">
+                                <path fill="none" stroke="#9CA3AF" stroke-linejoin="round" d="M12 10.5h1.5v-8h-8V4m-3 9.5h8v-8h-8z" stroke-width="1" />
+                            </svg>
+                        `;
+                    }
+
+                    closeEditModal();
+                    showToast('Short link updated successfully!');
+                }
+            });
+        }
+
+        // --- Delete Short Link Modal Logic ---
+        const deleteModal = document.getElementById('delete-short-link-modal');
+        const deleteModalCard = document.getElementById('delete-modal-card');
+        const cancelDeleteBtn = document.getElementById('cancel-delete-link');
+        const confirmDeleteBtn = document.getElementById('confirm-delete-link');
+        const deleteModalBackdrop = document.getElementById('delete-modal-backdrop');
+        const deleteLinkDisplayName = document.getElementById('delete-link-display-name');
+
+        let rowToDelete = null;
+
+        function openDeleteModal(row) {
+            rowToDelete = row;
+            const name = row.getAttribute('data-name');
+            if (deleteLinkDisplayName) deleteLinkDisplayName.textContent = name;
+            deleteModal.classList.remove('hidden');
+            setTimeout(() => {
+                deleteModalCard.classList.remove('scale-95', 'opacity-0');
+                deleteModalCard.classList.add('scale-100', 'opacity-100');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDeleteModal() {
+            deleteModalCard.classList.add('scale-95', 'opacity-0');
+            deleteModalCard.classList.remove('scale-100', 'opacity-100');
+            setTimeout(() => {
+                deleteModal.classList.add('hidden');
+            }, 300);
+            document.body.style.overflow = '';
+        }
+
+        if (cancelDeleteBtn) cancelDeleteBtn.addEventListener('click', closeDeleteModal);
+        if (deleteModalBackdrop) deleteModalBackdrop.addEventListener('click', closeDeleteModal);
+
+        if (confirmDeleteBtn) {
+            confirmDeleteBtn.addEventListener('click', () => {
+                if (rowToDelete) {
+                    rowToDelete.remove();
+                    closeDeleteModal();
+                    showToast('Short link deleted successfully!');
+                }
+            });
+        }
+
+        // Event Delegation for Table Actions
+        const tableBody = document.getElementById('shortened-table-body');
+        if (tableBody) {
+            tableBody.addEventListener('click', (e) => {
+                const btn = e.target.closest('button');
+                const row = e.target.closest('tr');
+
+                if (btn && row) {
+                    // Check if edit or delete by checking classes instead of just hover color
+                    if (btn.classList.contains('hover:text-yellow-400')) {
+                        openEditModal(row);
+                    } else if (btn.classList.contains('hover:text-red-400')) {
+                        openDeleteModal(row);
+                    }
+                }
+            });
+        }
+
         // Global Escape key to close modals
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                if (!createModal.classList.contains('hidden')) closeCreateModal();
+                if (createModal && !createModal.classList.contains('hidden')) closeCreateModal();
+                if (editModal && !editModal.classList.contains('hidden')) closeEditModal();
+                if (deleteModal && !deleteModal.classList.contains('hidden')) closeDeleteModal();
             }
         });
     </script>
