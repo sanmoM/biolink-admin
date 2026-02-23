@@ -474,9 +474,12 @@
                                 <img src="assets/pass.svg" alt=""> Current password
                             </label>
                             <div class="relative">
-                                <input type="password" placeholder="Enter current password"
+                                <input id="current-password" type="password" placeholder="Enter current password"
                                     class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-accent-yellow/50 transition-colors">
-                                <img src="assets/view-g.svg" alt="" class="absolute right-5 top-1/2 -translate-y-1/2">
+                                <div
+                                    class="password-toggle absolute right-5 top-1/2 -translate-y-1/2 cursor-pointer hover:opacity-80 transition-opacity">
+                                    <img src="assets/view-g.svg" alt="" class="toggle-icon h-3 w-4">
+                                </div>
                             </div>
                         </div>
 
@@ -486,9 +489,12 @@
                                 <img src="assets/pass.svg" alt=""> New password
                             </label>
                             <div class="relative">
-                                <input type="password" placeholder="Enter new password"
+                                <input id="new-password" type="password" placeholder="Enter new password"
                                     class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-accent-yellow/50 transition-colors">
-                                <img src="assets/view-g.svg" alt="" class="absolute right-5 top-1/2 -translate-y-1/2">
+                                <div
+                                    class="password-toggle absolute right-5 top-1/2 -translate-y-1/2 cursor-pointer hover:opacity-80 transition-opacity">
+                                    <img src="assets/view-g.svg" alt="" class="toggle-icon h-3 w-4">
+                                </div>
                             </div>
                         </div>
 
@@ -498,9 +504,12 @@
                                 <img src="assets/pass.svg" alt=""> Repeat new password
                             </label>
                             <div class="relative">
-                                <input type="password" placeholder="Confirm new password"
+                                <input id="repeat-password" type="password" placeholder="Confirm new password"
                                     class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-accent-yellow/50 transition-colors">
-                                <img src="assets/view-g.svg" alt="" class="absolute right-5 top-1/2 -translate-y-1/2">
+                                <div
+                                    class="password-toggle absolute right-5 top-1/2 -translate-y-1/2 cursor-pointer hover:opacity-80 transition-opacity">
+                                    <img src="assets/view-g.svg" alt="" class="toggle-icon h-3 w-4">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -544,6 +553,23 @@
 
         mobileMenuToggle.addEventListener('click', toggleMobileMenu);
         sidebarOverlay.addEventListener('click', toggleMobileMenu);
+
+        // Password Toggle Logic
+        document.querySelectorAll('.password-toggle').forEach(toggleContainer => {
+            toggleContainer.addEventListener('click', () => {
+                const input = toggleContainer.parentElement.querySelector('input');
+
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    // Switch to Font Awesome eye-slash icon for showing state
+                    toggleContainer.innerHTML = '<i class="fas fa-eye-slash text-sm text-[#9CA3AF]"></i>';
+                } else {
+                    input.type = 'password';
+                    // Switch back to original view-g.svg icon for hidden state
+                    toggleContainer.innerHTML = '<img src="assets/view-g.svg" alt="" class="toggle-icon h-3 w-4">';
+                }
+            });
+        });
     </script>
     <script src="navbar-search.js"></script>
 </body>
